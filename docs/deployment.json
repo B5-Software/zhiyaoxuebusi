@@ -1,26 +1,24 @@
 {
   "date": "2026-10-07",
-  "version": "2.7.0",
+  "version": "2.7.1",
   "platform": "Cloudflare Pages",
   "branch": "main",
-  "codeCommit": "84dd672a83367abed06bf24b19ffbf2eeb2d5ef2",
-  "indexSha256": "b7479e1e662199e8a3195f9c484f28028da33cee0a1d4ddf112c74723c85d96b",
+  "codeCommit": "a489cdd654415eb9d9ce03c81b41281703ad8b11",
+  "indexSha256": "af84b31f9aa6840c70a4bb49f47f0a76569f1e72c4b180ebe11713e2b911547b",
   "unitTests": 63,
   "romanceFlowViewports": 5,
   "relationshipFlowViewports": 2,
   "meetingFlowViewports": 5,
   "romanceChecks": "docs/romance-browser-checks.json",
   "meetingChecks": "docs/meeting-checks.json",
-  "serviceWorkerCache": "shiguang-campus-v2.7.0",
-  "githubPagesWorkflow": "https://github.com/B5-Software/zhiyaoxuebusi/actions/runs/37596340483",
-  "githubPagesWorkflowConclusion": "success",
+  "serviceWorkerCache": "shiguang-campus-v2.7.1",
   "projects": [
     {
       "name": "shiguang-campus-life",
       "production": "https://shiguang-campus-life.pages.dev/",
-      "deployment": "https://372b7c60.shiguang-campus-life.pages.dev/",
+      "deployment": "https://36ac1c32.shiguang-campus-life.pages.dev/",
       "status": 200,
-      "indexSha256": "b7479e1e662199e8a3195f9c484f28028da33cee0a1d4ddf112c74723c85d96b",
+      "indexSha256": "af84b31f9aa6840c70a4bb49f47f0a76569f1e72c4b180ebe11713e2b911547b",
       "productionMatchesBuild": true,
       "serviceWorkerCurrent": true,
       "art": [
@@ -38,24 +36,14 @@
           "bytes": 307302,
           "matchesBuild": true
         }
-      ],
-      "browser": {
-        "ageGateVisible": true,
-        "firstEntryReleased": true,
-        "gameBlocked": true,
-        "height": 844,
-        "minorPreferenceSaved": true,
-        "noAdultEntries": true,
-        "versionVisible": true,
-        "width": 390
-      }
+      ]
     },
     {
       "name": "zhiyaoxuebusi",
       "production": "https://zhiyaoxuebusi.pages.dev/",
-      "deployment": "https://fb04d2d4.zhiyaoxuebusi.pages.dev/",
+      "deployment": "https://cc5f003e.zhiyaoxuebusi.pages.dev/",
       "status": 200,
-      "indexSha256": "b7479e1e662199e8a3195f9c484f28028da33cee0a1d4ddf112c74723c85d96b",
+      "indexSha256": "af84b31f9aa6840c70a4bb49f47f0a76569f1e72c4b180ebe11713e2b911547b",
       "productionMatchesBuild": true,
       "serviceWorkerCurrent": true,
       "art": [
@@ -73,17 +61,24 @@
           "bytes": 307302,
           "matchesBuild": true
         }
-      ],
-      "browser": {
-        "ageGateVisible": true,
-        "firstEntryReleased": true,
-        "gameBlocked": true,
-        "height": 844,
-        "minorPreferenceSaved": true,
-        "noAdultEntries": true,
-        "versionVisible": true,
-        "width": 390
-      }
+      ]
     }
-  ]
+  ],
+  "ageGateTextCentered": true,
+  "ageGateLayoutViewports": [
+    [
+      320,
+      568
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      1280,
+      900
+    ]
+  ],
+  "githubPagesWorkflow": "https://github.com/B5-Software/zhiyaoxuebusi/actions/runs/37597111765",
+  "githubPagesWorkflowConclusion": "success"
 }
