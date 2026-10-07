@@ -1,84 +1,193 @@
 {
-  "date": "2026-10-07",
-  "version": "2.7.1",
+  "date": "2026-10-08",
+  "version": "2.8.2",
   "platform": "Cloudflare Pages",
   "branch": "main",
-  "codeCommit": "a489cdd654415eb9d9ce03c81b41281703ad8b11",
-  "indexSha256": "af84b31f9aa6840c70a4bb49f47f0a76569f1e72c4b180ebe11713e2b911547b",
-  "unitTests": 63,
-  "romanceFlowViewports": 5,
-  "relationshipFlowViewports": 2,
-  "meetingFlowViewports": 5,
-  "romanceChecks": "docs/romance-browser-checks.json",
-  "meetingChecks": "docs/meeting-checks.json",
-  "serviceWorkerCache": "shiguang-campus-v2.7.1",
+  "codeCommit": "d5545256675cf0a3c64bd0f5f236c8a0e095f24d",
+  "indexSha256": "44fa80857af2c9787b2d468ad823db9f02d89516343b10a9df7d094b8672068b",
+  "unitTests": 82,
+  "uiViewports": 5,
+  "uiChecks": "docs/ui-v2.8-checks.json",
+  "warningChecks": "docs/warning-layout-checks.json",
+  "avatarChecks": "docs/avatar-layout-checks.json",
+  "loadingPathChecks": "docs/loading-path-checks.json",
+  "serviceWorkerCache": "shiguang-campus-v2.8.2",
   "projects": [
     {
       "name": "shiguang-campus-life",
       "production": "https://shiguang-campus-life.pages.dev/",
-      "deployment": "https://36ac1c32.shiguang-campus-life.pages.dev/",
-      "status": 200,
-      "indexSha256": "af84b31f9aa6840c70a4bb49f47f0a76569f1e72c4b180ebe11713e2b911547b",
-      "productionMatchesBuild": true,
-      "serviceWorkerCurrent": true,
-      "art": [
+      "deployment": "https://61818da9.shiguang-campus-life.pages.dev/",
+      "resources": [
         {
-          "name": "romance-moments",
+          "path": "index.html",
           "status": 200,
-          "contentType": "image/webp",
-          "bytes": 305820,
+          "bytes": 3636,
+          "sha256": "44fa80857af2c9787b2d468ad823db9f02d89516343b10a9df7d094b8672068b",
           "matchesBuild": true
         },
         {
-          "name": "romance-men-moments",
+          "path": "sw.js",
           "status": 200,
-          "contentType": "image/webp",
-          "bytes": 307302,
+          "bytes": 3697,
+          "sha256": "a013f41faf32f1bf2c90af81904e60619374901496bc32214d12b08ba2547139",
+          "matchesBuild": true
+        },
+        {
+          "path": "cache-manifest.json",
+          "status": 200,
+          "bytes": 8417,
+          "sha256": "40fbc487771be0387b7db6d085b42e842dbda52c67f0bf41ccfdab7f6b13ce56",
+          "matchesBuild": true
+        },
+        {
+          "path": "images/loading-campus.webp",
+          "status": 200,
+          "bytes": 12342,
+          "sha256": "e72392e5d142dd057528302a566c37a0831d7b1a3545ed54df1616e477daa2a9",
+          "matchesBuild": true
+        },
+        {
+          "path": "assets/mountGame-WHTHQ4_g.css",
+          "status": 200,
+          "bytes": 285059,
+          "sha256": "c8c3f4f128272cec357c00b325bc04a83e5cc9cb88e71204e696afc3060feed4",
+          "matchesBuild": true
+        },
+        {
+          "path": "assets/index-CmTLhnuh.js",
+          "status": 200,
+          "bytes": 3464,
+          "sha256": "ed04b3b30810f593ca68677bb6531823a91d708634836c79bea80ee97792ee70",
+          "matchesBuild": true
+        },
+        {
+          "path": "assets/mountGame-BA03K_ex.js",
+          "status": 200,
+          "bytes": 794155,
+          "sha256": "f255e324864ff23bdd5cbda3e7806fe193c6bfb16c74a2f83ab96683a5265693",
           "matchesBuild": true
         }
-      ]
+      ],
+      "portrait": {
+        "width": 36,
+        "height": 36,
+        "radius": "50%"
+      },
+      "warning": {
+        "heading": "center",
+        "body": "center",
+        "stringAbsent": true
+      },
+      "browser": {
+        "version": "拾光校园 · v2.8.2",
+        "actions": 2,
+        "skipped": true,
+        "active": null,
+        "home": "family",
+        "errors": []
+      }
     },
     {
       "name": "zhiyaoxuebusi",
       "production": "https://zhiyaoxuebusi.pages.dev/",
-      "deployment": "https://cc5f003e.zhiyaoxuebusi.pages.dev/",
-      "status": 200,
-      "indexSha256": "af84b31f9aa6840c70a4bb49f47f0a76569f1e72c4b180ebe11713e2b911547b",
-      "productionMatchesBuild": true,
-      "serviceWorkerCurrent": true,
-      "art": [
+      "deployment": "https://32807f31.zhiyaoxuebusi.pages.dev/",
+      "resources": [
         {
-          "name": "romance-moments",
+          "path": "index.html",
           "status": 200,
-          "contentType": "image/webp",
-          "bytes": 305820,
+          "bytes": 3636,
+          "sha256": "44fa80857af2c9787b2d468ad823db9f02d89516343b10a9df7d094b8672068b",
           "matchesBuild": true
         },
         {
-          "name": "romance-men-moments",
+          "path": "sw.js",
           "status": 200,
-          "contentType": "image/webp",
-          "bytes": 307302,
+          "bytes": 3697,
+          "sha256": "a013f41faf32f1bf2c90af81904e60619374901496bc32214d12b08ba2547139",
+          "matchesBuild": true
+        },
+        {
+          "path": "cache-manifest.json",
+          "status": 200,
+          "bytes": 8417,
+          "sha256": "40fbc487771be0387b7db6d085b42e842dbda52c67f0bf41ccfdab7f6b13ce56",
+          "matchesBuild": true
+        },
+        {
+          "path": "images/loading-campus.webp",
+          "status": 200,
+          "bytes": 12342,
+          "sha256": "e72392e5d142dd057528302a566c37a0831d7b1a3545ed54df1616e477daa2a9",
+          "matchesBuild": true
+        },
+        {
+          "path": "assets/mountGame-WHTHQ4_g.css",
+          "status": 200,
+          "bytes": 285059,
+          "sha256": "c8c3f4f128272cec357c00b325bc04a83e5cc9cb88e71204e696afc3060feed4",
+          "matchesBuild": true
+        },
+        {
+          "path": "assets/index-CmTLhnuh.js",
+          "status": 200,
+          "bytes": 3464,
+          "sha256": "ed04b3b30810f593ca68677bb6531823a91d708634836c79bea80ee97792ee70",
+          "matchesBuild": true
+        },
+        {
+          "path": "assets/mountGame-BA03K_ex.js",
+          "status": 200,
+          "bytes": 794155,
+          "sha256": "f255e324864ff23bdd5cbda3e7806fe193c6bfb16c74a2f83ab96683a5265693",
           "matchesBuild": true
         }
-      ]
+      ],
+      "portrait": {
+        "width": 36,
+        "height": 36,
+        "radius": "50%"
+      },
+      "warning": {
+        "heading": "center",
+        "body": "center",
+        "stringAbsent": true
+      },
+      "browser": {
+        "version": "拾光校园 · v2.8.2",
+        "actions": 2,
+        "skipped": true,
+        "active": null,
+        "home": "family",
+        "errors": []
+      }
     }
   ],
-  "ageGateTextCentered": true,
-  "ageGateLayoutViewports": [
-    [
-      320,
-      568
+  "githubPages": {
+    "production": "https://b5-software.github.io/zhiyaoxuebusi/",
+    "workflow": "https://github.com/B5-Software/zhiyaoxuebusi/actions/runs/37673261911",
+    "conclusion": "success",
+    "htmlStatus": 200,
+    "entry": "./assets/index-CmTLhnuh.js",
+    "resources": [
+      {
+        "path": "assets/mountGame-WHTHQ4_g.css",
+        "status": 200
+      },
+      {
+        "path": "assets/index-CmTLhnuh.js",
+        "status": 200
+      },
+      {
+        "path": "assets/mountGame-BA03K_ex.js",
+        "status": 200,
+        "versionCurrent": true
+      }
     ],
-    [
-      390,
-      844
-    ],
-    [
-      1280,
-      900
-    ]
-  ],
-  "githubPagesWorkflow": "https://github.com/B5-Software/zhiyaoxuebusi/actions/runs/37597111765",
-  "githubPagesWorkflowConclusion": "success"
+    "version": "拾光校园 · v2.8.2",
+    "portrait": {
+      "width": 36,
+      "height": 36,
+      "radius": "50%"
+    }
+  }
 }

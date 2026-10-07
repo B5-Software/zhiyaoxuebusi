@@ -87,4 +87,4 @@ GitHub Pages：推送到 `main` 后由 `.github/workflows/deploy-pages.yml` 自�
 
 本轮 v2.7.0 新功能检查见 `docs/romance-browser-checks.json`；主动表白、来访、年龄入口、刷新重新确认覆盖五种视口，另有手机与桌面跟随、分手流程检查。
 
-v2.8.0 的五种视口布局、真实双指手势、生日私人剧情确认与跳过、离线刷新记录见 `docs/ui-v2.8-checks.json`；加载重试与子路径离线验证见 `docs/loading-path-checks.json`，完整说明见 [v2.8.0 发布记录](docs/release-v2.8.md)。
+v2.8 系列的五种视口布局、真实双指手势、生日私人剧情确认与跳过记录见 `docs/ui-v2.8-checks.json`；加载重试与子路径离线验证见 `docs/loading-path-checks.json`。v2.8.2 的确认框居中检查见 `docs/warning-layout-checks.json`，圆形头像在动画中的逐帧检查见 `docs/avatar-layout-checks.json`，完整说明见 [v2.8 发布记录](docs/release-v2.8.md)。
