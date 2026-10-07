@@ -6,6 +6,7 @@ import { PROACTIVE_TOPICS } from './proactiveData';
 import { QUESTS, createQuestState, questView, validateQuests } from './quests';
 import { LONG_PROJECTS, advanceProjects, projectStartLock } from './projects';
 import { DEFAULT_PLAYER_NAME, migratePlayerName } from './player';
+import { getAppointments } from './appointments';
 import type { CharacterId, Effect, GameAction, GameState, RomanceId, SaveSlot, Scene, Settings, StatKey, StoryEvent } from './types';
 
 export const SAVE_KEY = 'shiguang-school-save-v2';
@@ -118,7 +119,7 @@ export function advanceWeek(game: GameState): GameState {
   }
   if (week >= TOTAL_WEEKS) return { ...next, week: TOTAL_WEEKS, phase: 'exam', pendingEvent: null };
   const milestone = EVENTS.find(event => event.id === MILESTONES[week] && !game.seenEvents.includes(event.id));
-  const eligible = EVENTS.filter(event => !event.placeId && event.id !== 'first-day' && !Object.values(MILESTONES).includes(event.id) && event.minWeek <= week && event.maxWeek >= week && !game.seenEvents.includes(event.id));
+  const eligible = EVENTS.filter(event => !event.placeId && !event.appointmentSource && event.id !== 'first-day' && !Object.values(MILESTONES).includes(event.id) && event.minWeek <= week && event.maxWeek >= week && !game.seenEvents.includes(event.id));
   const recent = EVENTS.find(event => event.id === game.history.at(-1)?.eventId);
   const varied = eligible.filter(event => event.speaker !== recent?.speaker || event.scene !== recent?.scene);
   const pool = varied.length ? varied : eligible;
@@ -126,13 +127,14 @@ export function advanceWeek(game: GameState): GameState {
   return deliverMessages({ ...next, pendingEvent: selected?.id ?? null });
 }
 
-// Map stories are opt-in and do not consume a weekly action. Milestones remain
-// in the weekly pool, so exploring never replaces an important school chapter.
+// Entering a location story spends one weekly action; weekly milestones stay
+// separate so an automatic chapter never charges the player twice.
 export function eventLock(game: GameState, event: StoryEvent): string | null {
   if (!game.started) return '开启高三故事后可阅读';
   if (game.seenEvents.includes(event.id)) return '已收进青春手帐';
   if (game.phase !== 'school') return '校园篇已结束，可在手帐回看';
   if (game.pendingEvent) return '先收好眼前的故事';
+  if (event.placeId && game.actions >= 3) return '本周行动已用完，下周再来继续这段故事。';
   if (event.requires) {
     const previous = game.history.find(entry => entry.eventId === event.requires!.eventId);
     if (!previous) return `先读「${EVENTS.find(item => item.id === event.requires!.eventId)?.title ?? '前一段故事'}」`;
@@ -160,7 +162,7 @@ export function beginMapStory(game: GameState, id: string): { game: GameState; e
   const event = EVENTS.find(item => item.id === id && item.placeId);
   if (!event) return { game, error: '这里暂时没有这段故事。' };
   const error = eventLock(game, event);
-  return error ? { game, error } : { game: { ...game, pendingEvent: id, updatedAt: new Date().toISOString() } };
+  return error ? { game, error } : { game: { ...game, actions: game.actions + 1, weeklyActions: [...game.weeklyActions, `story:${id}`], counts: { ...game.counts, explore: game.counts.explore + 1 }, actionLog: [{ week: game.week, text: `走进${event.title}` }, ...game.actionLog].slice(0, 180), pendingEvent: id, updatedAt: new Date().toISOString() } };
 }
 
 export function getStorylines(game: GameState) {
@@ -209,6 +211,22 @@ export function initiateMessage(game: GameState, topicId: string): { game: GameS
   const next = applyEffect(game, topic.effect);
   next.social = { ...next.social, initiatives: [...next.social.initiatives, { topicId, week: game.week }], messages: [...next.social.messages, { id: `${topicId}-proactive-out`, character: topic.character, side: 'outgoing', text: topic.text, week: game.week, read: true, topicId }, { id: `${topicId}-proactive-in`, character: topic.character, side: 'incoming', text: topic.response, week: game.week, read: false, topicId }] };
   return { game: deliverMessages(next), message: `你主动联系了${CHARACTERS[topic.character].name}，对方的回应已经收到。` };
+}
+
+export function appointmentLock(game: GameState, eventId: string): string | null {
+  const appointment = getAppointments(game).find(item => item.eventId === eventId);
+  if (!appointment) return '先在消息里和对方约好见面。';
+  if (appointment.completed) return '这次约见已经收进青春手帐。';
+  return canAct(game, ACTIONS.find(action => action.id === appointment.character)!);
+}
+
+export function attendAppointment(game: GameState, eventId: string): { game: GameState; error?: string } {
+  const error = appointmentLock(game, eventId);
+  if (error) return { game, error };
+  const appointment = getAppointments(game).find(item => item.eventId === eventId)!;
+  const next = performAction(game, appointment.character).game;
+  const place = PLACES.find(item => item.id === appointment.placeId)!;
+  return { game: { ...next, pendingEvent: eventId, actionLog: [{ week: game.week, text: `与${CHARACTERS[appointment.character].name}在${place.name}赴约` }, ...next.actionLog.slice(1)] } };
 }
 
 export function claimQuest(game: GameState, id: string): { game: GameState; error?: string } {
@@ -346,7 +364,7 @@ export function validateGame(raw: unknown): GameState | null {
   for (const item of ITEMS) if (!validNumber(raw.inventory[item.id], 9999) || !Number.isInteger(raw.inventory[item.id])) return null;
   const actionIds = ACTIONS.map(action => action.id);
   if (!Array.isArray(raw.plan) || raw.plan.length !== 3 || !raw.plan.every(id => typeof id === 'string' && actionIds.includes(id))) return null;
-  if (!Array.isArray(raw.weeklyActions) || raw.weeklyActions.length !== raw.actions || !raw.weeklyActions.every(id => typeof id === 'string' && actionIds.includes(id))) return null;
+  if (!Array.isArray(raw.weeklyActions) || raw.weeklyActions.length !== raw.actions || !raw.weeklyActions.every(id => typeof id === 'string' && (actionIds.includes(id) || EVENTS.some(event => event.placeId && id === `story:${event.id}`)))) return null;
   if (!Array.isArray(raw.seenEvents) || raw.seenEvents.length > EVENTS.length || !raw.seenEvents.every(id => EVENTS.some(event => event.id === id))) return null;
   if (new Set(raw.seenEvents).size !== raw.seenEvents.length || raw.seenEvents.includes(raw.pendingEvent)) return null;
   if (raw.pendingEvent !== null && !EVENTS.some(event => event.id === raw.pendingEvent)) return null;

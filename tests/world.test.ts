@@ -7,7 +7,8 @@ import { AUTO_BACKUP_KEY, LEGACY_SAVE_KEY, SAVE_KEY, advanceWeek, beginMapStory,
 import { deliverMessages, markConversationRead, pendingChat, unreadCount } from '../src/game/social';
 import { MESSAGE_SCRIPTS } from '../src/game/socialData';
 import type { RomanceId } from '../src/game/types';
-import { claimProject, claimQuest, initiateMessage, projectWorkLock, startProject, workOnProject } from '../src/game/engine';
+import { appointmentLock, attendAppointment, claimProject, claimQuest, initiateMessage, projectWorkLock, startProject, workOnProject } from '../src/game/engine';
+import { getAppointments, MEETING_EVENTS } from '../src/game/appointments';
 import { PROACTIVE_TOPICS } from '../src/game/proactiveData';
 import { LONG_PROJECTS, projectStatus, resolveObjectiveTarget } from '../src/game/projects';
 import { QUESTS, getQuestViews, recordPlaceVisit, toggleQuestTracking } from '../src/game/quests';
@@ -101,16 +102,20 @@ test('all nine maps, places, actions and story prerequisites resolve to real con
   }
 });
 
-test('map stories preserve action budget and cannot overwrite an unfinished event', () => {
+test('map stories spend exactly one action, survive saving and cannot overwrite an unfinished event', () => {
   const game = started();
   assert.ok(beginMapStory(createGame(), 'zine-start').error);
   const reading = beginMapStory(game, 'zine-start');
   assert.equal(reading.game.pendingEvent, 'zine-start');
-  assert.equal(reading.game.actions, 0);
-  assert.equal(reading.game.actionLog.length, 0);
+  assert.equal(reading.game.actions, 1);
+  assert.equal(reading.game.counts.explore, 1);
+  assert.deepEqual(reading.game.weeklyActions, ['story:zine-start']);
+  assert.equal(reading.game.actionLog.length, 1);
+  assert.ok(validateGame(JSON.parse(JSON.stringify(reading.game))));
   assert.ok(beginMapStory(reading.game, 'plant-ranking').error);
   assert.equal(beginMapStory(reading.game, 'plant-ranking').game.pendingEvent, 'zine-start');
   const complete = resolveEvent(reading.game, 0).game;
+  assert.equal(complete.actions, 1);
   assert.ok(beginMapStory(complete, 'zine-start').error);
   assert.ok(validateGame(JSON.parse(JSON.stringify(complete))));
 });
@@ -134,6 +139,7 @@ for (const branch of [0, 1]) {
         ready = EVENTS.find(event => event.storyline && !eventLock(game, event));
       }
       for (const id of ['balanced', 'reading-circle', 'rest']) {
+        if (game.actions >= 3) break;
         const action = performAction(game, id);
         assert.ok(!action.error, `${week}: ${id}: ${action.error}`);
         game = action.game;
@@ -477,5 +483,84 @@ test('default map zoom is 150 percent and drag bounds reach the full map', () =>
     const bounds = mapDragBounds({ width, height }, { width: layerWidth, height: layerHeight }, DEFAULT_MAP_ZOOM);
     assert.equal(bounds.right - bounds.left, layerWidth * DEFAULT_MAP_ZOOM - width);
     assert.equal(bounds.bottom - bounds.top, layerHeight * DEFAULT_MAP_ZOOM - height);
+  }
+});
+
+
+test('location stories exhaust the weekly budget, hide map targets and return next week', () => {
+  let game = started();
+  for (const id of ['zine-start', 'plant-ranking', 'stage-start']) {
+    const before = game.actions;
+    const result = beginMapStory(game, id);
+    assert.equal(result.error, undefined, id);
+    assert.equal(result.game.actions, before + 1);
+    game = resolveEvent(result.game, 0).game;
+    assert.equal(game.actions, before + 1);
+  }
+  assert.equal(game.actions, 3);
+  assert.deepEqual(getMapTaskTargets(game), []);
+  const unread = EVENTS.find(event => event.placeId && !game.seenEvents.includes(event.id) && event.minWeek === 0 && !event.requires)!;
+  assert.match(eventLock(game, unread)!, /行动已用完/);
+  assert.equal(beginMapStory(game, unread.id).game, game);
+  assert.ok(validateGame(JSON.parse(JSON.stringify(game))));
+  const forged = structuredClone(game);
+  forged.weeklyActions[0] = 'story:not-a-real-story';
+  assert.equal(validateGame(forged), null);
+  game = advanceWeek(game);
+  assert.equal(game.actions, 0);
+  if (game.pendingEvent) game = resolveEvent(game, 0).game;
+  assert.ok(getMapTaskTargets(game).length > 0);
+});
+
+for (const character of ROMANCE_IDS) {
+  test(character + ' invitation survives later chats and refresh, spends one action and becomes a story', () => {
+    let game = { ...started(), week: 6 };
+    game.social.bonds[character].trust = 30;
+    game = initiateMessage(game, character + '-invite-out').game;
+    const accepted = getAppointments(game, character)[0];
+    assert.ok(accepted);
+    assert.equal(accepted.completed, false);
+    assert.ok(getMapTaskTargets(game).some(item => item.placeId === accepted.placeId));
+    game = initiateMessage({ ...game, week: 7 }, character + '-weekly-7').game;
+    game = validateGame(JSON.parse(JSON.stringify(game)))!;
+    assert.equal(getAppointments(game, character)[0].eventId, accepted.eventId);
+    assert.ok(attendAppointment({ ...game, actions: 3, weeklyActions: ['rest', 'rest', 'rest'] }, accepted.eventId).error);
+    assert.ok(attendAppointment({ ...game, pendingEvent: 'first-day' }, accepted.eventId).error);
+    assert.ok(attendAppointment(started(), accepted.eventId).error);
+    const result = attendAppointment(game, accepted.eventId);
+    assert.equal(result.error, undefined);
+    assert.equal(result.game.pendingEvent, accepted.eventId);
+    assert.equal(result.game.actions, 1);
+    assert.equal(result.game.social.bonds[character].meetings, 1);
+    assert.ok(validateGame(JSON.parse(JSON.stringify(result.game))));
+    assert.ok(attendAppointment(result.game, accepted.eventId).error);
+    game = resolveEvent(result.game, 0).game;
+    assert.equal(game.actions, 1);
+    assert.equal(getAppointments(game, character)[0].completed, true);
+    assert.ok(game.history.some(item => item.eventId === accepted.eventId));
+    assert.ok(appointmentLock(game, accepted.eventId));
+    assert.ok(validateGame(JSON.parse(JSON.stringify(game))));
+  });
+}
+
+test('incoming invitations require consent, allow postponing, and meetings never appear in weekly random events', () => {
+  const script = MESSAGE_SCRIPTS.find(item => item.id === 'zhixia-invite')!;
+  let game = { ...started(), week: 16 };
+  game.social.bonds.zhixia = { ...game.social.bonds.zhixia, trust: 80, affection: 80 };
+  game.social.delivered = [script.id];
+  game.social.messages = [{ id: script.id + '-in', character: 'zhixia', side: 'incoming', text: script.text, week: 16, read: false, scriptId: script.id }];
+  assert.equal(getAppointments(game).length, 0);
+  assert.equal(getAppointments(replyMessage(game, script.id, 2).game).length, 0);
+  for (const choice of [0, 1]) {
+    const accepted = replyMessage(game, script.id, choice).game;
+    assert.equal(getAppointments(accepted).length, 1);
+    assert.equal(getAppointments(validateGame(JSON.parse(JSON.stringify(accepted)))!).length, 1);
+  }
+  assert.equal(MEETING_EVENTS.length, 10);
+  game = started();
+  for (let week = 1; week < 40; week++) {
+    game = advanceWeek(game);
+    assert.ok(!MEETING_EVENTS.some(event => event.id === game.pendingEvent));
+    if (game.pendingEvent) game = resolveEvent(game, 0).game;
   }
 });

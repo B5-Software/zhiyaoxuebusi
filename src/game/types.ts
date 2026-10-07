@@ -33,6 +33,7 @@ export interface StoryEvent {
   speaker: CharacterId;
   scene: Scene | 'classroom';
   placeId?: string;
+  appointmentSource?: string;
   requires?: { eventId: string; choiceIndex?: number };
   storyline?: string;
   paragraphs: string[];

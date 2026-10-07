@@ -8,10 +8,10 @@
     "public/images/companion.jpg"
   ],
   "illustration": "docs/poster/poster-art.png",
-  "poster": "docs/poster/school-life-poster-v2.png",
+  "poster": "docs/poster/school-life-poster-github.png",
   "layout": "docs/poster/shiguang-poster.html",
   "qr": "docs/poster/game-link-qr.svg",
-  "target": "https://shiguang-campus-life.pages.dev/",
+  "target": "https://b5-software.github.io/zhiyaoxuebusi/",
   "title": [
     "只要学不死",
     "就往死里学"
@@ -19,5 +19,10 @@
   "titleRevision": {
     "date": "2026-10-07",
     "method": "Edited native HTML typography and re-exported poster; original watercolor art and QR target retained."
+  },
+  "qrRevision": {
+    "date": "2026-10-07",
+    "target": "https://b5-software.github.io/zhiyaoxuebusi/",
+    "method": "Regenerated SVG QR and matching printed URL in editable HTML; exported 1200x1800 PNG and verified exact target by decoding the final raster."
   }
 }

@@ -1,6 +1,7 @@
 import type { CharacterId, Choice, StoryEvent } from './types';
 import { EXPLORATION_EVENTS } from './explorationEvents';
 import { EXTENDED_EVENTS } from './extendedEvents';
+import { MEETING_EVENTS } from './appointments';
 
 const chapters = ['第一章 · 风从九月来', '第二章 · 被排名的秋天', '第三章 · 冬天没有标准答案', '第四章 · 把春天还给我们', '第五章 · 盛夏与自己的路'];
 const makeEvent = (id: string, title: string, period: number, speaker: CharacterId, scene: StoryEvent['scene'], paragraphs: string[], choices: Choice[]): StoryEvent => ({
@@ -8,6 +9,7 @@ const makeEvent = (id: string, title: string, period: number, speaker: Character
 });
 
 export const EVENTS: StoryEvent[] = [
+  ...MEETING_EVENTS,
   ...EXTENDED_EVENTS,
   ...EXPLORATION_EVENTS,
   makeEvent('first-day', '你的名字，不只是一个考号', 0, 'teacher', 'classroom', [

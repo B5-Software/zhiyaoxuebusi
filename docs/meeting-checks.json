@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-07",
+  "version": "2.4.0",
+  "results": [
+    {
+      "width": 320,
+      "height": 568,
+      "alignment": {
+        "appointmentLeft": 26.172760009765625,
+        "storyLeft": 26.172760009765625,
+        "appointmentRight": 293.82720947265625,
+        "storyRight": 293.82720947265625
+      },
+      "meetingSaved": true,
+      "actions": 3,
+      "markers": 0,
+      "failures": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "alignment": {
+        "appointmentLeft": 28.92000961303711,
+        "storyLeft": 28.92000961303711,
+        "appointmentRight": 361.0800132751465,
+        "storyRight": 361.0800132751465
+      },
+      "meetingSaved": true,
+      "actions": 3,
+      "markers": 0,
+      "failures": []
+    },
+    {
+      "width": 768,
+      "height": 600,
+      "alignment": {
+        "appointmentLeft": 50.445011138916016,
+        "storyLeft": 50.445011138916016,
+        "appointmentRight": 717.5550575256348,
+        "storyRight": 717.5550575256348
+      },
+      "meetingSaved": true,
+      "actions": 3,
+      "markers": 0,
+      "failures": []
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "alignment": {
+        "appointmentLeft": 311.6778259277344,
+        "storyLeft": 311.6778259277344,
+        "appointmentRight": 968.3221130371094,
+        "storyRight": 968.3221130371094
+      },
+      "meetingSaved": true,
+      "actions": 3,
+      "markers": 0,
+      "failures": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "alignment": {
+        "appointmentLeft": 88.80422973632812,
+        "storyLeft": 88.80422973632812,
+        "appointmentRight": 755.1958312988281,
+        "storyRight": 755.1958312988281
+      },
+      "meetingSaved": true,
+      "actions": 3,
+      "markers": 0,
+      "failures": []
+    }
+  ]
+}

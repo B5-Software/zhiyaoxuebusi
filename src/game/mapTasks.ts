@@ -3,6 +3,7 @@ import { EVENTS } from './events';
 import { eventLock } from './engine';
 import { LONG_PROJECTS, resolveObjectiveTarget } from './projects';
 import { getQuestViews } from './quests';
+import { getAppointments } from './appointments';
 import type { GameState } from './types';
 
 export function getMapTaskTargets(game: GameState) {
@@ -11,7 +12,8 @@ export function getMapTaskTargets(game: GameState) {
     if (!placeId || !PLACES.some(place => place.id === placeId)) return;
     if (!targets.has(placeId) || targets.get(placeId)!.priority > priority) targets.set(placeId, { placeId, title, priority });
   }
-  if (!game.started || game.phase !== 'school') return [];
+  if (!game.started || game.phase !== 'school' || game.actions >= 3) return [];
+  for (const appointment of getAppointments(game)) if (!appointment.completed) add(appointment.placeId, '待赴约 · 点击前往约见地点', 0);
   for (const project of LONG_PROJECTS) {
     const progress = game.quests.projects[project.id];
     if (!progress || progress.completedWeek !== null) continue;

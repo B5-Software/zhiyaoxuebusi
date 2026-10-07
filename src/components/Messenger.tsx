@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState, type Dispatch, type SetStateAction } from 'react';
 import { ArrowLeft, ArrowRight, CheckCheck, Gift, Heart, MapPin, MessageCircle, Send, Users } from 'lucide-react';
 import { CHARACTERS, FAVORITE_GIFTS, ITEMS, PLACES, imagePath } from '../game/data';
-import { canAct } from '../game/engine';
-import { ACTIONS } from '../game/data';
 import { bondStage, isRomanceId, markConversationRead, pendingChat, proactiveLock, replyLock, unreadCount } from '../game/social';
 import { PROACTIVE_TOPICS } from '../game/proactiveData';
 import { playerText } from '../game/player';
-import type { CharacterId, GameState, Panel, RomanceId, Scene } from '../game/types';
+import { getAppointments } from '../game/appointments';
+import type { CharacterId, GameState, Panel, RomanceId } from '../game/types';
 
 interface Props {
   game: GameState;
@@ -16,28 +15,27 @@ interface Props {
   onInitiate: (topicId: string) => void;
   onGift: (id: CharacterId, item?: string) => void;
   onAction: (id: string) => void;
-  onScene: (scene: Scene) => void;
+  onVisitPlace: (placeId: string) => void;
   onConfess: (id: RomanceId) => void;
   initialContact?: CharacterId;
 }
 
-export default function Messenger({ game, setGame, open, onReply, onInitiate, onGift, onAction, onScene, onConfess, initialContact }: Props) {
+export default function Messenger({ game, setGame, open, onReply, onInitiate, onGift, onAction, onVisitPlace, onConfess, initialContact }: Props) {
   const [active, setActive] = useState<CharacterId>(() => initialContact ?? game.social.messages.find(message => !message.read)?.character ?? 'su');
   const [mobileChat, setMobileChat] = useState(!!initialContact);
   const [gift, setGift] = useState('milk');
-  const [composeMode, setComposeMode] = useState<'reply' | 'initiate'>('reply');
+  const [composeMode, setComposeMode] = useState<'reply' | 'initiate' | 'invite'>('reply');
   const log = useRef<HTMLDivElement>(null);
   const character = CHARACTERS[active];
   const messages = game.social.messages.filter(message => message.character === active);
   const latestId = messages.at(-1)?.id;
   const script = pendingChat(game, active);
   const bond = isRomanceId(active) ? game.social.bonds[active] : null;
-  const action = ACTIONS.find(action => action.id === active)!;
   const confession = game.social.replies.find(reply => reply.scriptId === `${active}-confession`);
   const canConfess = bond && bond.route === 'open' && confession?.choiceIndex === 1 && bond.trust >= 60 && bond.affection >= 55 && !game.social.partner;
   const topics = PROACTIVE_TOPICS.filter(topic => topic.character === active && (!topic.datingOnly || game.social.partner === active) && (!topic.weekly || topic.minWeek === game.week));
-  const lastTopic = PROACTIVE_TOPICS.find(topic => topic.id === messages.at(-1)?.topicId);
-  const invite = PLACES.find(place => place.id === (script?.invitePlace ?? lastTopic?.invitePlace));
+  const appointments = isRomanceId(active) ? getAppointments(game, active).filter(item => !item.completed) : [];
+  const meetingPlace = PLACES.find(place => place.id === appointments[0]?.placeId) ?? PLACES.find(place => place.actions.includes(active));
   const visibleMessages = messages;
 
   useEffect(() => {
@@ -63,15 +61,15 @@ export default function Messenger({ game, setGame, open, onReply, onInitiate, on
       <button className="im-relations-link" onClick={() => open('relations')}><Users size={15}/>查看所有关系<ArrowRight size={14}/></button>
     </aside>
     <section className="im-conversation" aria-label={`与${character.name}的聊天`}>
-      <header className="im-chat-header"><button className="im-back" onClick={() => setMobileChat(false)} aria-label="返回联系人"><ArrowLeft size={19}/></button><img src={imagePath(character.image)} alt={character.name}/><div><strong>{character.name}</strong><small>{bond && isRomanceId(active) ? bondStage(game, active) : character.role}</small></div><button className="im-meet" onClick={() => onAction(active)} disabled={game.started && !!canAct(game, action)} title="见面消耗 1 次行动"><MapPin size={14}/>见面</button></header>
+      <header className="im-chat-header"><button className="im-back" onClick={() => setMobileChat(false)} aria-label="返回联系人"><ArrowLeft size={19}/></button><img src={imagePath(character.image)} alt={character.name}/><div><strong>{character.name}</strong><small>{bond && isRomanceId(active) ? bondStage(game, active) : character.role}</small></div><button className="im-meet" onClick={() => meetingPlace ? onVisitPlace(meetingPlace.id) : onAction(active)} title="打开见面地点，赴约消耗 1 次行动"><MapPin size={14}/>{appointments.length ? "去赴约" : "见面地点"}</button></header>
       {bond && <div className="im-bond-bar"><span>信任 <b>{bond.trust}</b></span><span className="affection">心动 <b>{bond.affection}</b></span><span>了解 <b>{bond.understanding}</b></span><small>见面 {bond.meetings} 次</small></div>}
+      {!!appointments.length && <div className="im-appointments" aria-label="待赴约记录">{appointments.map(appointment => <button key={appointment.eventId} onClick={() => onVisitPlace(appointment.placeId)}><Heart size={15}/><span><strong>与{character.name}的约见 · {PLACES.find(place => place.id === appointment.placeId)?.name}</strong><small>{game.actions >= 3 ? "本周行动已用完，下周再赴约" : "已经约好 · 前往地点赴约 · 1 次行动"}</small></span><ArrowRight size={16}/></button>)}</div>}
       <div className="im-chat-log" ref={log} role="log" aria-label="聊天记录" aria-live="polite">
         {!game.started ? <div className="im-empty"><MessageCircle size={42}/><h3>第一条消息，等你开启故事</h3><p>同学、朋友与家人都会在这里找你。</p><button className="primary-button" onClick={() => open('start')}>开启我的高三<ArrowRight size={16}/></button></div> : !visibleMessages.length ? <div className="im-empty"><img src={imagePath(character.image)} alt=""/><h3>{character.name}</h3><p>{character.description}</p><small>新的消息会在这一年的生活里慢慢到来。</small></div> : <><p className="im-log-start">和{character.name}的故事，从一声你好开始</p>{visibleMessages.map((message, index) => <div key={message.id}>{(index === 0 || message.week !== visibleMessages[index - 1].week) && <span className="im-week-divider">第 {message.week + 1} 周</span>}<div className={`im-message ${message.side}`}><img src={imagePath(message.side === 'incoming' ? character.image : 'student')} alt=""/><div><p>{playerText(game, message.text)}</p>{message.side === 'outgoing' && <small><CheckCheck size={11}/>已送达</small>}</div></div></div>)}</>}
       </div>
       <div className="im-composer">
-        {game.started && game.phase === 'school' && <div className="im-compose-tabs"><button className={composeMode === 'reply' ? 'active' : ''} aria-pressed={composeMode === 'reply'} onClick={() => setComposeMode('reply')}><MessageCircle size={13}/>回复消息{script && <i/>}</button><button className={composeMode === 'initiate' ? 'active' : ''} aria-pressed={composeMode === 'initiate'} onClick={() => setComposeMode('initiate')}><Send size={13}/>主动发消息</button></div>}
-        {invite && <button className="im-invitation" onClick={() => onScene(invite.scene)}><MapPin size={14}/>约见地点 · {invite.name}<ArrowRight size={14}/></button>}
-        {composeMode === 'initiate' && game.started && game.phase === 'school' ? <><div className="im-reply-label"><Send size={13}/>想主动聊些什么？<small>不消耗行动 · 每人每周 1 组</small></div><div className="im-topics">{topics.map(topic => { const lock = proactiveLock(game, topic); const sent = game.social.initiatives.some(item => item.topicId === topic.id); return <button key={topic.id} disabled={!!lock} title={lock ?? playerText(game, topic.text)} onClick={() => onInitiate(topic.id)}><span><strong>{topic.label}{sent && ' · 已聊过'}</strong><small>{lock ?? playerText(game, topic.text)}</small></span><Send size={14}/></button>; })}</div></> : script ? <><div className="im-reply-label"><Send size={13}/>选择你想发的话<small>回复不消耗行动</small></div><div className="im-replies">{script.choices.map((choice, index) => <button key={choice.text} onClick={() => onReply(script.id, index)} disabled={!!replyLock(game, script, index)} title={replyLock(game, script, index) ?? '发送这条回复'}><span>{playerText(game, choice.text)}</span><Send size={14}/></button>)}</div></> : <p className="im-waiting">{game.phase !== 'school' ? '这一年的消息已经收好，可以随时回来阅读。' : game.started ? '这一段已经聊完。新的生活，会带来新的消息。' : '先开启高三故事，收到第一条消息。'}</p>}
+        {game.started && game.phase === 'school' && <div className="im-compose-tabs"><button className={composeMode === 'reply' ? 'active' : ''} aria-pressed={composeMode === 'reply'} onClick={() => setComposeMode('reply')}><MessageCircle size={13}/>回复消息{script && <i/>}</button><button className={composeMode === 'initiate' ? 'active' : ''} aria-pressed={composeMode === 'initiate'} onClick={() => setComposeMode('initiate')}><Send size={13}/>主动发消息</button>{bond && <button className={composeMode === "invite" ? "active" : ""} aria-pressed={composeMode === "invite"} onClick={() => setComposeMode("invite")}><Heart size={13}/>约见</button>}</div>}
+        {composeMode !== 'reply' && game.started && game.phase === 'school' ? <><div className="im-reply-label"><Send size={13}/>{composeMode === "invite" ? "约对方在哪里见面？" : "想主动聊些什么？"}<small>发消息不消耗行动 · 赴约消耗 1 次</small></div><div className="im-topics">{topics.filter(topic => composeMode !== "invite" || topic.invitePlace).map(topic => { const lock = proactiveLock(game, topic); const sent = game.social.initiatives.some(item => item.topicId === topic.id); return <button key={topic.id} disabled={!!lock} title={lock ?? playerText(game, topic.text)} onClick={() => onInitiate(topic.id)}><span><strong>{topic.label}{sent && ' · 已聊过'}</strong><small>{lock ?? playerText(game, topic.text)}</small></span><Send size={14}/></button>; })}</div></> : script ? <><div className="im-reply-label"><Send size={13}/>选择你想发的话<small>回复不消耗行动</small></div><div className="im-replies">{script.choices.map((choice, index) => <button key={choice.text} onClick={() => onReply(script.id, index)} disabled={!!replyLock(game, script, index)} title={replyLock(game, script, index) ?? '发送这条回复'}><span>{playerText(game, choice.text)}</span><Send size={14}/></button>)}</div></> : <p className="im-waiting">{game.phase !== 'school' ? '这一年的消息已经收好，可以随时回来阅读。' : game.started ? '这一段已经聊完。新的生活，会带来新的消息。' : '先开启高三故事，收到第一条消息。'}</p>}
         {game.started && game.phase === 'school' && <div className="im-gift-tools"><Gift size={14}/><select aria-label="选择要送的礼物" value={gift} onChange={event => setGift(event.target.value)}>{ITEMS.map(item => <option key={item.id} value={item.id}>{item.name} ×{game.inventory[item.id]}</option>)}</select><button onClick={() => onGift(active, gift)} disabled={!game.inventory[gift] || !!game.pendingEvent || bond?.lastGiftWeek === game.week}>送给{character.name}</button>{canConfess && isRomanceId(active) && <button className="im-confess" onClick={() => onConfess(active)}><Heart size={13}/>回应之前的告白</button>}</div>}
       </div>
     </section>

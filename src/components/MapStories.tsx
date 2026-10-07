@@ -6,7 +6,7 @@ import type { GameState, Scene } from '../game/types';
 export function LocationStories({ game, place, onStory }: { game: GameState; place: Place; onStory: (id: string) => void }) {
   const stories = placeStories(game, place.id);
   if (!stories.length) return null;
-  return <section className="location-stories" aria-label="地点故事"><div className="location-story-heading"><BookOpen size={18}/><h3>此地的故事</h3><small>阅读不消耗行动</small></div>{stories.map(event => {
+  return <section className="location-stories" aria-label="地点故事"><div className="location-story-heading"><BookOpen size={18}/><h3>此地的故事</h3><small>每段故事消耗 1 次行动</small></div>{stories.map(event => {
     const lock = eventLock(game, event);
     const collected = game.seenEvents.includes(event.id);
     return <button className={`map-story-option ${collected ? 'collected' : lock ? 'upcoming' : 'ready'}`} key={event.id} disabled={!!lock} onClick={() => onStory(event.id)}>

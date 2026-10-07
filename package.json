@@ -1,7 +1,7 @@
 {
   "name": "zhiyaoxuebusi",
   "private": true,
-  "version": "2.3.0",
+  "version": "2.4.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,7 +10,8 @@
     "test": "node scripts/test-game.mjs",
     "check:universities": "node scripts/check-universities.mjs",
     "typecheck": "tsc --noEmit",
-    "deploy:pages": "npm run build && wrangler pages deploy dist --project-name shiguang-campus-life --branch main"
+    "deploy:pages": "npm run build && wrangler pages deploy dist --project-name shiguang-campus-life --branch main",
+    "deploy:pages:both": "npm run build && wrangler pages deploy dist --project-name shiguang-campus-life --branch main && wrangler pages deploy dist --project-name zhiyaoxuebusi --branch main"
   },
   "dependencies": {
     "@fontsource/zcool-kuaile": "^5.3.0",
