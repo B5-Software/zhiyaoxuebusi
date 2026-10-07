@@ -1,0 +1,22 @@
+{
+  "generator": "Built-in image_gen",
+  "mode": "generate",
+  "date": "2026-10-06",
+  "assets": [
+    {
+      "id": "zhixia",
+      "prompt": "Use case: illustration-story. Asset type: square character portrait for a cozy Chinese school life game. A fictional Chinese high school student, around seventeen years old, wholesome age appropriate fully clothed. Warm watercolor and colored pencil, fine sepia outlines, cream paper texture, muted sage and dusty peach colors, friendly hand drawn anime illustration, chest-up centered portrait, soft lighting, no text no logo no watermark. A girl with shoulder length dark hair tied half up, a small yellow flower hair clip, wearing a cream cardigan over a modest school uniform, holding a sketchbook against her chest. Thoughtful gentle smile, art studio with blurred easels and sunlit ivy behind her.",
+      "output": "public/images/zhixia.webp"
+    },
+    {
+      "id": "xinghe",
+      "prompt": "Use case: illustration-story. Asset type: square character portrait for a cozy Chinese school life game. A fictional Chinese high school student, around seventeen years old, wholesome age appropriate fully clothed. Warm watercolor and colored pencil, fine sepia outlines, cream paper texture, muted sage and dusty peach colors, friendly hand drawn anime illustration, chest-up centered portrait, soft lighting, no text no logo no watermark. A boy with slightly messy short dark hair, thin round glasses, teal school jacket over a white shirt, holding a notebook with a tiny star sticker. Shy warm smile, blurred school greenhouse and telescope in background.",
+      "output": "public/images/xinghe.webp"
+    },
+    {
+      "id": "tangtang",
+      "prompt": "Use case: illustration-story. Asset type: square character portrait for a cozy Chinese school life game. A fictional Chinese high school student, around seventeen years old, wholesome age appropriate fully clothed. Warm watercolor and colored pencil, fine sepia outlines, cream paper texture, muted sage and dusty peach colors, friendly hand drawn anime illustration, chest-up centered portrait, soft lighting, no text no logo no watermark. A girl with a neat dark bob, red brown hair ribbon, wearing a light blue school jacket over white shirt, small headphones resting around neck. Lively confident friendly smile, blurred cozy school radio booth and golden window light in background.",
+      "output": "public/images/tangtang.webp"
+    }
+  ]
+}

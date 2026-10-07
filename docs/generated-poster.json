@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-07",
+  "mode": "built-in image_gen",
+  "intent": "generate",
+  "prompt": "Generate a new vertical 2:3 promotional poster illustration for the Chinese single-player campus life game 拾光校园. Reference image 1 is a style and campus architecture reference; reference image 2 is the identity reference for the girl Su Xiao, a cheerful teenage student with short dark bob, yellow flower-star hair clip, blue-and-white school tracksuit and a notebook. Match warm hand-painted watercolor, colored-pencil sepia outlines, textured ivory paper, sage green and muted teal, soft nostalgic late afternoon lighting. Composition: middle 55% of the poster contains a beautiful spacious Chinese school courtyard in Xi'an, cream brick school with teal tiled roof, distant old city wall, cherry trees and rounded sunlit clouds. Su Xiao is in the foreground walking with a teenage boy classmate carrying books, relaxed friendly expressions; two other small school friends in the background near the music room and library. Youthful friendships, gentle coming-of-age campus life. Design as an illustration ready for typography overlay: the upper 22% must be quiet pale ivory sky/paper with only very faint cloud texture, the lower 23% must fade gracefully into nearly blank ivory paper, especially bottom right where a real QR code will be placed later. Keep all faces and meaningful art between 25% and 75% height. No text, letters, symbols resembling writing, watermarks, logos, QR patterns, QR frames, UI panels or fake barcodes. Rich professionally composed actual watercolor artwork, not a website mockup. Portrait aspect ratio 2:3.",
+  "referenceImages": [
+    "public/images/campus.jpg",
+    "public/images/companion.jpg"
+  ],
+  "illustration": "docs/poster/poster-art.png",
+  "poster": "docs/poster/school-life-poster-v2.png",
+  "layout": "docs/poster/shiguang-poster.html",
+  "qr": "docs/poster/game-link-qr.svg",
+  "target": "https://shiguang-campus-life.pages.dev/",
+  "title": [
+    "只要学不死",
+    "就往死里学"
+  ],
+  "titleRevision": {
+    "date": "2026-10-07",
+    "method": "Edited native HTML typography and re-exported poster; original watercolor art and QR target retained."
+  }
+}

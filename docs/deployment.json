@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-07",
+  "platform": "Cloudflare Pages",
+  "project": "shiguang-campus-life",
+  "branch": "main",
+  "production": "https://shiguang-campus-life.pages.dev/",
+  "deployment": "https://2879ffa9.shiguang-campus-life.pages.dev/",
+  "indexSha256": "23d04feb702ecdb267ec5e9dac049a2a30622c57bf1f92b77b601bd5bb6959ea",
+  "productionMatchesBuild": true,
+  "unitTests": 34,
+  "responsiveViewports": 10,
+  "responsivePanelsPerViewport": 13,
+  "serviceWorkerCache": "shiguang-campus-v2.2.2",
+  "defaultPlayerName": "江予安"
+}

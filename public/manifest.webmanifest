@@ -1,0 +1,12 @@
+{
+  "name": "只要学不死，就往死里学 · 拾光校园",
+  "short_name": "拾光校园",
+  "description": "西安高三生活模拟：学习、友情、选择，以及不只有一种答案的未来。",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#faf6e9",
+  "theme_color": "#879872",
+  "icons": [{ "src": "./favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}

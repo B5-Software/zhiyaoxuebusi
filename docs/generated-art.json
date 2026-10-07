@@ -1,0 +1,42 @@
+{
+  "generator": "Built-in image_gen",
+  "mode": "generate",
+  "date": "2026-10-06",
+  "assets": [
+    {
+      "id": "world-map",
+      "prompt": "Use case: illustration-story. Asset type: landscape game scene background, 16:9 wide composition. Style: warm hand drawn watercolor and colored pencil illustrated cozy Chinese school life simulation, fine muted sepia outlines, cream paper texture, sage greens, dusty teal roofs, peach sunlight, charming tiny students. High angle isometric dollhouse perspective, detailed yet clearly readable landmark arrangement, environmental storytelling, full bleed landscape. No text, no labels, no UI, no watermark. Not photorealistic. Keep all main landmarks within central 70 percent so game overlays can sit at edges. A fictional Xi'an neighborhood illustrated overview map with nine distinct connected districts and winding pedestrian roads: a small cozy residential home upper left at 22 percent x 24 percent y; a two story library upper middle 48 x 23; university campus upper right 77 x 24; high school campus central left 28 x 45; science laboratory building center 50 x 45; community arts club center right 73 x 47; ancient city wall and alleys lower left 25 x 70; lantern street food night market lower middle 49 x 75; riverside park lower right 75 x 72. A blue river runs along right edge, distant Chinese city wall on horizon, golden autumn trees, miniature walkable city model. No readable signs.",
+      "output": "public/images/world-map.webp"
+    },
+    {
+      "id": "library",
+      "prompt": "Use case: illustration-story. Asset type: landscape game scene background, 16:9 wide composition. Style: warm hand drawn watercolor and colored pencil illustrated cozy Chinese school life simulation, fine muted sepia outlines, cream paper texture, sage greens, dusty teal roofs, peach sunlight, charming tiny students. High angle isometric dollhouse perspective, detailed yet clearly readable landmark arrangement, environmental storytelling, full bleed landscape. No text, no labels, no UI, no watermark. Not photorealistic. Keep all main landmarks within central 70 percent so game overlays can sit at edges. A spacious public library interior with cutaway walls. Tall sunlit windows at the back, book shelves on left around 32 percent x 40 percent y, long communal study table near 56 x 53, cozy bay window reading seat on right near 75 x 35, book return desk near 38 x 72. A few Chinese teenage students in casual school uniforms quietly reading, warm afternoon light, wooden furniture, climbing plants.",
+      "output": "public/images/library.webp"
+    },
+    {
+      "id": "laboratory",
+      "prompt": "Use case: illustration-story. Asset type: landscape game scene background, 16:9 wide composition. Style: warm hand drawn watercolor and colored pencil illustrated cozy Chinese school life simulation, fine muted sepia outlines, cream paper texture, sage greens, dusty teal roofs, peach sunlight, charming tiny students. High angle isometric dollhouse perspective, detailed yet clearly readable landmark arrangement, environmental storytelling, full bleed landscape. No text, no labels, no UI, no watermark. Not photorealistic. Keep all main landmarks within central 70 percent so game overlays can sit at edges. A Chinese school science building cutaway with three connected rooms: physical science lab with pendulum and circuits left around 31 x 42, chemistry work benches and safety glasses center right around 62 x 42, biology greenhouse courtyard with seedlings left bottom 39 x 73, astronomy observation terrace with telescope right bottom 72 x 72. Tiny students supervised by a teacher, inviting curious mood, warm daylight, no dangerous experiment.",
+      "output": "public/images/laboratory.webp"
+    },
+    {
+      "id": "arts",
+      "prompt": "Use case: illustration-story. Asset type: landscape game scene background, 16:9 wide composition. Style: warm hand drawn watercolor and colored pencil illustrated cozy Chinese school life simulation, fine muted sepia outlines, cream paper texture, sage greens, dusty teal roofs, peach sunlight, charming tiny students. High angle isometric dollhouse perspective, detailed yet clearly readable landmark arrangement, environmental storytelling, full bleed landscape. No text, no labels, no UI, no watermark. Not photorealistic. Keep all main landmarks within central 70 percent so game overlays can sit at edges. A welcoming school arts and club center cutaway courtyard. A tiny music rehearsal room with piano and guitars on left 32 x 41, art studio with easels on right 67 x 42, community radio booth at lower left 38 x 71, small theater wooden stage with curtains lower right 70 x 73. Students painting, practicing music and making a little play. Sunlit brick building, ivy, golden afternoon, gentle handmade craft feeling.",
+      "output": "public/images/arts.webp"
+    },
+    {
+      "id": "park",
+      "prompt": "Use case: illustration-story. Asset type: landscape game scene background, 16:9 wide composition. Style: warm hand drawn watercolor and colored pencil illustrated cozy Chinese school life simulation, fine muted sepia outlines, cream paper texture, sage greens, dusty teal roofs, peach sunlight, charming tiny students. High angle isometric dollhouse perspective, detailed yet clearly readable landmark arrangement, environmental storytelling, full bleed landscape. No text, no labels, no UI, no watermark. Not photorealistic. Keep all main landmarks within central 70 percent so game overlays can sit at edges. A peaceful Xi'an riverside park in late afternoon. Winding blue river behind, a leafy stone walking path on left at 32 x 43, a small arched bridge on right at 68 x 39, lawn and picnic blanket near lower left 40 x 71, a tiny volunteer gardening corner near lower right 72 x 72. Willow trees, golden ginkgo, benches, a few teenage friends walking and flying a kite, distant old city roofline, expansive calm landscape.",
+      "output": "public/images/park.webp"
+    },
+    {
+      "id": "market",
+      "prompt": "Use case: illustration-story. Asset type: landscape game scene background, 16:9 wide composition. Style: warm hand drawn watercolor and colored pencil illustrated cozy Chinese school life simulation, fine muted sepia outlines, cream paper texture, sage greens, dusty teal roofs, peach sunlight, charming tiny students. High angle isometric dollhouse perspective, detailed yet clearly readable landmark arrangement, environmental storytelling, full bleed landscape. No text, no labels, no UI, no watermark. Not photorealistic. Keep all main landmarks within central 70 percent so game overlays can sit at edges. A charming Xi'an neighborhood night market at blue hour. Warm paper lanterns, a steaming noodle and snack stall on left 31 x 43, old book and handmade zine stall on right 65 x 39, a street musician corner lower left 39 x 72, friendly shared dining tables lower right 73 x 70. Low historic brick houses, adults and teenage students wandering, orange lantern light against dusty blue dusk, cozy humane atmosphere, no readable signs.",
+      "output": "public/images/market.webp"
+    },
+    {
+      "id": "university",
+      "prompt": "Use case: illustration-story. Asset type: landscape game scene background, 16:9 wide composition. Style: warm hand drawn watercolor and colored pencil illustrated cozy Chinese school life simulation, fine muted sepia outlines, cream paper texture, sage greens, dusty teal roofs, peach sunlight, charming tiny students. High angle isometric dollhouse perspective, detailed yet clearly readable landmark arrangement, environmental storytelling, full bleed landscape. No text, no labels, no UI, no watermark. Not photorealistic. Keep all main landmarks within central 70 percent so game overlays can sit at edges. A fictional Chinese university campus during an open day. A grand brick university gateway and welcome plaza on left 30 x 44, science workshop pavilion right 67 x 42, grassy lakeside student discussion spot lower left 40 x 72, student society booths lower right 74 x 72. A library tower in background, warm green trees, teenagers and university students chatting about future dreams, soft spring sunlight, no real logos or readable signs.",
+      "output": "public/images/university.webp"
+    }
+  ]
+}

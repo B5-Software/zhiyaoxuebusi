@@ -1,0 +1,14 @@
+{
+  "generator": "Built-in image_gen",
+  "mode": "generate",
+  "date": "2026-10-06",
+  "assets": [
+    {
+      "id": "cloud-frame",
+      "prompt": "Use case: illustration-story. Asset type: transparent panoramic cloud frame for a cozy Chinese school life game UI. Wide landscape 16:9. Create soft volumetric 3D puffy clouds around the outer perimeter, especially the corners and left/right borders, floating like a serene sky above a miniature map. Puffy rounded white and warm ivory clouds, pale cream highlights, very subtle sage blue grey ambient occlusion shadows, gentle three dimensional clay render mixed with delicate watercolor softness. Clouds feather gradually toward a large fully transparent central opening occupying 75 percent width and 70 percent height, and smoothly feather toward the outside edge as well. Center must be transparent and entirely empty, no map, no buildings, no objects, no people, no text, no labels, no interface, no watermark. A quiet tasteful misty transition frame with clusters of cloud cushions at top left, top right, bottom left, bottom right; much sparser in center of each edge. Transparent background, preserve alpha, airy subdued pastel aesthetic, no hard rectangular border.",
+      "original": "C:/Users/32109/.codex/generated_images/01a1109e-b9ad-7f12-ae83-f23db3e0539b/exec-00d3f61a-0d2e-4311-9f75-81bd9a6ea244.png",
+      "output": "public/images/cloud-frame.webp",
+      "transparent": true
+    }
+  ]
+}

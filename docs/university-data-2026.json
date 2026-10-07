@@ -1,0 +1,2594 @@
+[
+  {
+    "id": "pku",
+    "name": "北京大学",
+    "threshold": 696,
+    "rank": 75,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.pku.edu.cn/"
+  },
+  {
+    "id": "ruc",
+    "name": "中国人民大学",
+    "threshold": 678,
+    "rank": 460,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.ruc.edu.cn/"
+  },
+  {
+    "id": "thu",
+    "name": "清华大学",
+    "threshold": 697,
+    "rank": 73,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.tsinghua.edu.cn/"
+  },
+  {
+    "id": "bjtu",
+    "name": "北京交通大学",
+    "threshold": 629,
+    "rank": 6496,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.bjtu.edu.cn/"
+  },
+  {
+    "id": "bjut",
+    "name": "北京工业大学",
+    "threshold": 614,
+    "rank": 9951,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.bjut.edu.cn/"
+  },
+  {
+    "id": "buaa",
+    "name": "北京航空航天大学",
+    "threshold": 672,
+    "rank": 742,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.buaa.edu.cn/"
+  },
+  {
+    "id": "bit",
+    "name": "北京理工大学",
+    "threshold": 664,
+    "rank": 1327,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.bit.edu.cn/"
+  },
+  {
+    "id": "ustb",
+    "name": "北京科技大学",
+    "threshold": 625,
+    "rank": 7176,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.ustb.edu.cn/"
+  },
+  {
+    "id": "buct",
+    "name": "北京化工大学",
+    "threshold": 612,
+    "rank": 10440,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.buct.edu.cn/"
+  },
+  {
+    "id": "bupt",
+    "name": "北京邮电大学",
+    "threshold": 644,
+    "rank": 3767,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.bupt.edu.cn/"
+  },
+  {
+    "id": "cau",
+    "name": "中国农业大学",
+    "threshold": 609,
+    "rank": 11374,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.cau.edu.cn/"
+  },
+  {
+    "id": "bjfu",
+    "name": "北京林业大学",
+    "threshold": 577,
+    "rank": 22118,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.bjfu.edu.cn/"
+  },
+  {
+    "id": "bucm",
+    "name": "北京中医药大学",
+    "threshold": 596,
+    "rank": 15157,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.bucm.edu.cn/"
+  },
+  {
+    "id": "bnu",
+    "name": "北京师范大学",
+    "threshold": 643,
+    "rank": 3854,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.bnu.edu.cn/"
+  },
+  {
+    "id": "bfsu",
+    "name": "北京外国语大学",
+    "threshold": 626,
+    "rank": 6979,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.bfsu.edu.cn/"
+  },
+  {
+    "id": "cuc",
+    "name": "中国传媒大学",
+    "threshold": 613,
+    "rank": 10181,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.cuc.edu.cn/"
+  },
+  {
+    "id": "cufe",
+    "name": "中央财经大学",
+    "threshold": 624,
+    "rank": 7364,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.cufe.edu.cn/"
+  },
+  {
+    "id": "uibe",
+    "name": "对外经济贸易大学",
+    "threshold": 623,
+    "rank": 7568,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.uibe.edu.cn/"
+  },
+  {
+    "id": "cfau",
+    "name": "外交学院",
+    "threshold": 614,
+    "rank": 9951,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.cfau.edu.cn/"
+  },
+  {
+    "id": "muc",
+    "name": "中央民族大学",
+    "threshold": 584,
+    "rank": 19509,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.muc.edu.cn/"
+  },
+  {
+    "id": "cupl",
+    "name": "中国政法大学",
+    "threshold": 620,
+    "rank": 8390,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.cupl.edu.cn/"
+  },
+  {
+    "id": "ncepu",
+    "name": "华北电力大学（北京）",
+    "threshold": 622,
+    "rank": 7902,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.ncepu.edu.cn/"
+  },
+  {
+    "id": "ncepubd",
+    "name": "华北电力大学（保定）",
+    "threshold": 613,
+    "rank": 10215,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.ncepu.edu.cn/"
+  },
+  {
+    "id": "cumtb",
+    "name": "中国矿业大学（北京）",
+    "threshold": 582,
+    "rank": 19970,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.cumtb.edu.cn/"
+  },
+  {
+    "id": "cup",
+    "name": "中国石油大学（北京）",
+    "threshold": 603,
+    "rank": 12934,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.cup.edu.cn/"
+  },
+  {
+    "id": "cugb",
+    "name": "中国地质大学（北京）",
+    "threshold": 558,
+    "rank": 30398,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.cugb.edu.cn/"
+  },
+  {
+    "id": "ucas",
+    "name": "中国科学院大学",
+    "threshold": 685,
+    "rank": 261,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.ucas.ac.cn/"
+  },
+  {
+    "id": "nankai",
+    "name": "南开大学",
+    "threshold": 651,
+    "rank": 2742,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.nankai.edu.cn/"
+  },
+  {
+    "id": "tju",
+    "name": "天津大学",
+    "threshold": 650,
+    "rank": 2800,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.tju.edu.cn/"
+  },
+  {
+    "id": "tiangong",
+    "name": "天津工业大学",
+    "threshold": 559,
+    "rank": 29516,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.tiangong.edu.cn/"
+  },
+  {
+    "id": "tmu",
+    "name": "天津医科大学",
+    "threshold": 594,
+    "rank": 16000,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.tmu.edu.cn/"
+  },
+  {
+    "id": "tjutcm",
+    "name": "天津中医药大学",
+    "threshold": 570,
+    "rank": 24685,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.tjutcm.edu.cn/"
+  },
+  {
+    "id": "hebut",
+    "name": "河北工业大学",
+    "threshold": 605,
+    "rank": 12540,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.hebut.edu.cn/"
+  },
+  {
+    "id": "sxu",
+    "name": "山西大学",
+    "threshold": 529,
+    "rank": 45275,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.sxu.edu.cn/"
+  },
+  {
+    "id": "tyut",
+    "name": "太原理工大学",
+    "threshold": 600,
+    "rank": 14120,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.tyut.edu.cn/"
+  },
+  {
+    "id": "imu",
+    "name": "内蒙古大学",
+    "threshold": 535,
+    "rank": 41646,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.imu.edu.cn/"
+  },
+  {
+    "id": "lnu",
+    "name": "辽宁大学",
+    "threshold": 565,
+    "rank": 27120,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.lnu.edu.cn/"
+  },
+  {
+    "id": "dlut",
+    "name": "大连理工大学",
+    "threshold": 648,
+    "rank": 3138,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.dlut.edu.cn/"
+  },
+  {
+    "id": "neu",
+    "name": "东北大学",
+    "threshold": 613,
+    "rank": 10239,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.neu.edu.cn/"
+  },
+  {
+    "id": "dlmu",
+    "name": "大连海事大学",
+    "threshold": 587,
+    "rank": 18382,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.dlmu.edu.cn/"
+  },
+  {
+    "id": "jlu",
+    "name": "吉林大学",
+    "threshold": 619,
+    "rank": 8672,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.jlu.edu.cn/"
+  },
+  {
+    "id": "ybu",
+    "name": "延边大学",
+    "threshold": 562,
+    "rank": 28145,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.ybu.edu.cn/"
+  },
+  {
+    "id": "nenu",
+    "name": "东北师范大学",
+    "threshold": 587,
+    "rank": 18095,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.nenu.edu.cn/"
+  },
+  {
+    "id": "hit",
+    "name": "哈尔滨工业大学",
+    "threshold": 673,
+    "rank": 687,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.hit.edu.cn/"
+  },
+  {
+    "id": "hitwh",
+    "name": "哈尔滨工业大学（威海）",
+    "threshold": 641,
+    "rank": 4095,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.hitwh.edu.cn/"
+  },
+  {
+    "id": "hitsz",
+    "name": "哈尔滨工业大学（深圳）",
+    "threshold": 655,
+    "rank": 2226,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.hitsz.edu.cn/"
+  },
+  {
+    "id": "hrbeu",
+    "name": "哈尔滨工程大学",
+    "threshold": 628,
+    "rank": 6632,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.hrbeu.edu.cn/"
+  },
+  {
+    "id": "neau",
+    "name": "东北农业大学",
+    "threshold": 558,
+    "rank": 30254,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.neau.edu.cn/"
+  },
+  {
+    "id": "nefu",
+    "name": "东北林业大学",
+    "threshold": 552,
+    "rank": 33033,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.nefu.edu.cn/"
+  },
+  {
+    "id": "fudan",
+    "name": "复旦大学",
+    "threshold": 687,
+    "rank": 210,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.fudan.edu.cn/"
+  },
+  {
+    "id": "tongji",
+    "name": "同济大学",
+    "threshold": 670,
+    "rank": 849,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.tongji.edu.cn/"
+  },
+  {
+    "id": "sjtu",
+    "name": "上海交通大学",
+    "threshold": 690,
+    "rank": 147,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.sjtu.edu.cn/"
+  },
+  {
+    "id": "ecnu",
+    "name": "华东师范大学",
+    "threshold": 644,
+    "rank": 3745,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.ecnu.edu.cn/"
+  },
+  {
+    "id": "ecust",
+    "name": "华东理工大学",
+    "threshold": 616,
+    "rank": 9307,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.ecust.edu.cn/"
+  },
+  {
+    "id": "dhu",
+    "name": "东华大学",
+    "threshold": 606,
+    "rank": 12264,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.dhu.edu.cn/"
+  },
+  {
+    "id": "shou",
+    "name": "上海海洋大学",
+    "threshold": 570,
+    "rank": 24735,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.shou.edu.cn/"
+  },
+  {
+    "id": "shisu",
+    "name": "上海外国语大学",
+    "threshold": 614,
+    "rank": 9930,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.shisu.edu.cn/"
+  },
+  {
+    "id": "sufe",
+    "name": "上海财经大学",
+    "threshold": 638,
+    "rank": 4641,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.sufe.edu.cn/"
+  },
+  {
+    "id": "shu",
+    "name": "上海大学",
+    "threshold": 622,
+    "rank": 8010,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.shu.edu.cn/"
+  },
+  {
+    "id": "shanghaitech",
+    "name": "上海科技大学",
+    "threshold": 634,
+    "rank": 5368,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.shanghaitech.edu.cn/"
+  },
+  {
+    "id": "nju",
+    "name": "南京大学",
+    "threshold": 679,
+    "rank": 428,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.nju.edu.cn/"
+  },
+  {
+    "id": "seu",
+    "name": "东南大学",
+    "threshold": 659,
+    "rank": 1804,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.seu.edu.cn/"
+  },
+  {
+    "id": "suda",
+    "name": "苏州大学",
+    "threshold": 620,
+    "rank": 8415,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.suda.edu.cn/"
+  },
+  {
+    "id": "nuaa",
+    "name": "南京航空航天大学",
+    "threshold": 629,
+    "rank": 6405,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.nuaa.edu.cn/"
+  },
+  {
+    "id": "njust",
+    "name": "南京理工大学",
+    "threshold": 626,
+    "rank": 6912,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.njust.edu.cn/"
+  },
+  {
+    "id": "cumt",
+    "name": "中国矿业大学",
+    "threshold": 585,
+    "rank": 18982,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.cumt.edu.cn/"
+  },
+  {
+    "id": "hhu",
+    "name": "河海大学",
+    "threshold": 606,
+    "rank": 12083,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.hhu.edu.cn/"
+  },
+  {
+    "id": "jiangnan",
+    "name": "江南大学",
+    "threshold": 617,
+    "rank": 9166,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.jiangnan.edu.cn/"
+  },
+  {
+    "id": "njau",
+    "name": "南京农业大学",
+    "threshold": 569,
+    "rank": 25296,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.njau.edu.cn/"
+  },
+  {
+    "id": "cpu",
+    "name": "中国药科大学",
+    "threshold": 600,
+    "rank": 14150,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.cpu.edu.cn/"
+  },
+  {
+    "id": "njnu",
+    "name": "南京师范大学",
+    "threshold": 596,
+    "rank": 15371,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.njnu.edu.cn/"
+  },
+  {
+    "id": "njfu",
+    "name": "南京林业大学",
+    "threshold": 555,
+    "rank": 31631,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.njfu.edu.cn/"
+  },
+  {
+    "id": "nuist",
+    "name": "南京信息工程大学",
+    "threshold": 604,
+    "rank": 12889,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.nuist.edu.cn/"
+  },
+  {
+    "id": "njmu",
+    "name": "南京医科大学",
+    "threshold": 616,
+    "rank": 9363,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.njmu.edu.cn/"
+  },
+  {
+    "id": "njucm",
+    "name": "南京中医药大学",
+    "threshold": 585,
+    "rank": 18909,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.njucm.edu.cn/"
+  },
+  {
+    "id": "njupt",
+    "name": "南京邮电大学",
+    "threshold": 615,
+    "rank": 9590,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.njupt.edu.cn/"
+  },
+  {
+    "id": "zju",
+    "name": "浙江大学",
+    "threshold": 683,
+    "rank": 295,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.zju.edu.cn/"
+  },
+  {
+    "id": "nbu",
+    "name": "宁波大学",
+    "threshold": 568,
+    "rank": 25548,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.nbu.edu.cn/"
+  },
+  {
+    "id": "ustc",
+    "name": "中国科学技术大学",
+    "threshold": 681,
+    "rank": 369,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.ustc.edu.cn/"
+  },
+  {
+    "id": "ahu",
+    "name": "安徽大学",
+    "threshold": 595,
+    "rank": 15668,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.ahu.edu.cn/"
+  },
+  {
+    "id": "hfut",
+    "name": "合肥工业大学",
+    "threshold": 616,
+    "rank": 9318,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.hfut.edu.cn/"
+  },
+  {
+    "id": "xmu",
+    "name": "厦门大学",
+    "threshold": 640,
+    "rank": 4298,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.xmu.edu.cn/"
+  },
+  {
+    "id": "fzu",
+    "name": "福州大学",
+    "threshold": 587,
+    "rank": 18029,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.fzu.edu.cn/"
+  },
+  {
+    "id": "ncu",
+    "name": "南昌大学",
+    "threshold": 609,
+    "rank": 11120,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.ncu.edu.cn/"
+  },
+  {
+    "id": "sdu",
+    "name": "山东大学",
+    "threshold": 622,
+    "rank": 7903,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.sdu.edu.cn/"
+  },
+  {
+    "id": "ouc",
+    "name": "中国海洋大学",
+    "threshold": 618,
+    "rank": 8873,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.ouc.edu.cn/"
+  },
+  {
+    "id": "upc",
+    "name": "中国石油大学（华东）",
+    "threshold": 597,
+    "rank": 14924,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.upc.edu.cn/"
+  },
+  {
+    "id": "zzu",
+    "name": "郑州大学",
+    "threshold": 570,
+    "rank": 25021,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.zzu.edu.cn/"
+  },
+  {
+    "id": "henu",
+    "name": "河南大学",
+    "threshold": 561,
+    "rank": 28543,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.henu.edu.cn/"
+  },
+  {
+    "id": "whu",
+    "name": "武汉大学",
+    "threshold": 650,
+    "rank": 2781,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.whu.edu.cn/"
+  },
+  {
+    "id": "hust",
+    "name": "华中科技大学",
+    "threshold": 656,
+    "rank": 2116,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.hust.edu.cn/"
+  },
+  {
+    "id": "cug",
+    "name": "中国地质大学（武汉）",
+    "threshold": 595,
+    "rank": 15555,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.cug.edu.cn/"
+  },
+  {
+    "id": "whut",
+    "name": "武汉理工大学",
+    "threshold": 608,
+    "rank": 11560,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.whut.edu.cn/"
+  },
+  {
+    "id": "hzau",
+    "name": "华中农业大学",
+    "threshold": 566,
+    "rank": 26369,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.hzau.edu.cn/"
+  },
+  {
+    "id": "ccnu",
+    "name": "华中师范大学",
+    "threshold": 600,
+    "rank": 14019,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.ccnu.edu.cn/"
+  },
+  {
+    "id": "zuel",
+    "name": "中南财经政法大学",
+    "threshold": 593,
+    "rank": 16183,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.zuel.edu.cn/"
+  },
+  {
+    "id": "csu",
+    "name": "中南大学",
+    "threshold": 626,
+    "rank": 7057,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.csu.edu.cn/"
+  },
+  {
+    "id": "hnu",
+    "name": "湖南大学",
+    "threshold": 619,
+    "rank": 8555,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.hnu.edu.cn/"
+  },
+  {
+    "id": "hunnu",
+    "name": "湖南师范大学",
+    "threshold": 572,
+    "rank": 23900,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.hunnu.edu.cn/"
+  },
+  {
+    "id": "xtu",
+    "name": "湘潭大学",
+    "threshold": 537,
+    "rank": 40794,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.xtu.edu.cn/"
+  },
+  {
+    "id": "sysu",
+    "name": "中山大学",
+    "threshold": 643,
+    "rank": 3868,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.sysu.edu.cn/"
+  },
+  {
+    "id": "scut",
+    "name": "华南理工大学",
+    "threshold": 643,
+    "rank": 3850,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.scut.edu.cn/"
+  },
+  {
+    "id": "jnu",
+    "name": "暨南大学",
+    "threshold": 611,
+    "rank": 10820,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.jnu.edu.cn/"
+  },
+  {
+    "id": "scnu",
+    "name": "华南师范大学",
+    "threshold": 578,
+    "rank": 21787,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.scnu.edu.cn/"
+  },
+  {
+    "id": "scau",
+    "name": "华南农业大学",
+    "threshold": 571,
+    "rank": 24395,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.scau.edu.cn/"
+  },
+  {
+    "id": "sustech",
+    "name": "南方科技大学",
+    "threshold": 641,
+    "rank": 4146,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.sustech.edu.cn/"
+  },
+  {
+    "id": "gzucm",
+    "name": "广州中医药大学",
+    "threshold": 562,
+    "rank": 28048,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.gzucm.edu.cn/"
+  },
+  {
+    "id": "gxu",
+    "name": "广西大学",
+    "threshold": 544,
+    "rank": 36982,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.gxu.edu.cn/"
+  },
+  {
+    "id": "hainanu",
+    "name": "海南大学",
+    "threshold": 556,
+    "rank": 31136,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.hainanu.edu.cn/"
+  },
+  {
+    "id": "cqu",
+    "name": "重庆大学",
+    "threshold": 646,
+    "rank": 3410,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.cqu.edu.cn/"
+  },
+  {
+    "id": "swu",
+    "name": "西南大学",
+    "threshold": 598,
+    "rank": 14496,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.swu.edu.cn/"
+  },
+  {
+    "id": "scu",
+    "name": "四川大学",
+    "threshold": 620,
+    "rank": 8350,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.scu.edu.cn/"
+  },
+  {
+    "id": "uestc",
+    "name": "电子科技大学",
+    "threshold": 645,
+    "rank": 3582,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.uestc.edu.cn/"
+  },
+  {
+    "id": "swjtu",
+    "name": "西南交通大学",
+    "threshold": 620,
+    "rank": 8429,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.swjtu.edu.cn/"
+  },
+  {
+    "id": "swufe",
+    "name": "西南财经大学",
+    "threshold": 609,
+    "rank": 11374,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.swufe.edu.cn/"
+  },
+  {
+    "id": "sicau",
+    "name": "四川农业大学",
+    "threshold": 537,
+    "rank": 40718,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.sicau.edu.cn/"
+  },
+  {
+    "id": "cdut",
+    "name": "成都理工大学",
+    "threshold": 548,
+    "rank": 34997,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.cdut.edu.cn/"
+  },
+  {
+    "id": "cdutcm",
+    "name": "成都中医药大学",
+    "threshold": 531,
+    "rank": 44059,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.cdutcm.edu.cn/"
+  },
+  {
+    "id": "swpu",
+    "name": "西南石油大学",
+    "threshold": 547,
+    "rank": 35346,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.swpu.edu.cn/"
+  },
+  {
+    "id": "gzu",
+    "name": "贵州大学",
+    "threshold": 557,
+    "rank": 30700,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.gzu.edu.cn/"
+  },
+  {
+    "id": "ynu",
+    "name": "云南大学",
+    "threshold": 564,
+    "rank": 27611,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.ynu.edu.cn/"
+  },
+  {
+    "id": "utibet",
+    "name": "西藏大学",
+    "threshold": 492,
+    "rank": 69302,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.utibet.edu.cn/"
+  },
+  {
+    "id": "xjtu",
+    "name": "西安交通大学",
+    "threshold": 654,
+    "rank": 2280,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.xjtu.edu.cn/jdgk/jdjj.htm"
+  },
+  {
+    "id": "nwpu",
+    "name": "西北工业大学",
+    "threshold": 644,
+    "rank": 3657,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.nwpu.edu.cn/xxgk/xxjj.htm"
+  },
+  {
+    "id": "xidian",
+    "name": "西安电子科技大学",
+    "threshold": 631,
+    "rank": 5915,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.xidian.edu.cn/xxgk.htm"
+  },
+  {
+    "id": "chd",
+    "name": "长安大学",
+    "threshold": 600,
+    "rank": 14035,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.chd.edu.cn/xxgk/xxjj.htm"
+  },
+  {
+    "id": "nwu",
+    "name": "西北大学",
+    "threshold": 590,
+    "rank": 17300,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.nwu.edu.cn/xxgk/xxjj.htm"
+  },
+  {
+    "id": "snnu",
+    "name": "陕西师范大学",
+    "threshold": 604,
+    "rank": 12876,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.snnu.edu.cn/xxgk/xxjj.htm"
+  },
+  {
+    "id": "nwafu",
+    "name": "西北农林科技大学",
+    "threshold": 578,
+    "rank": 21580,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.nwafu.edu.cn/xxgk/xxjj/index.htm"
+  },
+  {
+    "id": "lzu",
+    "name": "兰州大学",
+    "threshold": 598,
+    "rank": 14626,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.lzu.edu.cn/"
+  },
+  {
+    "id": "qhu",
+    "name": "青海大学",
+    "threshold": 511,
+    "rank": 56448,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.qhu.edu.cn/"
+  },
+  {
+    "id": "nxu",
+    "name": "宁夏大学",
+    "threshold": 530,
+    "rank": 44695,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.nxu.edu.cn/"
+  },
+  {
+    "id": "xju",
+    "name": "新疆大学",
+    "threshold": 517,
+    "rank": 52584,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.xju.edu.cn/"
+  },
+  {
+    "id": "shzu",
+    "name": "石河子大学",
+    "threshold": 518,
+    "rank": 51936,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.shzu.edu.cn/"
+  },
+  {
+    "id": "ccmu",
+    "name": "首都医科大学",
+    "threshold": 614,
+    "rank": 9951,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.ccmu.edu.cn/"
+  },
+  {
+    "id": "ucass",
+    "name": "中国社会科学院大学",
+    "threshold": 618,
+    "rank": 8808,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.ucass.edu.cn/"
+  },
+  {
+    "id": "blcu",
+    "name": "北京语言大学",
+    "threshold": 572,
+    "rank": 24000,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.blcu.edu.cn/"
+  },
+  {
+    "id": "cueb",
+    "name": "首都经济贸易大学",
+    "threshold": 581,
+    "rank": 20329,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.cueb.edu.cn/"
+  },
+  {
+    "id": "bisu",
+    "name": "北京第二外国语学院",
+    "threshold": 561,
+    "rank": 28953,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.bisu.edu.cn/"
+  },
+  {
+    "id": "tjnu",
+    "name": "天津师范大学",
+    "threshold": 512,
+    "rank": null,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.tjnu.edu.cn/"
+  },
+  {
+    "id": "tjufe",
+    "name": "天津财经大学",
+    "threshold": 520,
+    "rank": 50683,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.tjufe.edu.cn/"
+  },
+  {
+    "id": "tust",
+    "name": "天津科技大学",
+    "threshold": 513,
+    "rank": 55138,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.tust.edu.cn/"
+  },
+  {
+    "id": "tjfsu",
+    "name": "天津外国语大学",
+    "threshold": 497,
+    "rank": 65426,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.tjfsu.edu.cn/"
+  },
+  {
+    "id": "ysu",
+    "name": "燕山大学",
+    "threshold": 535,
+    "rank": 41804,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.ysu.edu.cn/"
+  },
+  {
+    "id": "hbu",
+    "name": "河北大学",
+    "threshold": 491,
+    "rank": 69569,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.hbu.edu.cn/"
+  },
+  {
+    "id": "stdu",
+    "name": "石家庄铁道大学",
+    "threshold": 501,
+    "rank": null,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.stdu.edu.cn/"
+  },
+  {
+    "id": "hebtu",
+    "name": "河北师范大学",
+    "threshold": 525,
+    "rank": 47613,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.hebtu.edu.cn/"
+  },
+  {
+    "id": "hbue",
+    "name": "河北经贸大学",
+    "threshold": 482,
+    "rank": 76071,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.hbue.edu.cn/"
+  },
+  {
+    "id": "sxufe",
+    "name": "山西财经大学",
+    "threshold": 494,
+    "rank": 67495,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.sxufe.edu.cn/"
+  },
+  {
+    "id": "syphu",
+    "name": "沈阳药科大学",
+    "threshold": 526,
+    "rank": 47051,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.syphu.edu.cn/"
+  },
+  {
+    "id": "dufe",
+    "name": "东北财经大学",
+    "threshold": 564,
+    "rank": 27204,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.dufe.edu.cn/"
+  },
+  {
+    "id": "sut",
+    "name": "沈阳工业大学",
+    "threshold": 504,
+    "rank": 60573,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.sut.edu.cn/"
+  },
+  {
+    "id": "neepu",
+    "name": "东北电力大学",
+    "threshold": 534,
+    "rank": 42400,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.neepu.edu.cn/"
+  },
+  {
+    "id": "cust",
+    "name": "长春理工大学",
+    "threshold": 516,
+    "rank": 53232,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.cust.edu.cn/"
+  },
+  {
+    "id": "hrbmu",
+    "name": "哈尔滨医科大学",
+    "threshold": 500,
+    "rank": 63327,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.hrbmu.edu.cn/"
+  },
+  {
+    "id": "hlju",
+    "name": "黑龙江大学",
+    "threshold": 512,
+    "rank": 55774,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.hlju.edu.cn/"
+  },
+  {
+    "id": "hrbust",
+    "name": "哈尔滨理工大学",
+    "threshold": 511,
+    "rank": 56448,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.hrbust.edu.cn/"
+  },
+  {
+    "id": "usst",
+    "name": "上海理工大学",
+    "threshold": 588,
+    "rank": 17763,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.usst.edu.cn/"
+  },
+  {
+    "id": "shmtu",
+    "name": "上海海事大学",
+    "threshold": 589,
+    "rank": null,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.shmtu.edu.cn/"
+  },
+  {
+    "id": "suibe",
+    "name": "上海对外经贸大学",
+    "threshold": 542,
+    "rank": null,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.suibe.edu.cn/"
+  },
+  {
+    "id": "ecupl",
+    "name": "华东政法大学",
+    "threshold": 595,
+    "rank": 15555,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.ecupl.edu.cn/"
+  },
+  {
+    "id": "njtech",
+    "name": "南京工业大学",
+    "threshold": 562,
+    "rank": 28495,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.njtech.edu.cn/"
+  },
+  {
+    "id": "ujs",
+    "name": "江苏大学",
+    "threshold": 564,
+    "rank": 27611,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.ujs.edu.cn/"
+  },
+  {
+    "id": "yzu",
+    "name": "扬州大学",
+    "threshold": 546,
+    "rank": 35966,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.yzu.edu.cn/"
+  },
+  {
+    "id": "nufe",
+    "name": "南京财经大学",
+    "threshold": 569,
+    "rank": 25187,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.nufe.edu.cn/"
+  },
+  {
+    "id": "ntu",
+    "name": "南通大学",
+    "threshold": 510,
+    "rank": 57104,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.ntu.edu.cn/"
+  },
+  {
+    "id": "xzhmu",
+    "name": "徐州医科大学",
+    "threshold": 598,
+    "rank": 14626,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.xzhmu.edu.cn/"
+  },
+  {
+    "id": "nau",
+    "name": "南京审计大学",
+    "threshold": 587,
+    "rank": 18382,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.nau.edu.cn/"
+  },
+  {
+    "id": "usts",
+    "name": "苏州科技大学",
+    "threshold": 525,
+    "rank": 47613,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.usts.edu.cn/"
+  },
+  {
+    "id": "zjut",
+    "name": "浙江工业大学",
+    "threshold": 571,
+    "rank": 24395,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.zjut.edu.cn/"
+  },
+  {
+    "id": "zjnu",
+    "name": "浙江师范大学",
+    "threshold": 543,
+    "rank": 37511,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.zjnu.edu.cn/"
+  },
+  {
+    "id": "hdu",
+    "name": "杭州电子科技大学",
+    "threshold": 586,
+    "rank": 18684,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.hdu.edu.cn/"
+  },
+  {
+    "id": "zstu",
+    "name": "浙江理工大学",
+    "threshold": 553,
+    "rank": 32551,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.zstu.edu.cn/"
+  },
+  {
+    "id": "wzmu",
+    "name": "温州医科大学",
+    "threshold": 592,
+    "rank": 16494,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.wmu.edu.cn/"
+  },
+  {
+    "id": "zufe",
+    "name": "浙江财经大学",
+    "threshold": 548,
+    "rank": 34997,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.zufe.edu.cn/"
+  },
+  {
+    "id": "ahmu",
+    "name": "安徽医科大学",
+    "threshold": 577,
+    "rank": 22118,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.ahmu.edu.cn/"
+  },
+  {
+    "id": "aufe",
+    "name": "安徽财经大学",
+    "threshold": 489,
+    "rank": 70989,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.aufe.edu.cn/"
+  },
+  {
+    "id": "fjnu",
+    "name": "福建师范大学",
+    "threshold": 501,
+    "rank": 62787,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.fjnu.edu.cn/"
+  },
+  {
+    "id": "hqu",
+    "name": "华侨大学",
+    "threshold": 528,
+    "rank": 45834,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.hqu.edu.cn/"
+  },
+  {
+    "id": "jmu",
+    "name": "集美大学",
+    "threshold": 515,
+    "rank": 53865,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.jmu.edu.cn/"
+  },
+  {
+    "id": "jxnu",
+    "name": "江西师范大学",
+    "threshold": 510,
+    "rank": 56764,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.jxnu.edu.cn/"
+  },
+  {
+    "id": "jxufe",
+    "name": "江西财经大学",
+    "threshold": 551,
+    "rank": 33403,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.jxufe.edu.cn/"
+  },
+  {
+    "id": "ecjtu",
+    "name": "华东交通大学",
+    "threshold": 542,
+    "rank": 38045,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.ecjtu.edu.cn/"
+  },
+  {
+    "id": "nchu",
+    "name": "南昌航空大学",
+    "threshold": 527,
+    "rank": 46445,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.nchu.edu.cn/"
+  },
+  {
+    "id": "qdu",
+    "name": "青岛大学",
+    "threshold": 528,
+    "rank": 45834,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.qdu.edu.cn/"
+  },
+  {
+    "id": "sdnu",
+    "name": "山东师范大学",
+    "threshold": 493,
+    "rank": 68595,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.sdnu.edu.cn/"
+  },
+  {
+    "id": "sdust",
+    "name": "山东科技大学",
+    "threshold": 506,
+    "rank": 59758,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.sdust.edu.cn/"
+  },
+  {
+    "id": "qust",
+    "name": "青岛科技大学",
+    "threshold": 528,
+    "rank": 46165,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.qust.edu.cn/"
+  },
+  {
+    "id": "ujn",
+    "name": "济南大学",
+    "threshold": 493,
+    "rank": 68188,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.ujn.edu.cn/"
+  },
+  {
+    "id": "sdufe",
+    "name": "山东财经大学",
+    "threshold": 517,
+    "rank": 52584,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.sdufe.edu.cn/"
+  },
+  {
+    "id": "haust",
+    "name": "河南科技大学",
+    "threshold": 524,
+    "rank": 48210,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.haust.edu.cn/"
+  },
+  {
+    "id": "htu",
+    "name": "河南师范大学",
+    "threshold": 502,
+    "rank": 61922,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.htu.edu.cn/"
+  },
+  {
+    "id": "ncwu",
+    "name": "华北水利水电大学",
+    "threshold": 532,
+    "rank": 43766,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.ncwu.edu.cn/"
+  },
+  {
+    "id": "henau",
+    "name": "河南农业大学",
+    "threshold": 487,
+    "rank": 72197,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.henau.edu.cn/"
+  },
+  {
+    "id": "hpu",
+    "name": "河南理工大学",
+    "threshold": 495,
+    "rank": 66776,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.hpu.edu.cn/"
+  },
+  {
+    "id": "wust",
+    "name": "武汉科技大学",
+    "threshold": 574,
+    "rank": 23214,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.wust.edu.cn/"
+  },
+  {
+    "id": "hubu",
+    "name": "湖北大学",
+    "threshold": 518,
+    "rank": 52118,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.hubu.edu.cn/"
+  },
+  {
+    "id": "scuec",
+    "name": "中南民族大学",
+    "threshold": 514,
+    "rank": 54497,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.scuec.edu.cn/"
+  },
+  {
+    "id": "ctgu",
+    "name": "三峡大学",
+    "threshold": 526,
+    "rank": 47051,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.ctgu.edu.cn/"
+  },
+  {
+    "id": "yangtzeu",
+    "name": "长江大学",
+    "threshold": 514,
+    "rank": 54497,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.yangtzeu.edu.cn/"
+  },
+  {
+    "id": "wit",
+    "name": "武汉工程大学",
+    "threshold": 560,
+    "rank": 29370,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.wit.edu.cn/"
+  },
+  {
+    "id": "csust",
+    "name": "长沙理工大学",
+    "threshold": 529,
+    "rank": 45558,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.csust.edu.cn/"
+  },
+  {
+    "id": "hnust",
+    "name": "湖南科技大学",
+    "threshold": 489,
+    "rank": 71346,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.hnust.edu.cn/"
+  },
+  {
+    "id": "usc",
+    "name": "南华大学",
+    "threshold": 515,
+    "rank": 53590,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.usc.edu.cn/"
+  },
+  {
+    "id": "hunau",
+    "name": "湖南农业大学",
+    "threshold": 482,
+    "rank": 75715,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.hunau.edu.cn/"
+  },
+  {
+    "id": "szu",
+    "name": "深圳大学",
+    "threshold": 606,
+    "rank": 12238,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.szu.edu.cn/"
+  },
+  {
+    "id": "smu",
+    "name": "南方医科大学",
+    "threshold": 640,
+    "rank": 4432,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.smu.edu.cn/"
+  },
+  {
+    "id": "gdut",
+    "name": "广东工业大学",
+    "threshold": 589,
+    "rank": 17436,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.gdut.edu.cn/"
+  },
+  {
+    "id": "gdufs",
+    "name": "广东外语外贸大学",
+    "threshold": 540,
+    "rank": 38956,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.gdufs.edu.cn/"
+  },
+  {
+    "id": "sztu",
+    "name": "深圳技术大学",
+    "threshold": 584,
+    "rank": 19377,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.sztu.edu.cn/"
+  },
+  {
+    "id": "gdmu",
+    "name": "广东医科大学",
+    "threshold": 489,
+    "rank": 71326,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.gdmu.edu.cn/"
+  },
+  {
+    "id": "swupl",
+    "name": "西南政法大学",
+    "threshold": 590,
+    "rank": 17307,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.swupl.edu.cn/"
+  },
+  {
+    "id": "cqmu",
+    "name": "重庆医科大学",
+    "threshold": 558,
+    "rank": 30144,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.cqmu.edu.cn/"
+  },
+  {
+    "id": "cqjtu",
+    "name": "重庆交通大学",
+    "threshold": 519,
+    "rank": 51217,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.cqjtu.edu.cn/"
+  },
+  {
+    "id": "sisu",
+    "name": "四川外国语大学",
+    "threshold": 500,
+    "rank": 63327,
+    "rankYear": 2025,
+    "dataSource": "eol-full-2025",
+    "officialSite": "https://www.sisu.edu.cn/"
+  },
+  {
+    "id": "swust",
+    "name": "西南科技大学",
+    "threshold": 501,
+    "rank": 62651,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.swust.edu.cn/"
+  },
+  {
+    "id": "sicnu",
+    "name": "四川师范大学",
+    "threshold": 524,
+    "rank": 48440,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.sicnu.edu.cn/"
+  },
+  {
+    "id": "kmust",
+    "name": "昆明理工大学",
+    "threshold": 488,
+    "rank": 71527,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.kmust.edu.cn/"
+  },
+  {
+    "id": "ynnu",
+    "name": "云南师范大学",
+    "threshold": 503,
+    "rank": 61634,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.ynnu.edu.cn/"
+  },
+  {
+    "id": "nwnu",
+    "name": "西北师范大学",
+    "threshold": 516,
+    "rank": 53232,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.nwnu.edu.cn/"
+  },
+  {
+    "id": "gxnu",
+    "name": "广西师范大学",
+    "threshold": 482,
+    "rank": 76071,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.gxnu.edu.cn/"
+  },
+  {
+    "id": "xauat",
+    "name": "西安建筑科技大学",
+    "threshold": 493,
+    "rank": 68188,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.xauat.edu.cn/"
+  },
+  {
+    "id": "xust",
+    "name": "西安科技大学",
+    "threshold": 548,
+    "rank": 35100,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.xust.edu.cn/"
+  },
+  {
+    "id": "xsyu",
+    "name": "西安石油大学",
+    "threshold": 523,
+    "rank": 48934,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.xsyu.edu.cn/"
+  },
+  {
+    "id": "sust",
+    "name": "陕西科技大学",
+    "threshold": 584,
+    "rank": 19485,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.sust.edu.cn/"
+  },
+  {
+    "id": "xpu",
+    "name": "西安工程大学",
+    "threshold": 499,
+    "rank": 64406,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.xpu.edu.cn/"
+  },
+  {
+    "id": "xatu",
+    "name": "西安工业大学",
+    "threshold": 558,
+    "rank": 30083,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.xatu.edu.cn/"
+  },
+  {
+    "id": "xupt",
+    "name": "西安邮电大学",
+    "threshold": 573,
+    "rank": 23539,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.xupt.edu.cn/"
+  },
+  {
+    "id": "nwupl",
+    "name": "西北政法大学",
+    "threshold": 506,
+    "rank": 59309,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.nwupl.edu.cn/"
+  },
+  {
+    "id": "xisu",
+    "name": "西安外国语大学",
+    "threshold": 512,
+    "rank": 55898,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.xisu.edu.cn/"
+  },
+  {
+    "id": "xaufe",
+    "name": "西安财经大学",
+    "threshold": 494,
+    "rank": 67495,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.xaufe.edu.cn/"
+  },
+  {
+    "id": "sntcm",
+    "name": "陕西中医药大学",
+    "threshold": 501,
+    "rank": 62727,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "http://www.sntcm.edu.cn/"
+  },
+  {
+    "id": "xiyi",
+    "name": "西安医学院",
+    "threshold": 499,
+    "rank": 64109,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.xiyi.edu.cn/"
+  },
+  {
+    "id": "yau",
+    "name": "延安大学",
+    "threshold": 506,
+    "rank": 59746,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.yau.edu.cn/"
+  },
+  {
+    "id": "snut",
+    "name": "陕西理工大学",
+    "threshold": 490,
+    "rank": 70316,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.snut.edu.cn/"
+  },
+  {
+    "id": "bjwlxy",
+    "name": "宝鸡文理学院",
+    "threshold": 489,
+    "rank": 70940,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.bjwlxy.edu.cn/"
+  },
+  {
+    "id": "xync",
+    "name": "咸阳师范学院",
+    "threshold": 441,
+    "rank": 106243,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.xync.edu.cn/"
+  },
+  {
+    "id": "wntc",
+    "name": "渭南师范学院",
+    "threshold": 441,
+    "rank": 106243,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.wnu.edu.cn/"
+  },
+  {
+    "id": "yulinu",
+    "name": "榆林大学",
+    "threshold": 496,
+    "rank": 65846,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.yulinu.edu.cn/"
+  },
+  {
+    "id": "aku",
+    "name": "安康学院",
+    "threshold": 464,
+    "rank": 89541,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.aku.edu.cn/"
+  },
+  {
+    "id": "slxy",
+    "name": "商洛学院",
+    "threshold": 455,
+    "rank": 96126,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.slxy.edu.cn/"
+  },
+  {
+    "id": "xawl",
+    "name": "西安文理学院",
+    "threshold": 501,
+    "rank": 62685,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.xawl.edu.cn/"
+  },
+  {
+    "id": "xaau",
+    "name": "西安航空学院",
+    "threshold": 500,
+    "rank": 63720,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.xaau.edu.cn/"
+  },
+  {
+    "id": "snsy",
+    "name": "陕西学前师范学院",
+    "threshold": 464,
+    "rank": 89541,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.snsy.edu.cn/"
+  },
+  {
+    "id": "xzmu",
+    "name": "西藏民族大学",
+    "threshold": 514,
+    "rank": 54341,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.xzmu.edu.cn/"
+  },
+  {
+    "id": "peihua",
+    "name": "西安培华学院",
+    "threshold": 440,
+    "rank": 106431,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.peihua.edu.cn/"
+  },
+  {
+    "id": "eurasia",
+    "name": "西安欧亚学院",
+    "threshold": 408,
+    "rank": 128406,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.eurasia.edu/"
+  },
+  {
+    "id": "xaiu",
+    "name": "西安外事学院",
+    "threshold": 410,
+    "rank": 127470,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.xaiu.edu.cn/"
+  },
+  {
+    "id": "xafy",
+    "name": "西安翻译学院",
+    "threshold": 388,
+    "rank": 140686,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.xafy.edu.cn/"
+  },
+  {
+    "id": "xijing",
+    "name": "西京学院",
+    "threshold": 432,
+    "rank": 112074,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.xijing.edu.cn/"
+  },
+  {
+    "id": "xasy",
+    "name": "西安思源学院",
+    "threshold": 408,
+    "rank": 128432,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.xasyu.cn/"
+  },
+  {
+    "id": "xjy",
+    "name": "西安交通工程学院",
+    "threshold": 389,
+    "rank": 140141,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.xjy.edu.cn/"
+  },
+  {
+    "id": "xjtucc",
+    "name": "西安交通大学城市学院",
+    "threshold": 432,
+    "rank": 112091,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "http://www.xjtucc.edu.cn/"
+  },
+  {
+    "id": "xdxd",
+    "name": "西北大学现代学院",
+    "threshold": 376,
+    "rank": 147064,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.xdxd.cn/"
+  },
+  {
+    "id": "huaqing",
+    "name": "西安建筑科技大学华清学院",
+    "threshold": 437,
+    "rank": 108682,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.xauat-hqc.com/"
+  },
+  {
+    "id": "xcxz",
+    "name": "西安财经大学行知学院",
+    "threshold": 409,
+    "rank": 127570,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.xacxz.edu.cn/"
+  },
+  {
+    "id": "xags",
+    "name": "西安工商学院",
+    "threshold": 376,
+    "rank": 147163,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.xags.edu.cn/"
+  },
+  {
+    "id": "yacx",
+    "name": "延安大学西安创新学院",
+    "threshold": 384,
+    "rank": 142378,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.xacxxy.com/"
+  },
+  {
+    "id": "mdit",
+    "name": "西安明德理工学院",
+    "threshold": 402,
+    "rank": 132202,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.mdit.edu.cn/"
+  },
+  {
+    "id": "sibi",
+    "name": "陕西国际商贸学院",
+    "threshold": 376,
+    "rank": 147152,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.csiic.com/"
+  },
+  {
+    "id": "sxfz",
+    "name": "陕西服装工程学院",
+    "threshold": 383,
+    "rank": 143204,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.sxfu.cn/"
+  },
+  {
+    "id": "haojing",
+    "name": "陕西科技大学镐京学院",
+    "threshold": 383,
+    "rank": 143388,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.sxhju.cn/"
+  },
+  {
+    "id": "xautgc",
+    "name": "西安理工大学高科学院",
+    "threshold": 407,
+    "rank": 129225,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.xthtc.com/"
+  },
+  {
+    "id": "gaoxin",
+    "name": "西安科技大学高新学院",
+    "threshold": 419,
+    "rank": 121211,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.gaoxinedu.com/"
+  },
+  {
+    "id": "xaqc",
+    "name": "西安汽车职业大学",
+    "threshold": 376,
+    "rank": 147139,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.xvua.edu.cn/"
+  },
+  {
+    "id": "xaxx",
+    "name": "西安信息职业大学",
+    "threshold": 376,
+    "rank": 147166,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "http://www.xivuedu.com/"
+  },
+  {
+    "id": "xjtlu",
+    "name": "西交利物浦大学",
+    "threshold": 518,
+    "rank": 52118,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.xjtlu.edu.cn/"
+  },
+  {
+    "id": "nottinghamningbo",
+    "name": "宁波诺丁汉大学",
+    "threshold": 553,
+    "rank": 32263,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.nottingham.edu.cn/"
+  },
+  {
+    "id": "nyush",
+    "name": "上海纽约大学",
+    "threshold": 615,
+    "rank": 9493,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://shanghai.nyu.edu/"
+  },
+  {
+    "id": "dku",
+    "name": "昆山杜克大学",
+    "threshold": 514,
+    "rank": 54163,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.dukekunshan.edu.cn/"
+  },
+  {
+    "id": "cuhksz",
+    "name": "香港中文大学（深圳）",
+    "threshold": 653,
+    "rank": 2380,
+    "rankYear": 2026,
+    "dataSource": "agent-2026",
+    "officialSite": "https://www.cuhk.edu.cn/"
+  },
+  {
+    "id": "uic",
+    "name": "北京师范大学-香港浸会大学联合国际学院",
+    "threshold": 520,
+    "rank": 50683,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.uic.edu.cn/"
+  },
+  {
+    "id": "smbu",
+    "name": "深圳北理莫斯科大学",
+    "threshold": 511,
+    "rank": 56527,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.smbu.edu.cn/"
+  },
+  {
+    "id": "wku",
+    "name": "温州肯恩大学",
+    "threshold": 511,
+    "rank": 56448,
+    "rankYear": 2025,
+    "dataSource": "agent-2025",
+    "officialSite": "https://www.wku.edu.cn/"
+  },
+  {
+    "id": "xaut",
+    "name": "西安理工大学",
+    "threshold": 582,
+    "rank": null,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.xaut.edu.cn/xxgk/xxjj.htm"
+  },
+  {
+    "id": "cmu",
+    "name": "中国医科大学",
+    "threshold": 604,
+    "rank": 12890,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.cmu.edu.cn/"
+  },
+  {
+    "id": "sxmu",
+    "name": "山西医科大学",
+    "threshold": 604,
+    "rank": 12791,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.sxmu.edu.cn/"
+  },
+  {
+    "id": "shiep",
+    "name": "上海电力大学",
+    "threshold": 598,
+    "rank": 14650,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.shiep.edu.cn/"
+  },
+  {
+    "id": "dmu",
+    "name": "大连医科大学",
+    "threshold": 594,
+    "rank": 15823,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.dmu.edu.cn/"
+  },
+  {
+    "id": "hebmu",
+    "name": "河北医科大学",
+    "threshold": 593,
+    "rank": 16155,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.hebmu.edu.cn/"
+  },
+  {
+    "id": "nuc",
+    "name": "中北大学",
+    "threshold": 556,
+    "rank": 30964,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.nuc.edu.cn/"
+  },
+  {
+    "id": "sdfmu",
+    "name": "山东第一医科大学",
+    "threshold": 590,
+    "rank": 17173,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.sdfmu.edu.cn/"
+  },
+  {
+    "id": "tjut",
+    "name": "天津理工大学",
+    "threshold": 579,
+    "rank": 21337,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.tjut.edu.cn/"
+  },
+  {
+    "id": "cauc",
+    "name": "中国民航大学",
+    "threshold": 571,
+    "rank": 24330,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.cauc.edu.cn/"
+  },
+  {
+    "id": "cqupt",
+    "name": "重庆邮电大学",
+    "threshold": 572,
+    "rank": 23980,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.cqupt.edu.cn/"
+  },
+  {
+    "id": "btbu",
+    "name": "北京工商大学",
+    "threshold": 565,
+    "rank": 27085,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.btbu.edu.cn/"
+  },
+  {
+    "id": "cuit",
+    "name": "成都信息工程大学",
+    "threshold": 560,
+    "rank": 29476,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.cuit.edu.cn/"
+  },
+  {
+    "id": "djtu",
+    "name": "大连交通大学",
+    "threshold": 549,
+    "rank": 34306,
+    "rankYear": 2026,
+    "dataSource": "netbig-2026",
+    "officialSite": "https://www.djtu.edu.cn/"
+  }
+]

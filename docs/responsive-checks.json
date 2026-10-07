@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-07",
+  "results": [
+    {
+      "width": 320,
+      "height": 568,
+      "panels": 13,
+      "arrows": 0,
+      "failures": []
+    },
+    {
+      "width": 360,
+      "height": 480,
+      "panels": 13,
+      "arrows": 0,
+      "failures": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "panels": 13,
+      "arrows": 0,
+      "failures": []
+    },
+    {
+      "width": 480,
+      "height": 650,
+      "panels": 13,
+      "arrows": 0,
+      "failures": []
+    },
+    {
+      "width": 768,
+      "height": 600,
+      "panels": 13,
+      "arrows": 0,
+      "failures": []
+    },
+    {
+      "width": 1024,
+      "height": 600,
+      "panels": 13,
+      "arrows": 0,
+      "failures": []
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "panels": 13,
+      "arrows": 0,
+      "failures": []
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "panels": 13,
+      "arrows": 0,
+      "failures": []
+    },
+    {
+      "width": 500,
+      "height": 400,
+      "panels": 13,
+      "arrows": 0,
+      "failures": []
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "panels": 13,
+      "arrows": 0,
+      "failures": []
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-07",
+  "defaultName": "江予安",
+  "pronunciation": "jiāng yǔ ān",
+  "meaningReference": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=44301&la=0&powerMode=0",
+  "checks": {
+    "startFormPrefillsDefault": true,
+    "customStartNameAppearsInStory": true,
+    "profileRenameUpdatesHeadingAndMapHud": true,
+    "profileRenamePreservesLongProject": true,
+    "customNameSurvivesReload": true,
+    "legacyDefaultMigratesOnProduction": true,
+    "productionContainsNoLegacyDefault": true,
+    "narrowProfileHasNoHorizontalOverflow": true
+  }
+}
