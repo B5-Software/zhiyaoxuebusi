@@ -29,11 +29,11 @@ body { overflow: hidden; }
 /* A small companion portrait stays available without covering the map. */
 .campus-dialogue { bottom: 12px; }
 .dialogue-avatar { border: 0; padding: 0; background: transparent; cursor: pointer; }
-.campus-dialogue.is-collapsed { left: 16px; right: auto; width: 44px; min-height: 0; height: 44px; padding: 0; background: none; border: 0; box-shadow: none; }
-.is-collapsed .dialogue-avatar { position: relative; inset: auto; width: 44px; height: 44px; }
+.campus-dialogue.is-collapsed { left: 16px; right: auto; width: 44px; min-height: 0; height: 44px; padding: 0; gap: 0; background: none; border: 0; border-radius: 50%; box-shadow: none; }
+.is-collapsed .dialogue-avatar { position: relative; inset: auto; width: 44px; height: 44px; aspect-ratio: 1; flex: none; }
 .is-collapsed .dialogue-avatar > img { border-width: 2px; border-radius: 50%; }
 .is-collapsed .dialogue-avatar-flower { width: 17px; height: 17px; border-width: 1px; right: -2px; bottom: -1px; }
-.is-collapsed .dialogue-content-wrapper { width: 0; overflow: hidden; }
+.is-collapsed .dialogue-content-wrapper { width: 0; flex: none; overflow: hidden; }
 .dialogue-content-wrapper { min-width: 0; flex: 1; }
 .dialogue-content { display: flex; align-items: center; gap: 12px; min-width: 0; }
 .dialogue-controls { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; }

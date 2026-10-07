@@ -1,0 +1,71 @@
+{
+  "version": "2.8.2",
+  "viewports": [
+    {
+      "width": 320,
+      "height": 568,
+      "portrait": {
+        "width": 36,
+        "height": 36.000030517578125,
+        "radius": "50%"
+      },
+      "maxAnimationAspectError": 0.000030517578125,
+      "expanded": {
+        "controlsOverlap": false
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "portrait": {
+        "width": 36,
+        "height": 36,
+        "radius": "50%"
+      },
+      "maxAnimationAspectError": 0.00006103515625,
+      "expanded": {
+        "controlsOverlap": false
+      }
+    },
+    {
+      "width": 768,
+      "height": 600,
+      "portrait": {
+        "width": 36,
+        "height": 36,
+        "radius": "50%"
+      },
+      "maxAnimationAspectError": 0.000030517578125,
+      "expanded": {
+        "controlsOverlap": false
+      }
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "portrait": {
+        "width": 44,
+        "height": 44,
+        "radius": "50%"
+      },
+      "maxAnimationAspectError": 0.000064849853515625,
+      "expanded": {
+        "controlsOverlap": false
+      }
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "portrait": {
+        "width": 36,
+        "height": 36,
+        "radius": "50%"
+      },
+      "maxAnimationAspectError": 0.0000152587890625,
+      "expanded": {
+        "controlsOverlap": false
+      }
+    }
+  ],
+  "errors": []
+}

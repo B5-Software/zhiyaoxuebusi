@@ -2,7 +2,7 @@
 .age-modal .modal-heading > div, .private-warning-modal .modal-heading > div { width: 100%; text-align: center; }
 .age-gate, .content-warning { text-align: center; }
 .content-warning label { justify-content: center; }
-.private-warning-modal .content-warning input[type="checkbox"] { width: 16px; height: 16px; min-height: 16px; padding: 0; margin: 0; flex-shrink: 0; accent-color: #8ea276; }
+.private-warning-modal .modal-status > p { text-align: center; }
 .modal-status { display: flex; align-items: center; gap: 12px; padding: 8px clamp(12px, 2.5vw, 26px); border-bottom: 1px dashed #d3cfb1; background: #eef1dc; color: #829469; flex-shrink: 0; max-height: 20dvh; overflow-y: auto; }
 .modal-status p { margin: 0; flex: 1; min-width: 0; overflow-wrap: anywhere; font-size: 11px; line-height: 1.6; }
 .modal-status button { flex-shrink: 0; padding: 4px; color: #899b75; }
