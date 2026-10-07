@@ -6,8 +6,26 @@
 
 《只要学不死，就往死里学》（拾光校园）是一款以西安虚构高中为背景的本地单人模拟养成游戏。React 19、Vite、Tailwind CSS v4、Motion 和 Web Audio API 驱动，不需要后端、账号或付费 API。
 
-- 正式站点（Cloudflare Pages）：[shiguang-campus-life.pages.dev](https://shiguang-campus-life.pages.dev/)
-- GitHub Pages 镜像（推送后由 CI 自动部署）：[b5-software.github.io/zhiyaoxuebusi](https://b5-software.github.io/zhiyaoxuebusi/)
+- 在线试玩（GitHub Pages，免费）：[b5-software.github.io/zhiyaoxuebusi](https://b5-software.github.io/zhiyaoxuebusi/)
+- 备用站点（Cloudflare Pages）：[shiguang-campus-life.pages.dev](https://shiguang-campus-life.pages.dev/)
+
+## 游戏画面
+
+| 开局：属于你的高三 | 校园：和苏晓一起长大 |
+| --- | --- |
+| ![开局界面](docs/screenshots/start-panel.jpg) | ![校园主界面](docs/screenshots/campus-main.jpg) |
+
+| 大学图鉴：288 所院校 | 消息：和重要的人保持联系 |
+| --- | --- |
+| ![大学图鉴](docs/screenshots/university-atlas-desktop.jpg) | ![消息界面](docs/screenshots/messenger-record.jpg) |
+
+| 任务手帐：长期主义 | 世界地图：云层上的校园 |
+| --- | --- |
+| ![任务手帐](docs/screenshots/tasks-and-map.jpg) | ![世界地图](docs/screenshots/map-clouds-desktop-v2.2.jpg) |
+
+| 移动端：开局 | 移动端：大学图鉴 | 移动端：任务手帐 | 移动端：世界地图 |
+| --- | --- | --- | --- |
+| ![移动端开局](docs/screenshots/start-panel-mobile.jpg) | ![移动端大学图鉴](docs/screenshots/university-atlas-mobile.jpg) | ![移动端任务手帐](docs/screenshots/tasks-and-map-mobile.jpg) | ![移动端世界地图](docs/screenshots/map-clouds-mobile.jpg) |
 
 ## 内容
 
