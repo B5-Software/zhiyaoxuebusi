@@ -6,15 +6,19 @@ import GamePanels from './components/GamePanels';
 import WorldMap from './components/WorldMap';
 import { TaskHud } from './components/QuestBoard';
 import MapTaskIndicators from './components/MapTaskIndicators';
+import CharacterMapMarkers from './components/CharacterMapMarkers';
+import { AgeGate, RomanceStoryModal } from './components/ContentGates';
+import { GameNoticeContext } from './components/GameNotice';
+import { loadAudience, persistAudience } from './game/audience';
 import { getMapTaskTargets } from './game/mapTasks';
 import { playerDisplayName, playerNameError, playerText } from './game/player';
 import { recordPlaceVisit } from './game/quests';
 import { DEFAULT_MAP_ZOOM, MAX_MAP_ZOOM, MIN_MAP_ZOOM, mapDragBounds } from './game/mapView';
-import { ACTIONS, ITEMS, LITTLE_NOTES, PLACES, REGION_BY_ID, UNIVERSITIES, imagePath, type Place } from './game/data';
+import { ACTIONS, CHARACTERS, ITEMS, LITTLE_NOTES, PLACES, REGION_BY_ID, UNIVERSITIES, imagePath, type Place } from './game/data';
 import { asset } from './utils/asset';
 import { audio } from './game/audio';
 import { SETTINGS_KEY, actionEffect, advanceWeek, applyEffect, attendAppointment, beginMapStory, canAct, confirmRelationship, createGame, dateFor, daysRemaining, effectSummary, eventLock, getAchievements, giveCharacterGift, loadGame, loadSettings, performAction, persistGame, placeStories, predictedScore, initiateMessage, replyMessage, resolveEvent } from './game/engine';
-import { deliverMessages, unreadCount } from './game/social';
+import { deliverMessages, isRomanceId, unreadCount } from './game/social';
 import type { CharacterId, GameState, IconName, Panel, QuestTarget, RomanceId, Scene } from './game/types';
 
 function ResourceMeter({ icon, label, value, color, onClick }: { icon: IconName; label: string; value: number; color: string; onClick: () => void }) {
@@ -33,17 +37,18 @@ const NAV_ITEMS: { id: string; name: string; icon: IconName; panel?: Panel; scen
 
 export default function App() {
   const [game, setGame] = useState<GameState>(loadGame);
+  const [audience, setAudience] = useState(loadAudience);
   const [settings, setSettings] = useState(loadSettings);
   const [panel, setPanel] = useState<Panel>(game.phase === 'exam' ? 'exam' : null);
-  const [scene, setScene] = useState<Scene>('campus');
-  const [place, setPlace] = useState<Place>(PLACES[0]);
+  const scene = game.world.scene;
+  const place = PLACES.find(location => location.id === game.world.placeId)!;
   const [chatContact, setChatContact] = useState<CharacterId | undefined>();
   const [zoom, setZoom] = useState(DEFAULT_MAP_ZOOM);
   const viewportRef = useRef<HTMLDivElement>(null);
   const layerRef = useRef<HTMLDivElement>(null);
   const [mapSize, setMapSize] = useState({ width: 1200, height: 680, layerWidth: 1200, layerHeight: 802, layerLeft: 0, layerTop: -61 });
   const [footerHeight, setFooterHeight] = useState(129);
-  const [avatar, setAvatar] = useState({ x: 54, y: 74 });
+  const avatar = { x: game.world.x, y: game.world.y };
   const [toast, setToast] = useState<{ id: number; text: string } | null>(null);
   const [saved, setSaved] = useState(true);
   const [speech, setSpeech] = useState('新同学，你来啦！新学期的第一天，先去教室看看吧。这一年，也要记得好好照顾自己哦。');
@@ -53,7 +58,8 @@ export default function App() {
   const dragging = useRef(false);
   const dragX = useMotionValue(0);
   const dragY = useMotionValue(0);
-  const effectivePanel: Panel = game.pendingEvent ? 'event' : panel;
+  const effectivePanel: Panel = audience.age === 'unknown' || panel === 'age' ? 'age' : game.pendingEvent ? 'event' : game.romance.active ? 'romance-story' : panel;
+  const companion = CHARACTERS[game.social.partner ?? 'su'];
   const dragBounds = mapDragBounds(mapSize, { width: mapSize.layerWidth, height: mapSize.layerHeight }, zoom);
   const target = UNIVERSITIES.find(school => school.id === game.targetSchool)!;
   const score = predictedScore(game);
@@ -68,6 +74,7 @@ export default function App() {
   const close = useCallback(() => setPanel(null), []);
 
   useEffect(() => { setSaved(persistGame(game)); }, [game]);
+  useEffect(() => { persistAudience(audience); }, [audience]);
   useEffect(() => {
     const view = viewportRef.current;
     const layer = layerRef.current;
@@ -100,6 +107,7 @@ export default function App() {
   }, []);
 
   function ensurePlaying() {
+    if (audience.age === 'unknown') { open('age'); return false; }
     if (!game.started) { open('start'); return false; }
     if (game.phase !== 'school') { open(game.phase === 'exam' ? 'exam' : game.phase === 'application' ? 'universities' : 'ending'); return false; }
     return true;
@@ -123,8 +131,8 @@ export default function App() {
     const error = playerNameError(name);
     if (error) { notify(error); return; }
     setGame(deliverMessages({ ...createGame(), started: true, name: name.trim(), nameIsCustom: true, difficulty, targetSchool, pendingEvent: 'first-day' }));
-    setPanel(null); setScene('campus');
-    setZoom(DEFAULT_MAP_ZOOM); dragX.set(0); dragY.set(0); setAvatar({ x: 54, y: 74 });
+    setPanel(null);
+    setZoom(DEFAULT_MAP_ZOOM); dragX.set(0); dragY.set(0);
     setSpeech('{{player}}，欢迎加入高三（3）班！去做一点喜欢的事吧，我会一直在这里。');
     audio.play('bell');
   }
@@ -132,8 +140,8 @@ export default function App() {
   function nextWeek() {
     if (!ensurePlaying()) return;
     const next = advanceWeek(game);
-    setGame(next); setPanel(next.phase === 'exam' ? 'exam' : null); setScene('campus');
-    setZoom(DEFAULT_MAP_ZOOM); dragX.set(0); dragY.set(0); setAvatar({ x: 54, y: 74 });
+    setGame(next); setPanel(next.phase === 'exam' ? 'exam' : null);
+    setZoom(DEFAULT_MAP_ZOOM); dragX.set(0); dragY.set(0);
     setSpeech(LITTLE_NOTES[next.week % LITTLE_NOTES.length]);
     notify(next.phase === 'exam' ? '准考证带好了吗？放轻松，你已经为这一刻准备了很久。' : '新的一周，慢慢来。生活费 +40 元，体力 +28，压力 -5。');
     audio.play('bell');
@@ -198,23 +206,23 @@ export default function App() {
   function confess(id: RomanceId) {
     const result = confirmRelationship(game, id);
     if (result.error) { notify(result.error); return; }
-    setGame(result.game); notify('你们认真回应了彼此，开始了恋爱路线。'); audio.play('success');
+    setGame(result.game); notify('把心意认真说给对方听，也尊重双方的选择。'); audio.play('success');
   }
+  function showRomance(id: RomanceId) { setChatContact(id); open('romance'); }
 
   function chat(id: CharacterId) { setChatContact(id); open('messages'); }
 
   function changeScene(nextScene: Scene) {
-    setScene(nextScene); setPanel(null); setZoom(DEFAULT_MAP_ZOOM); dragX.set(0); dragY.set(0);
-    setPlace(PLACES.find(location => location.scene === nextScene)!);
-    setAvatar(nextScene === 'home' ? { x: 52, y: 76 } : { x: 54, y: 74 });
+    const destination = PLACES.find(location => location.scene === nextScene)!;
+    setGame(current => ({ ...current, world: { scene: nextScene, placeId: destination.id, x: 54, y: 74 } }));
+    setPanel(null); setZoom(DEFAULT_MAP_ZOOM); dragX.set(0); dragY.set(0);
     setSpeech(REGION_BY_ID[nextScene].greeting);
     audio.play('step');
   }
 
   function visit(location: Place, viewZoom = zoom) {
     if (dragging.current) return;
-    setPlace(location); setAvatar({ x: location.x, y: location.y + 8 });
-    setGame(current => recordPlaceVisit(current, location.id));
+    setGame(current => ({ ...recordPlaceVisit(current, location.id), world: { scene: location.scene, placeId: location.id, x: location.x, y: Math.min(94, location.y + 8) } }));
     const limits = mapDragBounds(mapSize, { width: mapSize.layerWidth, height: mapSize.layerHeight }, viewZoom);
     dragX.set(Math.max(limits.left, Math.min(limits.right, (0.5 - location.x / 100) * mapSize.layerWidth * viewZoom)));
     dragY.set(Math.max(limits.top, Math.min(limits.bottom, (0.5 - location.y / 100) * mapSize.layerHeight * viewZoom)));
@@ -253,6 +261,7 @@ export default function App() {
   }
 
   function navigateTask(target: QuestTarget) {
+    if (target.panel === 'romance' && target.character && isRomanceId(target.character)) { showRomance(target.character); return; }
     if (target.character) { chat(target.character); return; }
     if (target.placeId) {
       const location = PLACES.find(place => place.id === target.placeId);
@@ -267,8 +276,8 @@ export default function App() {
   }
 
   function load(loaded: GameState) {
-    setGame(deliverMessages(loaded)); setPanel(loaded.phase === 'exam' ? 'exam' : null); setScene('campus');
-    setZoom(DEFAULT_MAP_ZOOM); dragX.set(0); dragY.set(0); setAvatar({ x: 54, y: 74 });
+    setGame(deliverMessages(loaded)); setPanel(loaded.phase === 'exam' ? 'exam' : null);
+    setZoom(DEFAULT_MAP_ZOOM); dragX.set(0); dragY.set(0);
     notify(`欢迎回来，${loaded.name}。你的故事已经接着上一页继续了。`); audio.play('page');
   }
 
@@ -292,7 +301,7 @@ export default function App() {
           <div className={`time-shade time-${game.actions}`} aria-hidden="true"/>
           {scene !== 'home' && <div className="world-atmosphere" aria-hidden="true"><div className="cloud cloud-one"/><div className="cloud cloud-two"/>{Array.from({ length: 9 }, (_, index) => <i className="falling-leaf" key={index} style={{ '--leaf-x': `${13 + index * 9}%`, '--leaf-delay': `${-index * 2.3}s`, '--leaf-time': `${17 + index * 1.8}s` } as CSSProperties}><svg width="13" height="18" viewBox="0 0 13 18"><path d="M2 17C-5 4 8 1 12 0c2 9-2 15-10 17" fill={index % 3 === 0 ? '#dfb4a0' : '#b4bd83'} fillOpacity=".75"/><path d="M2 16 9 4" stroke="#8e9c71" strokeWidth=".7"/></svg></i>)}</div>}
           {PLACES.filter(location => location.scene === scene).map((location, index) => <motion.button key={location.id} className={`map-hotspot hotspot-${location.id}`} style={{ left: `${location.x}%`, top: `${location.y}%` }} whileHover={{ y: -5, scale: 1.04 }} whileTap={{ scale: 0.96 }} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ opacity: { delay: index * 0.07 }, y: { type: 'spring', stiffness: 300, damping: 20 } }} onClick={() => visit(location)} aria-label={`探索${location.name}：${location.subtitle}`}><span className="hotspot-pin"/><span className="hotspot-sign"><GameIcon name={location.icon} size={28}/><strong>{location.name}</strong><ChevronRight size={13}/></span>{location.id === 'classroom' && game.actions < 3 && !game.counts.study && <span className="quest-flag">去上课</span>}<span className="hotspot-tooltip">{location.subtitle}</span>{taskPlaceIds.has(location.id) && <b className="hotspot-task-mark" aria-label="任务地点">!</b>}{placeStories(game, location.id).some(event => !eventLock(game, event)) && <span className="map-story-flag">新故事</span>}</motion.button>)}
-          <motion.div className="player-map-marker" animate={{ left: `${avatar.x}%`, top: `${avatar.y}%` }} transition={{ type: 'spring', duration: 1.8, bounce: 0.13 }} aria-hidden="true"><span>你在这里</span><img src={asset('images/student.jpg')} alt=""/><i/></motion.div>
+          <CharacterMapMarkers game={game} scene={scene} avatar={avatar} onChat={chat}/><motion.div className="player-map-marker" animate={{ left: `${avatar.x}%`, top: `${avatar.y}%` }} transition={{ type: 'spring', duration: 1.8, bounce: 0.13 }} aria-hidden="true"><span>你在这里</span><img src={asset('images/student.jpg')} alt=""/><i/></motion.div>
         </motion.div></div>
         <MapTaskIndicators game={game} scene={scene} zoom={zoom} geometry={mapSize} dragX={dragX} dragY={dragY} dialogueExpanded={dialogueExpanded} onLocate={placeId => navigateTask({ placeId })}/><div className="world-edge-shade" aria-hidden="true"/><div className="cloud-frame" aria-hidden="true"><img src={asset('images/cloud-frame.webp')} alt=""/></div>
 
@@ -308,14 +317,14 @@ export default function App() {
 
         <div className="map-controls"><div className="map-zoom"><button onClick={() => setZoom(value => Math.min(MAX_MAP_ZOOM, Math.round((value + 0.2) * 10) / 10))} aria-label="放大地图" disabled={zoom >= MAX_MAP_ZOOM}><Plus size={19}/></button><button onClick={() => { setZoom(DEFAULT_MAP_ZOOM); dragX.set(0); dragY.set(0); }} aria-label="恢复地图视角" title="恢复视角"><RotateCcw size={15}/></button><button onClick={() => setZoom(value => Math.max(MIN_MAP_ZOOM, Math.round((value - 0.2) * 10) / 10))} aria-label="缩小地图" disabled={zoom <= MIN_MAP_ZOOM}><Minus size={19}/></button></div><select aria-label="选择本区地点" value="" onChange={event => { const location = PLACES.find(item => item.id === event.target.value); if (location) visit(location); }}><option value="" disabled>本区地点 · {PLACES.filter(location => location.scene === scene).length}</option>{PLACES.filter(location => location.scene === scene).map(location => <option key={location.id} value={location.id}>{location.name}</option>)}</select><span><MousePointer2 size={12}/>拖动探索 · {Math.round(zoom * 100)}%</span></div>
 
-        <div className={`campus-dialogue ${dialogueExpanded ? "is-expanded" : "is-collapsed"}`}><button className="dialogue-avatar" onClick={() => setDialogueExpanded(value => !value)} aria-expanded={dialogueExpanded} aria-controls="companion-dialogue" aria-label={dialogueExpanded ? "收起苏晓的对话" : "展开苏晓的对话"} title={dialogueExpanded ? "收起为头像" : "点击和苏晓聊聊"}><img src={asset('images/companion.jpg')} alt="同桌苏晓"/><span className="dialogue-avatar-flower"><Leaf size={12}/></span></button><div className="dialogue-body" id="companion-dialogue"><div className="dialogue-name"><strong>苏晓</strong><span>你的同桌</span><i><Heart size={10} fill="currentColor"/><Heart size={10} fill="currentColor"/><Heart size={10} fill="currentColor"/></i></div><AnimatePresence mode="wait"><motion.p key={speech} initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.22 }}>{game.phase === 'ending' ? '我们真的走到夏天啦。以后的日子，愿你有自己的答案，也有随时可以回来的地方。' : playerText(game, speech)}</motion.p></AnimatePresence></div><button className="dialogue-action" onClick={() => { if (!game.started) open('start'); else if (game.phase !== 'school') advanceButton(); else { setPlace(PLACES[0]); open('location'); } }}>{!game.started ? '去教室看看' : game.phase === 'school' ? '去上课' : '看看下一站'}<ArrowRight size={16}/></button><button className="dialogue-collapse" onClick={() => setDialogueExpanded(false)} aria-label="收起苏晓的横幅" title="收起为头像"><X size={16}/></button><span className="dialogue-corner"/></div>
+        <div className={`campus-dialogue ${dialogueExpanded ? "is-expanded" : "is-collapsed"}`}><button className="dialogue-avatar" onClick={() => setDialogueExpanded(value => !value)} aria-expanded={dialogueExpanded} aria-controls="companion-dialogue" aria-label={dialogueExpanded ? `收起${companion.name}的对话` : `展开${companion.name}的对话`} title={dialogueExpanded ? "收起为头像" : `点击和${companion.name}聊聊`}><img src={imagePath(companion.image)} alt={companion.name}/><span className="dialogue-avatar-flower"><Leaf size={12}/></span></button><div className="dialogue-body" id="companion-dialogue"><div className="dialogue-name"><strong>{companion.name}</strong><span>{game.social.partner ? game.romance.escort ? "恋人 · 正在同行" : "恋人 · 我们的故事" : "你的同桌"}</span><i><Heart size={10} fill="currentColor"/><Heart size={10} fill="currentColor"/><Heart size={10} fill="currentColor"/></i></div><AnimatePresence mode="wait"><motion.p key={speech} initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.22 }}>{game.phase === 'ending' ? '我们真的走到夏天啦。以后的日子，愿你有自己的答案，也有随时可以回来的地方。' : game.social.partner ? "今天也认真照顾自己。想相处、约会或聊聊心事，都可以来找我。" : playerText(game, speech)}</motion.p></AnimatePresence></div><button className="dialogue-action" onClick={() => { if (!game.started) open('start'); else if (game.phase !== 'school') advanceButton(); else if (game.social.partner) showRomance(game.social.partner); else goToPlace('classroom'); }}>{!game.started ? '去教室看看' : game.phase === 'school' ? game.social.partner ? '我们的故事' : '去上课' : '看看下一站'}<ArrowRight size={16}/></button><button className="dialogue-collapse" onClick={() => setDialogueExpanded(false)} aria-label="收起苏晓的横幅" title="收起为头像"><X size={16}/></button><span className="dialogue-corner"/></div>
       </main>
 
-      <footer className="game-footer"><div className="footer-main"><nav className="game-dock" aria-label="游戏导航">{NAV_ITEMS.map(item => { const active = item.scene ? scene === item.scene && !effectivePanel : effectivePanel === item.panel; return <motion.button className={`dock-item ${active ? 'active' : ''}`} key={item.id} onClick={() => item.scene ? changeScene(item.scene) : open(item.panel ?? null)} whileHover={{ y: -4 }} whileTap={{ scale: 0.95 }} aria-current={active ? 'page' : undefined}><span className="dock-icon">{item.id === 'world-map' ? <Compass className="dock-map-compass" size={48} strokeWidth={1.3}/> : <GameIcon name={item.icon} size={51}/>}{item.id === 'messages' && unread > 0 && <b className="dock-unread">{unread > 9 ? '9+' : unread}</b>}{item.id === 'bag' && Object.values(game.inventory).some(value => value > 0) && <i className="dock-dot"/>}</span><strong>{item.name}</strong>{active && <motion.i layoutId="dock-active" className="dock-active-dot"/>}</motion.button>; })}</nav><div className="footer-divider"/><div className="next-week-control"><div className="action-counter"><span>本周行动</span><div>{[0, 1, 2].map(index => <span className={index < game.actions ? 'used' : ''} key={index}><Leaf size={12}/></span>)}</div><b>{game.actions}<small>/3</small></b></div><motion.button className="next-week-button" whileHover={{ y: -2 }} whileTap={{ y: 2 }} onClick={advanceButton}><GameIcon name={game.phase === 'school' ? 'moon' : 'letter'} size={39}/><span><strong>{game.phase === 'school' ? '结束本周' : game.phase === 'exam' ? '走进考场' : game.phase === 'application' ? '填报我的志愿' : '我的毕业纪念'}</strong><small>{game.phase === 'school' ? '好好休息，再向前一步' : '未来这一页，由自己来写'}</small></span><ChevronRight size={20}/></motion.button></div></div><div className="footer-bottom"><button className={`autosave-status ${saved ? '' : 'save-failed'}`} onClick={() => open('saves')}><span/>{saved ? '本地存档 · 已自动保存' : '自动保存失败 · 请导出备份'}</button><span className="footer-motto"><Leaf size={11}/>好好生活，也是一种了不起的努力。</span><span className="version-label">拾光校园 · v2.4.0</span></div></footer>
+      <footer className="game-footer"><div className="footer-main"><nav className="game-dock" aria-label="游戏导航">{NAV_ITEMS.map(item => { const active = item.scene ? scene === item.scene && !effectivePanel : effectivePanel === item.panel; return <motion.button className={`dock-item ${active ? 'active' : ''}`} key={item.id} onClick={() => item.scene ? changeScene(item.scene) : open(item.panel ?? null)} whileHover={{ y: -4 }} whileTap={{ scale: 0.95 }} aria-current={active ? 'page' : undefined}><span className="dock-icon">{item.id === 'world-map' ? <Compass className="dock-map-compass" size={48} strokeWidth={1.3}/> : <GameIcon name={item.icon} size={51}/>}{item.id === 'messages' && unread > 0 && <b className="dock-unread">{unread > 9 ? '9+' : unread}</b>}{item.id === 'bag' && Object.values(game.inventory).some(value => value > 0) && <i className="dock-dot"/>}</span><strong>{item.name}</strong>{active && <motion.i layoutId="dock-active" className="dock-active-dot"/>}</motion.button>; })}</nav><div className="footer-divider"/><div className="next-week-control"><div className="action-counter"><span>本周行动</span><div>{[0, 1, 2].map(index => <span className={index < game.actions ? 'used' : ''} key={index}><Leaf size={12}/></span>)}</div><b>{game.actions}<small>/3</small></b></div><motion.button className="next-week-button" whileHover={{ y: -2 }} whileTap={{ y: 2 }} onClick={advanceButton}><GameIcon name={game.phase === 'school' ? 'moon' : 'letter'} size={39}/><span><strong>{game.phase === 'school' ? '结束本周' : game.phase === 'exam' ? '走进考场' : game.phase === 'application' ? '填报我的志愿' : '我的毕业纪念'}</strong><small>{game.phase === 'school' ? '好好休息，再向前一步' : '未来这一页，由自己来写'}</small></span><ChevronRight size={20}/></motion.button></div></div><div className="footer-bottom"><button className={`autosave-status ${saved ? '' : 'save-failed'}`} onClick={() => open('saves')}><span/>{saved ? '本地存档 · 已自动保存' : '自动保存失败 · 请导出备份'}</button><span className="footer-motto"><Leaf size={11}/>好好生活，也是一种了不起的努力。</span><span className="version-label">拾光校园 · v2.7.0</span></div></footer>
     </div>
 
-    <AnimatePresence mode="wait">{effectivePanel === 'world-map' ? <WorldMap key="world-map" game={game} scene={scene} onScene={changeScene} onClose={close}/> : effectivePanel && <GamePanels key={effectivePanel === 'event' ? game.pendingEvent : effectivePanel} panel={effectivePanel} game={game} setGame={setGame} settings={settings} setSettings={setSettings} place={place} open={open} onClose={close} onAction={doAction} onMeet={meet} onVisitPlace={goToPlace} onStory={readMapStory} onStart={start} onNextWeek={nextWeek} onPlan={runPlan} onChoice={choose} onUse={useItem} onBuy={buyItem} onGift={gift} onReply={reply} onInitiate={initiate} onNavigateTask={navigateTask} onConfess={confess} onChat={chat} chatContact={chatContact} onLoad={load} onScene={changeScene} notify={notify}/>}</AnimatePresence>
-    <AnimatePresence>{toast && <motion.div key={toast.id} className="game-toast" role="status" aria-live="polite" initial={{ opacity: 0, y: -15, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -8 }}><span className="toast-leaf"><Leaf size={20}/></span><p>{toast.text}</p><button onClick={() => setToast(null)} aria-label="关闭提示"><X size={16}/></button></motion.div>}</AnimatePresence>
+    <GameNoticeContext value={toast ? { text: toast.text, dismiss: () => setToast(null) } : null}><AnimatePresence mode="wait">{effectivePanel === 'age' ? <AgeGate key="age-gate" audience={audience} onChoose={age => { setAudience(current => ({ ...current, age })); setPanel(null); }}/> : effectivePanel === 'romance-story' ? <RomanceStoryModal key={`${game.romance.active?.id}-${game.romance.active?.week}`} game={game} setGame={setGame} audience={audience} setAudience={setAudience} notify={notify}/> : effectivePanel === 'world-map' ? <WorldMap key="world-map" game={game} scene={scene} onScene={changeScene} onClose={close}/> : effectivePanel && <GamePanels key={effectivePanel === 'event' ? game.pendingEvent : effectivePanel} panel={effectivePanel} game={game} setGame={setGame} settings={settings} setSettings={setSettings} place={place} open={open} onClose={close} onAction={doAction} onMeet={meet} onVisitPlace={goToPlace} onStory={readMapStory} onStart={start} onNextWeek={nextWeek} onPlan={runPlan} onChoice={choose} onUse={useItem} onBuy={buyItem} onGift={gift} onReply={reply} onInitiate={initiate} onNavigateTask={navigateTask} onConfess={confess} onRomance={showRomance} audience={audience} setAudience={setAudience} onChat={chat} chatContact={chatContact} onLoad={load} onScene={changeScene} notify={notify}/>}</AnimatePresence></GameNoticeContext>
+    <AnimatePresence>{toast && !effectivePanel && <motion.div key={toast.id} className="game-toast" role="status" aria-live="polite" initial={{ opacity: 0, y: -15, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -8 }}><span className="toast-leaf"><Leaf size={20}/></span><p>{toast.text}</p><button onClick={() => setToast(null)} aria-label="关闭提示"><X size={16}/></button></motion.div>}</AnimatePresence>
   </div></MotionConfig>;
 }
 

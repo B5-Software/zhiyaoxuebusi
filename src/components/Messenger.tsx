@@ -5,6 +5,7 @@ import { bondStage, isRomanceId, markConversationRead, pendingChat, proactiveLoc
 import { PROACTIVE_TOPICS } from '../game/proactiveData';
 import { playerText } from '../game/player';
 import { getAppointments } from '../game/appointments';
+import { confessionLock } from '../game/romance';
 import type { CharacterId, GameState, Panel, RomanceId } from '../game/types';
 
 interface Props {
@@ -17,10 +18,11 @@ interface Props {
   onAction: (id: string) => void;
   onVisitPlace: (placeId: string) => void;
   onConfess: (id: RomanceId) => void;
+  onRomance: (id: RomanceId) => void;
   initialContact?: CharacterId;
 }
 
-export default function Messenger({ game, setGame, open, onReply, onInitiate, onGift, onAction, onVisitPlace, onConfess, initialContact }: Props) {
+export default function Messenger({ game, setGame, open, onReply, onInitiate, onGift, onAction, onVisitPlace, onConfess, onRomance, initialContact }: Props) {
   const [active, setActive] = useState<CharacterId>(() => initialContact ?? game.social.messages.find(message => !message.read)?.character ?? 'su');
   const [mobileChat, setMobileChat] = useState(!!initialContact);
   const [gift, setGift] = useState('milk');
@@ -31,8 +33,7 @@ export default function Messenger({ game, setGame, open, onReply, onInitiate, on
   const latestId = messages.at(-1)?.id;
   const script = pendingChat(game, active);
   const bond = isRomanceId(active) ? game.social.bonds[active] : null;
-  const confession = game.social.replies.find(reply => reply.scriptId === `${active}-confession`);
-  const canConfess = bond && bond.route === 'open' && confession?.choiceIndex === 1 && bond.trust >= 60 && bond.affection >= 55 && !game.social.partner;
+  const confession = isRomanceId(active) ? confessionLock(game, active) : null;
   const topics = PROACTIVE_TOPICS.filter(topic => topic.character === active && (!topic.datingOnly || game.social.partner === active) && (!topic.weekly || topic.minWeek === game.week));
   const appointments = isRomanceId(active) ? getAppointments(game, active).filter(item => !item.completed) : [];
   const meetingPlace = PLACES.find(place => place.id === appointments[0]?.placeId) ?? PLACES.find(place => place.actions.includes(active));
@@ -70,7 +71,8 @@ export default function Messenger({ game, setGame, open, onReply, onInitiate, on
       <div className="im-composer">
         {game.started && game.phase === 'school' && <div className="im-compose-tabs"><button className={composeMode === 'reply' ? 'active' : ''} aria-pressed={composeMode === 'reply'} onClick={() => setComposeMode('reply')}><MessageCircle size={13}/>回复消息{script && <i/>}</button><button className={composeMode === 'initiate' ? 'active' : ''} aria-pressed={composeMode === 'initiate'} onClick={() => setComposeMode('initiate')}><Send size={13}/>主动发消息</button>{bond && <button className={composeMode === "invite" ? "active" : ""} aria-pressed={composeMode === "invite"} onClick={() => setComposeMode("invite")}><Heart size={13}/>约见</button>}</div>}
         {composeMode !== 'reply' && game.started && game.phase === 'school' ? <><div className="im-reply-label"><Send size={13}/>{composeMode === "invite" ? "约对方在哪里见面？" : "想主动聊些什么？"}<small>发消息不消耗行动 · 赴约消耗 1 次</small></div><div className="im-topics">{topics.filter(topic => composeMode !== "invite" || topic.invitePlace).map(topic => { const lock = proactiveLock(game, topic); const sent = game.social.initiatives.some(item => item.topicId === topic.id); return <button key={topic.id} disabled={!!lock} title={lock ?? playerText(game, topic.text)} onClick={() => onInitiate(topic.id)}><span><strong>{topic.label}{sent && ' · 已聊过'}</strong><small>{lock ?? playerText(game, topic.text)}</small></span><Send size={14}/></button>; })}</div></> : script ? <><div className="im-reply-label"><Send size={13}/>选择你想发的话<small>回复不消耗行动</small></div><div className="im-replies">{script.choices.map((choice, index) => <button key={choice.text} onClick={() => onReply(script.id, index)} disabled={!!replyLock(game, script, index)} title={replyLock(game, script, index) ?? '发送这条回复'}><span>{playerText(game, choice.text)}</span><Send size={14}/></button>)}</div></> : <p className="im-waiting">{game.phase !== 'school' ? '这一年的消息已经收好，可以随时回来阅读。' : game.started ? '这一段已经聊完。新的生活，会带来新的消息。' : '先开启高三故事，收到第一条消息。'}</p>}
-        {game.started && game.phase === 'school' && <div className="im-gift-tools"><Gift size={14}/><select aria-label="选择要送的礼物" value={gift} onChange={event => setGift(event.target.value)}>{ITEMS.map(item => <option key={item.id} value={item.id}>{item.name} ×{game.inventory[item.id]}</option>)}</select><button onClick={() => onGift(active, gift)} disabled={!game.inventory[gift] || !!game.pendingEvent || bond?.lastGiftWeek === game.week}>送给{character.name}</button>{canConfess && isRomanceId(active) && <button className="im-confess" onClick={() => onConfess(active)}><Heart size={13}/>回应之前的告白</button>}</div>}
+        {game.started && game.phase === 'school' && <div className="im-gift-tools"><Gift size={14}/><select aria-label="选择要送的礼物" value={gift} onChange={event => setGift(event.target.value)}>{ITEMS.map(item => <option key={item.id} value={item.id}>{item.name} ×{game.inventory[item.id]}</option>)}</select><button onClick={() => onGift(active, gift)} disabled={!game.inventory[gift] || !!game.pendingEvent || bond?.lastGiftWeek === game.week}>送给{character.name}</button>{isRomanceId(active) && <><button className="im-confess" onClick={() => onRomance(active)}><Heart size={13}/>心事 · 恋爱界面</button>{game.social.partner !== active && <button className="im-confess" disabled={!!confession} title={confession ?? "认真说出心意"} onClick={() => onConfess(active)}><Heart size={13}/>主动表白</button>}</>}</div>}
+        {isRomanceId(active) && game.social.partner !== active && <p className="im-confession-hint">{confession ?? "彼此的心意与相处已准备好，可以主动表白。"}</p>}
       </div>
     </section>
   </div>;

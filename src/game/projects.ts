@@ -1,5 +1,7 @@
 import { CHARACTERS, ROMANCE_IDS } from './data';
 import { EVENTS } from './events';
+import { ROMANCE_PLACES } from './romanceData';
+import { romanceBusy } from './romance';
 import type { GameState, LongProject, ProjectProgress, QuestObjective } from './types';
 
 const eventGoal = (ids: string[]): QuestObjective => ({ text: ids.length > 1 ? `完成「${EVENTS.find(event => event.id === ids[0])?.storyline}」的任一结局` : `阅读「${EVENTS.find(event => event.id === ids[0])?.title ?? '此地故事'}」`, goal: 1, eventIds: ids, progress: game => Number(ids.some(id => game.seenEvents.includes(id))), target: { placeId: EVENTS.find(event => event.id === ids[0])?.placeId } });
@@ -49,10 +51,24 @@ LONG_PROJECTS.push(...ROMANCE_IDS.map(character => {
   ] };
 }));
 
+const datingTitles = { su: '把盛夏写进共读册', zhou: '只给彼此的毕业合奏', zhixia: '两座城市的光与留白', xinghe: '下一次一起抬头的星图', tangtang: '给未来的双人声音日记' };
+LONG_PROJECTS.push(...ROMANCE_IDS.map(character => ({
+  id: `project-love-${character}`, title: datingTitles[character], description: `和${CHARACTERS[character].name}用至少六周留下专属纪念。四个阶段同时检查投入、时间和专属剧情；冷静或分手时暂停，回忆与进度保留。`,
+  placeId: ROMANCE_PLACES[character], character, actionId: character, datingOnly: true,
+  reward: { mood: 12, autonomy: 5, bonds: { [character]: { trust: 8, affection: 8, understanding: 10 } } },
+  stages: [0, 1, 3, 5].map((scene, index) => ({
+    title: ['开场 · 留一个共同的想法', '相处 · 允许不同的声音', '磨合 · 把分歧说清楚', '纪念 · 给未来留一页'][index],
+    description: '每周投入一次行动，再在心事界面完成对应专属剧情。时间与条件都满足，周末继续下一阶段。',
+    weeks: [1, 2, 2, 1][index], work: [1, 2, 2, 1][index],
+    objective: { text: `完成第 ${scene + 1} 段恋爱专属剧情`, goal: 1, progress: (game: GameState) => Number(game.romance.memories.some(memory => memory.id.startsWith(`love-${character}-${scene}:`))), target: { panel: 'romance' as const, character } },
+  })),
+})));
+
 export function projectStartLock(game: GameState, project: LongProject) {
   if (!game.started) return '开启高三后可接受';
   if (game.phase !== 'school') return '校园篇已结束，可以回看项目';
-  if (game.pendingEvent) return '先收好眼前的故事';
+  if (game.pendingEvent || romanceBusy(game)) return '先收好眼前的故事';
+  if (project.datingOnly && (game.social.partner !== project.character || game.romance.bonds[project.character as typeof ROMANCE_IDS[number]].status !== 'normal')) return '与对方正常交往后解锁这条专属长期任务';
   if (game.quests.projects[project.id]) return '已经接受这个长期任务';
   const duration = project.stages.reduce((sum, stage) => sum + Math.max(stage.weeks, stage.work), 0);
   if (game.week + duration > 40) return `至少需要 ${duration} 个游戏周，毕业前的时间不足`;
@@ -65,6 +81,7 @@ export function advanceProjects(game: GameState, nextWeek: number): GameState['q
   for (const project of LONG_PROJECTS) {
     const progress = projects[project.id];
     if (!progress || progress.completedWeek !== null) continue;
+    if (project.datingOnly && (game.social.partner !== project.character || game.romance.bonds[project.character as typeof ROMANCE_IDS[number]].status !== 'normal')) continue;
     const stage = project.stages[progress.stage];
     const work = progress.contributions.filter(item => item.stage === progress.stage).length;
     if (work < stage.work || nextWeek - progress.stageStartedWeeks[progress.stage] < stage.weeks || stage.objective.progress(game) < stage.objective.goal) continue;

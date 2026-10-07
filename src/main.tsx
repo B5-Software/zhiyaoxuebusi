@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "@fontsource/zcool-kuaile";
 import "./index.css";
 import "./responsive.css";
+import "./romance.css";
 import App from "./App";
 
 createRoot(document.getElementById("root")!).render(

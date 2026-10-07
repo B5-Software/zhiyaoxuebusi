@@ -1,6 +1,7 @@
 import { CHARACTERS, ROMANCE_IDS } from './data';
 import { MESSAGE_SCRIPTS } from './socialData';
 import { PROACTIVE_TOPICS } from './proactiveData';
+import { confessionLock, romanceBusy } from './romance';
 import type { CharacterId, GameState, MessageScript, ProactiveTopic, RomanceId, SocialState } from './types';
 
 export const isRomanceId = (id: string): id is RomanceId => ROMANCE_IDS.includes(id as RomanceId);
@@ -10,7 +11,7 @@ export function createSocial(): SocialState {
 
 export function proactiveLock(game: GameState, topic: ProactiveTopic) {
   if (!game.started || game.phase !== 'school') return '开启校园生活后可以主动联系';
-  if (game.pendingEvent) return '先收好眼前的故事';
+  if (game.pendingEvent || romanceBusy(game)) return '先收好眼前的故事';
   if (game.social.initiatives.some(item => item.topicId === topic.id)) return '这段话题已经聊过了';
   if (game.week < topic.minWeek) return `第 ${topic.minWeek + 1} 周可以聊`;
   if (topic.weekly && game.week !== topic.minWeek) return '这周的话题已留在聊天回忆里';
@@ -25,6 +26,8 @@ export function proactiveLock(game: GameState, topic: ProactiveTopic) {
 
 export function bondStage(game: GameState, id: RomanceId) {
   const bond = game.social.bonds[id];
+  if (game.romance.bonds[id].status === 'cooling') return '恋人 · 暂时冷静';
+  if (game.romance.bonds[id].status === 'broken') return '已分开 · 保留回忆';
   return bond.route === 'dating' ? '恋人 · 慢慢同行' : bond.route === 'friendship' ? '珍惜的朋友' : bond.affection >= 45 && bond.trust >= 45 ? '彼此心动' : bond.trust >= 35 ? '渐渐靠近' : bond.trust >= 22 ? '开始熟悉' : '故事刚开始';
 }
 
@@ -33,8 +36,8 @@ export function unreadCount(game: GameState, id?: CharacterId) {
 }
 
 export function pendingChat(game: GameState, id: CharacterId) {
-  const message = game.social.messages.find(item => item.character === id && item.scriptId && !game.social.replies.some(reply => reply.scriptId === item.scriptId));
-  return MESSAGE_SCRIPTS.find(script => script.id === message?.scriptId);
+  const eligibleMessages = game.social.messages.filter(item => item.character === id && item.scriptId && !game.social.replies.some(reply => reply.scriptId === item.scriptId));
+  return eligibleMessages.map(item => MESSAGE_SCRIPTS.find(script => script.id === item.scriptId)).find(script => script && (!isRomanceId(id) || (!script.datingOnly || game.social.partner === id && game.romance.bonds[id].status === 'normal') && (!script.romantic || game.social.bonds[id].route === 'open' && (!game.social.partner || game.social.partner === id))));
 }
 
 export function messageEligible(game: GameState, script: MessageScript) {
@@ -44,6 +47,8 @@ export function messageEligible(game: GameState, script: MessageScript) {
     const bond = game.social.bonds[script.character];
     if (script.romantic && (bond.route === 'friendship' || game.social.partner && game.social.partner !== script.character)) return false;
     if (script.datingOnly && bond.route !== 'dating') return false;
+    if (script.datingOnly && game.romance.bonds[script.character].status !== 'normal') return false;
+    if (script.id.endsWith('-confession') && confessionLock(game, script.character)) return false;
     if (bond.trust < (script.minTrust ?? 0) || bond.affection < (script.minAffection ?? 0)) return false;
   }
   return true;
@@ -74,10 +79,11 @@ export function replyLock(game: GameState, script: MessageScript, index: number)
   const choice = script.choices[index];
   if (!choice) return '没有这条回复';
   if (!game.started || game.phase !== 'school') return '校园消息已成为纪念，可以回看聊天';
-  if (game.pendingEvent) return '先读完眼前的故事';
+  if (game.pendingEvent || romanceBusy(game)) return '先读完眼前的故事';
   if (pendingChat(game, script.character)?.id !== script.id) return '这条消息已经回复过了';
   if (game.stats.money + (choice.effect.money ?? 0) < 0) return '零花钱不足';
   if (choice.route === 'dating' && game.social.partner && game.social.partner !== script.character) return `你已与${CHARACTERS[game.social.partner].name}约定恋爱关系`;
+  if (choice.route === 'dating' && isRomanceId(script.character)) return confessionLock(game, script.character);
   return null;
 }
 
@@ -93,7 +99,7 @@ export function validateSocial(raw: unknown): SocialState | null {
   if (raw.delivered.length > MESSAGE_SCRIPTS.length || new Set(raw.delivered).size !== raw.delivered.length || !raw.delivered.every(validScript)) return null;
   if (raw.replies.length > raw.delivered.length || new Set(raw.replies.map(reply => record(reply) ? reply.scriptId : undefined)).size !== raw.replies.length) return null;
   if (!raw.replies.every(reply => record(reply) && raw.delivered instanceof Array && raw.delivered.includes(reply.scriptId) && number(reply.week, 39) && Number.isInteger(reply.week) && MESSAGE_SCRIPTS.some(script => script.id === reply.scriptId && Number.isInteger(reply.choiceIndex) && !!script.choices[Number(reply.choiceIndex)]))) return null;
-  if (raw.messages.length > MESSAGE_SCRIPTS.length * 3 + PROACTIVE_TOPICS.length * 2 + 10 || new Set(raw.messages.map(message => record(message) ? message.id : undefined)).size !== raw.messages.length) return null;
+  if (raw.messages.length > 6000 || new Set(raw.messages.map(message => record(message) ? message.id : undefined)).size !== raw.messages.length) return null;
   if (!raw.messages.every(message => record(message) && typeof message.id === 'string' && message.id.length < 100 && Object.prototype.hasOwnProperty.call(CHARACTERS, String(message.character)) && ['incoming', 'outgoing'].includes(String(message.side)) && typeof message.text === 'string' && message.text.length < 1000 && typeof message.read === 'boolean' && number(message.week, 39) && Number.isInteger(message.week) && (message.scriptId === undefined || validScript(message.scriptId)))) return null;
   const social = createSocial();
   for (const id of ROMANCE_IDS) {

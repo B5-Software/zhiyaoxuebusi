@@ -1,0 +1,85 @@
+.age-gate, .content-warning { display: grid; gap: 16px; color: #7c8062; line-height: 1.8; }
+.modal-status { display: flex; align-items: center; gap: 12px; padding: 8px clamp(12px, 2.5vw, 26px); border-bottom: 1px dashed #d3cfb1; background: #eef1dc; color: #829469; flex-shrink: 0; max-height: 20dvh; overflow-y: auto; }
+.modal-status p { margin: 0; flex: 1; min-width: 0; overflow-wrap: anywhere; font-size: 11px; line-height: 1.6; }
+.modal-status button { flex-shrink: 0; padding: 4px; color: #899b75; }
+.age-gate > svg, .content-warning > svg { margin: 0 auto; color: #94a77b; }
+.age-gate p, .content-warning p { margin: 0; }
+.age-options { display: grid; gap: 10px; }
+.age-options button { width: 100%; white-space: normal; min-height: 46px; }
+.content-warning label, .audience-settings label { display: flex; gap: 9px; align-items: center; font-size: 13px; }
+.audience-settings { margin-top: 24px; border-top: 1px dashed #d8cba7; padding-top: 20px; display: grid; gap: 12px; }
+.romance-modal { width: min(920px, calc(100vw - 24px)); }
+.romance-panel { color: #788266; min-width: 0; }
+.romance-panel button, .romance-panel label, .romance-panel p { overflow-wrap: anywhere; }
+.love-contact-tabs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-bottom: 24px; }
+.love-contact-tabs button { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px; border: 1px solid #d9cfac; border-radius: 12px; padding: 8px 5px; font-size: 12px; background: #faf5e5; }
+.love-contact-tabs button.active { background: #e3ebd0; border-color: #93a878; }
+.love-contact-tabs img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+.love-profile { display: flex; align-items: center; gap: 18px; }
+.love-profile > img { width: 86px; height: 86px; object-fit: cover; border: 3px solid #fff5d8; border-radius: 50%; flex-shrink: 0; }
+.love-profile h3 { font-family: var(--font-display); font-size: 26px; margin: 6px 0; }
+.love-profile p, .love-profile small { font-size: 12px; color: #a29474; margin: 4px 0; line-height: 1.6; }
+.love-bond-values { display: flex; flex-wrap: wrap; gap: 14px; padding: 16px 0; font-size: 12px; }
+.love-bond-values b { font-size: 18px; padding-left: 5px; color: #94a379; }
+.love-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0 0 20px; }
+.love-overview p, .love-spend p, .love-boundaries p, .love-memories p { font-size: 13px; line-height: 1.9; }
+.love-overview blockquote { margin: 12px 0; padding: 13px 18px; border-left: 3px solid #b7c298; background: #eeeacf; font-size: 13px; }
+.love-confession, .love-gifts, .love-home-visit, .love-confirm { background: #f8f3e3; border: 1px dashed #d4cba7; padding: 18px; border-radius: 12px; margin: 16px 0; }
+.love-lock { display: block; color: #a69170; font-size: 12px; line-height: 1.7; margin: 10px 0; }
+.love-links { display: flex; flex-wrap: wrap; gap: 9px; margin: 18px 0; }
+.love-links button { white-space: normal; }
+.love-story-list h4, .love-gifts h4, .love-home-visit h4 { font-family: var(--font-display); font-size: 20px; }
+.love-story-list > button { display: flex; width: 100%; gap: 12px; align-items: center; justify-content: space-between; border-top: 1px dashed #dbd0aa; padding: 15px 0; text-align: left; }
+.love-story-list > button small, .love-operations small, .mature-entry small { display: block; font-size: 11px; line-height: 1.6; font-weight: normal; margin-top: 5px; }
+.love-story-list > button:disabled, .love-operations button:disabled { opacity: .58; }
+.love-art { width: 100%; border-radius: 12px; aspect-ratio: 2/1; object-fit: cover; }
+.love-operations { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.love-operations button { display: block; text-align: left; white-space: normal; padding: 14px; min-width: 0; }
+.love-operations strong { font-size: 14px; }
+.love-home-visit .mature-entry { display: block; width: 100%; text-align: left; margin-top: 14px; white-space: normal; }
+.love-gifts label { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 12px 0; font-size: 13px; }
+.love-gifts select { max-width: 100%; border: 1px solid #d7caa4; border-radius: 7px; background: #fff9eb; padding: 8px; font: inherit; }
+.love-gifts > button { white-space: normal; }
+.handmade-progress { border-top: 1px dashed #d3caa9; padding-top: 16px; margin-top: 16px; }
+.handmade-progress button { white-space: normal; }
+.love-boundaries > p:first-child { display: flex; align-items: flex-start; gap: 9px; }
+.love-boundaries > p > svg { flex-shrink: 0; margin-top: 5px; }
+.love-boundary { display: flex; gap: 15px; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px dashed #d8caa6; }
+.love-boundary strong { display: block; font-size: 14px; }
+.love-boundary small { display: block; font-size: 12px; margin-top: 6px; line-height: 1.7; color: #a19579; }
+.love-boundary input { flex-shrink: 0; width: 20px; height: 20px; accent-color: #8ea276; }
+.love-attention { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 20px 0; }
+.love-attention span { text-align: center; border-radius: 10px; padding: 12px 4px; background: #eaeed8; font-size: 12px; }
+.love-attention b { display: block; margin-top: 5px; }
+.love-confirm .button-row { flex-wrap: wrap; }
+.love-memories article { border-left: 2px solid #bdc7a5; padding: 12px 18px; margin: 0 0 16px; background: #f2efdc; border-radius: 0 10px 10px 0; }
+.love-memories h4 { font-family: var(--font-display); margin: 10px 0; font-size: 19px; }
+.npc-map-marker { position: absolute; z-index: 4; width: 37px; transform: translate(-50%, -50%); scale: calc(1 / var(--map-zoom, 1)); transform-origin: center; border: 0; padding: 0; }
+.npc-map-marker img { width: 36px; height: 36px; border-radius: 50%; border: 2px solid #fff4d6; outline: 1px solid #92a477; object-fit: cover; box-shadow: 0 4px 9px #41544040; }
+.npc-map-marker > span { display: flex; justify-content: center; align-items: center; gap: 3px; white-space: nowrap; position: absolute; left: 50%; transform: translateX(-50%); top: 39px; color: #687d54; background: #fff5dde8; border-radius: 4px; padding: 2px 5px; font-size: 9px; }
+.npc-map-marker.following img { outline-color: #bb9180; }
+.npc-map-marker.following > span { color: #9c796d; }
+.npc-map-marker:hover, .npc-map-marker:focus-visible { z-index: 8; }
+.im-confession-hint { font-size: 11px; color: #a29372; line-height: 1.6; margin: 8px 0 0; }
+.location-romance { padding-inline: var(--location-inset); margin: 20px 0; }
+.location-romance h3 { display: flex; align-items: center; gap: 8px; font-family: var(--font-display); font-size: 21px; margin-bottom: 12px; }
+.location-romance .appointment-card { width: 100%; margin-bottom: 8px; justify-content: space-between; text-align: left; }
+.location-romance .appointment-card small { display: block; line-height: 1.7; margin-top: 6px; }
+.im-gift-tools { flex-wrap: wrap; }
+.im-gift-tools .im-confess { white-space: normal; }
+@media (max-width: 600px) {
+  .love-contact-tabs { gap: 5px; }
+  .love-contact-tabs button { font-size: 11px; }
+  .love-contact-tabs button > svg { display: none; }
+  .love-profile { gap: 12px; }
+  .love-profile > img { width: 65px; height: 65px; }
+  .love-profile h3 { font-size: 23px; }
+  .love-operations { gap: 8px; }
+  .love-operations button { padding: 10px; }
+  .love-operations strong { font-size: 13px; }
+  .love-gifts, .love-confession, .love-home-visit, .love-confirm { padding: 13px; }
+  .love-art { aspect-ratio: 1.8; }
+  .npc-map-marker { width: 31px; }
+  .npc-map-marker img { width: 30px; height: 30px; }
+  .npc-map-marker > span { top: 32px; font-size: 8px; }
+}

@@ -66,7 +66,7 @@ export interface University {
 }
 
 export interface GameState {
-  version: 2;
+  version: 3;
   started: boolean;
   name: string;
   nameIsCustom: boolean;
@@ -79,6 +79,8 @@ export interface GameState {
   subjects: Record<SubjectKey, number>;
   relations: Record<CharacterId, number>;
   social: SocialState;
+  romance: RomanceState;
+  world: { scene: Scene; placeId: string; x: number; y: number };
   quests: QuestState;
   inventory: Record<string, number>;
   seenEvents: string[];
@@ -174,6 +176,7 @@ export interface LongProject {
   character: CharacterId;
   actionId: string;
   minTrust?: number;
+  datingOnly?: boolean;
   stages: { title: string; description: string; weeks: number; work: number; objective: QuestObjective }[];
   reward: Effect;
 }
@@ -228,4 +231,23 @@ export interface SaveSlot {
   game: GameState;
 }
 
-export type Panel = 'start' | 'menu' | 'settings' | 'saves' | 'help' | 'world-map' | 'quests' | 'messages' | 'location' | 'study' | 'bag' | 'relations' | 'journal' | 'universities' | 'schedule' | 'achievements' | 'profile' | 'week' | 'exam' | 'result' | 'ending' | 'event' | 'new-confirm' | null;
+export type Panel = 'age' | 'romance' | 'romance-story' | 'start' | 'menu' | 'settings' | 'saves' | 'help' | 'world-map' | 'quests' | 'messages' | 'location' | 'study' | 'bag' | 'relations' | 'journal' | 'universities' | 'schedule' | 'achievements' | 'profile' | 'week' | 'exam' | 'result' | 'ending' | 'event' | 'new-confirm' | null;
+
+export type ViewerAge = 'unknown' | 'minor' | 'adult';
+export interface Audience { age: ViewerAge; skipPrivate: boolean }
+export interface RomanceMemory { id: string; character: RomanceId; week: number; title: string; result: string; skipped?: boolean }
+export interface RomanceBond {
+  status: 'normal' | 'cooling' | 'broken'; sinceWeek: number; episode: number;
+  meetWeeks: number[]; lastConfessWeek: number; lastTouchWeek: number;
+  lastDateWeek: number; lastHomeWeek: number; lastTalkWeek: number;
+  boundaries: { publicAffection: boolean; homeVisits: boolean; touch: boolean };
+  handmade: { startedWeek: number; weeks: number[]; gifted: boolean } | null;
+}
+export interface RomanceState {
+  bonds: Record<RomanceId, RomanceBond>;
+  memories: RomanceMemory[];
+  active: { id: string; character: RomanceId; week: number } | null;
+  escort: RomanceId | null; visitor: RomanceId | null;
+  cancelledAppointments: string[];
+  attention: { school: number; family: number; rumor: number; lastConcernWeek: number; queued: 'school' | 'family' | 'rumor' | null };
+}

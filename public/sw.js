@@ -1,8 +1,8 @@
-const CACHE = 'shiguang-campus-v2.4.0';
+const CACHE = 'shiguang-campus-v2.7.0';
 // Works both at the domain root and under a repository sub-path (GitHub Pages project sites).
 const BASE = new URL(self.registration.scope).pathname;
 const ART = ['campus', 'student', 'companion', 'teacher', 'mother', 'friend', 'classroom', 'home', 'city', 'graduation'];
-const MAP_ART = ['world-map', 'library', 'laboratory', 'arts', 'park', 'market', 'university', 'zhixia', 'xinghe', 'tangtang', 'cloud-frame'];
+const MAP_ART = ['world-map', 'library', 'laboratory', 'arts', 'park', 'market', 'university', 'zhixia', 'xinghe', 'tangtang', 'cloud-frame', 'romance-moments', 'romance-men-moments'];
 const PRECACHE = [BASE, `${BASE}favicon.svg`, `${BASE}manifest.webmanifest`, ...ART.map(name => `${BASE}images/${name}.jpg`), ...MAP_ART.map(name => `${BASE}images/${name}.webp`)];
 
 self.addEventListener('install', event => {

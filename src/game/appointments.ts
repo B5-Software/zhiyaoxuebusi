@@ -12,6 +12,7 @@ export const APPOINTMENT_SOURCES = [
 
 export function getAppointments(game: GameState, character?: RomanceId) {
   return APPOINTMENT_SOURCES.flatMap(source => {
+    if (game.romance.cancelledAppointments.includes(source.id)) return [];
     if (character && source.character !== character) return [];
     const invitation = source.kind === 'topic'
       ? game.social.initiatives.find(item => item.topicId === source.id)
@@ -39,7 +40,7 @@ export const MEETING_EVENTS: StoryEvent[] = APPOINTMENT_SOURCES.map(source => {
   return {
     id: `meeting-${source.id}`, appointmentSource: source.id, title: source.kind === 'script' ? `两个人的约定 · ${title}` : title,
     chapter: `与${name}的约见`, minWeek: 0, maxWeek: 39, speaker: source.character, scene: place.scene,
-    paragraphs: [`{{player}}按照聊天里的约定来到${place.name}。${name}看到你，向身旁空着的位置招了招手。`, paragraph],
+    paragraphs: [`{{player}}按照聊天里的约定来到${place.name}。${name}看到你，向身旁空着的位置招了招手。`, source.kind === 'script' ? `${paragraph}这一次，你们聊到上次回家后一直想说的话，也确认以后可以坦白需要个人空间。` : paragraph],
     choices: [
       { text: firstChoice, result: firstResult, effect: { mood: 4, bonds: { [source.character]: { trust: 3, affection: 4, understanding: 5 } } } },
       { text: secondChoice, result: secondResult, effect: { stress: -3, bonds: { [source.character]: { trust: 5, affection: 2, understanding: 7 } } } },

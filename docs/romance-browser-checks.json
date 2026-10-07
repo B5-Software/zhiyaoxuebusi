@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-07T05:50:22.584Z",
+  "results": [
+    {
+      "actions": 2,
+      "failures": [],
+      "height": 568,
+      "width": 320,
+      "noExtraAction": true,
+      "skipped": true,
+      "warningOnRefresh": true
+    },
+    {
+      "actions": 2,
+      "failures": [],
+      "height": 844,
+      "width": 390,
+      "noExtraAction": true,
+      "skipped": true,
+      "warningOnRefresh": true
+    },
+    {
+      "actions": 2,
+      "failures": [],
+      "height": 600,
+      "width": 768,
+      "noExtraAction": true,
+      "skipped": true,
+      "warningOnRefresh": true
+    },
+    {
+      "actions": 2,
+      "failures": [],
+      "height": 900,
+      "width": 1280,
+      "noExtraAction": true,
+      "skipped": true,
+      "warningOnRefresh": true
+    },
+    {
+      "actions": 2,
+      "failures": [],
+      "height": 390,
+      "width": 844,
+      "noExtraAction": true,
+      "skipped": true,
+      "warningOnRefresh": true
+    }
+  ],
+  "relationshipResults": [
+    {
+      "breakupRetainedMemories": 3,
+      "exclusiveStoryCost": 1,
+      "failures": [],
+      "followedAcrossMap": true,
+      "height": 844,
+      "width": 390
+    },
+    {
+      "breakupRetainedMemories": 3,
+      "exclusiveStoryCost": 1,
+      "failures": [],
+      "followedAcrossMap": true,
+      "height": 900,
+      "width": 1280
+    }
+  ]
+}

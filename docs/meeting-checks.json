@@ -1,15 +1,15 @@
 {
   "date": "2026-10-07",
-  "version": "2.4.0",
+  "version": "2.7.0",
   "results": [
     {
       "width": 320,
       "height": 568,
       "alignment": {
-        "appointmentLeft": 26.172760009765625,
-        "storyLeft": 26.172760009765625,
-        "appointmentRight": 293.82720947265625,
-        "storyRight": 293.82720947265625
+        "appointmentLeft": 27.520000457763672,
+        "storyLeft": 27.520000457763672,
+        "appointmentRight": 292.4799919128418,
+        "storyRight": 292.4799919128418
       },
       "meetingSaved": true,
       "actions": 3,
@@ -20,10 +20,10 @@
       "width": 390,
       "height": 844,
       "alignment": {
-        "appointmentLeft": 28.92000961303711,
-        "storyLeft": 28.92000961303711,
-        "appointmentRight": 361.0800132751465,
-        "storyRight": 361.0800132751465
+        "appointmentLeft": 25.46631622314453,
+        "storyLeft": 25.46631622314453,
+        "appointmentRight": 364.53369903564453,
+        "storyRight": 364.53369903564453
       },
       "meetingSaved": true,
       "actions": 3,
@@ -48,10 +48,10 @@
       "width": 1280,
       "height": 900,
       "alignment": {
-        "appointmentLeft": 311.6778259277344,
-        "storyLeft": 311.6778259277344,
-        "appointmentRight": 968.3221130371094,
-        "storyRight": 968.3221130371094
+        "appointmentLeft": 311.6800231933594,
+        "storyLeft": 311.6800231933594,
+        "appointmentRight": 968.3199157714844,
+        "storyRight": 968.3199157714844
       },
       "meetingSaved": true,
       "actions": 3,
@@ -62,10 +62,10 @@
       "width": 844,
       "height": 390,
       "alignment": {
-        "appointmentLeft": 88.80422973632812,
-        "storyLeft": 88.80422973632812,
-        "appointmentRight": 755.1958312988281,
-        "storyRight": 755.1958312988281
+        "appointmentLeft": 88.97001647949219,
+        "storyLeft": 88.97001647949219,
+        "appointmentRight": 755.0300140380859,
+        "storyRight": 755.0300140380859
       },
       "meetingSaved": true,
       "actions": 3,

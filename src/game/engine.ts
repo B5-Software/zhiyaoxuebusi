@@ -7,6 +7,7 @@ import { QUESTS, createQuestState, questView, validateQuests } from './quests';
 import { LONG_PROJECTS, advanceProjects, projectStartLock } from './projects';
 import { DEFAULT_PLAYER_NAME, migratePlayerName } from './player';
 import { getAppointments } from './appointments';
+import { advanceRomance, beginRomanceScene, createRomance, establishRelationship, flushConcern, rememberConfession, rememberMeeting, romanceBusy, validateRomance } from './romance';
 import type { CharacterId, Effect, GameAction, GameState, RomanceId, SaveSlot, Scene, Settings, StatKey, StoryEvent } from './types';
 
 export const SAVE_KEY = 'shiguang-school-save-v2';
@@ -20,7 +21,8 @@ const MILESTONES: Record<number, string> = { 8: 'midterm', 16: 'winter-holiday',
 
 export function createGame(): GameState {
   return {
-    version: 2, started: false, name: DEFAULT_PLAYER_NAME, nameIsCustom: false, difficulty: 'standard', targetSchool: 'xjtu',
+    version: 3, started: false, name: DEFAULT_PLAYER_NAME, nameIsCustom: false, difficulty: 'standard', targetSchool: 'xjtu',
+    romance: createRomance(), world: { scene: 'campus', placeId: 'classroom', x: 54, y: 74 },
     week: 0, actions: 0, weeklyActions: [],
     stats: { energy: 80, mood: 75, stress: 28, health: 85, money: 120, autonomy: 35 },
     subjects: { chinese: 90, math: 86, english: 94, physics: 64, chemistry: 58, biology: 66 },
@@ -80,7 +82,7 @@ export function applyEffect(game: GameState, effect: Effect): GameState {
 export function canAct(game: GameState, action: GameAction): string | null {
   if (!game.started) return '先为你的高三故事写下名字吧。';
   if (game.phase !== 'school') return '这一年的校园行动已经结束，去看看你的下一段旅程吧。';
-  if (game.pendingEvent) return '先听完眼前这个故事吧。';
+  if (game.pendingEvent || romanceBusy(game)) return '先听完眼前这个故事吧。';
   if (game.actions >= 3) return '本周的三个行动已完成，休整后进入下一周吧。';
   const effect = actionEffect(game, action);
   if (game.stats.energy + (effect.energy ?? 0) < 0) return '体力不够啦，先休息一下，或用背包里的食物补充体力。';
@@ -105,14 +107,15 @@ export function performAction(game: GameState, actionId: string): { game: GameSt
     next.social = { ...next.social, bonds: { ...next.social.bonds, [actionId]: { ...bond, meetings: bond.meetings + 1, lastMeetWeek: game.week, affection: clamp(bond.affection + (firstThisWeek ? 5 : 0)), understanding: clamp(bond.understanding + (firstThisWeek ? 4 : 0)) } } };
   }
   const gain = predictedScore(next) - before;
-  return { game: deliverMessages(next), message: `${action.name}，${gain > 0 ? `学力成长 +${gain}` : '给自己充了一点电'}。${next.actions === 3 ? '本周已圆满结束！' : `本周还可行动 ${3 - next.actions} 次。`}` };
+  return { game: deliverMessages(isRomanceId(actionId) ? rememberMeeting(next, actionId) : next), message: `${action.name}，${gain > 0 ? `学力成长 +${gain}` : '给自己充了一点电'}。${next.actions === 3 ? '本周已圆满结束！' : `本周还可行动 ${3 - next.actions} 次。`}` };
 }
 
 export function advanceWeek(game: GameState): GameState {
-  if (game.phase !== 'school' || game.pendingEvent) return game;
+  if (game.phase !== 'school' || game.pendingEvent || romanceBusy(game)) return game;
   const week = game.week + 1;
   let next = applyEffect(game, { energy: 28, mood: 3, stress: -5, money: 40, health: game.stats.stress > 80 ? -5 : 2 });
   next = { ...next, week, actions: 0, weeklyActions: [], quests: advanceProjects(game, week), seed: (game.seed * 16807) % 2147483647 };
+  next = advanceRomance(next);
   if (next.stats.health < 25) {
     next = applyEffect(next, { health: 30, energy: 30, stress: -25 });
     next.actionLog = [{ week, text: '在家人和老师的支持下，安排了一次必要的休养。' }, ...next.actionLog];
@@ -133,7 +136,7 @@ export function eventLock(game: GameState, event: StoryEvent): string | null {
   if (!game.started) return '开启高三故事后可阅读';
   if (game.seenEvents.includes(event.id)) return '已收进青春手帐';
   if (game.phase !== 'school') return '校园篇已结束，可在手帐回看';
-  if (game.pendingEvent) return '先收好眼前的故事';
+  if (game.pendingEvent || romanceBusy(game)) return '先收好眼前的故事';
   if (event.placeId && game.actions >= 3) return '本周行动已用完，下周再来继续这段故事。';
   if (event.requires) {
     const previous = game.history.find(entry => entry.eventId === event.requires!.eventId);
@@ -183,7 +186,7 @@ export function resolveEvent(game: GameState, choiceIndex: number): { game: Game
   if ((choice.effect.money ?? 0) + game.stats.money < 0) return { game, message: '零花钱不足，试试另一个选择。' };
   const next = applyEffect(game, choice.effect);
   return {
-    game: deliverMessages({ ...next, pendingEvent: null, seenEvents: [...game.seenEvents, event.id], history: [...game.history, { eventId: event.id, choiceIndex, week: game.week, result: choice.result }] }),
+    game: flushConcern(deliverMessages({ ...next, pendingEvent: null, seenEvents: [...game.seenEvents, event.id], history: [...game.history, { eventId: event.id, choiceIndex, week: game.week, result: choice.result }] })),
     message: choice.result,
   };
 }
@@ -194,13 +197,14 @@ export function replyMessage(game: GameState, scriptId: string, index: number): 
   const error = replyLock(game, script, index);
   if (error) return { game, error };
   const choice = script.choices[index];
-  const next = applyEffect(game, choice.effect);
+  const effected = applyEffect(game, choice.effect);
+  const next = script.id.endsWith('-confession') && isRomanceId(script.character) ? rememberConfession(effected, script.character) : effected;
   let social = next.social;
   if (choice.route && isRomanceId(script.character)) {
     social = { ...social, partner: choice.route === 'dating' ? script.character : social.partner, bonds: { ...social.bonds, [script.character]: { ...social.bonds[script.character], route: choice.route } } };
   }
   next.social = { ...social, replies: [...social.replies, { scriptId, choiceIndex: index, week: game.week }], messages: [...social.messages.map(item => item.character === script.character ? { ...item, read: true } : item), { id: `${scriptId}-out`, character: script.character, side: 'outgoing', text: choice.text, week: game.week, read: true }, { id: `${scriptId}-response`, character: script.character, side: 'incoming', text: choice.result, week: game.week, read: true }] };
-  return { game: deliverMessages(next), message: choice.route === 'dating' ? `你与${CHARACTERS[script.character].name}开始了恋爱路线。` : choice.route === 'friendship' ? '你们约定继续认真做朋友。' : '消息已发送，聊天已自动保存。' };
+  return { game: deliverMessages(choice.route === 'dating' && isRomanceId(script.character) ? establishRelationship(next, script.character) : next), message: choice.route === 'dating' ? `你与${CHARACTERS[script.character].name}开始了恋爱路线。` : choice.route === 'friendship' ? '你们约定继续认真做朋友。' : '消息已发送，聊天已自动保存。' };
 }
 
 export function initiateMessage(game: GameState, topicId: string): { game: GameState; error?: string; message?: string } {
@@ -231,7 +235,7 @@ export function attendAppointment(game: GameState, eventId: string): { game: Gam
 
 export function claimQuest(game: GameState, id: string): { game: GameState; error?: string } {
   const quest = QUESTS.find(item => item.id === id);
-  if (!quest || game.pendingEvent || questView(game, quest).status !== 'ready') return { game, error: '任务尚未完成，或奖励已经领过。' };
+  if (!quest || game.pendingEvent || romanceBusy(game) || questView(game, quest).status !== 'ready') return { game, error: '任务尚未完成，或奖励已经领过。' };
   const next = applyEffect(game, quest.reward);
   return { game: { ...next, quests: { ...next.quests, claimed: [...next.quests.claimed, id] } } };
 }
@@ -248,6 +252,7 @@ export function projectWorkLock(game: GameState, id: string) {
   const project = LONG_PROJECTS.find(item => item.id === id);
   const progress = game.quests.projects[id];
   if (!project || !progress) return '先接受这个长期任务';
+  if (project.datingOnly && (game.social.partner !== project.character || game.romance.bonds[project.character as RomanceId].status !== 'normal')) return '恋爱暂停或结束，这个项目保留进度，恢复交往后可继续';
   if (progress.completedWeek !== null) return '项目已经完成';
   if (progress.contributions.some(item => item.week === game.week)) return '本周已经投入，下一周继续';
   if (progress.contributions.filter(item => item.stage === progress.stage).length >= project.stages[progress.stage].work) return '本阶段投入已满，完成剧情条件并结束本周后推进';
@@ -266,21 +271,18 @@ export function workOnProject(game: GameState, id: string): { game: GameState; e
 export function claimProject(game: GameState, id: string): { game: GameState; error?: string } {
   const project = LONG_PROJECTS.find(item => item.id === id);
   const progress = game.quests.projects[id];
-  if (!project || !progress || progress.completedWeek === null || progress.claimed || game.pendingEvent) return { game, error: '长期任务还没完成，或奖励已经领过。' };
+  if (!project || !progress || progress.completedWeek === null || progress.claimed || game.pendingEvent || romanceBusy(game)) return { game, error: '长期任务还没完成，或奖励已经领过。' };
   const next = applyEffect(game, project.reward);
   return { game: { ...next, quests: { ...next.quests, projects: { ...next.quests.projects, [id]: { ...progress, claimed: true } } } } };
 }
 
 export function confirmRelationship(game: GameState, id: RomanceId): { game: GameState; error?: string } {
-  const bond = game.social.bonds[id];
-  const previous = game.social.replies.find(reply => reply.scriptId === `${id}-confession`);
-  if (game.phase !== 'school' || game.pendingEvent || previous?.choiceIndex !== 1 || bond.route !== 'open' || game.social.partner || bond.trust < 60 || bond.affection < 55) return { game, error: '先继续了解彼此，这个约定还需要双方的心意。' };
-  return { game: { ...game, updatedAt: new Date().toISOString(), social: { ...game.social, partner: id, bonds: { ...game.social.bonds, [id]: { ...bond, route: 'dating' } }, messages: [...game.social.messages, { id: `${id}-confession-followup`, character: id, side: 'outgoing', text: '我想清楚了，我也喜欢你。我们试着在一起好吗？', week: game.week, read: true }, { id: `${id}-confession-accepted`, character: id, side: 'incoming', text: '好。谢谢你认真想过，再把自己的答案告诉我。以后我们也这样，好好说话。', week: game.week, read: true }] } } };
+  return beginRomanceScene(game, id, 'confess');
 }
 
 export function giveCharacterGift(game: GameState, id: CharacterId, itemId = 'milk'): { game: GameState; error?: string; message?: string } {
   const item = ITEMS.find(item => item.id === itemId);
-  if (!game.started || game.phase !== 'school' || game.pendingEvent) return { game, error: '先继续眼前的故事，再把心意送出去吧。' };
+  if (!game.started || game.phase !== 'school' || game.pendingEvent || romanceBusy(game)) return { game, error: '先继续眼前的故事，再把心意送出去吧。' };
   if (!item || !(game.inventory[itemId] > 0)) return { game, error: '背包里没有这个物品，可以先补充一点。' };
   const peer = isRomanceId(id);
   if (peer && game.social.bonds[id].lastGiftWeek === game.week) return { game, error: '本周的心意已经收到啦，下次见面再带一点。' };
@@ -347,7 +349,7 @@ export function validateGame(raw: unknown): GameState | null {
     social.bonds.zhou.trust = Number(legacyRelations.zhou);
     raw = { ...raw, version: 2, relations: { ...legacyRelations, zhixia: 15, xinghe: 15, tangtang: 15 }, social };
   }
-  if (!isRecord(raw) || raw.version !== 2 || typeof raw.name !== 'string' || !raw.name.trim() || raw.name.length > 16 || typeof raw.started !== 'boolean') return null;
+  if (!isRecord(raw) || raw.version !== 2 && raw.version !== 3 || typeof raw.name !== 'string' || !raw.name.trim() || raw.name.length > 16 || typeof raw.started !== 'boolean') return null;
   if (raw.nameIsCustom !== undefined && typeof raw.nameIsCustom !== 'boolean') return null;
   if (!validNumber(raw.week, 40) || !Number.isInteger(raw.week) || !validNumber(raw.actions, 3) || !Number.isInteger(raw.actions)) return null;
   if (!['gentle', 'standard'].includes(String(raw.difficulty)) || !['school', 'exam', 'application', 'ending'].includes(String(raw.phase))) return null;
@@ -393,6 +395,15 @@ export function validateGame(raw: unknown): GameState | null {
   result.inventory = Object.fromEntries(ITEMS.map(item => [item.id, (raw.inventory as Record<string, number>)[item.id]]));
   result.social = social;
   result.quests = quests;
+  result.version = 3;
+  const romance = validateRomance(raw.romance, result, raw.version === 2);
+  if (!romance) return null;
+  result.romance = romance;
+  if (raw.version === 3) {
+    const world = raw.world;
+    if (!isRecord(world) || !PLACES.some(place => place.scene === world.scene && place.id === world.placeId) || !validNumber(world.x) || !validNumber(world.y)) return null;
+    result.world = { scene: world.scene as Scene, placeId: String(world.placeId), x: Number(world.x), y: Number(world.y) };
+  }
   result.history = result.history.map(({ eventId, choiceIndex, week, result: outcome }) => ({ eventId, choiceIndex, week, result: outcome }));
   result.actionLog = result.actionLog.map(({ week, text }) => ({ week, text }));
   result.wishes = result.wishes.map(({ schoolId, major }) => ({ schoolId, major }));
@@ -425,7 +436,7 @@ export function persistGame(game: GameState): boolean {
     let previous: GameState | null = null;
     try { previous = previousText ? validateGame(JSON.parse(previousText)) : null; } catch { /* Preserve valid backups if the primary is damaged. */ }
     if (previous?.started) {
-      const fingerprint = (value: GameState) => `${value.seed}:${value.week}:${value.phase}:${value.actions}:${value.history.length}:${value.social.replies.length}:${value.social.initiatives.length}:${value.quests.claimed.length}:${value.quests.visitedPlaces.length}:${JSON.stringify(value.quests.projects)}`;
+      const fingerprint = (value: GameState) => `${value.seed}:${value.week}:${value.phase}:${value.actions}:${value.history.length}:${value.social.replies.length}:${value.social.initiatives.length}:${value.quests.claimed.length}:${value.quests.visitedPlaces.length}:${JSON.stringify(value.quests.projects)}:${JSON.stringify(value.romance)}`;
       const backups = loadAutoBackups().filter(slot => fingerprint(slot.game) !== fingerprint(previous!));
       backups.unshift({ game: previous, savedAt: previous.updatedAt });
       localStorage.setItem(AUTO_BACKUP_KEY, JSON.stringify(backups.slice(0, 6)));

@@ -15,6 +15,7 @@ import { QUESTS, getQuestViews, recordPlaceVisit, toggleQuestTracking } from '..
 import { DEFAULT_MAP_ZOOM, mapDragBounds } from '../src/game/mapView';
 import { getMapTaskTargets, taskEdgePosition } from '../src/game/mapTasks';
 import { DEFAULT_PLAYER_NAME, playerText, renamePlayer } from '../src/game/player';
+import { confessionLock, resolveRomanceScene } from '../src/game/romance';
 
 const started = () => ({ ...createGame(), started: true });
 
@@ -200,10 +201,10 @@ function playRelationship(target: RomanceId, confessionChoice = 0) {
       assert.ok(!response.error, `${target}: ${script.id}: ${response.error}`);
       game = response.game;
     }
-    if (confessionChoice === 1 && game.social.replies.some(reply => reply.scriptId === `${target}-confession`) && !game.social.partner) {
+    if (confessionChoice === 1 && game.social.replies.some(reply => reply.scriptId === `${target}-confession`) && !game.social.partner && !confessionLock(game, target)) {
       const answer = confirmRelationship(game, target);
       assert.ok(!answer.error);
-      game = answer.game;
+      game = resolveRomanceScene(answer.game, 0).game;
     }
     for (const id of [target, 'balanced', 'rest']) {
       const action = performAction(game, id);
@@ -230,7 +231,7 @@ test('a deferred confession can be answered later without replaying the script',
   const game = playRelationship('su', 1);
   assert.equal(game.social.partner, 'su');
   assert.equal(game.social.delivered.filter(id => id === 'su-confession').length, 1);
-  assert.equal(game.social.messages.filter(message => message.id === 'su-confession-followup').length, 1);
+  assert.equal(game.romance.memories.filter(memory => memory.id.startsWith('confess:')).length, 1);
 });
 
 test('choosing friendship stops romantic invitations while preserving daily chats', () => {
@@ -264,7 +265,7 @@ test('v1 migration preserves progress; autosave backs up and recovers a corrupte
     const legacyText = JSON.stringify(legacy);
     memory.set(LEGACY_SAVE_KEY, legacyText);
     let game = loadGame();
-    assert.equal(game.version, 2);
+    assert.equal(game.version, 3);
     assert.deepEqual(game.history, modern.history);
     assert.deepEqual(game.subjects, modern.subjects);
     assert.equal(game.relations.su, modern.relations.su);
@@ -311,18 +312,18 @@ test('weekly selection never replays an event for different deterministic seeds'
 
 test('quest and long-project catalog references real stories, locations, contacts and actions', () => {
   assert.equal(QUESTS.length, 60);
-  assert.equal(LONG_PROJECTS.length, 11);
+  assert.equal(LONG_PROJECTS.length, 16);
   for (const collection of [QUESTS, LONG_PROJECTS, PROACTIVE_TOPICS]) assert.equal(new Set(collection.map(item => item.id)).size, collection.length);
   for (const quest of QUESTS) {
     if (quest.requires) assert.ok(QUESTS.some(item => item.id === quest.requires));
     for (const objective of quest.objectives) if (objective.target.placeId) assert.ok(PLACES.some(place => place.id === objective.target.placeId));
   }
   for (const project of LONG_PROJECTS) {
-    assert.equal(project.stages.length, 3);
+    assert.equal(project.stages.length, project.datingOnly ? 4 : 3);
     assert.ok(ACTIONS.some(action => action.id === project.actionId));
     assert.ok(PLACES.some(place => place.id === project.placeId));
     assert.ok(project.stages.reduce((total, stage) => total + stage.weeks, 0) >= 5);
-    assert.equal(project.stages.reduce((total, stage) => total + stage.work, 0), 5);
+    assert.equal(project.stages.reduce((total, stage) => total + stage.work, 0), project.datingOnly ? 6 : 5);
     for (const stage of project.stages) if (stage.objective.target.placeId) assert.ok(PLACES.some(place => place.id === stage.objective.target.placeId));
   }
   assert.equal(PROACTIVE_TOPICS.filter(topic => !topic.weekly).length, 33);
@@ -432,7 +433,7 @@ for (const character of ROMANCE_IDS) {
 
 for (const branch of [0, 1]) {
   test(`six map projects wait for authored chapters and preserve both endings, branch ${branch}`, () => {
-    for (const project of LONG_PROJECTS.filter(project => !ROMANCE_IDS.some(id => project.id === `project-${id}`))) {
+    for (const project of LONG_PROJECTS.filter(project => !project.datingOnly && !ROMANCE_IDS.some(id => project.id === `project-${id}`))) {
       let game = resolveEvent({ ...started(), pendingEvent: 'first-day' }, 0).game;
       game = startProject(game, project.id).game;
       for (let week = 0; week < 39 && game.quests.projects[project.id].completedWeek === null; week++) {

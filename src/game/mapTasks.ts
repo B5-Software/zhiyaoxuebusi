@@ -4,6 +4,8 @@ import { eventLock } from './engine';
 import { LONG_PROJECTS, resolveObjectiveTarget } from './projects';
 import { getQuestViews } from './quests';
 import { getAppointments } from './appointments';
+import { ROMANCE_SCENES } from './romanceData';
+import { sceneLock } from './romance';
 import type { GameState } from './types';
 
 export function getMapTaskTargets(game: GameState) {
@@ -13,6 +15,7 @@ export function getMapTaskTargets(game: GameState) {
     if (!targets.has(placeId) || targets.get(placeId)!.priority > priority) targets.set(placeId, { placeId, title, priority });
   }
   if (!game.started || game.phase !== 'school' || game.actions >= 3) return [];
+  if (game.social.partner) for (const story of ROMANCE_SCENES.filter(item => item.character === game.social.partner)) if (!sceneLock(game, story.character, story.id)) add(story.placeId, `恋爱剧情 · ${story.title}`, 0);
   for (const appointment of getAppointments(game)) if (!appointment.completed) add(appointment.placeId, '待赴约 · 点击前往约见地点', 0);
   for (const project of LONG_PROJECTS) {
     const progress = game.quests.projects[project.id];
