@@ -50,4 +50,4 @@ export const ROMANCE_SCENES: RomanceScene[] = ROMANCE_IDS.flatMap(character => c
   paragraphs: [`这是{{player}}和${CHARACTERS[character].name}交往后，认真留给彼此的一段时间。`, text],
   choices: [{ text: '认真说出自己的感受，也听对方说完。', result }, { text: '先问对方现在需要什么，再决定怎么一起做。', result: `${result}你们把下次的约定写清楚，也给改变主意留了空间。` }],
 })));
-export const ROMANCE_OPERATION_IDS = ['confess', 'walk', 'date', 'home', 'hand', 'hug', 'kiss', 'talk', 'private', 'school', 'family', 'rumor'] as const;
+export const ROMANCE_OPERATION_IDS = ['confess', 'walk', 'date', 'home', 'hand', 'hug', 'kiss', 'talk', 'private', 'birthday-private', 'school', 'family', 'rumor'] as const;

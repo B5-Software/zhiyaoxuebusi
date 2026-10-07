@@ -80,6 +80,7 @@ export interface GameState {
   relations: Record<CharacterId, number>;
   social: SocialState;
   romance: RomanceState;
+  birthdayGifts: string[];
   world: { scene: Scene; placeId: string; x: number; y: number };
   quests: QuestState;
   inventory: Record<string, number>;

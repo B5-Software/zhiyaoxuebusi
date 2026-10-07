@@ -35,6 +35,22 @@
 .love-story-list > button small, .love-operations small, .mature-entry small { display: block; font-size: 11px; line-height: 1.6; font-weight: normal; margin-top: 5px; }
 .love-story-list > button:disabled, .love-operations button:disabled { opacity: .58; }
 .love-art { width: 100%; border-radius: 12px; aspect-ratio: 2/1; object-fit: cover; }
+.love-moments { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-bottom: 16px; }
+.love-moment { min-width: 0; aspect-ratio: 2/3; border-radius: 10px; overflow: hidden; background: #eeecd9; border: 1px solid #d7cfb2; }
+.love-moment-art { width: 100%; height: 100%; background-size: 300% 100%; background-repeat: no-repeat; }
+.love-moment-lock { height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 10px; color: #98a184; padding: 8px; }
+.love-moment-lock small { font-size: 10px; }
+.birthday-hint { display: flex; gap: 9px; align-items: center; padding: 9px 12px; margin: 8px 0 14px; border: 1px dashed #d7cdae; border-radius: 8px; color: #999379; min-width: 0; }
+.birthday-hint > div { flex: 1; min-width: 0; display: grid; gap: 5px; }
+.birthday-hint strong { font-size: 11px; font-weight: normal; }
+.birthday-hint small { font-size: 10px; line-height: 1.7; }
+.birthday-hint.is-birthday { background: #f4ecd2; border-color: #c6ae76; color: #8b805d; }
+.im-conversation > .birthday-hint { margin: 8px 12px; flex-shrink: 0; }
+.birthday-calendar { margin-top: 24px; display: grid; gap: 8px; }
+.birthday-calendar h4 { display: flex; gap: 8px; align-items: center; }
+.birthday-calendar button { display: flex; justify-content: space-between; gap: 10px; text-align: left; }
+.birthday-calendar button > span { display: grid; gap: 5px; }
+.birthday-calendar small { font-size: 10px; }
 .love-operations { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .love-operations button { display: block; text-align: left; white-space: normal; padding: 14px; min-width: 0; }
 .love-operations strong { font-size: 14px; }

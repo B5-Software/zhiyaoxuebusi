@@ -1,0 +1,9 @@
+{
+  "version": "2.8.0",
+  "retry": true,
+  "subpath": {
+    "scope": "http://127.0.0.1:5186/zhiyaoxuebusi/sw.js",
+    "offlineVersion": "拾光校园 · v2.8.0",
+    "errors": []
+  }
+}

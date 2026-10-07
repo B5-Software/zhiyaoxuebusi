@@ -19,6 +19,12 @@ body { overflow: hidden; }
 .edge-bottom span { bottom: 38px; }
 .hotspot-task-mark, .atlas-task-mark { position: absolute; z-index: 3; top: -10px; right: -5px; width: 20px; height: 23px; border: 2px solid #fff4d9; background: #b88661; color: #fff9e6; border-radius: 8px; font: bold 15px Georgia, serif; display: grid; place-items: center; box-shadow: 0 2px 3px #69544429; }
 .atlas-task-mark { top: -6px; right: -2px; width: 17px; height: 20px; font-size: 12px; }
+.hotspot-badges { position: absolute; bottom: calc(100% + 4px); left: 50%; translate: -50% 0; display: flex; align-items: center; gap: 4px; white-space: nowrap; pointer-events: none; }
+.hotspot-badges :is(.hotspot-task-mark, .map-story-flag, .quest-flag) { position: static; inset: auto; transform: none; flex-shrink: 0; }
+.atlas-pin .atlas-task-mark { right: auto; left: -5px; }
+.dock-icon { isolation: isolate; overflow: visible; }
+.dock-icon > .dock-unread, .dock-icon > .dock-dot { z-index: 3; pointer-events: none; }
+.map-viewport { touch-action: none; }
 
 /* A small companion portrait stays available without covering the map. */
 .campus-dialogue { bottom: 12px; }
@@ -27,7 +33,11 @@ body { overflow: hidden; }
 .is-collapsed .dialogue-avatar { position: relative; inset: auto; width: 44px; height: 44px; }
 .is-collapsed .dialogue-avatar > img { border-width: 2px; border-radius: 50%; }
 .is-collapsed .dialogue-avatar-flower { width: 17px; height: 17px; border-width: 1px; right: -2px; bottom: -1px; }
-.is-collapsed .dialogue-body, .is-collapsed .dialogue-action, .is-collapsed .dialogue-collapse, .is-collapsed .dialogue-corner { display: none; }
+.is-collapsed .dialogue-content-wrapper { width: 0; overflow: hidden; }
+.dialogue-content-wrapper { min-width: 0; flex: 1; }
+.dialogue-content { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.dialogue-controls { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; }
+.dialogue-controls .dialogue-collapse { position: static; flex-shrink: 0; }
 .campus-dialogue.is-expanded { left: 26px; right: 155px; min-height: 80px; max-height: min(180px, 42cqh); padding: 12px 40px 12px 66px; gap: 12px; }
 .is-expanded .dialogue-avatar { left: 10px; bottom: 14px; width: 44px; height: 48px; }
 .is-expanded .dialogue-avatar > img { border-width: 2px; }

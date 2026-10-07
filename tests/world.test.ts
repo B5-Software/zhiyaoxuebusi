@@ -81,7 +81,7 @@ test('offscreen task indicators point toward all four edges and leave visible ta
 test('all nine maps, places, actions and story prerequisites resolve to real content', () => {
   assert.equal(REGIONS.length, 9);
   assert.equal(PLACES.length, 36);
-  assert.equal(EVENTS.filter(event => event.placeId).length, 40);
+  assert.equal(EVENTS.filter(event => event.placeId).length, 48);
   for (const collection of [REGIONS, PLACES, ACTIONS, EVENTS]) assert.equal(new Set(collection.map(item => item.id)).size, collection.length);
   for (const region of REGIONS) {
     assert.ok(fs.existsSync(`public${imagePath(region.id)}`));

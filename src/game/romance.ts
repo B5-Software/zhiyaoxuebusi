@@ -1,10 +1,18 @@
 import { CHARACTERS, PLACES, ROMANCE_IDS } from './data';
 import { matureAllowed } from './audience';
+import { birthdayStatus } from './birthdays';
 import { ROMANCE_OPERATION_IDS, ROMANCE_PLACES, ROMANCE_SCENES } from './romanceData';
 import type { Audience, GameState, RomanceBond, RomanceId, RomanceState } from './types';
 
 const limit = (n: number) => Math.max(0, Math.min(100, Math.round(n)));
 export const romanceBusy = (game: GameState) => !!game.romance.active;
+export function unlockedRomanceMoments(game: GameState, id: RomanceId) {
+  if (game.social.partner !== id) return [false, false, false];
+  return ['hand', 'hug', 'kiss'].map(operation => {
+    const story = romanceStory({ ...game, romance: { ...game.romance, active: { id: operation, character: id, week: game.week } } });
+    return game.romance.memories.some(memory => memory.character === id && memory.id.startsWith(`${operation}:`) && memory.result === story?.choices[0].result);
+  });
+}
 export function createRomance(): RomanceState {
   return { bonds: Object.fromEntries(ROMANCE_IDS.map(id => [id, { status: 'normal', sinceWeek: -1, episode: 0, meetWeeks: [], lastConfessWeek: -10, lastTouchWeek: -1, lastDateWeek: -1, lastHomeWeek: -1, lastTalkWeek: -1, boundaries: { publicAffection: false, homeVisits: true, touch: true }, handmade: null }])) as unknown as RomanceState['bonds'], memories: [], active: null, escort: null, visitor: null, cancelledAppointments: [], attention: { school: 0, family: 0, rumor: 0, lastConcernWeek: -10, queued: null } };
 }
@@ -59,12 +67,13 @@ export function sceneLock(game: GameState, id: RomanceId, sceneId: string, audie
     if (detail.lastHomeWeek === game.week) return '本周已经邀请过，下周再约';
     if (bond.trust < 65) return '信任达到 65 后，对方才愿意来家里做客';
   }
-  if (sceneId === 'private') {
+  if (sceneId === 'private' || sceneId === 'birthday-private') {
+    if (sceneId === 'birthday-private' && (!birthdayStatus(game, id).thisWeek || !birthdayStatus(game, id).celebrated)) return '先在生日周完成普通或情侣生日庆祝';
     if (!matureAllowed(game, audience)) return '当前内容设置不允许进入';
     if (game.romance.visitor !== id) return '先邀请对方到家里做客';
     if (!detail.boundaries.touch) return '尊重对方现在希望保留的距离';
     if (bond.trust < 75 || bond.affection < 70) return '需要信任 75、心动 70，且双方愿意';
-    if (game.romance.memories.some(memory => memory.character === id && memory.week === game.week && memory.id.startsWith('private:'))) return '本周的私密时光已经收好';
+    if (game.romance.memories.some(memory => memory.character === id && memory.week === game.week && /^(private|birthday-private):/.test(memory.id))) return '本周的私密时光已经收好';
   }
   const scene = ROMANCE_SCENES.find(item => item.id === sceneId && item.character === id);
   if (scene) {
@@ -92,7 +101,7 @@ export function beginRomanceScene(game: GameState, id: RomanceId, sceneId: strin
   const patch: Partial<RomanceBond> = sceneId === 'confess' ? { lastConfessWeek: game.week } : ['walk', 'date'].includes(sceneId) ? { lastDateWeek: game.week } : sceneId === 'home' ? { lastHomeWeek: game.week } : sceneId === 'talk' ? { lastTalkWeek: game.week } : ['hand', 'hug', 'kiss'].includes(sceneId) ? { lastTouchWeek: game.week } : {};
   next = patchBond(next, id, patch);
   const stayHere = ['hand', 'hug', 'kiss', 'talk'].includes(sceneId);
-  const location = PLACES.find(place => place.id === (scene?.placeId ?? (stayHere ? game.world.placeId : sceneId === 'home' || sceneId === 'private' ? 'family' : sceneId === 'walk' ? 'river-path' : ROMANCE_PLACES[id])))!;
+  const location = PLACES.find(place => place.id === (scene?.placeId ?? (stayHere ? game.world.placeId : ['home', 'private', 'birthday-private'].includes(sceneId) ? 'family' : sceneId === 'walk' ? 'river-path' : ROMANCE_PLACES[id])))!;
   return { game: { ...next, world: { scene: location.scene, placeId: location.id, x: location.x, y: Math.min(94, location.y + 8) }, romance: { ...next.romance, active: { id: sceneId, character: id, week: game.week } } } };
 }
 export function romanceStory(game: GameState) {
@@ -110,6 +119,7 @@ export function romanceStory(game: GameState) {
     kiss: ['靠近之前，先问你愿不愿意', `你和${name}都清楚表达了愿意。一个轻轻的吻停在温柔的片刻，随后又笑着拉开舒适的距离。`, ['把这一刻温柔收好。', '今天先停在拥抱就好。'], ['没有更进一步的要求。你们记得，喜欢和边界可以同时存在。', '两个人都接受停下来。今天的亲近仍然被认真珍惜。']],
     talk: ['把猜测换成对话', `你和${name}各自说出这段时间的需要，约定不偷看消息、不追问行踪，也不把考试成绩作为关系的条件。`, ['认真听完，约定恢复正常相处。', '暂时继续冷静，留一些个人空间。'], ['你们把担心说明白，决定按新的约定继续相处。', '暂时慢一点也可以。你们约定需要帮助时直接开口。']],
     private: ['把这一晚留给彼此', `这是双方清楚表达愿意之后的一段私人时间。你们确认任何时候都能停下，镜头停在窗边的灯光，随后慢慢淡出。`, ['镜头转场，收好这段私人回忆。', '跳过这段描写，直接继续。'], ['夜色过去，故事停在两个人互相照顾的日常。私密细节留在画面之外。', '你们度过一段被认真照顾的时间。故事直接接回普通生活。']],
+    'birthday-private': ['生日灯光熄灭之后', `生日祝福收好后，你和${name}再次确认，愿意把一段私人时间留给彼此。任何时候都能改变主意。镜头停在熄灭的生日蜡烛和窗边灯光，随后温柔淡出。`, ['确认双方愿意，让镜头转场。', '跳过私人描写，回到普通生日回忆。'], ['生日的夜色过去，故事接回两个人彼此照顾的日常。私密细节留在画面之外。', '这份生日心意同样被完整收好。你们不需要观看私密描写，也能继续珍惜彼此。']],
     school: ['课表之外，也需要边界', '老陈请你谈一谈：“我担心的是熬夜和缺课。你已经成年，我们可以商量，怎样同时照顾学业和关系。”', ['说明安排，约定不在上课时约会。', '请对方一起沟通，保留合理的个人空间。'], ['你把休息、学习和相处的安排说清楚。老师接受了这份能执行的约定。', '两个人明确自己的责任，也请老师尊重隐私。担心开始变成可以讨论的事情。']],
     family: ['家里的担心，不只是一句不许', '妈妈问起最近的来访：“不是要替你选谁，我只是怕你委屈自己，也怕你把休息忘了。”', ['认真介绍对方，商量回家与来访时间。', '说出自己的边界，也听听家人的担心。'], ['你们把来访和休息时间约好。家人的关心不再只剩下追问。', '你没有用隐瞒回应担心，也说明了哪些私人消息不需要被检查。']],
     rumor: ['不把别人的议论当判决', '走廊里传来几句起哄。你和恋人先问彼此的感受，不急着公开，也不要求对方配合表演。', ['一起说明不希望被起哄。', '请可信任的老师帮助划清边界。'], ['你们说清楚不舒服的地方，没有让传言决定这段关系。', '有人帮你们制止不必要的追问。私人生活不用向所有人交代。']],
@@ -120,7 +130,7 @@ export function romanceStory(game: GameState) {
 export function resolveRomanceScene(game: GameState, index: number, audience: Audience = { age: 'unknown', skipPrivate: false }, consent = false): { game: GameState; error?: string } {
   const active = game.romance.active, story = romanceStory(game);
   if (!active || !story?.choices[index]) return { game, error: '这段故事已经收好' };
-  if (active.id === 'private' && index === 0 && (!matureAllowed(game, audience) || !consent)) return { game, error: '先确认成年及本次内容提示，或跳过这段剧情' };
+  if (['private', 'birthday-private'].includes(active.id) && index === 0 && (!matureAllowed(game, audience) || !consent)) return { game, error: '先确认成年及本次内容提示，或跳过这段剧情' };
   let next = reward(game, active.character, 3, 3, 4);
   if (active.id === 'confess') {
     if (index === 0) next = establishRelationship(next, active.character);
@@ -135,7 +145,7 @@ export function resolveRomanceScene(game: GameState, index: number, audience: Au
   if (active.id === 'home') attention.family = limit(attention.family + (index === 1 ? -18 : 12));
   if (['school', 'family', 'rumor'].includes(active.id)) { attention[active.id as 'school' | 'family' | 'rumor'] = limit(attention[active.id as 'school' | 'family' | 'rumor'] - 35); attention.queued = null; }
   const detail = next.romance.bonds[active.character];
-  const memory = { id: `${active.id}:${detail.episode}:${game.week}:${game.romance.memories.length}`, character: active.character, week: game.week, title: story.title, result: story.choices[index].result, ...(active.id === 'private' ? { skipped: index === 1 } : {}) };
+  const memory = { id: `${active.id}:${detail.episode}:${game.week}:${game.romance.memories.length}`, character: active.character, week: game.week, title: story.title, result: story.choices[index].result, ...(['private', 'birthday-private'].includes(active.id) ? { skipped: index === 1 } : {}) };
   next = { ...next, updatedAt: new Date().toISOString(), romance: { ...next.romance, active: null, visitor: active.id === 'home' ? active.character : next.romance.visitor, attention, memories: [...next.romance.memories, memory] } };
   next = chat(next, active.character, story.choices[index].text, memory.result);
   return { game: flushConcern(next) };
@@ -221,7 +231,8 @@ export function validateRomance(raw: unknown, game: GameState, migrate = false):
   if (!state.memories.every(m => m && typeof m.id === 'string' && m.id.length < 120 && character(m.character) && week(m.week, 0) && typeof m.title === 'string' && m.title.length < 150 && typeof m.result === 'string' && m.result.length < 1500 && (m.skipped === undefined || typeof m.skipped === 'boolean')) || new Set(state.memories.map(m => m.id)).size !== state.memories.length) return null;
   if (state.active !== null && (!state.active || !character(state.active.character) || !knownScene(state.active.id) || state.active.week !== game.week || game.pendingEvent || game.phase !== 'school' || !['confess', 'talk'].includes(state.active.id) && game.social.partner !== state.active.character)) return null;
   if (state.active && ROMANCE_SCENES.some(scene => scene.id === state.active!.id && scene.character !== state.active!.character)) return null;
-  if (state.active?.id === 'private' && state.visitor !== state.active.character) return null;
+  if (state.active && ['private', 'birthday-private'].includes(state.active.id) && state.visitor !== state.active.character) return null;
+  if (state.active?.id === 'birthday-private' && (!birthdayStatus(game, state.active.character).thisWeek || !birthdayStatus(game, state.active.character).celebrated)) return null;
   if ([state.escort, state.visitor].some(id => id !== null && (!character(id) || id !== game.social.partner || state.bonds[id].status !== 'normal'))) return null;
   const a = state.attention;
   if (!a || ![a.school, a.family, a.rumor].every(n => Number.isFinite(n) && n >= 0 && n <= 100) || !week(a.lastConcernWeek) || a.queued !== null && !['school', 'family', 'rumor'].includes(a.queued)) return null;

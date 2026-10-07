@@ -9,12 +9,20 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <link rel="manifest" href="./manifest.webmanifest" />
-    <link rel="preload" as="image" href="./images/campus.jpg" />
+    <link rel="preload" as="image" href="./images/loading-campus.webp" fetchpriority="high" />
     <title>只要学不死，就往死里学 | 西安·高三生存物语</title>
+    <style>
+      html,body{margin:0;min-height:100%;background:#f5eedb}#boot-screen{position:fixed;inset:0;z-index:100000;display:grid;place-items:center;overflow:hidden;color:#65734f;background:#f5eedb;font-family:system-ui,"Microsoft YaHei",sans-serif;transition:opacity .28s ease}#boot-screen.boot-exiting{opacity:0;pointer-events:none}.boot-backdrop{position:absolute;inset:-24px;width:calc(100% + 48px);height:calc(100% + 48px);object-fit:cover;filter:blur(12px);opacity:.65}.boot-tint{position:absolute;inset:0;background:linear-gradient(180deg,#f9f4e2ab,#f9f4e2db)}.boot-copy{position:relative;text-align:center;padding:28px;max-width:700px}.boot-eyebrow{font-size:11px;letter-spacing:.3em;color:#9a977c}.boot-title{font-family:KaiTi,"STKaiti",serif;font-weight:700;font-size:clamp(32px,6.3vw,62px);line-height:1.45;margin:24px 0;color:#637b51}.boot-title span{display:block}.boot-copy>p{font-size:14px;line-height:1.8;color:#8b876b}.boot-progress{width:min(240px,65vw);height:5px;margin:30px auto 20px;border-radius:5px;background:#d9d9bd;overflow:hidden}.boot-progress i{display:block;width:40%;height:100%;border-radius:inherit;background:#91a578;animation:boot-flow 1.5s ease-in-out infinite}.boot-copy small{font-size:11px;line-height:1.8;color:#a29a7d}.boot-retry{padding:12px 24px;border:1px solid #9caa80;border-radius:8px;background:#eef0db;color:#64784e;cursor:pointer}.boot-retry[hidden]{display:none}@keyframes boot-flow{from{transform:translateX(-100%)}to{transform:translateX(350%)}}@media(prefers-reduced-motion:reduce){#boot-screen{transition:none}.boot-progress i{animation:none;width:65%}}
+    </style>
   </head>
   <body>
+    <section id="boot-screen" aria-label="正在打开校园故事">
+      <img class="boot-backdrop" src="./images/loading-campus.webp" alt="" fetchpriority="high" />
+      <div class="boot-tint"></div>
+      <div class="boot-copy"><span class="boot-eyebrow">西安 · 高三生存物语</span><h1 class="boot-title"><span>只要学不死</span><span>就往死里学</span></h1><p>这一年，认真学习，也认真生活。</p><div class="boot-progress" aria-hidden="true"><i></i></div><p id="boot-status" role="status" aria-live="polite">正在铺开校园的底色…</p><small id="boot-note">故事从这里开始。</small><p><button id="boot-retry" class="boot-retry" hidden>重新加载</button></p></div>
+    </section>
     <div id="root"></div>
-    <noscript>这段校园故事需要 JavaScript 才能运行。请启用 JavaScript，然后重新打开页面。</noscript>
+    <noscript><style>.boot-progress,#boot-status{display:none}</style><p style="position:fixed;z-index:100001;bottom:20px;width:100%;text-align:center">请启用 JavaScript，然后重新打开这段校园故事。</p></noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

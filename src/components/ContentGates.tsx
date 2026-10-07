@@ -14,10 +14,10 @@ export function RomanceStoryModal({ game, setGame, audience, setAudience, notify
   const [consent, setConsent] = useState(false);
   const [selected, setSelected] = useState<number | null>(null);
   const story = romanceStory(game), active = game.romance.active;
-  const privateScene = active?.id === 'private';
+  const privateScene = ['private', 'birthday-private'].includes(active?.id ?? '');
   const canEnter = matureAllowed(game, audience);
   useEffect(() => {
-    if (privateScene && (!canEnter || audience.skipPrivate)) setGame(current => current.romance.active?.id === 'private' ? resolveRomanceScene(current, 1, audience).game : current);
+    if (privateScene && (!canEnter || audience.skipPrivate)) setGame(current => ['private', 'birthday-private'].includes(current.romance.active?.id ?? '') ? resolveRomanceScene(current, 1, audience).game : current);
   }, [privateScene, canEnter, audience, setGame]);
   if (!story || !active || privateScene && (!canEnter || audience.skipPrivate)) return null;
   function finish(index: number) { const result = resolveRomanceScene(game, index, audience, consent); if (result.error) notify(result.error); else { setGame(result.game); notify('这一页已收进我们的回忆。'); } }

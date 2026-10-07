@@ -2,6 +2,7 @@ import { CHARACTERS, ROMANCE_IDS } from './data';
 import { MESSAGE_SCRIPTS } from './socialData';
 import { PROACTIVE_TOPICS } from './proactiveData';
 import { confessionLock, romanceBusy } from './romance';
+import { deliverBirthdayReminders } from './birthdays';
 import type { CharacterId, GameState, MessageScript, ProactiveTopic, RomanceId, SocialState } from './types';
 
 export const isRomanceId = (id: string): id is RomanceId => ROMANCE_IDS.includes(id as RomanceId);
@@ -67,7 +68,7 @@ export function deliverMessages(game: GameState): GameState {
     if (!selected) continue;
     social = { ...social, delivered: [...social.delivered, selected.id], messages: [...social.messages, { id: `${selected.id}-in`, character, side: 'incoming', text: selected.text, week: game.week, read: false, scriptId: selected.id }] };
   }
-  return social === game.social ? game : { ...game, social, updatedAt: new Date().toISOString() };
+  return deliverBirthdayReminders(social === game.social ? game : { ...game, social, updatedAt: new Date().toISOString() });
 }
 
 export function markConversationRead(game: GameState, id: CharacterId): GameState {

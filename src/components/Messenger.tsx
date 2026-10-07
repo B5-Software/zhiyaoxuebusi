@@ -6,6 +6,7 @@ import { PROACTIVE_TOPICS } from '../game/proactiveData';
 import { playerText } from '../game/player';
 import { getAppointments } from '../game/appointments';
 import { confessionLock } from '../game/romance';
+import BirthdayHint from './BirthdayHint';
 import type { CharacterId, GameState, Panel, RomanceId } from '../game/types';
 
 interface Props {
@@ -63,6 +64,7 @@ export default function Messenger({ game, setGame, open, onReply, onInitiate, on
     </aside>
     <section className="im-conversation" aria-label={`与${character.name}的聊天`}>
       <header className="im-chat-header"><button className="im-back" onClick={() => setMobileChat(false)} aria-label="返回联系人"><ArrowLeft size={19}/></button><img src={imagePath(character.image)} alt={character.name}/><div><strong>{character.name}</strong><small>{bond && isRomanceId(active) ? bondStage(game, active) : character.role}</small></div><button className="im-meet" onClick={() => meetingPlace ? onVisitPlace(meetingPlace.id) : onAction(active)} title="打开见面地点，赴约消耗 1 次行动"><MapPin size={14}/>{appointments.length ? "去赴约" : "见面地点"}</button></header>
+      <BirthdayHint game={game} id={active} onVisit={onVisitPlace}/>
       {bond && <div className="im-bond-bar"><span>信任 <b>{bond.trust}</b></span><span className="affection">心动 <b>{bond.affection}</b></span><span>了解 <b>{bond.understanding}</b></span><small>见面 {bond.meetings} 次</small></div>}
       {!!appointments.length && <div className="im-appointments" aria-label="待赴约记录">{appointments.map(appointment => <button key={appointment.eventId} onClick={() => onVisitPlace(appointment.placeId)}><Heart size={15}/><span><strong>与{character.name}的约见 · {PLACES.find(place => place.id === appointment.placeId)?.name}</strong><small>{game.actions >= 3 ? "本周行动已用完，下周再赴约" : "已经约好 · 前往地点赴约 · 1 次行动"}</small></span><ArrowRight size={16}/></button>)}</div>}
       <div className="im-chat-log" ref={log} role="log" aria-label="聊天记录" aria-live="polite">

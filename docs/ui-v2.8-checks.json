@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-07T09:52:20.804Z",
+  "version": "2.8.0",
+  "viewports": [
+    {
+      "width": 320,
+      "height": 568,
+      "failures": [],
+      "animated": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "failures": [],
+      "animated": true
+    },
+    {
+      "width": 768,
+      "height": 600,
+      "failures": [],
+      "animated": true
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "failures": [],
+      "animated": true
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "failures": [],
+      "animated": true
+    }
+  ],
+  "errors": [],
+  "loader": {
+    "firstPaint": [
+      {
+        "name": "first-paint",
+        "time": 76
+      },
+      {
+        "name": "first-contentful-paint",
+        "time": 76
+      }
+    ],
+    "programRequest": 95.69999998807907
+  },
+  "touch": {
+    "initial": 1.5,
+    "enlarged": 3,
+    "reduced": 1,
+    "panDelta": 45
+  },
+  "birthday": {
+    "actions": 2,
+    "skipped": true,
+    "active": null
+  },
+  "offline": {
+    "version": "拾光校园 · v2.8.0",
+    "cacheKeys": 196
+  }
+}

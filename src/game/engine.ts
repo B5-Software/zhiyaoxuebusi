@@ -7,6 +7,7 @@ import { QUESTS, createQuestState, questView, validateQuests } from './quests';
 import { LONG_PROJECTS, advanceProjects, projectStartLock } from './projects';
 import { DEFAULT_PLAYER_NAME, migratePlayerName } from './player';
 import { getAppointments } from './appointments';
+import { birthdayEventFor, birthdayInfo, birthdayStatus, CHARACTER_BIRTHDAYS } from './birthdays';
 import { advanceRomance, beginRomanceScene, createRomance, establishRelationship, flushConcern, rememberConfession, rememberMeeting, romanceBusy, validateRomance } from './romance';
 import type { CharacterId, Effect, GameAction, GameState, RomanceId, SaveSlot, Scene, Settings, StatKey, StoryEvent } from './types';
 
@@ -22,7 +23,7 @@ const MILESTONES: Record<number, string> = { 8: 'midterm', 16: 'winter-holiday',
 export function createGame(): GameState {
   return {
     version: 3, started: false, name: DEFAULT_PLAYER_NAME, nameIsCustom: false, difficulty: 'standard', targetSchool: 'xjtu',
-    romance: createRomance(), world: { scene: 'campus', placeId: 'classroom', x: 54, y: 74 },
+    romance: createRomance(), birthdayGifts: [], world: { scene: 'campus', placeId: 'classroom', x: 54, y: 74 },
     week: 0, actions: 0, weeklyActions: [],
     stats: { energy: 80, mood: 75, stress: 28, health: 85, money: 120, autonomy: 35 },
     subjects: { chinese: 90, math: 86, english: 94, physics: 64, chemistry: 58, biology: 66 },
@@ -154,15 +155,16 @@ function followsChosenBranch(game: GameState, event: StoryEvent) {
 }
 
 export function placeStories(game: GameState, placeId: string) {
-  return EVENTS.filter(event => event.placeId === placeId && followsChosenBranch(game, event));
+  return EVENTS.filter(event => event.placeId === placeId && followsChosenBranch(game, event)).map(event => birthdayEventFor(game, event));
 }
 
 export function regionStories(game: GameState, scene: Scene) {
-  return EVENTS.filter(event => event.placeId && event.scene === scene && followsChosenBranch(game, event));
+  return EVENTS.filter(event => event.placeId && event.scene === scene && followsChosenBranch(game, event)).map(event => birthdayEventFor(game, event));
 }
 
 export function beginMapStory(game: GameState, id: string): { game: GameState; error?: string } {
-  const event = EVENTS.find(item => item.id === id && item.placeId);
+  const original = EVENTS.find(item => item.id === id && item.placeId);
+  const event = original && birthdayEventFor(game, original);
   if (!event) return { game, error: '这里暂时没有这段故事。' };
   const error = eventLock(game, event);
   return error ? { game, error } : { game: { ...game, actions: game.actions + 1, weeklyActions: [...game.weeklyActions, `story:${id}`], counts: { ...game.counts, explore: game.counts.explore + 1 }, actionLog: [{ week: game.week, text: `走进${event.title}` }, ...game.actionLog].slice(0, 180), pendingEvent: id, updatedAt: new Date().toISOString() } };
@@ -180,7 +182,8 @@ export function getStorylines(game: GameState) {
 }
 
 export function resolveEvent(game: GameState, choiceIndex: number): { game: GameState; message: string } {
-  const event = EVENTS.find(item => item.id === game.pendingEvent);
+  const original = EVENTS.find(item => item.id === game.pendingEvent);
+  const event = original && birthdayEventFor(game, original);
   const choice = event?.choices[choiceIndex];
   if (!event || !choice) return { game, message: '' };
   if ((choice.effect.money ?? 0) + game.stats.money < 0) return { game, message: '零花钱不足，试试另一个选择。' };
@@ -287,10 +290,16 @@ export function giveCharacterGift(game: GameState, id: CharacterId, itemId = 'mi
   const peer = isRomanceId(id);
   if (peer && game.social.bonds[id].lastGiftWeek === game.week) return { game, error: '本周的心意已经收到啦，下次见面再带一点。' };
   const favorite = peer && FAVORITE_GIFTS[id] === itemId;
-  const next = applyEffect(game, { mood: 3, relations: { [id]: favorite ? 9 : 6 }, ...(peer ? { bonds: { [id]: { trust: favorite ? 6 : 3, affection: favorite ? 5 : 2, understanding: favorite ? 4 : 1 } } } : {}) });
+  const birthday = birthdayStatus(game, id), bonus = birthday.bonusAvailable;
+  const giftValue = (value: number) => bonus ? Math.ceil(value * 1.5) : value;
+  const next = applyEffect(game, { mood: bonus ? 6 : 3, relations: { [id]: giftValue(favorite ? 9 : 6) }, ...(peer ? { bonds: { [id]: { trust: giftValue(favorite ? 6 : 3), affection: giftValue(favorite ? 5 : 2), understanding: giftValue(favorite ? 4 : 1) } } } : {}) });
+  if (bonus) {
+    next.birthdayGifts = [...game.birthdayGifts, birthday.giftKey];
+    next.social = { ...next.social, messages: [...next.social.messages, { id: `birthday-gift:${birthday.giftKey}`, character: id, side: 'incoming', text: `谢谢你记得我的生日。这份${item.name}已经好好收下，今天的祝福会留在心里。`, week: game.week, read: false }] };
+  }
   next.inventory = { ...next.inventory, [itemId]: next.inventory[itemId] - 1 };
   if (peer) next.social = { ...next.social, bonds: { ...next.social.bonds, [id]: { ...next.social.bonds[id], lastGiftWeek: game.week } } };
-  return { game: deliverMessages(next), message: `${CHARACTERS[id].name}收到了${item.name}${favorite ? '，这是对方喜欢的小礼物。' : '，心意被好好收下了。'}` };
+  return { game: deliverMessages(next), message: `${CHARACTERS[id].name}收到了${item.name}${bonus ? '，生日祝福获得额外 50% 心意加成。' : favorite ? '，这是对方喜欢的小礼物。' : '，心意被好好收下了。'}` };
 }
 
 export function getAchievements(game: GameState) {
@@ -394,6 +403,10 @@ export function validateGame(raw: unknown): GameState | null {
   result.counts = Object.fromEntries(Object.keys(base.counts).map(key => [key, (raw.counts as Record<string, number>)[key]])) as GameState['counts'];
   result.inventory = Object.fromEntries(ITEMS.map(item => [item.id, (raw.inventory as Record<string, number>)[item.id]]));
   result.social = social;
+  const birthdayGifts = raw.birthdayGifts ?? [];
+  const giftKeys = Object.keys(CHARACTER_BIRTHDAYS).map(id => birthdayInfo(id as CharacterId).giftKey);
+  if (!Array.isArray(birthdayGifts) || birthdayGifts.length > giftKeys.length || birthdayGifts.some(key => !giftKeys.includes(key)) || new Set(birthdayGifts).size !== birthdayGifts.length) return null;
+  result.birthdayGifts = [...birthdayGifts];
   result.quests = quests;
   result.version = 3;
   const romance = validateRomance(raw.romance, result, raw.version === 2);
