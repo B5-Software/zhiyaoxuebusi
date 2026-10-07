@@ -1,32 +1,89 @@
 {
   "date": "2026-10-07",
-  "version": "2.4.0",
+  "version": "2.7.0",
   "platform": "Cloudflare Pages",
   "branch": "main",
-  "codeCommit": "cd2134eb8d8febc2a91ec5ed7f6e3e21d45c89df",
-  "indexSha256": "14699a10a3480bdd4c3e4af55ab5d7ef8da4f2b13a6abe01b15a20814c6f2c29",
-  "unitTests": 41,
+  "codeCommit": "84dd672a83367abed06bf24b19ffbf2eeb2d5ef2",
+  "indexSha256": "b7479e1e662199e8a3195f9c484f28028da33cee0a1d4ddf112c74723c85d96b",
+  "unitTests": 63,
+  "romanceFlowViewports": 5,
+  "relationshipFlowViewports": 2,
   "meetingFlowViewports": 5,
+  "romanceChecks": "docs/romance-browser-checks.json",
   "meetingChecks": "docs/meeting-checks.json",
-  "serviceWorkerCache": "shiguang-campus-v2.4.0",
+  "serviceWorkerCache": "shiguang-campus-v2.7.0",
+  "githubPagesWorkflow": "https://github.com/B5-Software/zhiyaoxuebusi/actions/runs/37596340483",
+  "githubPagesWorkflowConclusion": "success",
   "projects": [
     {
       "name": "shiguang-campus-life",
       "production": "https://shiguang-campus-life.pages.dev/",
-      "deployment": "https://622fed07.shiguang-campus-life.pages.dev/",
+      "deployment": "https://372b7c60.shiguang-campus-life.pages.dev/",
       "status": 200,
-      "indexSha256": "14699a10a3480bdd4c3e4af55ab5d7ef8da4f2b13a6abe01b15a20814c6f2c29",
+      "indexSha256": "b7479e1e662199e8a3195f9c484f28028da33cee0a1d4ddf112c74723c85d96b",
       "productionMatchesBuild": true,
-      "serviceWorkerCurrent": true
+      "serviceWorkerCurrent": true,
+      "art": [
+        {
+          "name": "romance-moments",
+          "status": 200,
+          "contentType": "image/webp",
+          "bytes": 305820,
+          "matchesBuild": true
+        },
+        {
+          "name": "romance-men-moments",
+          "status": 200,
+          "contentType": "image/webp",
+          "bytes": 307302,
+          "matchesBuild": true
+        }
+      ],
+      "browser": {
+        "ageGateVisible": true,
+        "firstEntryReleased": true,
+        "gameBlocked": true,
+        "height": 844,
+        "minorPreferenceSaved": true,
+        "noAdultEntries": true,
+        "versionVisible": true,
+        "width": 390
+      }
     },
     {
       "name": "zhiyaoxuebusi",
       "production": "https://zhiyaoxuebusi.pages.dev/",
+      "deployment": "https://fb04d2d4.zhiyaoxuebusi.pages.dev/",
       "status": 200,
-      "indexSha256": "14699a10a3480bdd4c3e4af55ab5d7ef8da4f2b13a6abe01b15a20814c6f2c29",
+      "indexSha256": "b7479e1e662199e8a3195f9c484f28028da33cee0a1d4ddf112c74723c85d96b",
       "productionMatchesBuild": true,
       "serviceWorkerCurrent": true,
-      "deployment": "https://87ce8c51.zhiyaoxuebusi.pages.dev/"
+      "art": [
+        {
+          "name": "romance-moments",
+          "status": 200,
+          "contentType": "image/webp",
+          "bytes": 305820,
+          "matchesBuild": true
+        },
+        {
+          "name": "romance-men-moments",
+          "status": 200,
+          "contentType": "image/webp",
+          "bytes": 307302,
+          "matchesBuild": true
+        }
+      ],
+      "browser": {
+        "ageGateVisible": true,
+        "firstEntryReleased": true,
+        "gameBlocked": true,
+        "height": 844,
+        "minorPreferenceSaved": true,
+        "noAdultEntries": true,
+        "versionVisible": true,
+        "width": 390
+      }
     }
   ]
 }
