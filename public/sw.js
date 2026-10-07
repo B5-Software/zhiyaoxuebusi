@@ -1,4 +1,4 @@
-const CACHE = 'shiguang-campus-v2.7.0';
+const CACHE = 'shiguang-campus-v2.7.1';
 // Works both at the domain root and under a repository sub-path (GitHub Pages project sites).
 const BASE = new URL(self.registration.scope).pathname;
 const ART = ['campus', 'student', 'companion', 'teacher', 'mother', 'friend', 'classroom', 'home', 'city', 'graduation'];
