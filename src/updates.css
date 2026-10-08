@@ -30,3 +30,6 @@
 .graduate-memories h4 { margin:6px 0; }
 .graduate-story { padding:10px 0; }
 @media(max-width:540px){.graduate-intro { align-items:flex-start; gap:12px; }.graduate-intro>img { width:58px;height:58px; }.graduate-action-grid { grid-template-columns:1fr; }.protagonist-picker img { width:44px;height:44px; }.protagonist-picker button { padding:8px; gap:7px; }.graduate-overview .love-bond-values { flex-wrap:wrap; }}
+.im-special-entry { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 14px; }
+.im-special-entry > button { max-width: 100%; height: auto; min-height: 44px; white-space: normal; }
+.im-compose-tabs { flex-wrap: wrap; gap: 10px; }

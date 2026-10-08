@@ -1,0 +1,115 @@
+.im-special-entry { margin-bottom: 14px; }
+.life-app { height: 100dvh; width: 100%; overflow: hidden; background: #f5f1df; color: #7d8865; }
+.life-shell { height: 100%; display: flex; flex-direction: column; min-width: 0; }
+.life-header { display: flex; align-items: center; gap: 24px; padding: 14px clamp(16px,3vw,44px); border-bottom: 1px solid #d7cfad; background: #fbf7e8; flex-wrap: wrap; }
+.life-brand { display: flex; align-items: center; gap: 10px; text-align: left; font-size: 19px; line-height: 1.4; flex-shrink: 0; }
+.life-brand strong { display: block; font-size: 23px; }
+.life-identity { display: flex; align-items: center; gap: 10px; }
+.life-identity img { width: 44px; height: 44px; object-fit: cover; border-radius: 50%; border: 1px solid #d2c397; }
+.life-identity strong,.life-identity small { display: block; }
+.life-identity strong { font-size: 19px; }
+.life-identity small { margin-top: 3px; color: #a5997a; }
+.life-header-stats { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 10px 20px; margin-left: auto; }
+.life-header-stats button { min-height: 36px; }
+.life-main { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 24px clamp(16px,3vw,44px); }
+.life-world-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 16px; }
+.life-world-heading h2 { font-size: 29px; margin: 7px 0; }
+.life-world-heading p { margin: 0; color: #a09679; font-size: 14px; }
+.life-world-heading > button { flex-shrink: 0; }
+.life-map-wrap { border: 1px solid #c9c7a6; border-radius: 20px; overflow: hidden; background: #e7ebdc; }
+.life-map-viewport { position: relative; width: 100%; height: min(56vh,580px); min-height: 280px; overflow: hidden; touch-action: none; background: radial-gradient(ellipse at center,#dce8e0,#f4f1e1 80%); }
+.life-map-layer { position: absolute; transform-origin: center; cursor: grab; }
+.life-map-layer > img { display: block; width: 100%; height: 100%; object-fit: contain; user-select: none; pointer-events: none; }
+.life-map-pin { display: flex; align-items: center; gap: 5px; position: absolute; transform: translate(-50%,-50%); padding: 9px 12px; border: 1px solid #b6b48a; border-radius: 9px; background: #fbf6e9ed; box-shadow: 0 4px 0 #616d5422; font-size: 13px; white-space: nowrap; }
+.life-map-pin:hover { background: #eff1d8; }
+.life-map-alert { position: absolute; top: -12px; right: -9px; border-radius: 50%; background: #bf816d; color: #fff8e9; width: 20px; height: 20px; display: grid; place-items: center; font-size: 14px; border: 2px solid #fbf4dd; }
+.life-avatar { position: absolute; left: 51%; top: 61%; width: 34px; height: 34px; border: 2px solid #fff8e8; border-radius: 50%; box-shadow: 0 2px 4px #454b5333; }
+.life-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.life-map-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 9px 16px; font-size: 12px; background: #faf6e7; }
+.life-map-toolbar > div { display: flex; gap: 12px; }
+.life-map-toolbar button { min-width: 32px; min-height: 32px; display: grid; place-items: center; border: 1px solid #d3ccaa; border-radius: 7px; }
+.life-map-directory,.life-button-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.life-map-directory { margin: 14px 0 22px; }
+.life-map-directory > button { font-size: 13px; min-height: 40px; }
+.life-home-grid,.life-card-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+.life-paper { min-width: 0; padding: 22px; border: 1px solid #d5cdae; border-radius: 16px; background: #fffbef; }
+.life-paper h3 { margin: 0 0 10px; font-size: 20px; }
+.life-paper p { color: #9a8f73; font-size: 14px; line-height: 1.8; margin: 8px 0 16px; overflow-wrap: anywhere; }
+.life-footer { padding: 10px clamp(16px,3vw,44px) 7px; border-top: 1px solid #d7cfad; flex-shrink: 0; background: #fbf7e8; }
+.life-footer nav { display: flex; flex-wrap: wrap; gap: 5px 10px; align-items: center; }
+.life-footer nav button { display: flex; align-items: center; gap: 5px; min-height: 38px; padding: 5px 8px; font-size: 13px; border-radius: 6px; }
+.life-footer nav button:hover { background: #e7ebd7; }
+.life-week-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-top: 8px; }
+.life-week-row small { font-size: 11px; color: #a79d80; }
+.life-week-row > button { min-height: 42px; }
+.life-footer .creator-credit { display: block; text-align: right; font-size: 10px; margin-top: 5px; }
+.life-modal { width: min(1100px,calc(100vw - 48px)); }
+.life-panel-stack { display: flex; flex-direction: column; gap: 22px; }
+.life-modal .primary-button,.life-modal .secondary-button,.life-app .primary-button,.life-app .secondary-button { min-height: 42px; height: auto; white-space: normal; max-width: 100%; line-height: 1.5; }
+.life-modal button { overflow-wrap: anywhere; }
+.life-button-row { margin-top: 12px; }
+.life-field { display: flex; flex-direction: column; gap: 7px; font-size: 13px; min-width: 0; }
+.life-field select,.life-field input { min-height: 42px; width: 100%; min-width: 0; border: 1px solid #d1c8a5; border-radius: 8px; padding: 8px 10px; background: #fffaf0; color: #7b8766; font-family: inherit; }
+.life-form-row { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
+.life-stat-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; }
+.life-stat-grid > div { display: flex; flex-direction: column; gap: 9px; padding: 16px; background: #edf0db; border-radius: 12px; min-width: 0; overflow-wrap: anywhere; }
+.life-stat-grid strong { font-size: 19px; }
+.life-stat-grid small,.life-stat-grid span { font-size: 12px; color: #a19576; }
+.life-lock { display: block; color: #a19372; margin-top: 10px; line-height: 1.7; }
+.life-ledger > div { display: flex; justify-content: space-between; align-items: center; gap: 15px; border-bottom: 1px dashed #d8ceb0; padding: 12px 0; font-size: 13px; }
+.life-ledger small { display: block; margin-bottom: 4px; font-size: 10px; }
+.life-ledger b { white-space: nowrap; }
+.life-ledger .gain { color: #7d956d; }.life-ledger .loss { color: #b98b74; }
+.life-disclaimer { font-size: 12px; line-height: 1.8; color: #aa9b78; margin: 0; }
+.life-body-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
+.life-body-grid label { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 7px; font-size: 14px; }
+.life-body-grid progress,.life-paper progress { appearance: none; border: none; width: 100%; height: 7px; border-radius: 5px; background: #e8e7d1; overflow: hidden; }
+.life-body-grid progress::-webkit-progress-bar,.life-paper progress::-webkit-progress-bar { background: #e8e7d1; }.life-body-grid progress::-webkit-progress-value,.life-paper progress::-webkit-progress-value { background: #98ac7e; border-radius: 5px; }
+.life-condition { border-top: 1px dashed #d7ceb0; margin-top: 15px; padding-top: 15px; }
+.life-emergency { border: 2px solid #be846c; background: #f6e6d5; padding: 24px; border-radius: 15px; }
+.life-emergency h3 { margin-top: 0; color: #ad725e; }
+.life-emergency p { line-height: 1.8; }
+.life-tabs { flex-wrap: wrap; gap: 10px; }
+.life-ticker { text-align: left; display: flex; flex-direction: column; gap: 12px; }
+.life-ticker.selected { border: 2px solid #9dab79; }
+.life-ticker > span { font-size: 22px; }
+.life-ticker svg { width: 100%; height: 70px; }
+.life-partner { display: flex; align-items: center; gap: 18px; }
+.life-partner img { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.life-quiz-options { display: grid; gap: 14px; }
+.life-quiz-options button { justify-content: space-between; text-align: left; }
+.life-memory-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; }
+.life-memory-grid button { aspect-ratio: 1.4; border: 1px solid #cfc59e; border-radius: 14px; background: #e5ecd3; font-size: 33px; }
+.life-memory-grid .matched { background: #f4ecd5; opacity: .65; }
+.life-rhythm { height: 55px; background: #ece6d3; border-radius: 10px; position: relative; overflow: hidden; }
+.life-rhythm span { position: absolute; left: 35%; width: 30%; inset-block: 0; background: #bfcea0; }
+.life-rhythm i { position: absolute; inset-block: 0; width: 6px; background: #bb816e; }
+.life-atlas-tabs { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+.life-atlas-tabs button { border: 1px solid #c5c6a0; padding: 12px; border-radius: 10px; min-height: 44px; }
+.life-atlas-tabs button.active { background: #839772; color: #fff9e7; }
+.life-atlas-card { text-align: left; padding: 0 0 18px; overflow: hidden; }
+.life-atlas-card img { display: block; width: 100%; height: auto; object-fit: contain; margin-bottom: 16px; }
+.life-atlas-card strong,.life-atlas-card p,.life-atlas-card span { margin-inline: 18px; display: block; }
+.life-region-banner { display: block; width: 100%; height: auto; object-fit: contain; border-radius: 15px; }
+.life-guide,.life-choice,.life-death { text-align: center; }
+.life-guide p,.life-choice p { line-height: 2; font-size: 17px; margin-block: 22px; }
+.life-guide .life-button-row,.life-death .life-button-row { justify-content: center; }
+.life-choice-note { display: block; font-size: 12px; color: #aaa080; margin-top: 18px; }
+.life-school-map { position: relative; overflow: hidden; border-radius: 18px; }.life-school-map > img { width: 100%; height: min(56vh,580px); min-height: 280px; object-fit: cover; }
+@media(max-width:760px) { .life-header { gap: 12px; padding: 11px 16px; }.life-brand { font-size: 15px; gap: 6px; }.life-brand strong { font-size: 17px; }.life-brand > svg { width: 32px; }.life-identity { margin-left: auto; }.life-identity strong { font-size: 15px; }.life-identity img { width: 35px; height: 35px; }.life-identity small { font-size: 10px; }.life-header-stats { width: 100%; justify-content: space-between; margin-left: 0; font-size: 12px; gap: 8px; }.life-main { padding: 16px; }.life-world-heading { gap: 12px; }.life-world-heading h2 { font-size: 23px; }.life-world-heading p { font-size: 12px; }.life-world-heading > button { font-size: 12px; padding: 10px; }.life-home-grid,.life-card-grid { grid-template-columns: minmax(0,1fr); gap: 14px; }.life-stat-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }.life-paper { padding: 18px; }.life-footer { padding: 8px 12px; }.life-footer nav { flex-wrap: nowrap; overflow-x: auto; gap: 8px; padding-bottom: 3px; }.life-footer nav button { flex-direction: column; flex-shrink: 0; font-size: 10px; gap: 4px; min-width: 54px; }.life-week-row small { max-width: 40%; font-size: 10px; }.life-week-row { gap: 7px; font-size: 12px; }.life-week-row .primary-button { padding: 8px 12px; font-size: 12px; }.life-modal { width: calc(100vw - 28px); }.life-modal .modal-content { padding: 18px; }.life-form-row { grid-template-columns: minmax(0,1fr); }.life-atlas-tabs { gap: 8px; }.life-atlas-tabs button { padding: 8px; font-size: 13px; }.life-map-viewport { height: 42vh; min-height: 280px; }.life-map-pin { font-size: 10px; padding: 7px; gap: 2px; }.life-map-pin svg { width: 16px; }.life-region-banner { height: auto; }.life-body-grid { gap: 14px; }.life-guide p,.life-choice p { font-size: 15px; }.life-atlas-card { padding: 0 0 18px; } }
+@media(max-width:400px) { .life-identity { max-width: 48%; }.life-header-stats { font-size: 11px; }.life-world-heading > button svg:last-child { display: none; }.life-stat-grid > div { padding: 12px; }.life-stat-grid strong { font-size: 16px; }.life-week-row small { display: none; }.life-map-pin strong { max-width: 72px; white-space: normal; }.life-map-pin { width: max-content; }.life-memory-grid { gap: 8px; } }
+@media(max-height:520px) and (min-width:761px) { .life-header { padding-block: 7px; }.life-brand { font-size: 14px; }.life-brand strong { font-size: 17px; }.life-footer nav button { min-height: 28px; }.life-footer { padding-block: 5px; }.life-main { padding-block: 12px; } }
+
+/* Small-map images retain their full source frame in every preview. */
+.world-image { object-fit: contain; object-position: center; mask-image: none; }
+.location-banner { height: auto; }
+.location-banner img { display: block; width: 100%; height: auto; object-fit: contain; object-position: center; }
+.atlas-preview > img { height: auto; min-height: 0; object-fit: contain; }
+.life-map-toolbar a { text-decoration: underline; white-space: nowrap; }
+@media(max-width:760px) { .life-map-toolbar { flex-wrap: wrap; font-size: 10px; } }
+.life-map-edges { position: absolute; inset: 0; pointer-events: none; }
+.life-edge { position: absolute; width: 30px; height: 30px; transform: translate(-50%,-50%); display: grid; place-items: center; border-radius: 50%; border: 1px solid #b7a374; background: #fff6dc; pointer-events: auto; }
+.life-edge b { position: absolute; top: -7px; right: -5px; width: 15px; height: 17px; font-size: 12px; border-radius: 7px; background: #b78168; color: #fff6dc; }
+.life-map-companion { position: absolute; left: calc(51% + 45px); top: 61%; width: 34px; height: 34px; border-radius: 50%; border: 2px solid #e8edcd; }
+.life-map-companion img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.life-map-companion small { position: absolute; top: -20px; left: 50%; transform: translateX(-50%); padding: 3px 6px; border-radius: 5px; background: #fff6dd; font-size: 10px; white-space: nowrap; }

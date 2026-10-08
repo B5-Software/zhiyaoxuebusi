@@ -12,11 +12,12 @@ interface Props {
   scene: Scene;
   onScene: (scene: Scene) => void;
   onClose: () => void;
+  onContinue?: () => void;
 }
 
 const FILTERS = ['全部地点', '校园内', '城市里', '日常与未来'] as const;
 
-export default function WorldMap({ game, scene, onScene, onClose }: Props) {
+export default function WorldMap({ game, scene, onScene, onClose, onContinue }: Props) {
   const [preview, setPreview] = useState<Scene>(scene);
   const [filter, setFilter] = useState<typeof FILTERS[number]>('全部地点');
   const region = REGION_BY_ID[preview];
@@ -37,6 +38,7 @@ export default function WorldMap({ game, scene, onScene, onClose }: Props) {
   }
 
   return <Modal title="拾光大地图" subtitle="从一张课桌出发，去看看更大的世界。" className="world-map-modal" onClose={onClose}>
+    <div className="life-atlas-tabs"><button className="active">高中大地图</button>{['大学大地图', '社会大地图'].map(name => <button key={name} disabled={game.phase !== 'ending'} onClick={onContinue}>{name} · {game.phase === 'ending' ? '开启下一段人生' : '毕业后解锁'}</button>)}</div>
     <div className="atlas-topbar"><span><Compass size={17}/>9 个区域 · 36 处互动地点</span><span>自由切换地点 · 不消耗行动</span></div>
     <div className="atlas-layout">
       <div className="atlas-board">

@@ -1,3 +1,4 @@
+import type { LifeState } from './lifeTypes';
 export type SubjectKey = 'chinese' | 'math' | 'english' | 'physics' | 'chemistry' | 'biology';
 export type StatKey = 'energy' | 'mood' | 'stress' | 'health' | 'money' | 'autonomy';
 export type RomanceId = 'su' | 'zhou' | 'zhixia' | 'xinghe' | 'tangtang';
@@ -83,6 +84,7 @@ export interface GameState {
   romance: RomanceState;
   birthdayGifts: string[];
   graduate: GraduateState;
+  life: LifeState;
   world: { scene: Scene; placeId: string; x: number; y: number };
   quests: QuestState;
   inventory: Record<string, number>;

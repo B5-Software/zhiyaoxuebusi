@@ -1,0 +1,202 @@
+{
+  "version": "3.0.0",
+  "checks": [
+    {
+      "label": "actual graduation entry, welcome choice, reload",
+      "passed": true
+    },
+    {
+      "label": "main 320x568",
+      "passed": true
+    },
+    {
+      "label": "人生与账本 320x568",
+      "passed": true
+    },
+    {
+      "label": "人才市场与工作 320x568",
+      "passed": true
+    },
+    {
+      "label": "交易与资产 320x568",
+      "passed": true
+    },
+    {
+      "label": "身体与医院 320x568",
+      "passed": true
+    },
+    {
+      "label": "恋人与家庭 320x568",
+      "passed": true
+    },
+    {
+      "label": "人生长任务 320x568",
+      "passed": true
+    },
+    {
+      "label": "atlas 320",
+      "passed": true
+    },
+    {
+      "label": "region 320",
+      "passed": true
+    },
+    {
+      "label": "main 390x844",
+      "passed": true
+    },
+    {
+      "label": "人生与账本 390x844",
+      "passed": true
+    },
+    {
+      "label": "人才市场与工作 390x844",
+      "passed": true
+    },
+    {
+      "label": "交易与资产 390x844",
+      "passed": true
+    },
+    {
+      "label": "身体与医院 390x844",
+      "passed": true
+    },
+    {
+      "label": "恋人与家庭 390x844",
+      "passed": true
+    },
+    {
+      "label": "人生长任务 390x844",
+      "passed": true
+    },
+    {
+      "label": "atlas 390",
+      "passed": true
+    },
+    {
+      "label": "region 390",
+      "passed": true
+    },
+    {
+      "label": "main 768x1024",
+      "passed": true
+    },
+    {
+      "label": "人生与账本 768x1024",
+      "passed": true
+    },
+    {
+      "label": "人才市场与工作 768x1024",
+      "passed": true
+    },
+    {
+      "label": "交易与资产 768x1024",
+      "passed": true
+    },
+    {
+      "label": "身体与医院 768x1024",
+      "passed": true
+    },
+    {
+      "label": "恋人与家庭 768x1024",
+      "passed": true
+    },
+    {
+      "label": "人生长任务 768x1024",
+      "passed": true
+    },
+    {
+      "label": "atlas 768",
+      "passed": true
+    },
+    {
+      "label": "region 768",
+      "passed": true
+    },
+    {
+      "label": "main 1280x900",
+      "passed": true
+    },
+    {
+      "label": "人生与账本 1280x900",
+      "passed": true
+    },
+    {
+      "label": "人才市场与工作 1280x900",
+      "passed": true
+    },
+    {
+      "label": "交易与资产 1280x900",
+      "passed": true
+    },
+    {
+      "label": "身体与医院 1280x900",
+      "passed": true
+    },
+    {
+      "label": "恋人与家庭 1280x900",
+      "passed": true
+    },
+    {
+      "label": "人生长任务 1280x900",
+      "passed": true
+    },
+    {
+      "label": "atlas 1280",
+      "passed": true
+    },
+    {
+      "label": "region 1280",
+      "passed": true
+    },
+    {
+      "label": "main 844x390",
+      "passed": true
+    },
+    {
+      "label": "人生与账本 844x390",
+      "passed": true
+    },
+    {
+      "label": "人才市场与工作 844x390",
+      "passed": true
+    },
+    {
+      "label": "交易与资产 844x390",
+      "passed": true
+    },
+    {
+      "label": "身体与医院 844x390",
+      "passed": true
+    },
+    {
+      "label": "恋人与家庭 844x390",
+      "passed": true
+    },
+    {
+      "label": "人生长任务 844x390",
+      "passed": true
+    },
+    {
+      "label": "atlas 844",
+      "passed": true
+    },
+    {
+      "label": "region 844",
+      "passed": true
+    },
+    {
+      "label": "real interview, contract, persisted score and job",
+      "passed": true
+    },
+    {
+      "label": "real spot and perpetual buttons change funds and positions",
+      "passed": true
+    },
+    {
+      "label": "reported teacher IM buttons have separate row and 14px gap",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

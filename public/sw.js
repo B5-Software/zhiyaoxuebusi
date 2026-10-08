@@ -1,7 +1,7 @@
-const CACHE = 'shiguang-campus-v2.9.0';
+const CACHE = 'shiguang-campus-v3.0.0';
 const BASE = new URL(self.registration.scope).pathname;
 const ART = ['campus', 'student', 'companion', 'teacher', 'mother', 'friend', 'classroom', 'home', 'city', 'graduation'];
-const MAP_ART = ['world-map', 'library', 'laboratory', 'arts', 'park', 'market', 'university', 'zhixia', 'xinghe', 'tangtang', 'cloud-frame', 'student-female', 'romance-moments', 'romance-men-moments'];
+const MAP_ART = ['world-map', 'library', 'laboratory', 'arts', 'park', 'market', 'university', 'zhixia', 'xinghe', 'tangtang', 'cloud-frame', 'student-female', 'romance-moments', 'romance-men-moments', 'university-world', 'society-world', 'map-college-study', 'map-college-dorm', 'map-college-research', 'map-college-life', 'map-recruitment', 'map-workplace', 'map-exchange', 'map-hospital', 'map-insurance', 'map-nightlife', 'map-residence'];
 const SHELL = [BASE, `${BASE}images/loading-campus.webp`, `${BASE}favicon.svg`, `${BASE}manifest.webmanifest`];
 // These same-origin files are static. Development servers may add Vary: Origin,
 // while module and prefetch requests send different Origin headers.

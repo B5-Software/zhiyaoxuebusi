@@ -1,0 +1,115 @@
+{
+  "university-world": {
+    "source": "exec-b5536122-1aed-4ba6-8173-457e4a4ed324.png",
+    "asset": "public/images/university-world.webp",
+    "size": "1672x941",
+    "style": "水彩等距生活地图",
+    "export": "原始尺寸，无裁剪、无降采样、无损 WebP"
+  },
+  "society-world": {
+    "source": "exec-e58634a5-004b-474a-991f-a026ca8e9463.png",
+    "asset": "public/images/society-world.webp",
+    "size": "1672x941",
+    "style": "水彩等距生活地图",
+    "export": "原始尺寸，无裁剪、无降采样、无损 WebP"
+  },
+  "map-college-study": {
+    "source": "exec-93d1b7fd-cd87-4e93-ae5f-03a9584ced09.png",
+    "asset": "public/images/map-college-study.webp",
+    "size": "1672x941",
+    "style": "独立绘制的水彩等距区域小地图",
+    "export": "原始尺寸，无裁剪、无降采样、无损 WebP",
+    "pixelsMatchSource": true,
+    "pixelSha256": "ccf5938e2ecc10b126c36437b91fb449c42eab972ce0a5cb004b1eb5360cfb86"
+  },
+  "map-college-dorm": {
+    "source": "exec-37f5b644-f726-4300-9abd-dfb110c02ad6.png",
+    "asset": "public/images/map-college-dorm.webp",
+    "size": "1672x941",
+    "style": "独立绘制的水彩等距区域小地图",
+    "export": "原始尺寸，无裁剪、无降采样、无损 WebP",
+    "pixelsMatchSource": true,
+    "pixelSha256": "117000b7ea77ca11d539359c138d4d2b641ecc0135a32890f29a35b76a8cc48d"
+  },
+  "map-college-research": {
+    "source": "exec-d3bd88c2-6734-4da4-baaa-792786e90dc4.png",
+    "asset": "public/images/map-college-research.webp",
+    "size": "1672x941",
+    "style": "独立绘制的水彩等距区域小地图",
+    "export": "原始尺寸，无裁剪、无降采样、无损 WebP",
+    "pixelsMatchSource": true,
+    "pixelSha256": "8719680b181fa3a99c7852e589622424130b968f71504359715bb2774f995b01"
+  },
+  "map-college-life": {
+    "source": "exec-193ed0a8-cefd-4691-8f5d-f5bc96fe0577.png",
+    "asset": "public/images/map-college-life.webp",
+    "size": "1672x941",
+    "style": "独立绘制的水彩等距区域小地图",
+    "export": "原始尺寸，无裁剪、无降采样、无损 WebP",
+    "pixelsMatchSource": true,
+    "pixelSha256": "35b853a9f28ec07470b09ffcb70109dde14946a4febd82d3ce273a96d1f3c823"
+  },
+  "map-recruitment": {
+    "source": "exec-449abe39-76b8-44c0-a435-5f631e021e11.png",
+    "asset": "public/images/map-recruitment.webp",
+    "size": "1672x941",
+    "style": "独立绘制的水彩等距区域小地图",
+    "export": "原始尺寸，无裁剪、无降采样、无损 WebP",
+    "pixelsMatchSource": true,
+    "pixelSha256": "2fa18c8d5178cd4dae33ba75efd5fda1f8b2f8dad39450fd0eea305baade69d7"
+  },
+  "map-workplace": {
+    "source": "exec-56335a46-da26-4f61-b1fb-a169a0977e60.png",
+    "asset": "public/images/map-workplace.webp",
+    "size": "1672x941",
+    "style": "独立绘制的水彩等距区域小地图",
+    "export": "原始尺寸，无裁剪、无降采样、无损 WebP",
+    "pixelsMatchSource": true,
+    "pixelSha256": "f3dc93650cbc2bd661d83590e2c9e105ac964e471e2ce923f0c39d77f9514a55"
+  },
+  "map-exchange": {
+    "source": "exec-39a5fb0f-f687-4b80-8937-c343eb8c29f8.png",
+    "asset": "public/images/map-exchange.webp",
+    "size": "1672x941",
+    "style": "独立绘制的水彩等距区域小地图",
+    "export": "原始尺寸，无裁剪、无降采样、无损 WebP",
+    "pixelsMatchSource": true,
+    "pixelSha256": "4d19716bea1b88d4495bb2cda7e12238f891551ad742142f4f6ae7b3775b8d24"
+  },
+  "map-hospital": {
+    "source": "exec-96735bfb-ced1-4ccc-947c-b2e91ea58146.png",
+    "asset": "public/images/map-hospital.webp",
+    "size": "1672x941",
+    "style": "独立绘制的水彩等距区域小地图",
+    "export": "原始尺寸，无裁剪、无降采样、无损 WebP",
+    "pixelsMatchSource": true,
+    "pixelSha256": "d94a4a2f2f6801ea86ac9e58fcefcf645ad29f827f1e15e32d11a4db3b50e778"
+  },
+  "map-insurance": {
+    "source": "exec-d905ab47-c316-487a-8e8c-a3bea5e0bf4b.png",
+    "asset": "public/images/map-insurance.webp",
+    "size": "1672x941",
+    "style": "独立绘制的水彩等距区域小地图",
+    "export": "原始尺寸，无裁剪、无降采样、无损 WebP",
+    "pixelsMatchSource": true,
+    "pixelSha256": "28c7fbb0b1ac3f3a74725a6e16026279c2b2ee4b529755ca1ebf98ebcdfda3ab"
+  },
+  "map-nightlife": {
+    "source": "exec-c0c9c9b0-9504-4d28-ac5f-c3444b1cab8c.png",
+    "asset": "public/images/map-nightlife.webp",
+    "size": "1672x941",
+    "style": "独立绘制的水彩等距区域小地图",
+    "export": "原始尺寸，无裁剪、无降采样、无损 WebP",
+    "pixelsMatchSource": true,
+    "pixelSha256": "b0a84c73bc01953d5c0d37a605399d86cd8e426806a636ce4997400ea37b19d8"
+  },
+  "map-residence": {
+    "source": "exec-18831ac4-b226-436c-990e-25b269e16658.png",
+    "asset": "public/images/map-residence.webp",
+    "size": "1672x941",
+    "style": "独立绘制的水彩等距区域小地图",
+    "export": "原始尺寸，无裁剪、无降采样、无损 WebP",
+    "pixelsMatchSource": true,
+    "pixelSha256": "545841fd01bf3f3ec703c815e497f139c6b7e26ea4043ac363a952fea3381a78"
+  }
+}

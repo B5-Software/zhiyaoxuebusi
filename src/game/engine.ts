@@ -6,6 +6,9 @@ import { PROACTIVE_TOPICS } from './proactiveData';
 import { QUESTS, createQuestState, questView, validateQuests } from './quests';
 import { LONG_PROJECTS, advanceProjects, projectStartLock } from './projects';
 import { createGraduate, validateGraduate } from './graduate';
+import { createLife } from './life';
+import { advanceBody, recordHabit } from './lifeHealth';
+import { validateLife } from './lifeSave';
 import { DEFAULT_PLAYER_NAME, migratePlayerName } from './player';
 import { getAppointments } from './appointments';
 import { birthdayEventFor, birthdayInfo, birthdayStatus, CHARACTER_BIRTHDAYS } from './birthdays';
@@ -24,7 +27,7 @@ const MILESTONES: Record<number, string> = { 8: 'midterm', 16: 'winter-holiday',
 export function createGame(): GameState {
   return {
     version: 3, started: false, name: DEFAULT_PLAYER_NAME, nameIsCustom: false, gender: 'male', difficulty: 'standard', targetSchool: 'xjtu',
-    romance: createRomance(), graduate: createGraduate(), birthdayGifts: [], world: { scene: 'campus', placeId: 'classroom', x: 54, y: 74 },
+    romance: createRomance(), graduate: createGraduate(), life: createLife(), birthdayGifts: [], world: { scene: 'campus', placeId: 'classroom', x: 54, y: 74 },
     week: 0, actions: 0, weeklyActions: [],
     stats: { energy: 80, mood: 75, stress: 28, health: 85, money: 120, autonomy: 35 },
     subjects: { chinese: 90, math: 86, english: 94, physics: 64, chemistry: 58, biology: 66 },
@@ -101,6 +104,7 @@ export function performAction(game: GameState, actionId: string): { game: GameSt
   const next = applyEffect(game, actionEffect(game, action));
   next.actions += 1;
   next.weeklyActions = [...game.weeklyActions, actionId];
+  next.life = { ...next.life, body: recordHabit(next.life.body, actionId) };
   next.counts = { ...next.counts, [action.category]: next.counts[action.category] + 1 };
   next.actionLog = [{ week: game.week, text: action.name }, ...game.actionLog].slice(0, 180);
   if (isRomanceId(actionId)) {
@@ -118,6 +122,7 @@ export function advanceWeek(game: GameState): GameState {
   let next = applyEffect(game, { energy: 28, mood: 3, stress: -5, money: 40, health: game.stats.stress > 80 ? -5 : 2 });
   next = { ...next, week, actions: 0, weeklyActions: [], quests: advanceProjects(game, week), seed: (game.seed * 16807) % 2147483647 };
   next = advanceRomance(next);
+  next.life = { ...next.life, body: advanceBody(next).body };
   if (next.stats.health < 25) {
     next = applyEffect(next, { health: 30, energy: 30, stress: -25 });
     next.actionLog = [{ week, text: '在家人和老师的支持下，安排了一次必要的休养。' }, ...next.actionLog];
@@ -417,6 +422,9 @@ export function validateGame(raw: unknown): GameState | null {
   const graduate = validateGraduate(raw.graduate, result);
   if (!graduate) return null;
   result.graduate = graduate;
+  const life = validateLife(raw.life, result);
+  if (!life) return null;
+  result.life = life;
   if (raw.version === 3) {
     const world = raw.world;
     if (!isRecord(world) || !PLACES.some(place => place.scene === world.scene && place.id === world.placeId) || !validNumber(world.x) || !validNumber(world.y)) return null;
@@ -454,7 +462,7 @@ export function persistGame(game: GameState): boolean {
     let previous: GameState | null = null;
     try { previous = previousText ? validateGame(JSON.parse(previousText)) : null; } catch { /* Preserve valid backups if the primary is damaged. */ }
     if (previous?.started) {
-      const fingerprint = (value: GameState) => `${value.seed}:${value.week}:${value.phase}:${value.actions}:${value.history.length}:${value.social.replies.length}:${value.social.initiatives.length}:${value.quests.claimed.length}:${value.quests.visitedPlaces.length}:${JSON.stringify(value.quests.projects)}:${JSON.stringify(value.romance)}`;
+      const fingerprint = (value: GameState) => `${value.seed}:${value.week}:${value.phase}:${value.actions}:${value.history.length}:${value.social.replies.length}:${value.social.initiatives.length}:${value.quests.claimed.length}:${value.quests.visitedPlaces.length}:${JSON.stringify(value.quests.projects)}:${JSON.stringify(value.romance)}:${JSON.stringify(value.graduate)}:${JSON.stringify(value.life)}`;
       const backups = loadAutoBackups().filter(slot => fingerprint(slot.game) !== fingerprint(previous!));
       backups.unshift({ game: previous, savedAt: previous.updatedAt });
       localStorage.setItem(AUTO_BACKUP_KEY, JSON.stringify(backups.slice(0, 6)));
