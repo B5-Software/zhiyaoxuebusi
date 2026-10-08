@@ -1,15 +1,15 @@
 {
-  "date": "2026-10-08",
-  "version": "3.0.0",
+  "date": "2026-10-09",
+  "version": "3.1.0",
   "platform": "Cloudflare Pages",
   "branch": "main",
-  "codeCommit": "0408b24e2a0f7ea8a7748e1db6a1ac19a9357b84",
-  "indexSha256": "763a3819bda7b2836596f8e10e69f7dcf282de7ad27d6f588d45031d8c0db3cd",
-  "unitTests": 111,
-  "uiChecks": 164,
+  "codeCommit": "0418154499ace4f3971b76b95d70b635361345bf",
+  "indexSha256": "83023ef6f8ac3e5c0d770cdd62fa72a13449559f6766cf97e299431d6c15104b",
+  "unitTests": 134,
+  "uiChecks": 172,
   "uiViewports": 5,
   "guideChecks": "docs/guide-game-checks.json",
-  "lifeChecks": "docs/life-browser-checks.json",
+  "lifeChecks": "docs/browser-v3.1.json",
   "journeyChecks": "docs/life-journey-checks.json",
   "smallMapAssets": 11,
   "loadingChecks": "docs/loading-path-checks.json",
@@ -17,27 +17,27 @@
     {
       "name": "shiguang-campus-life",
       "production": "https://shiguang-campus-life.pages.dev/",
-      "deployment": "https://a7497536.shiguang-campus-life.pages.dev/",
+      "deployment": "https://cbebda8c.shiguang-campus-life.pages.dev/",
       "resources": [
         {
           "path": "index.html",
           "status": 200,
           "bytes": 3844,
-          "sha256": "763a3819bda7b2836596f8e10e69f7dcf282de7ad27d6f588d45031d8c0db3cd",
+          "sha256": "83023ef6f8ac3e5c0d770cdd62fa72a13449559f6766cf97e299431d6c15104b",
           "matchesBuild": true
         },
         {
           "path": "sw.js",
           "status": 200,
           "bytes": 3956,
-          "sha256": "d2679225afe3b6a00045836ddb90b805fd0612b3d398058857f0df677816dd19",
+          "sha256": "85c4b2a5baa2d4575150d9bb64b9d39b3397be1e6658d1bc21cc67656da0f0d7",
           "matchesBuild": true
         },
         {
           "path": "cache-manifest.json",
           "status": 200,
           "bytes": 8417,
-          "sha256": "145bf57af1e47b7c697ea57b57ae835177608688a84ef91d855a8eb84b96c985",
+          "sha256": "92066ea9350f0f36659a1a9f2653a963d947135375e9124676bf8a9cd6e17cb7",
           "matchesBuild": true
         },
         {
@@ -146,29 +146,29 @@
           "matchesBuild": true
         },
         {
-          "path": "assets/mountGame-DRq0qCA_.css",
+          "path": "assets/mountGame-C_vQj6oc.css",
           "status": 200,
-          "bytes": 303084,
-          "sha256": "a76d4725961c502e18e2aebc304d57e0967f0e0d30a67636be89b7a482fb3bfc",
+          "bytes": 312931,
+          "sha256": "c83ca9343e325a4b365281fe1ebe38cb8349cb39ba940314e0cc91f697a6db8f",
           "matchesBuild": true
         },
         {
-          "path": "assets/index-CH3L1oX0.js",
+          "path": "assets/index-DqdFQvVT.js",
           "status": 200,
           "bytes": 3464,
-          "sha256": "0f9b7e778683c3d09819654c0308a9f6933d8af56df85abc107697072cadbcde",
+          "sha256": "f7eecdf7c28ec0c6b063eb0e5c10600a18952aa0c45e0cf056294b27514fff5c",
           "matchesBuild": true
         },
         {
-          "path": "assets/mountGame-B71fPzF4.js",
+          "path": "assets/mountGame-CT_NIVk_.js",
           "status": 200,
-          "bytes": 954173,
-          "sha256": "dc58eeaf7acdf2fc702e058d979e7117e2c3c558045cc6e0846d0446b339394c",
+          "bytes": 995168,
+          "sha256": "22e77be23a68df367081ebbe48e6a7a0228d65e68435bb1b36e7d2eede3a3053",
           "matchesBuild": true
         }
       ],
       "liveChecks": {
-        "version": "3.0.0",
+        "version": "3.1.0",
         "femaleOpeningAndAvatars": true,
         "mainPressureChapter": true,
         "tutorialAutoStartAndSkip": true,
@@ -183,33 +183,34 @@
           "regions": 11,
           "sourceResolution": "1672x941",
           "graduationEntry": true
-        }
+        },
+        "professionalExchangeAndNews": true
       }
     },
     {
       "name": "zhiyaoxuebusi",
       "production": "https://zhiyaoxuebusi.pages.dev/",
-      "deployment": "https://c4f4ed69.zhiyaoxuebusi.pages.dev/",
+      "deployment": "https://64dfa290.zhiyaoxuebusi.pages.dev/",
       "resources": [
         {
           "path": "index.html",
           "status": 200,
           "bytes": 3844,
-          "sha256": "763a3819bda7b2836596f8e10e69f7dcf282de7ad27d6f588d45031d8c0db3cd",
+          "sha256": "83023ef6f8ac3e5c0d770cdd62fa72a13449559f6766cf97e299431d6c15104b",
           "matchesBuild": true
         },
         {
           "path": "sw.js",
           "status": 200,
           "bytes": 3956,
-          "sha256": "d2679225afe3b6a00045836ddb90b805fd0612b3d398058857f0df677816dd19",
+          "sha256": "85c4b2a5baa2d4575150d9bb64b9d39b3397be1e6658d1bc21cc67656da0f0d7",
           "matchesBuild": true
         },
         {
           "path": "cache-manifest.json",
           "status": 200,
           "bytes": 8417,
-          "sha256": "145bf57af1e47b7c697ea57b57ae835177608688a84ef91d855a8eb84b96c985",
+          "sha256": "92066ea9350f0f36659a1a9f2653a963d947135375e9124676bf8a9cd6e17cb7",
           "matchesBuild": true
         },
         {
@@ -318,29 +319,29 @@
           "matchesBuild": true
         },
         {
-          "path": "assets/mountGame-DRq0qCA_.css",
+          "path": "assets/mountGame-C_vQj6oc.css",
           "status": 200,
-          "bytes": 303084,
-          "sha256": "a76d4725961c502e18e2aebc304d57e0967f0e0d30a67636be89b7a482fb3bfc",
+          "bytes": 312931,
+          "sha256": "c83ca9343e325a4b365281fe1ebe38cb8349cb39ba940314e0cc91f697a6db8f",
           "matchesBuild": true
         },
         {
-          "path": "assets/index-CH3L1oX0.js",
+          "path": "assets/index-DqdFQvVT.js",
           "status": 200,
           "bytes": 3464,
-          "sha256": "0f9b7e778683c3d09819654c0308a9f6933d8af56df85abc107697072cadbcde",
+          "sha256": "f7eecdf7c28ec0c6b063eb0e5c10600a18952aa0c45e0cf056294b27514fff5c",
           "matchesBuild": true
         },
         {
-          "path": "assets/mountGame-B71fPzF4.js",
+          "path": "assets/mountGame-CT_NIVk_.js",
           "status": 200,
-          "bytes": 954173,
-          "sha256": "dc58eeaf7acdf2fc702e058d979e7117e2c3c558045cc6e0846d0446b339394c",
+          "bytes": 995168,
+          "sha256": "22e77be23a68df367081ebbe48e6a7a0228d65e68435bb1b36e7d2eede3a3053",
           "matchesBuild": true
         }
       ],
       "liveChecks": {
-        "version": "3.0.0",
+        "version": "3.1.0",
         "femaleOpeningAndAvatars": true,
         "mainPressureChapter": true,
         "tutorialAutoStartAndSkip": true,
@@ -355,15 +356,17 @@
           "regions": 11,
           "sourceResolution": "1672x941",
           "graduationEntry": true
-        }
+        },
+        "professionalExchangeAndNews": true
       }
     }
   ],
   "githubPages": {
     "production": "https://b5-software.github.io/zhiyaoxuebusi/",
-    "workflow": "https://github.com/B5-Software/zhiyaoxuebusi/actions/runs/37787346714",
-    "version": "3.0.0",
+    "workflow": "https://github.com/B5-Software/zhiyaoxuebusi/actions/runs/37859066672",
+    "version": "3.1.0",
     "nativeSmallMaps": true,
+    "professionalExchangeAndNews": true,
     "resources": [
       {
         "path": "images/university-world.webp",
