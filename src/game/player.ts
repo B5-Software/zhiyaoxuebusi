@@ -1,3 +1,4 @@
+import { asset } from '../utils/asset';
 import type { GameState } from './types';
 
 export const DEFAULT_PLAYER_NAME = '江予安';
@@ -7,8 +8,8 @@ export function playerDisplayName(game: Pick<GameState, 'name'>) {
   return game.name.trim() || DEFAULT_PLAYER_NAME;
 }
 
-export function playerText(game: Pick<GameState, 'name'>, text: string) {
-  return text.split('{{player}}').join(playerDisplayName(game));
+export function playerText(game: Pick<GameState, 'name'> & Partial<Pick<GameState, 'gender'>>, text: string) {
+  return text.split('{{player}}').join(playerDisplayName(game)).split('{{pronoun}}').join(game.gender === 'female' ? '她' : '他').split('{{child}}').join(game.gender === 'female' ? '女儿' : '儿子');
 }
 
 export function playerNameError(value: string) {
@@ -30,3 +31,5 @@ export function renamePlayer(game: GameState, value: string): { game: GameState;
   if (error) return { game, error };
   return { game: { ...game, name: value.trim(), nameIsCustom: true, updatedAt: new Date().toISOString() } };
 }
+
+export const playerPortrait = (game: Pick<GameState, 'gender'>) => asset(game.gender === 'female' ? 'images/student-female.webp' : 'images/student.jpg');

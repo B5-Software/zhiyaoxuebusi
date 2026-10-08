@@ -30,7 +30,7 @@ function reward(game: GameState, id: RomanceId, trust = 3, affection = 3, unders
 }
 function chat(game: GameState, id: RomanceId, outgoing: string, incoming: string): GameState {
   const serial = `love-chat-${id}-${game.week}-${game.social.messages.length}`;
-  return { ...game, social: { ...game.social, messages: [...game.social.messages, { id: `${serial}-out`, character: id, side: 'outgoing', text: outgoing, week: game.week, read: true }, { id: `${serial}-in`, character: id, side: 'incoming', text: incoming, week: game.week, read: false }] } };
+  return { ...game, social: { ...game.social, messages: [...game.social.messages, { id: `${serial}-out`, character: id, side: 'outgoing', text: outgoing, week: Math.min(39, game.week), read: true }, { id: `${serial}-in`, character: id, side: 'incoming', text: incoming, week: Math.min(39, game.week), read: false }] } };
 }
 export function romanceBaseLock(game: GameState) {
   if (!game.started || game.phase !== 'school') return '开启校园生活后可以相处';
@@ -163,7 +163,7 @@ export function setCompanion(game: GameState, id: RomanceId, follow: boolean): {
   return { game: { ...game, romance: { ...game.romance, escort: follow ? id : null }, updatedAt: new Date().toISOString() } };
 }
 export function changeRelationship(game: GameState, id: RomanceId, operation: 'cooling' | 'breakup'): { game: GameState; error?: string } {
-  const error = romanceBaseLock(game); if (error) return { game, error };
+  const error = operation === 'breakup' && game.started && game.phase === 'ending' ? game.pendingEvent || game.romance.active || game.graduate.pending ? '先收好当前故事' : null : romanceBaseLock(game); if (error) return { game, error };
   if (game.social.partner !== id) return { game, error: '当前没有这段恋爱关系' };
   let next = patchBond(game, id, { status: operation === 'breakup' ? 'broken' : 'cooling', ...(operation === 'breakup' ? { sinceWeek: game.week } : {}) });
   next = { ...next, romance: { ...next.romance, escort: null, visitor: null, attention: { ...next.romance.attention, queued: null }, cancelledAppointments: operation === 'breakup' ? [...new Set([...next.romance.cancelledAppointments, `${id}-invite`, `${id}-invite-out`])] : next.romance.cancelledAppointments }, social: operation === 'breakup' ? { ...next.social, partner: null, bonds: { ...next.social.bonds, [id]: { ...next.social.bonds[id], route: 'friendship' } } } : next.social };

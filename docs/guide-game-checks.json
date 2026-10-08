@@ -1,0 +1,442 @@
+{
+  "version": "2.9.0",
+  "checks": [
+    {
+      "label": "320x568 basics:0",
+      "within": true
+    },
+    {
+      "label": "320x568 basics:1",
+      "within": true
+    },
+    {
+      "label": "320x568 basics:2",
+      "within": true
+    },
+    {
+      "label": "320x568 basics:3",
+      "within": true
+    },
+    {
+      "label": "320x568 basics:4",
+      "within": true
+    },
+    {
+      "label": "320x568 basics:5",
+      "within": true
+    },
+    {
+      "label": "320x568 basics:6",
+      "within": true
+    },
+    {
+      "label": "320x568 basics:7",
+      "within": true
+    },
+    {
+      "label": "320x568 basics:8",
+      "within": true
+    },
+    {
+      "label": "320x568 basics:9",
+      "within": true
+    },
+    {
+      "label": "320x568 basics:10",
+      "within": true
+    },
+    {
+      "label": "320x568 basics:11",
+      "within": true
+    },
+    {
+      "label": "320x568 basics:12",
+      "within": true
+    },
+    {
+      "label": "390x844 basics:0",
+      "within": true
+    },
+    {
+      "label": "390x844 basics:1",
+      "within": true
+    },
+    {
+      "label": "390x844 basics:2",
+      "within": true
+    },
+    {
+      "label": "390x844 basics:3",
+      "within": true
+    },
+    {
+      "label": "390x844 basics:4",
+      "within": true
+    },
+    {
+      "label": "refresh-atlas-step",
+      "within": true
+    },
+    {
+      "label": "390x844 basics:5",
+      "within": true
+    },
+    {
+      "label": "390x844 basics:6",
+      "within": true
+    },
+    {
+      "label": "390x844 basics:7",
+      "within": true
+    },
+    {
+      "label": "390x844 basics:8",
+      "within": true
+    },
+    {
+      "label": "390x844 basics:9",
+      "within": true
+    },
+    {
+      "label": "390x844 basics:10",
+      "within": true
+    },
+    {
+      "label": "390x844 basics:11",
+      "within": true
+    },
+    {
+      "label": "390x844 basics:12",
+      "within": true
+    },
+    {
+      "label": "768x600 basics:0",
+      "within": true
+    },
+    {
+      "label": "768x600 basics:1",
+      "within": true
+    },
+    {
+      "label": "768x600 basics:2",
+      "within": true
+    },
+    {
+      "label": "768x600 basics:3",
+      "within": true
+    },
+    {
+      "label": "768x600 basics:4",
+      "within": true
+    },
+    {
+      "label": "768x600 basics:5",
+      "within": true
+    },
+    {
+      "label": "768x600 basics:6",
+      "within": true
+    },
+    {
+      "label": "768x600 basics:7",
+      "within": true
+    },
+    {
+      "label": "768x600 basics:8",
+      "within": true
+    },
+    {
+      "label": "768x600 basics:9",
+      "within": true
+    },
+    {
+      "label": "768x600 basics:10",
+      "within": true
+    },
+    {
+      "label": "768x600 basics:11",
+      "within": true
+    },
+    {
+      "label": "768x600 basics:12",
+      "within": true
+    },
+    {
+      "label": "1280x900 basics:0",
+      "within": true
+    },
+    {
+      "label": "1280x900 basics:1",
+      "within": true
+    },
+    {
+      "label": "1280x900 basics:2",
+      "within": true
+    },
+    {
+      "label": "1280x900 basics:3",
+      "within": true
+    },
+    {
+      "label": "1280x900 basics:4",
+      "within": true
+    },
+    {
+      "label": "1280x900 basics:5",
+      "within": true
+    },
+    {
+      "label": "1280x900 basics:6",
+      "within": true
+    },
+    {
+      "label": "1280x900 basics:7",
+      "within": true
+    },
+    {
+      "label": "1280x900 basics:8",
+      "within": true
+    },
+    {
+      "label": "1280x900 basics:9",
+      "within": true
+    },
+    {
+      "label": "1280x900 basics:10",
+      "within": true
+    },
+    {
+      "label": "1280x900 basics:11",
+      "within": true
+    },
+    {
+      "label": "1280x900 basics:12",
+      "within": true
+    },
+    {
+      "label": "844x390 basics:0",
+      "within": true
+    },
+    {
+      "label": "844x390 basics:1",
+      "within": true
+    },
+    {
+      "label": "844x390 basics:2",
+      "within": true
+    },
+    {
+      "label": "844x390 basics:3",
+      "within": true
+    },
+    {
+      "label": "844x390 basics:4",
+      "within": true
+    },
+    {
+      "label": "844x390 basics:5",
+      "within": true
+    },
+    {
+      "label": "844x390 basics:6",
+      "within": true
+    },
+    {
+      "label": "844x390 basics:7",
+      "within": true
+    },
+    {
+      "label": "844x390 basics:8",
+      "within": true
+    },
+    {
+      "label": "844x390 basics:9",
+      "within": true
+    },
+    {
+      "label": "844x390 basics:10",
+      "within": true
+    },
+    {
+      "label": "844x390 basics:11",
+      "within": true
+    },
+    {
+      "label": "844x390 basics:12",
+      "within": true
+    },
+    {
+      "label": "map:0",
+      "within": true
+    },
+    {
+      "label": "map:1",
+      "within": true
+    },
+    {
+      "label": "map:2",
+      "within": true
+    },
+    {
+      "label": "study:0",
+      "within": true
+    },
+    {
+      "label": "study:1",
+      "within": true
+    },
+    {
+      "label": "study:2",
+      "within": true
+    },
+    {
+      "label": "stories:0",
+      "within": true
+    },
+    {
+      "label": "stories:1",
+      "within": true
+    },
+    {
+      "label": "stories:2",
+      "within": true
+    },
+    {
+      "label": "quests:0",
+      "within": true
+    },
+    {
+      "label": "quests:1",
+      "within": true
+    },
+    {
+      "label": "quests:2",
+      "within": true
+    },
+    {
+      "label": "messages:0",
+      "within": true
+    },
+    {
+      "label": "messages:1",
+      "within": true
+    },
+    {
+      "label": "messages:2",
+      "within": true
+    },
+    {
+      "label": "messages:3",
+      "within": true
+    },
+    {
+      "label": "romance:0",
+      "within": true
+    },
+    {
+      "label": "romance:1",
+      "within": true
+    },
+    {
+      "label": "romance:2",
+      "within": true
+    },
+    {
+      "label": "romance:3",
+      "within": true
+    },
+    {
+      "label": "birthdays:0",
+      "within": true
+    },
+    {
+      "label": "birthdays:1",
+      "within": true
+    },
+    {
+      "label": "birthdays:2",
+      "within": true
+    },
+    {
+      "label": "bag:0",
+      "within": true
+    },
+    {
+      "label": "bag:1",
+      "within": true
+    },
+    {
+      "label": "bag:2",
+      "within": true
+    },
+    {
+      "label": "schedule:0",
+      "within": true
+    },
+    {
+      "label": "schedule:1",
+      "within": true
+    },
+    {
+      "label": "universities:0",
+      "within": true
+    },
+    {
+      "label": "universities:1",
+      "within": true
+    },
+    {
+      "label": "saves:0",
+      "within": true
+    },
+    {
+      "label": "saves:1",
+      "within": true
+    },
+    {
+      "label": "saves:2",
+      "within": true
+    },
+    {
+      "label": "graduation:0",
+      "within": true
+    },
+    {
+      "label": "graduation:1",
+      "within": true
+    },
+    {
+      "label": "graduation:2",
+      "within": true
+    },
+    {
+      "label": "graduate:0",
+      "within": true
+    },
+    {
+      "label": "graduate:1",
+      "within": true
+    },
+    {
+      "label": "graduate:2",
+      "within": true
+    },
+    {
+      "label": "settings:0",
+      "within": true
+    },
+    {
+      "label": "settings:1",
+      "within": true
+    },
+    {
+      "label": "timer threshold, dismiss, refresh",
+      "passed": true
+    },
+    {
+      "label": "3-month UI confession, pending resume, following, breakup",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

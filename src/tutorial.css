@@ -1,0 +1,34 @@
+.tutorial-catalogue { margin: 8px 0 28px; padding-bottom: 24px; border-bottom: 1px dashed #d5cdb0; color: #7a8263; }
+.tutorial-catalogue-title { display: flex; align-items: center; gap: 12px; }
+.tutorial-catalogue-title h3 { margin: 0; font-family: var(--font-display); }
+.tutorial-catalogue-title p, .tutorial-catalogue > p { font-size: 12px; line-height: 1.8; }
+.tutorial-preference { display: flex; align-items: center; gap: 8px; font-size: 12px; margin: 18px 0; }
+.tutorial-catalogue .tutorial-preference input[type="checkbox"] { min-height: 16px; width: 16px; height: 16px; padding: 0; accent-color: #8e9f72; }
+.tutorial-module-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.tutorial-module-grid > button { min-width: 0; white-space: normal; text-align: left; padding: 12px; }
+.tutorial-module-grid > button span { display: flex; gap: 8px; align-items: center; }
+.tutorial-module-grid small { display: block; font-size: 10px; line-height: 1.7; margin-top: 6px; }
+.modal-guide-prompt { display: flex; align-items: center; gap: 8px; flex-shrink: 0; border-bottom: 1px dashed #ddd4b9; padding: 4px 14px; }
+.modal-guide-prompt > .text-button { flex: 1; justify-content: flex-start; font-size: 10px; padding: 6px 0; }
+.modal-guide-prompt.is-new { background: #edf0db; }
+.tutorial-layer { position: fixed; inset: 0; z-index: 100100; pointer-events: none; }
+.guide-shade { position: absolute; background: #374835a3; pointer-events: auto; touch-action: none; }
+.guide-spotlight { position: absolute; border: 3px solid #e7d5a1; border-radius: 12px; box-shadow: 0 0 0 2px #fff8e5b3; pointer-events: auto; touch-action: none; animation: guide-pulse 1.8s ease-in-out infinite; }
+.guide-spotlight.is-interactive { pointer-events: none; }
+.guide-card { position: absolute; pointer-events: auto; max-height: calc(100dvh - 16px); overflow-y: auto; overscroll-behavior: contain; background: #fff8e7; border: 2px solid #b9bc94; border-radius: 14px; padding: 16px; box-shadow: 0 5px 0 #37483530,0 12px 32px #25322440; color: #747f5c; }
+.guide-kicker { display: flex; gap: 6px; align-items: center; font-size: 10px; }
+.guide-kicker b { margin-left: auto; font-weight: normal; }
+.guide-progress { height: 3px; border-radius: 3px; overflow: hidden; background: #e3ddc4; margin-top: 9px; }
+.guide-progress i { display: block; height: 100%; background: #99ab77; }
+.guide-card h3 { font-family: var(--font-display); font-size: 21px; margin: 14px 0 9px; }
+.guide-card p { font-size: 12px; line-height: 1.9; margin: 0 0 15px; overflow-wrap: anywhere; }
+.guide-card > small { display: block; line-height: 1.7; font-size: 10px; margin-bottom: 10px; }
+.guide-buttons { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.guide-buttons button { font-size: 11px; white-space: normal; padding: 10px 12px; }
+.guide-buttons .text-button { padding-left: 0; }
+.guide-skip { margin: 10px auto 0; font-size: 10px; display: flex; padding: 6px; }
+@keyframes guide-pulse { 50% { box-shadow: 0 0 0 5px #ffedbd99; } }
+@media(max-width:480px) { .tutorial-module-grid { grid-template-columns: minmax(0,1fr); }.guide-card { padding: 13px; }.guide-card h3 { font-size: 19px; } }
+@media(max-height:500px) { .guide-card { padding: 12px; }.guide-card h3 { margin-top: 9px; font-size: 18px; }.guide-card p { line-height: 1.6; margin-bottom: 10px; } }
+@media(prefers-reduced-motion:reduce) { .guide-spotlight { animation: none; } }
+.reduced-motion .guide-spotlight { animation: none; }

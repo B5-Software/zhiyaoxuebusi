@@ -6,19 +6,19 @@ import type { CharacterId, GameState, QuestDefinition, QuestObjective, QuestStat
 const eventObjective = (id: string): QuestObjective => ({ text: `完成「${EVENTS.find(event => event.id === id)?.title ?? id}」`, goal: 1, progress: game => Number(game.seenEvents.includes(id)), target: { panel: 'week' } });
 const actionObjective = (ids: string[], goal: number, placeId: string): QuestObjective => ({ text: `${ids.map(id => ACTIONS.find(action => action.id === id)?.name).join(' / ')}，累计 ${goal} 次`, goal, progress: game => game.actionLog.filter(log => ids.some(id => ACTIONS.find(action => action.id === id)?.name === log.text)).length, target: { placeId } });
 const main: [string, string, string, number][] = [
-  ['first-day', '开场 · 我的名字', '在第一天写下自己的答案，高三从这里开始。', 0],
-  ['midterm', '秋天 · 分数之外', '走过第一次期中考试，再看看排名以外的自己。', 8],
-  ['winter-holiday', '冬天 · 留一点自己的时间', '寒假不只有计划表，也有可以自己安排的生活。', 16],
-  ['hundred-days', '春天 · 走自己的百日', '听见百日倒计时，也记得这一百天属于你。', 26],
-  ['mock-two', '再出发 · 面对第二次模拟', '承认紧张，整理状态，继续走向自己的答案。', 32],
-  ['wish-form', '选择 · 先问自己的喜欢', '志愿单上的学校与专业，慢慢成为你想过的生活。', 35],
-  ['graduation-photo', '告别 · 把身边的人留下', '合影里不只是一排座位，还有这一年一起走过的人。', 37],
-  ['last-lesson', '最后一课 · 认真听见自己', '把这堂课收好，再去写下一段新的故事。', 38],
+  ['first-day', '开场 · 先成为一个考号', '面对统一目标、按成绩排座位与不被允许说完的自我介绍。', 0],
+  ['midterm', '秋天 · 被公开比较', '面对公开排名和家长群比较，保留错题与睡眠的真实记录。', 8],
+  ['winter-holiday', '冬天 · 离校不等于放假', '强制打卡挤进家里，休息和隐私都需要付出代价争取。', 16],
+  ['hundred-days', '春天 · 被迫整齐的誓言', '走过整齐的誓师和被要求展示的斗志，守住能够执行的节奏。', 26],
+  ['mock-two', '二模 · 不断移动的及格线', '面对不断提高的目标与被否定的进步，承认身体的限度。', 32],
+  ['wish-form', '志愿 · 谁被允许有愿望', '在家庭期待、经济限制和个人愿望之间争取自己的排序。', 35],
+  ['graduation-photo', '合影 · 宣传片之外的脸', '宣传片只留下笑容；把那些不适合宣传的经历也记下来。', 37],
+  ['last-lesson', '最后一课 · 道歉不能改写过去', '接受或拒绝道歉，承认善意不能自动修正已经造成的伤害。', 38],
 ];
-export const QUESTS: QuestDefinition[] = main.map(([eventId, title, description, minWeek], index) => ({ id: `main-${index + 1}`, kind: 'main', chain: '属于我的高三', title, description, minWeek, requires: index ? `main-${index}` : undefined, objectives: [eventObjective(eventId)], reward: { mood: 4, autonomy: 2, money: 20 } }));
+export const QUESTS: QuestDefinition[] = main.map(([eventId, title, description, minWeek], index) => ({ id: `main-${index + 1}`, kind: 'main', chain: '被安排的一年', title, description, minWeek, requires: index ? `main-${index}` : undefined, objectives: [eventObjective(eventId)], reward: { mood: 4, autonomy: 2, money: 20 } }));
 QUESTS.push(
-  { id: 'main-9', kind: 'main', chain: '属于我的高三', title: '考场 · 写完自己的答卷', description: '认真走过模拟高考。成绩是一段记录，不是你全部的名字。', minWeek: 40, requires: 'main-8', objectives: [{ text: '完成模拟高考并查看成绩', goal: 1, progress: game => Number(game.examScore !== null), target: { panel: 'exam' } }], reward: { mood: 5, autonomy: 3 } },
-  { id: 'main-10', kind: 'main', chain: '属于我的高三', title: '盛夏 · 人生继续向前', description: '完成志愿与毕业纪念，把未来交还给自己。', minWeek: 40, requires: 'main-9', objectives: [{ text: '完成志愿投档，进入毕业终章', goal: 1, progress: game => Number(game.phase === 'ending'), target: { panel: 'universities' } }], reward: { mood: 8, autonomy: 5 } },
+  { id: 'main-9', kind: 'main', chain: '被安排的一年', title: '考场 · 写完自己的答卷', description: '认真走过模拟高考。成绩是一段记录，不是你全部的名字。', minWeek: 40, requires: 'main-8', objectives: [{ text: '完成模拟高考并查看成绩', goal: 1, progress: game => Number(game.examScore !== null), target: { panel: 'exam' } }], reward: { mood: 5, autonomy: 3 } },
+  { id: 'main-10', kind: 'main', chain: '被安排的一年', title: '盛夏 · 人生继续向前', description: '完成志愿与毕业纪念，把未来交还给自己。', minWeek: 40, requires: 'main-9', objectives: [{ text: '完成志愿投档，进入毕业终章', goal: 1, progress: game => Number(game.phase === 'ending'), target: { panel: 'universities' } }], reward: { mood: 8, autonomy: 5 } },
 );
 
 const names = [...new Set(EVENTS.flatMap(event => event.storyline ? [event.storyline] : []))];

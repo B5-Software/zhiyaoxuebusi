@@ -1,0 +1,32 @@
+.protagonist-picker { display:flex; gap:12px; padding:10px 0 18px; border:0; min-width:0; }
+.protagonist-picker legend { color:#7c8464; font-size:14px; }
+.protagonist-picker button { display:flex; align-items:center; gap:10px; padding:8px 14px; border:1px solid #d7cdaa; border-radius:12px; background:#faf5e5; color:#7d8564; flex:1; min-width:0; }
+.protagonist-picker button.selected { background:#e9eed9; border-color:#93a477; box-shadow:0 0 0 2px #a4b48740; }
+.protagonist-picker img { width:58px; height:58px; border-radius:50%; object-fit:cover; flex:none; }
+.creator-credit { text-align:right; margin-top:32px; font-size:13px; color:#9b9073; }
+.about-panel p { line-height:1.9; }
+.play-reminder { text-align:center; padding:16px 0; }
+.play-reminder h3 { font-size:22px; }
+.play-reminder p { line-height:2; }
+.play-reminder .button-row { justify-content:center; }
+.play-reminder-modal .modal-heading>div, .play-reminder-modal .modal-status p { text-align:center; }
+.creator-note { text-align:right; padding-right:12px; color:#94896e; }
+.graduate-intro { display:flex; gap:18px; align-items:center; margin-bottom:24px; }
+.graduate-intro>img { width:88px; height:88px; border-radius:50%; object-fit:cover; flex:none; }
+.graduate-panel p { line-height:1.8; }
+.graduate-overview, .graduate-existing, .graduate-months { background:#ecefdc80; border:1px dashed #c8d0aa; border-radius:12px; padding:16px; margin:20px 0; }
+.graduate-action-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+.graduate-action-grid button,.graduate-chapters button { justify-content:space-between; text-align:left; height:auto; min-height:64px; padding:12px; gap:12px; }
+.graduate-panel .secondary-button span { min-width:0; }
+.graduate-panel .secondary-button small { display:block; font-size:11px; line-height:1.7; margin-top:5px; font-weight:normal; overflow-wrap:anywhere; }
+.graduate-panel button:disabled { cursor:default; opacity:.58; }
+.graduate-gifts { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:16px; }
+.graduate-gifts select { min-width:0; max-width:100%; padding:10px; }
+.graduate-chapters { display:grid; gap:10px; margin:24px 0; }
+.graduate-chapters h4 { margin:0 0 4px; }
+.graduate-boundaries label { display:flex; gap:10px; align-items:center; margin:12px 0; line-height:1.7; }
+.graduate-boundaries input { width:18px; height:18px; min-height:18px; flex:none; accent-color:#839e76; }
+.graduate-memories article { padding:14px 0; border-bottom:1px dashed #d8ceac; }
+.graduate-memories h4 { margin:6px 0; }
+.graduate-story { padding:10px 0; }
+@media(max-width:540px){.graduate-intro { align-items:flex-start; gap:12px; }.graduate-intro>img { width:58px;height:58px; }.graduate-action-grid { grid-template-columns:1fr; }.protagonist-picker img { width:44px;height:44px; }.protagonist-picker button { padding:8px; gap:7px; }.graduate-overview .love-bond-values { flex-wrap:wrap; }}

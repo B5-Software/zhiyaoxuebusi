@@ -70,6 +70,7 @@ export interface GameState {
   started: boolean;
   name: string;
   nameIsCustom: boolean;
+  gender: 'male' | 'female';
   difficulty: 'gentle' | 'standard';
   targetSchool: string;
   week: number;
@@ -81,6 +82,7 @@ export interface GameState {
   social: SocialState;
   romance: RomanceState;
   birthdayGifts: string[];
+  graduate: GraduateState;
   world: { scene: Scene; placeId: string; x: number; y: number };
   quests: QuestState;
   inventory: Record<string, number>;
@@ -232,7 +234,16 @@ export interface SaveSlot {
   game: GameState;
 }
 
-export type Panel = 'age' | 'romance' | 'romance-story' | 'start' | 'menu' | 'settings' | 'saves' | 'help' | 'world-map' | 'quests' | 'messages' | 'location' | 'study' | 'bag' | 'relations' | 'journal' | 'universities' | 'schedule' | 'achievements' | 'profile' | 'week' | 'exam' | 'result' | 'ending' | 'event' | 'new-confirm' | null;
+export type Panel = 'graduate-romance' | 'about' | 'play-reminder' | 'age' | 'romance' | 'romance-story' | 'start' | 'menu' | 'settings' | 'saves' | 'help' | 'world-map' | 'quests' | 'messages' | 'location' | 'study' | 'bag' | 'relations' | 'journal' | 'universities' | 'schedule' | 'achievements' | 'profile' | 'week' | 'exam' | 'result' | 'ending' | 'event' | 'new-confirm' | null;
+
+export type GraduateOperation = 'reunion' | 'meet' | 'talk' | 'confess' | 'date' | 'hand' | 'hug' | 'kiss' | 'birthday' | 'breakup' | 'chapter-0' | 'chapter-1' | 'chapter-2' | 'chapter-3' | 'chapter-4' | 'chapter-5';
+export interface GraduateMemory { id: string; operation: GraduateOperation; month: number; choice: number; title: string; result: string }
+export interface GraduateState {
+  unlocked: boolean; month: number; actions: number; trust: number; affection: number; understanding: number;
+  status: 'friendship' | 'dating' | 'broken'; partner: 'teacher' | null; sinceMonth: number; lastConfessMonth: number; lastBreakupMonth: number;
+  meetMonths: number[]; contactMonths: number[]; giftMonths: number[]; dateMonths: number[]; touchMonths: number[];
+  touchAllowed: boolean; following: boolean; pending: GraduateOperation | null; memories: GraduateMemory[];
+}
 
 export type ViewerAge = 'unknown' | 'minor' | 'adult';
 export interface Audience { age: ViewerAge; skipPrivate: boolean }

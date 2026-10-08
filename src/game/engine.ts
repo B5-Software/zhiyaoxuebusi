@@ -5,6 +5,7 @@ import { createSocial, deliverMessages, isRomanceId, proactiveLock, replyLock, v
 import { PROACTIVE_TOPICS } from './proactiveData';
 import { QUESTS, createQuestState, questView, validateQuests } from './quests';
 import { LONG_PROJECTS, advanceProjects, projectStartLock } from './projects';
+import { createGraduate, validateGraduate } from './graduate';
 import { DEFAULT_PLAYER_NAME, migratePlayerName } from './player';
 import { getAppointments } from './appointments';
 import { birthdayEventFor, birthdayInfo, birthdayStatus, CHARACTER_BIRTHDAYS } from './birthdays';
@@ -22,8 +23,8 @@ const MILESTONES: Record<number, string> = { 8: 'midterm', 16: 'winter-holiday',
 
 export function createGame(): GameState {
   return {
-    version: 3, started: false, name: DEFAULT_PLAYER_NAME, nameIsCustom: false, difficulty: 'standard', targetSchool: 'xjtu',
-    romance: createRomance(), birthdayGifts: [], world: { scene: 'campus', placeId: 'classroom', x: 54, y: 74 },
+    version: 3, started: false, name: DEFAULT_PLAYER_NAME, nameIsCustom: false, gender: 'male', difficulty: 'standard', targetSchool: 'xjtu',
+    romance: createRomance(), graduate: createGraduate(), birthdayGifts: [], world: { scene: 'campus', placeId: 'classroom', x: 54, y: 74 },
     week: 0, actions: 0, weeklyActions: [],
     stats: { energy: 80, mood: 75, stress: 28, health: 85, money: 120, autonomy: 35 },
     subjects: { chinese: 90, math: 86, english: 94, physics: 64, chemistry: 58, biology: 66 },
@@ -359,6 +360,7 @@ export function validateGame(raw: unknown): GameState | null {
     raw = { ...raw, version: 2, relations: { ...legacyRelations, zhixia: 15, xinghe: 15, tangtang: 15 }, social };
   }
   if (!isRecord(raw) || raw.version !== 2 && raw.version !== 3 || typeof raw.name !== 'string' || !raw.name.trim() || raw.name.length > 16 || typeof raw.started !== 'boolean') return null;
+  if (raw.gender !== undefined && raw.gender !== 'male' && raw.gender !== 'female') return null;
   if (raw.nameIsCustom !== undefined && typeof raw.nameIsCustom !== 'boolean') return null;
   if (!validNumber(raw.week, 40) || !Number.isInteger(raw.week) || !validNumber(raw.actions, 3) || !Number.isInteger(raw.actions)) return null;
   if (!['gentle', 'standard'].includes(String(raw.difficulty)) || !['school', 'exam', 'application', 'ending'].includes(String(raw.phase))) return null;
@@ -412,6 +414,9 @@ export function validateGame(raw: unknown): GameState | null {
   const romance = validateRomance(raw.romance, result, raw.version === 2);
   if (!romance) return null;
   result.romance = romance;
+  const graduate = validateGraduate(raw.graduate, result);
+  if (!graduate) return null;
+  result.graduate = graduate;
   if (raw.version === 3) {
     const world = raw.world;
     if (!isRecord(world) || !PLACES.some(place => place.scene === world.scene && place.id === world.placeId) || !validNumber(world.x) || !validNumber(world.y)) return null;

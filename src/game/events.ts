@@ -2,26 +2,26 @@ import type { CharacterId, Choice, StoryEvent } from './types';
 import { EXPLORATION_EVENTS } from './explorationEvents';
 import { EXTENDED_EVENTS } from './extendedEvents';
 import { MEETING_EVENTS } from './appointments';
+import { REALITY_EVENTS, REALITY_MAIN } from './realityEvents';
 import { BIRTHDAY_EVENTS } from './birthdays';
 
-const chapters = ['第一章 · 风从九月来', '第二章 · 被排名的秋天', '第三章 · 冬天没有标准答案', '第四章 · 把春天还给我们', '第五章 · 盛夏与自己的路'];
+const chapters = ['第一章 · 先成为一个考号', '第二章 · 被排名的秋天', '第三章 · 没有放假的冬天', '第四章 · 被安排的百日', '第五章 · 盛夏与自己的路'];
 const makeEvent = (id: string, title: string, period: number, speaker: CharacterId, scene: StoryEvent['scene'], paragraphs: string[], choices: Choice[]): StoryEvent => ({
   id, title, chapter: chapters[period], minWeek: period * 8, maxWeek: period * 8 + 7, speaker, scene, paragraphs, choices,
 });
 
+const mainEvent = (id: string, period: number, speaker: CharacterId, scene: StoryEvent['scene']): StoryEvent => {
+  const event = REALITY_MAIN[id]; if (!event) throw new Error('Missing main chapter: ' + id);
+  return makeEvent(id, event.title, period, speaker, scene, event.paragraphs, event.choices);
+};
+
 export const EVENTS: StoryEvent[] = [
   ...BIRTHDAY_EVENTS,
+  ...REALITY_EVENTS,
   ...MEETING_EVENTS,
   ...EXTENDED_EVENTS,
   ...EXPLORATION_EVENTS,
-  makeEvent('first-day', '你的名字，不只是一个考号', 0, 'teacher', 'classroom', [
-    '九月的西安还有点热。黑板上写着“只要学不死，就往死里学”，最后一个感叹号被描了三遍。老陈拿着新座位表走进教室。',
-    '“还有二百多天。”他说完停了一下，又把窗户推开。“{{player}}同学，先自我介绍吧。除了目标分数，也说一件你喜欢的事。”',
-  ], [
-    { text: '我想考好大学，也想好好过这一年。', effect: { mood: 8, autonomy: 5, relations: { teacher: 3, su: 3 } }, result: '后排有人小声说“我也是”。原来这个愿望并不只有你一个人有。' },
-    { text: '我喜欢读书，不只是参考书。', effect: { subjects: { chinese: 3 }, autonomy: 7, relations: { su: 6 } }, result: '苏晓悄悄在纸条上写了一本书名。你的高三，先多了一个可以交换书的人。' },
-    { text: '先定个小目标，把数学补上来。', effect: { subjects: { math: 4 }, stress: 3, relations: { teacher: 5 } }, result: '老陈点点头：“目标具体一点就很好。但别忘了，数学以外也有生活。”' },
-  ]),
+  mainEvent('first-day', 0, 'teacher', 'classroom'),
   makeEvent('ranking-wall', '透明得只剩分数', 0, 'su', 'classroom', [
     '第一次摸底考试后，年级把排名贴在了走廊最亮的地方。名字、总分、进退箭头，一项都没落下。',
     '苏晓盯着自己的名字：“他们说公开透明，可我的委屈怎么不公开一下？”有人站在榜前拍照，准备发进家长群。',
@@ -141,20 +141,8 @@ export const EVENTS: StoryEvent[] = [
     { text: '一起走慢一点，聊聊想去的大学。', effect: { relations: { su: 12 }, mood: 10, stress: -8, autonomy: 3 }, result: '原来她也没想好。你们约定，先收集世界的样子，不急着给未来判卷。' },
     { text: '认真地说声谢谢，明天带热牛奶。', effect: { relations: { su: 9 }, mood: 6, money: -8 }, result: '第二天，她把牛奶捂在手里笑了。校园里不只有令人紧张的消息。' },
   ]),
-  makeEvent('midterm', '分数背后没有摄像头', 1, 'teacher', 'classroom', [
-    '期中成绩出来，有人进步，有人退步。年级会上，所有原因被概括为两个字：态度。',
-    '老陈回班后没训话，只发了空白纸：“写一道真正没弄懂的题。今天我们解决问题，不解决人。”',
-  ], [
-    { text: '诚实列出自己的知识漏洞。', effect: { subjects: { math: 5, physics: 4 }, stress: -6, relations: { teacher: 5 } }, result: '第一次，错题没有变成品德审判。你知道接下来具体该做什么了。' },
-    { text: '组织一个不比排名的互助小组。', effect: { subjects: { chemistry: 4, biology: 3 }, relations: { su: 5, zhou: 5 }, autonomy: 4 }, result: '擅长不同科目的人坐在一起。你们发现，同学也可以不是竞争对手。' },
-  ]),
-  makeEvent('winter-holiday', '寒假只有一个名字', 2, 'teacher', 'classroom', [
-    '寒假作业发下来，摞起来比你的水杯还高。通知要求每天上传学习照片，精确到起床时间。',
-    '周野翻了一下：“放假的是教室，不是我们。”',
-  ], [
-    { text: '按薄弱项排序，给自己留出休息日。', effect: { autonomy: 7, energy: 12, subjects: { math: 3 }, stress: -6 }, result: '你把一座作业山拆成了可以走的小路，也给日历留下了几格空白。' },
-    { text: '和老师商量，免做已经掌握的重复题。', effect: { autonomy: 8, relations: { teacher: 5 }, subjects: { physics: 4 }, stress: 3 }, result: '老陈要求你先做一组检测。不是完全自由，但一小部分时间回到了你手里。' },
-  ]),
+  mainEvent('midterm', 1, 'teacher', 'classroom'),
+  mainEvent('winter-holiday', 2, 'teacher', 'classroom'),
   makeEvent('new-year', '拜年变成答辩', 2, 'mom', 'home', [
     '年夜饭还没开始，亲戚已经问完了成绩、名次、目标院校。有人宣布：“考不上重点，这辈子就完了。”',
     '妈妈看了看你，筷子悬在半空。窗外有人放了一盏小小的灯。',
@@ -218,13 +206,7 @@ export const EVENTS: StoryEvent[] = [
     { text: '认真道谢，顺便问一道真正困惑的题。', effect: { relations: { teacher: 10 }, subjects: { physics: 4 }, stress: -3 }, result: '聊到题目时，他终于不再皱着眉。有些人也在努力，不让制度把自己变得太硬。' },
     { text: '把班里的真实困难整理给他。', effect: { autonomy: 5, relations: { teacher: 8 }, energy: -5, mood: 3 }, result: '你们一起把“坚持”改成了几件具体的改善：热水、课间、可以求助的时间。' },
   ]),
-  makeEvent('hundred-days', '倒计时开始替人说话', 3, 'teacher', 'campus', [
-    '百日誓师的气球升上天空。广播说：“一百天，决定你的一生。”你想，一生那么长，怎么会只剩下一百天？',
-    '老陈把誓词收起来：“目标要有。也记住，考试是人生的一部分，不是人生的全部。”',
-  ], [
-    { text: '制定可执行的计划，而不是惩罚自己的誓言。', effect: { subjects: { math: 4, english: 4 }, autonomy: 5, stress: -6 }, result: '你写下每天可以完成的事。纸上没有“必须成功”，只有清楚的下一步。' },
-    { text: '和朋友约定，不管分数如何都一起走出考场。', effect: { relations: { su: 8, zhou: 8 }, mood: 12, stress: -9 }, result: '你们没有对天发誓，只碰了碰拳。这个约定反而很有分量。' },
-  ]),
+  mainEvent('hundred-days', 3, 'teacher', 'campus'),
   makeEvent('politics-question', '被划掉的“为什么”', 3, 'su', 'classroom', [
     '讨论课上，苏晓问：“如果一种制度真的自信，为什么不允许我们讨论它的问题？”教室安静下来。',
     '老师让大家回到标准答案。课后她把那个问题写进本子：“我知道考试怎么答，可我还是想知道为什么。”',
@@ -288,34 +270,10 @@ export const EVENTS: StoryEvent[] = [
     { text: '抱抱她，说说今天真正的心情。', effect: { relations: { mom: 15 }, mood: 15, stress: -15 }, result: '你们聊了很久。没有总结，没有打分，也没有把一段话变成一次教育。' },
     { text: '一起吃面，也认真感谢她的改变。', effect: { relations: { mom: 12 }, energy: 15, mood: 10, stress: -9 }, result: '面有点烫。你们慢慢吃，第一次觉得“慢慢来”也可以出现在高三。' },
   ]),
-  makeEvent('mock-two', '二模后的岔路口', 4, 'teacher', 'classroom', [
-    '最后几次模拟考，分数仍然会上下浮动。有人开始到处搜“逆袭奇迹”，恨不得找到一夜之间改变人生的按钮。',
-    '老陈说：“没有这种按钮。把会的做稳，把睡眠补足，比再买十本资料有用。”',
-  ], [
-    { text: '回归基础，把已掌握的知识稳住。', effect: { subjects: { chinese: 3, math: 3, english: 3, physics: 2, chemistry: 2, biology: 2 }, energy: -10, stress: -3 }, result: '你停止追逐神奇方法，开始相信那些已经踏实走过的路。' },
-    { text: '优先调整作息，练习限时答题。', effect: { energy: 16, health: 6, stress: -12, subjects: { math: 3 } }, result: '清醒的脑子终于比凌晨两点的意志力更可靠。' },
-  ]),
-  makeEvent('wish-form', '志愿，首先是谁的愿', 4, 'mom', 'home', [
-    '第一次模拟填报志愿，爸爸妈妈的意见、亲戚的经验、短视频的建议挤满了桌面。你的那一张纸，反而在最下面。',
-    '妈妈问：“你自己想好了没有？”这次，她是真的在等答案。',
-  ], [
-    { text: '拿出学校与专业资料，说清自己的排序。', effect: { autonomy: 12, relations: { mom: 7 }, stress: -5 }, result: '你不再只报一个校名，而是谈起课程、城市、预算和你愿意投入的事情。' },
-    { text: '承认还在探索，请他们留一些选择空间。', effect: { autonomy: 9, relations: { mom: 8 }, mood: 7 }, result: '不知道不是不负责任。你们约定一起查证，而不是让最大的声音自动获胜。' },
-  ]),
-  makeEvent('graduation-photo', '最后一排的阳光', 4, 'zhou', 'campus', [
-    '拍毕业照那天，周野站在最后一排，苏晓在你旁边整理衣领。摄影师说：“大家笑一笑。”',
-    '你忽然发现，这可能是这一群人最后一次如此整齐地站在一起。以后再也没有人按成绩安排你们的座位了。',
-  ], [
-    { text: '认真笑一下，记住此刻的每个人。', effect: { mood: 16, relations: { su: 7, zhou: 7 }, stress: -9 }, result: '快门响的时候，你没有想分数。阳光把每个人都照得一样明亮。' },
-    { text: '在照片背面，写下给朋友的话。', effect: { relations: { su: 10, zhou: 10 }, autonomy: 5, mood: 10 }, result: '你没有写“前程似锦”，而是写：“以后累了，也可以来找我。”' },
-  ]),
-  makeEvent('last-lesson', '老陈没讲完的最后一课', 4, 'teacher', 'classroom', [
-    '最后一节正式班会，老陈没带课件。他先讲答题卡，再讲证件，最后沉默了一会儿。',
-    '“有些话我以前说得太重了。”他说，“你们考成什么样，都先好好吃饭，平平安安回来。”',
-  ], [
-    { text: '认真说声谢谢，也记住自己应得的温柔。', effect: { relations: { teacher: 15 }, mood: 14, stress: -12, autonomy: 4 }, result: '你没有把所有委屈都忘掉，但允许这段关系也有一个温柔的结尾。' },
-    { text: '告诉他，体育课和那杯热水，你都记得。', effect: { relations: { teacher: 18 }, mood: 10, stress: -10 }, result: '老陈摘下眼镜擦了擦，说教室灰有点大。窗外刚下过雨，其实一点灰也没有。' },
-  ]),
+  mainEvent('mock-two', 4, 'teacher', 'classroom'),
+  mainEvent('wish-form', 4, 'mom', 'home'),
+  mainEvent('graduation-photo', 4, 'zhou', 'campus'),
+  mainEvent('last-lesson', 4, 'teacher', 'classroom'),
   makeEvent('letter-future', '给考完以后的自己', 4, 'su', 'classroom', [
     '苏晓带来几张信纸，说要给六月的自己写封信。没有字数要求，也不判卷面分。',
     '你握着笔，突然觉得这种题比模拟卷更难一点：如果不需要证明优秀，你想要什么？',
@@ -344,11 +302,5 @@ export const EVENTS: StoryEvent[] = [
     { text: '“只要还在长大，就有重新选择的可能。”', effect: { autonomy: 10, mood: 12, relations: { su: 6 } }, result: '有人在旁边画了一棵小树。你们没有擦掉旧横幅，但给后来的人留下了另一种声音。' },
     { text: '“可以认真学习，也要认真吃饭、睡觉和生活。”', effect: { autonomy: 7, stress: -12, health: 5, relations: { teacher: 5 } }, result: '老陈站在旁边看了一会儿，往上添了两个字：“同意。”这次签名不是一张考核表。' },
   ]),
-  makeEvent('last-night', '允许世界安静一晚', 4, 'mom', 'home', [
-    '夜色落下来。家长群仍在转发押题，书桌上还有没做完的卷子。你忽然明白，题目永远不可能全部做完。',
-    '妈妈把手机放到客厅：“今晚不看这些了。”窗外的西安，和每一个普通夜晚一样。',
-  ], [
-    { text: '合上书，给明天留一个清醒的自己。', effect: { energy: 30, health: 8, stress: -20, mood: 10 }, result: '灯熄灭了。你不是放弃努力，而是终于让努力有了边界。' },
-    { text: '只看一遍易错提醒，然后按时睡觉。', effect: { energy: 20, stress: -14, subjects: { math: 3, english: 2 } }, result: '你没有打开新的试卷。最后一页上写着：看清题目，也照顾好自己。' },
-  ]),
+  mainEvent('last-night', 4, 'mom', 'home'),
 ];

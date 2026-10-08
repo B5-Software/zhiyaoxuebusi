@@ -13,7 +13,7 @@ export function characterPositions(game: GameState, scene: Scene, avatar = { x: 
   const ids: CharacterId[] = [...ROMANCE_IDS, 'mom', 'teacher'];
   const occupied = new Map<string, number>();
   return ids.flatMap(id => {
-    const escort = game.romance.escort === id;
+    const escort = game.romance.escort === id || id === 'teacher' && game.graduate.partner === 'teacher' && game.graduate.following;
     const visitor = game.romance.visitor === id && scene === 'home';
     if (escort) return [{ id, name: CHARACTERS[id].name, x: Math.max(4, avatar.x - 5), y: Math.min(96, avatar.y + 3), placeId: game.world.placeId, following: true }];
     const appointment = getAppointments(game).find(item => item.character === id && !item.completed);

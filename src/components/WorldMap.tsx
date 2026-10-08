@@ -44,7 +44,7 @@ export default function WorldMap({ game, scene, onScene, onClose }: Props) {
         <span className="atlas-stamp">西安 · 我们的一年<small>SHIGUANG EXPLORER</small></span>
         {REGIONS.map(item => {
           const status = details(item);
-          return <button key={item.id} className={`atlas-pin ${preview === item.id ? 'is-preview' : ''} ${scene === item.id ? 'is-current' : ''}`} style={{ left: `${item.x}%`, top: `${item.y}%` }} onMouseEnter={() => setPreview(item.id)} onFocus={() => setPreview(item.id)} onClick={() => onScene(item.id)} aria-label={`进入${item.name}小地图${status.ready ? `，有 ${status.ready} 段新故事` : ''}`}>
+          return <button key={item.id} data-guide={item.id === "campus" ? "atlas-campus" : undefined} className={`atlas-pin ${preview === item.id ? 'is-preview' : ''} ${scene === item.id ? 'is-current' : ''}`} style={{ left: `${item.x}%`, top: `${item.y}%` }} onMouseEnter={() => setPreview(item.id)} onFocus={() => setPreview(item.id)} onClick={() => onScene(item.id)} aria-label={`进入${item.name}小地图${status.ready ? `，有 ${status.ready} 段新故事` : ''}`}>
             <span className="atlas-pin-icon"><GameIcon name={item.icon} size={28}/></span>
             <strong>{item.name}</strong>
             {taskScenes.has(item.id) && <b className="atlas-task-mark" aria-label="有任务地点">!</b>}
