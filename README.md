@@ -56,7 +56,7 @@ Cloudflare Pages 两个项目为 `shiguang-campus-life` 和 `zhiyaoxuebusi`，�
 
 GitHub Pages：推送到 `main` 后由 `.github/workflows/deploy-pages.yml` 自动执行类型检查、测试与构建，并部署 `dist/`。构建使用相对资源路径（`base: './'`）与作用域感知的 Service Worker，同一份产物可同时工作在域名根路径和仓库子路径。
 
-启动时先显示约 3.6 KB 的 HTML 加载页与约 12 KB 的压缩模糊校园背景，绘制完成后再请求游戏模块、样式和字体；程序加载失败时提供重试。进入游戏后 Service Worker 以两路低优先级请求逐步缓存地图、人物与其他字体，完整缓存前保留旧版资源。`cache-manifest.json` 随构建输出全部程序资源清单。离线模式需要 HTTPS 或 localhost，且首次在线加载后等待后台缓存完成；域名根路径和 GitHub 仓库子路径均经过断网刷新验证。外部大学官网链接仍需联网。更新版本时应同步修改 `public/sw.js` 中的缓存版本。
+启动时先显示约 4 KB 的 HTML 加载页与约 12 KB 的压缩模糊校园背景，绘制完成后再请求游戏模块、样式和字体；程序加载失败时提供重试。进入游戏后 Service Worker 以两路低优先级请求逐步缓存地图、人物与其他字体，完整缓存前保留旧版资源。`cache-manifest.json` 随构建输出全部程序资源清单。离线模式需要 HTTPS 或 localhost，且首次在线加载后等待后台缓存完成；域名根路径和 GitHub 仓库子路径均经过断网刷新验证。外部大学官网链接仍需联网。更新版本时应同步修改 `public/sw.js` 中的缓存版本。
 
 ## 许可
 

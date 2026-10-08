@@ -1,42 +1,40 @@
 {
   "date": "2026-10-08",
-  "version": "2.8.2",
+  "version": "2.9.0",
   "platform": "Cloudflare Pages",
   "branch": "main",
-  "codeCommit": "d5545256675cf0a3c64bd0f5f236c8a0e095f24d",
-  "indexSha256": "44fa80857af2c9787b2d468ad823db9f02d89516343b10a9df7d094b8672068b",
-  "unitTests": 82,
+  "codeCommit": "2e788b5995dbce1b20daf480d37c62fca333780a",
+  "indexSha256": "75740c3dc4820a0aae7cd2509b2db583fad905f9fee0484a6bc766533bd02451",
+  "unitTests": 96,
+  "uiChecks": 109,
   "uiViewports": 5,
-  "uiChecks": "docs/ui-v2.8-checks.json",
-  "warningChecks": "docs/warning-layout-checks.json",
-  "avatarChecks": "docs/avatar-layout-checks.json",
-  "loadingPathChecks": "docs/loading-path-checks.json",
-  "serviceWorkerCache": "shiguang-campus-v2.8.2",
+  "guideChecks": "docs/guide-game-checks.json",
+  "loadingChecks": "docs/loading-path-checks.json",
   "projects": [
     {
       "name": "shiguang-campus-life",
       "production": "https://shiguang-campus-life.pages.dev/",
-      "deployment": "https://61818da9.shiguang-campus-life.pages.dev/",
+      "deployment": "https://c65772c6.shiguang-campus-life.pages.dev/",
       "resources": [
         {
           "path": "index.html",
           "status": 200,
-          "bytes": 3636,
-          "sha256": "44fa80857af2c9787b2d468ad823db9f02d89516343b10a9df7d094b8672068b",
+          "bytes": 3844,
+          "sha256": "75740c3dc4820a0aae7cd2509b2db583fad905f9fee0484a6bc766533bd02451",
           "matchesBuild": true
         },
         {
           "path": "sw.js",
           "status": 200,
-          "bytes": 3697,
-          "sha256": "a013f41faf32f1bf2c90af81904e60619374901496bc32214d12b08ba2547139",
+          "bytes": 3715,
+          "sha256": "9bf72da29f558bde73e7b32cc0e76b73d5539f6ce1d92ecca0e7ad1320ee81d6",
           "matchesBuild": true
         },
         {
           "path": "cache-manifest.json",
           "status": 200,
           "bytes": 8417,
-          "sha256": "40fbc487771be0387b7db6d085b42e842dbda52c67f0bf41ccfdab7f6b13ce56",
+          "sha256": "fcff51c78ead618dd239acb52ba2ae31c5b8a3caa5e5e3414b0fbabb48215e00",
           "matchesBuild": true
         },
         {
@@ -47,70 +45,72 @@
           "matchesBuild": true
         },
         {
-          "path": "assets/mountGame-WHTHQ4_g.css",
+          "path": "images/student-female.webp",
           "status": 200,
-          "bytes": 285059,
-          "sha256": "c8c3f4f128272cec357c00b325bc04a83e5cc9cb88e71204e696afc3060feed4",
+          "bytes": 51558,
+          "sha256": "593644f17c79fab94375c2ce5b34624e18a4c92988d86bfb67a749292abd3580",
           "matchesBuild": true
         },
         {
-          "path": "assets/index-CmTLhnuh.js",
+          "path": "assets/mountGame-D6f8E_--.css",
+          "status": 200,
+          "bytes": 291019,
+          "sha256": "d0f9b7d0ff13a749041d6f46bbec3471865efd974dffaffd450e562951301322",
+          "matchesBuild": true
+        },
+        {
+          "path": "assets/index-DCoZ66Mz.js",
           "status": 200,
           "bytes": 3464,
-          "sha256": "ed04b3b30810f593ca68677bb6531823a91d708634836c79bea80ee97792ee70",
+          "sha256": "1d1e7db6ff27406d7bb56565f3321ac45ba2574ea6df179344ac6d2e2ec2f09c",
           "matchesBuild": true
         },
         {
-          "path": "assets/mountGame-BA03K_ex.js",
+          "path": "assets/mountGame-DYhAtBur.js",
           "status": 200,
-          "bytes": 794155,
-          "sha256": "f255e324864ff23bdd5cbda3e7806fe193c6bfb16c74a2f83ab96683a5265693",
+          "bytes": 855129,
+          "sha256": "0fc574535c6e7143b9d266d24838f778b1b695c5c9f97c9f13b07054c491ab43",
           "matchesBuild": true
         }
       ],
-      "portrait": {
-        "width": 36,
-        "height": 36,
-        "radius": "50%"
-      },
-      "warning": {
-        "heading": "center",
-        "body": "center",
-        "stringAbsent": true
-      },
-      "browser": {
-        "version": "拾光校园 · v2.8.2",
-        "actions": 2,
-        "skipped": true,
-        "active": null,
-        "home": "family",
+      "liveChecks": {
+        "version": "2.9.0",
+        "femaleOpeningAndAvatars": true,
+        "mainPressureChapter": true,
+        "tutorialAutoStartAndSkip": true,
+        "teacherLockedBeforeGraduation": true,
+        "graduateReunionResume": true,
+        "graduateIMMonthAndRole": true,
+        "reminderAndCredit": true,
+        "aboutCredit": true,
+        "stringAbsent": true,
         "errors": []
       }
     },
     {
       "name": "zhiyaoxuebusi",
       "production": "https://zhiyaoxuebusi.pages.dev/",
-      "deployment": "https://32807f31.zhiyaoxuebusi.pages.dev/",
+      "deployment": "https://9322d235.zhiyaoxuebusi.pages.dev/",
       "resources": [
         {
           "path": "index.html",
           "status": 200,
-          "bytes": 3636,
-          "sha256": "44fa80857af2c9787b2d468ad823db9f02d89516343b10a9df7d094b8672068b",
+          "bytes": 3844,
+          "sha256": "75740c3dc4820a0aae7cd2509b2db583fad905f9fee0484a6bc766533bd02451",
           "matchesBuild": true
         },
         {
           "path": "sw.js",
           "status": 200,
-          "bytes": 3697,
-          "sha256": "a013f41faf32f1bf2c90af81904e60619374901496bc32214d12b08ba2547139",
+          "bytes": 3715,
+          "sha256": "9bf72da29f558bde73e7b32cc0e76b73d5539f6ce1d92ecca0e7ad1320ee81d6",
           "matchesBuild": true
         },
         {
           "path": "cache-manifest.json",
           "status": 200,
           "bytes": 8417,
-          "sha256": "40fbc487771be0387b7db6d085b42e842dbda52c67f0bf41ccfdab7f6b13ce56",
+          "sha256": "fcff51c78ead618dd239acb52ba2ae31c5b8a3caa5e5e3414b0fbabb48215e00",
           "matchesBuild": true
         },
         {
@@ -121,73 +121,54 @@
           "matchesBuild": true
         },
         {
-          "path": "assets/mountGame-WHTHQ4_g.css",
+          "path": "images/student-female.webp",
           "status": 200,
-          "bytes": 285059,
-          "sha256": "c8c3f4f128272cec357c00b325bc04a83e5cc9cb88e71204e696afc3060feed4",
+          "bytes": 51558,
+          "sha256": "593644f17c79fab94375c2ce5b34624e18a4c92988d86bfb67a749292abd3580",
           "matchesBuild": true
         },
         {
-          "path": "assets/index-CmTLhnuh.js",
+          "path": "assets/mountGame-D6f8E_--.css",
+          "status": 200,
+          "bytes": 291019,
+          "sha256": "d0f9b7d0ff13a749041d6f46bbec3471865efd974dffaffd450e562951301322",
+          "matchesBuild": true
+        },
+        {
+          "path": "assets/index-DCoZ66Mz.js",
           "status": 200,
           "bytes": 3464,
-          "sha256": "ed04b3b30810f593ca68677bb6531823a91d708634836c79bea80ee97792ee70",
+          "sha256": "1d1e7db6ff27406d7bb56565f3321ac45ba2574ea6df179344ac6d2e2ec2f09c",
           "matchesBuild": true
         },
         {
-          "path": "assets/mountGame-BA03K_ex.js",
+          "path": "assets/mountGame-DYhAtBur.js",
           "status": 200,
-          "bytes": 794155,
-          "sha256": "f255e324864ff23bdd5cbda3e7806fe193c6bfb16c74a2f83ab96683a5265693",
+          "bytes": 855129,
+          "sha256": "0fc574535c6e7143b9d266d24838f778b1b695c5c9f97c9f13b07054c491ab43",
           "matchesBuild": true
         }
       ],
-      "portrait": {
-        "width": 36,
-        "height": 36,
-        "radius": "50%"
-      },
-      "warning": {
-        "heading": "center",
-        "body": "center",
-        "stringAbsent": true
-      },
-      "browser": {
-        "version": "拾光校园 · v2.8.2",
-        "actions": 2,
-        "skipped": true,
-        "active": null,
-        "home": "family",
+      "liveChecks": {
+        "version": "2.9.0",
+        "femaleOpeningAndAvatars": true,
+        "mainPressureChapter": true,
+        "tutorialAutoStartAndSkip": true,
+        "teacherLockedBeforeGraduation": true,
+        "graduateReunionResume": true,
+        "graduateIMMonthAndRole": true,
+        "reminderAndCredit": true,
+        "aboutCredit": true,
+        "stringAbsent": true,
         "errors": []
       }
     }
   ],
   "githubPages": {
-    "production": "https://b5-software.github.io/zhiyaoxuebusi/",
-    "workflow": "https://github.com/B5-Software/zhiyaoxuebusi/actions/runs/37673261911",
-    "conclusion": "success",
-    "htmlStatus": 200,
-    "entry": "./assets/index-CmTLhnuh.js",
-    "resources": [
-      {
-        "path": "assets/mountGame-WHTHQ4_g.css",
-        "status": 200
-      },
-      {
-        "path": "assets/index-CmTLhnuh.js",
-        "status": 200
-      },
-      {
-        "path": "assets/mountGame-BA03K_ex.js",
-        "status": 200,
-        "versionCurrent": true
-      }
-    ],
-    "version": "拾光校园 · v2.8.2",
-    "portrait": {
-      "width": 36,
-      "height": 36,
-      "radius": "50%"
-    }
+    "url": "https://b5-software.github.io/zhiyaoxuebusi/",
+    "status": 200,
+    "indexMatchesBuild": true,
+    "workflowId": 37771907093,
+    "conclusion": "success"
   }
 }
