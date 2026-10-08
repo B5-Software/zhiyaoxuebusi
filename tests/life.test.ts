@@ -27,7 +27,7 @@ test('degree takes four years, actions are weekly and age advances across old sc
 test('interactive interview, qualifications, real shifts and payroll cannot mint wages on teleport', () => {
   let g = playing(); assert.ok(applyJob(g, 'shop').error); g = startMiniGame(g, 'interview').game; for (const a of [0, 1, 2, 1, 0]) g = answerMiniGame(g, a).game;
   assert.equal(g.life.scores.interview, 100); valid(g); assert.ok(applyJob(g, 'developer').error); g = applyJob(g, 'shop').game; const cash = g.stats.money;
-  g = lifeAction(g, 'work').game; assert.equal(g.stats.money, cash); assert.equal(g.life.work.hours, 48); g = advanceLife(g).game; assert.ok(g.life.economy.ledger.some(t => t.label.includes('周工资') && t.amount === 720)); valid(g);
+  g = lifeAction(g, 'work').game; assert.equal(g.stats.money, cash); assert.equal(g.life.work.hours, 20); g = advanceLife(g).game; assert.ok(g.life.economy.ledger.some(t => t.label.includes('周工资') && t.amount === 300)); valid(g);
 });
 test('spot trades reject unowned sales and conserve value after fees', () => {
   let g = playing(); g.stats.money = 10000; const cash = g.stats.money; assert.ok(trade(g, 'sell', 'ETH', 10).error); g = trade(g, 'buy', 'ETH', 1000).game; assert.equal(g.stats.money, cash - 1001); g = trade(g, 'sell', 'ETH', 1000).game; assert.ok(Math.abs(g.stats.money - (cash - 2)) < .01); assert.equal(g.life.finance.holdings.ETH, 0); valid(g);
@@ -58,9 +58,9 @@ test('marriage requires age and two explicit confirmations; birth takes forty we
   g = chooseLife(familyOperation(g, 'baby').game, 0).game; assert.equal(g.life.family.children.length, 0); assert.equal(g.life.family.pregnancy?.due, 40);
   for(let week=0;week<40;week++){if(g.life.pending)g=chooseLife(g,0).game;g=advanceLife(g).game;} assert.equal(g.life.family.children.length, 1); assert.equal(g.life.family.pregnancy,null); valid(g);
 });
-test('reincarnation keeps an adult child current age, advances young children to adult school and clears partners', () => {
+test('reincarnation keeps an adult child current age, advances young children to fifteen-year-old school and clears partners', () => {
   let g = playing(); g = establishRelationship(g, 'su'); g.life.weeks = 1400; g.life.family.children = [{ id:'young', name:'予禾', gender:'female', bornWeek:1300, care:70, education:30 }, { id:'adult', name:'予川', gender:'male', bornWeek:200, care:80, education:60 }]; die(g,'病死');
-  const young = inheritLife(g,'young',createGame()).game; assert.equal(young.phase,'school'); assert.equal(young.life.active,false); assert.equal(young.gender,'female'); assert.equal(young.social.partner,null); valid(young);
+  const young = inheritLife(g,'young',createGame()).game; assert.equal(young.life.stage,'school'); assert.equal(lifeAge(young),15); assert.equal(young.life.active,true); assert.equal(young.gender,'female'); assert.equal(young.social.partner,null); valid(young);
   const adult = inheritLife(g,'adult',createGame()).game; assert.ok(Math.abs(lifeAge(adult) - 1200/52)<.001); assert.equal(adult.life.active,true); assert.equal(adult.social.partner,null); assert.equal(adult.graduate.partner,null); valid(adult);
 });
 test('games persist mid-session, evaluate real inputs and cannot be repeated for farming in one week', () => {

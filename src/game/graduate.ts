@@ -1,3 +1,4 @@
+import { lifeAge } from './lifeHealth';
 import { CHARACTERS, ITEMS } from './data';
 import type { GameState, GraduateOperation, GraduateState } from './types';
 
@@ -13,12 +14,12 @@ const OPERATIONS: GraduateOperation[] = ['reunion', 'meet', 'talk', 'confess', '
 const limit = (value: number) => Math.max(0, Math.min(100, Math.round(value)));
 export function createGraduate(): GraduateState { return { unlocked: false, month: 0, actions: 0, trust: 0, affection: 0, understanding: 0, status: 'friendship', partner: null, sinceMonth: -1, lastConfessMonth: -3, lastBreakupMonth: -1, meetMonths: [], contactMonths: [], giftMonths: [], dateMonths: [], touchMonths: [], touchAllowed: true, following: false, pending: null, memories: [] }; }
 function patch(game: GameState, state: Partial<GraduateState>): GameState { return { ...game, graduate: { ...game.graduate, ...state }, updatedAt: new Date().toISOString() }; }
-export function graduateLock(game: GameState) { return !game.started || game.phase !== 'ending' ? '完成高考、志愿投档与毕业后开放' : game.pendingEvent || game.romance.active ? '先收好当前故事' : null; }
+export function graduateLock(game: GameState) { return game.life.active&&(lifeAge(game)<20||game.life.stage==='school')?'离开高中且满20岁后开放毕业重逢':!game.started || game.phase !== 'ending' ? '完成高考、志愿投档与毕业后开放' : game.pendingEvent || game.romance.active ? '先收好当前故事' : null; }
 export function unlockGraduate(game: GameState): { game: GameState; error?: string } {
   const error = graduateLock(game); if (error) return { game, error };
   return game.graduate.unlocked ? { game } : { game: patch(game, { unlocked: true, trust: Math.min(50, 20 + Math.round(game.relations.teacher * .3)), understanding: 10 }) };
 }
-export function graduateDate(game: GameState) { const date = new Date(Date.UTC(2027, 8 + game.graduate.month, 1)); return `${date.getUTCFullYear()} 年 ${date.getUTCMonth() + 1} 月`; }
+export function graduateDate(game: GameState) { const date = game.life.active?new Date(Date.UTC(2025,8,1)+(game.life.originWeek+game.life.weeks)*7*86400000):new Date(Date.UTC(2027, 8 + game.graduate.month, 1)); return `${date.getUTCFullYear()} 年 ${date.getUTCMonth() + 1} 月`; }
 function ready(game: GameState) { return graduateLock(game) ?? (!game.graduate.unlocked ? '先开始毕业后的重逢' : game.graduate.pending ? '先收好当前这一页' : null); }
 export function graduateSceneLock(game: GameState, operation: GraduateOperation) {
   const error = ready(game); if (error) return error;
@@ -110,6 +111,7 @@ export function giftGraduate(game: GameState, itemId: string): { game: GameState
   return { game: { ...next, social: { ...next.social, messages: [...next.social.messages, { id: `graduate-gift:${state.month}`, character: 'teacher', side: 'incoming', text: `【毕业后第 ${state.month + 1} 月】谢谢这份${item.name}。${bonus > 1 ? '也谢谢你记得我的生日。' : '下次见面时，我们再认真聊聊近况。'}`, week: Math.min(39, game.week), read: false }] } } };
 }
 export function advanceGraduateMonth(game: GameState): { game: GameState; error?: string } {
+  if(game.life.active)return {game,error:'人生阶段请结束本周推进时间，不能从关系页面单独跳月。'};
   const error = ready(game); if (error) return { game, error };
   if (game.graduate.month >= 23) return { game, error: '这两年的手记已经收好，可以继续回看与相处' };
   return { game: patch({ ...game, stats: { ...game.stats, money: Math.min(999999, game.stats.money + 60) } }, { month: game.graduate.month + 1, actions: 0 }) };
@@ -120,12 +122,12 @@ export function validateGraduate(raw: unknown, game: GameState): GraduateState |
   if (raw === undefined) return createGraduate();
   if (!raw || typeof raw !== 'object') return null;
   const value = raw as GraduateState, numeric = (n: unknown, min: number, max: number) => typeof n === 'number' && Number.isInteger(n) && n >= min && n <= max;
-  if (typeof value.unlocked !== 'boolean' || !numeric(value.month, 0, 23) || !numeric(value.actions, 0, 2) || ['trust', 'affection', 'understanding'].some(key => !numeric(value[key as 'trust'], 0, 100))) return null;
+  if (typeof value.unlocked !== 'boolean' || !numeric(value.month, 0, game.life.active?1200:23) || !numeric(value.actions, 0, 2) || ['trust', 'affection', 'understanding'].some(key => !numeric(value[key as 'trust'], 0, 100))) return null;
   if (!['friendship', 'dating', 'broken'].includes(value.status) || ![null, 'teacher'].includes(value.partner) || (value.partner === 'teacher') !== (value.status === 'dating') || value.partner && game.social.partner) return null;
   if (value.unlocked && (!game.started || game.phase !== 'ending') || !numeric(value.sinceMonth, -1, value.month) || !numeric(value.lastConfessMonth, -3, value.month) || !numeric(value.lastBreakupMonth, -1, value.month) || value.partner && value.sinceMonth < 0) return null;
   if (typeof value.touchAllowed !== 'boolean' || typeof value.following !== 'boolean' || value.following && value.partner !== 'teacher' || value.pending !== null && !OPERATIONS.includes(value.pending)) return null;
   const keys = ['meetMonths', 'contactMonths', 'giftMonths', 'dateMonths', 'touchMonths'] as const;
-  if (keys.some(key => !Array.isArray(value[key]) || value[key].length > 24 || new Set(value[key]).size !== value[key].length || value[key].some(month => !numeric(month, 0, value.month)))) return null;
+  if (keys.some(key => !Array.isArray(value[key]) || value[key].length > (game.life.active?1201:24) || new Set(value[key]).size !== value[key].length || value[key].some(month => !numeric(month, 0, value.month)))) return null;
   if (!Array.isArray(value.memories) || value.memories.length > 256 || new Set(value.memories.map(memory => memory?.id)).size !== value.memories.length || value.memories.some(memory => !memory || typeof memory.id !== 'string' || !OPERATIONS.includes(memory.operation) || !numeric(memory.month, 0, value.month) || !numeric(memory.choice, 0, 1) || typeof memory.title !== 'string' || memory.title.length > 100 || typeof memory.result !== 'string' || memory.result.length > 1000)) return null;
   if (value.pending && (game.pendingEvent || game.romance.active)) return null;
   if (value.pending && (['date', 'hand', 'hug', 'kiss', 'breakup'].includes(value.pending) || value.pending.startsWith('chapter-')) && value.partner !== 'teacher') return null;

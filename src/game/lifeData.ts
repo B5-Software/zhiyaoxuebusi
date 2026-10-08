@@ -62,6 +62,12 @@ export const MEDICAL_TESTS = [
 export const ASSETS = [{ id: 'stock-school', name: '学途教育 · 虚构股票', price: 30, volatility: .055 }, { id: 'stock-city', name: '城桥生活 · 虚构股票', price: 65, volatility: .035 }, { id: 'BTC', name: 'BTC · 模拟', price: 480000, volatility: .13 }, { id: 'ETH', name: 'ETH · 模拟', price: 18000, volatility: .16 }] as const;
 export const MINI_GAMES = [{ id: 'memory', name: '记忆翻牌', price: 8, description: '找出六对相同符号，失误会降低评分。' }, { id: 'logic', name: '逻辑解题', price: 5, description: '五道规律题，逐题作答。' }, { id: 'rhythm', name: '节奏练习', price: 15, description: '等标记进入绿色区，点击或按空格；共八拍。' }, { id: 'budget', name: '一周预算', price: 0, description: '有限预算先分配必需支出，再留应急金。' }, { id: 'interview', name: '互动面试', price: 0, description: '在五种工作情境中选择；本周成绩用于求职。' }] as const;
 export const LIFE_EVENTS = [
+  {id:'school-pressure',title:'被借走的休息日',text:'公告把额外的练习称为自愿。每一个同意都有人记录，每一个疲惫都被要求自己消化。',choices:['补上课程，记住身体的代价','保留睡眠和自己的时间'],stage:'school'},
+  {id:'burnout',title:'请假条上的疲惫',text:'体力已经不够，排班群里却还在问能不能再撑一天。恢复也要付出成本。',choices:['休工恢复，减少这次收入','继续额外排班'],stage:'any'},
+  {id:'child-school',title:'家长群里的新账单',text:'材料费和活动费分别写在不同表格里，汇总后才知道一个学期怎样挤进家庭预算。',choices:['购买完整学习材料','选择基础材料，保留应急金'],stage:'any'},
+  {id:'pregnancy-cost',title:'产检之外的交通和误工',text:'预约时间在工作日中间，检查费用只是代价的一部分。照护需要被两个人共同安排。',choices:['完成全面评估','先进行基础评估'],stage:'any'},
+  {id:'review-wait',title:'复诊预约排到了下周',text:'病况没有跟着号源一起排队，来回交通和请假却已经发生。',choices:['保留预约和交通预算','延后本次预约，记录不适'],stage:'any'},
+  {id:'generation-welcome',title:'新的校服，旧的账单',text:'你接过的是另一个人的人生。年龄、身体和学习都有自己的记录，上一代的成绩与伴侣不会替你走完这一页。',choices:['先整理自己的学习与预算','留一点时间认识周围的人'],stage:'any'},
   { id: 'welcome', title: '围墙以外，仍有围墙', text: '毕业通知说未来无限。缴费单、租赁合同与招聘表却先问：你能付出多少？', choices: ['先整理自己的预算', '找人聊聊这份不安'], stage: 'any' },
   { id: 'internship', title: '用热爱抵扣工资', text: '实习招聘写着“成长机会”，面试官说津贴可以以后再谈。劳动不是因为年轻就不值钱。', choices: ['索要明确的薪酬合同', '接受短期试岗，记下工时'], stage: 'university' },
   { id: 'gpa', title: '绩点小数点后的竞争', text: '一位同学病了，群里却在讨论这会不会拉低小组成绩。评价把人变成了互相防备的数字。', choices: ['重新分担小组任务', '先守住自己的截止时间'], stage: 'university' },

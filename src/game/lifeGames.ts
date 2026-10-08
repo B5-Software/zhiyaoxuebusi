@@ -28,7 +28,7 @@ export function matchedCards(seed: number, answers: number[]) { const board = me
 export function startMiniGame(g: GameState, id: string, target = ''): LifeResult {
   const lock = lifeBusy(g); if (lock) return { game: g, error: lock, message: '' }; const mini = MINI_GAMES.find(m => m.id === id);
   if (!mini || g.life.actions >= 3 || g.life.used.includes(`game:${id}`) || g.stats.money < mini.price) return { game: g, error: '本周行动不足、已经玩过该游戏，或现金不足。', message: '' };
-  const n = structuredClone(g); n.updatedAt = new Date().toISOString(); n.stats.money -= mini.price; n.life.actions++; n.life.used.push(`game:${id}`); n.life.game = { id, seed: n.seed, week: n.life.weeks, answers: [], target }; return { game: n, message: '小游戏已开始，完成或退出后继续生活。' };
+  const n = structuredClone(g); n.updatedAt = new Date().toISOString(); n.stats.money -= mini.price;n.life.economy.expenses+=mini.price;n.life.economy.ledger.unshift({week:n.life.weeks,label:mini.name+'入场费',amount:-mini.price});n.life.economy.ledger=n.life.economy.ledger.slice(0,160); n.life.actions++; n.life.used.push(`game:${id}`); n.life.game = { id, seed: n.seed, week: n.life.weeks, answers: [], target }; return { game: n, message: '小游戏已开始，完成或退出后继续生活。' };
 }
 export function answerMiniGame(g: GameState, answer: number): LifeResult {
   const mini = g.life.game; if (!mini || g.life.death || !Number.isInteger(answer)) return { game: g, error: '没有进行中的游戏。', message: '' };

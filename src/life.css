@@ -113,3 +113,70 @@
 .life-map-companion { position: absolute; left: calc(51% + 45px); top: 61%; width: 34px; height: 34px; border-radius: 50%; border: 2px solid #e8edcd; }
 .life-map-companion img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 .life-map-companion small { position: absolute; top: -20px; left: 50%; transform: translateX(-50%); padding: 3px 6px; border-radius: 5px; background: #fff6dd; font-size: 10px; white-space: nowrap; }
+
+/* All three worlds share the same floating map experience. */
+.life-main.life-world { position:relative; padding:0; overflow:hidden; min-height:160px; isolation:isolate; }
+.life-map-background { position:absolute; inset:0; border:0; border-radius:0; }
+.life-map-background .life-map-viewport { height:100%; min-height:0; }
+.life-map-background .life-map-toolbar { position:absolute; right:18px; bottom:16px; padding:7px 10px; border:1px solid #cfc5a4; border-radius:12px; box-shadow:0 3px 12px #56664f25; background:#faf5e5ed; flex-wrap:wrap; max-width:calc(100% - 36px); }
+.life-map-background .life-map-toolbar>span { font-size:10px; }
+.life-map-background .life-map-toolbar>a { font-size:10px; }
+.life-world .life-world-heading { position:absolute; top:18px; left:18px; right:18px; margin:0; display:flex; align-items:center; justify-content:flex-start; gap:12px; pointer-events:none; }
+.life-world-heading>button { pointer-events:auto; }
+.life-atlas-entry { min-height:44px!important; padding:10px 15px!important; font-size:17px; border-radius:12px; box-shadow:0 3px 0 #6c755940; }
+.life-region-chip,.life-hud-toggle { display:flex; align-items:center; gap:10px; padding:11px 14px; border:1px solid #d3c9aa; border-radius:11px; background:#fbf5e5ed; font-size:13px; box-shadow:0 3px 12px #5e695322; }
+.life-hud-toggle { margin-left:auto; }
+.life-world .life-home-grid { position:absolute; top:84px; left:18px; width:268px; display:flex; flex-direction:column; gap:14px; max-height:calc(100% - 165px); overflow:auto; overscroll-behavior:contain; }
+.life-world .life-home-grid .life-paper { padding:19px; background:#fff9e9ed; box-shadow:0 5px 16px #43574522; border-color:#a8b184; }
+.life-home-grid h3 { font-size:19px; line-height:1.45; margin:9px 0; }
+.life-home-grid .text-button { font-size:13px; margin-right:12px; }
+.life-news-preview { position:absolute; bottom:18px; left:18px; width:min(390px,calc(100% - 36px)); padding:11px 14px; border:1px solid #cec9a8; border-radius:12px; background:#fbf6e7ed; display:flex; align-items:center; gap:14px; text-align:left; box-shadow:0 4px 12px #51624525; }
+.life-news-preview>span { display:flex; align-items:center; gap:6px; flex-shrink:0; font-size:12px; }
+.life-news-preview strong { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:13px; font-weight:400; }
+.life-news-preview>svg { flex-shrink:0; }
+.life-map-pin.hotspot-sign { padding:10px 15px; font-size:17px; border-radius:11px; box-shadow:0 5px 0 #59685128,0 4px 12px #59685120; }
+.life-footer nav { overflow-x:auto; flex-wrap:nowrap; scrollbar-width:thin; }
+.life-footer nav>button { flex-shrink:0; }
+.life-header { padding:10px 22px; gap:24px; }
+.life-header-stats { font-size:13px; }
+.exchange-modal { width:min(1480px,calc(100vw - 48px)); }
+.exchange-market { display:grid; grid-template-columns:160px minmax(0,1fr) 235px; gap:1px; border:1px solid #536958; border-radius:16px; overflow:hidden; background:#52685a; color:#e6e7d5; font-family:system-ui,sans-serif; }
+.exchange-market>* { background:#293a32; min-width:0; }
+.exchange-watch { padding:17px 10px; }
+.exchange-watch .little-label { color:#a6b398; }
+.exchange-watch>button { display:flex; flex-direction:column; align-items:flex-start; gap:6px; width:100%; text-align:left; padding:13px 10px; border-radius:8px; margin-top:8px; }
+.exchange-watch>button.active { background:#50664b; outline:1px solid #93a679; }
+.exchange-watch strong { font-size:12px; }.exchange-watch span { font-size:16px; font-variant-numeric:tabular-nums; }
+.exchange-watch>small { display:block; margin:20px 8px 0; line-height:1.8; color:#a6b29c; font-size:10px; }
+.exchange-chart { padding:17px 14px; }
+.exchange-quote { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; }
+.exchange-quote>div:first-child { display:flex; align-items:center; flex-wrap:wrap; gap:12px; }
+.exchange-quote strong { font-size:14px; }.exchange-quote b { font-size:23px; font-variant-numeric:tabular-nums; }.exchange-quote span { font-size:12px; }
+.exchange-period { display:flex; gap:6px; }.exchange-period button { padding:7px 10px; border:1px solid #617661; border-radius:7px; font-size:11px; }.exchange-period button.active { background:#657d52; }
+.exchange-ohlc { display:flex; flex-wrap:wrap; gap:8px 14px; margin-top:15px; font-size:10px; color:#bfc4ae; font-variant-numeric:tabular-nums; }
+.candlestick-chart { display:block; width:100%; aspect-ratio:800/365; margin-top:6px; touch-action:pan-y; outline-offset:3px; }
+.candlestick-chart text { fill:#b1bda6; font-size:10px; }.chart-grid { stroke:#4c604f; stroke-width:.6; stroke-dasharray:3 3; }
+.candle-up { fill:#99c391; stroke:#99c391; }.candle-down { fill:#d8977a; stroke:#d8977a; }.candlestick-chart line { stroke-width:1; }
+.chart-news { fill:#f0c877; stroke:#293a32; }.ma-five { fill:none; stroke:#e2bd78; stroke-width:1.3; }.ma-twenty { fill:none; stroke:#a89bd0; stroke-width:1.3; }.chart-crosshair { stroke:#e4e2cc; stroke-dasharray:4 4; }
+.chart-legend { display:flex; flex-wrap:wrap; gap:10px; font-size:10px; }.chart-legend span:first-child { color:#e2bd78; }.chart-legend span:nth-child(2){color:#b9a8e4;}.chart-legend span:nth-child(3){color:#f0c877;}.chart-legend small{color:#aeb9a4;line-height:1.8;}
+.market-up { color:#99c391!important; }.market-down { color:#d8977a!important; }
+.exchange-news { padding:17px 14px; }.exchange-news>button { display:flex; align-items:center; gap:7px; font-size:13px; width:100%; }
+.exchange-news article { border-bottom:1px solid #4b5f4d; padding:13px 0; }.exchange-news article small { font-size:9px; color:#aeb99e; }.exchange-news article strong { font-size:11px; display:block; margin:6px 0; line-height:1.6; }.exchange-news article p { color:#acb6a0; font-size:10px; line-height:1.7; margin:5px 0; }
+.exchange-news article:nth-of-type(n+3){display:none;}.exchange-depth{margin-top:17px;font-size:10px;}.exchange-depth>strong{font-size:11px;}.exchange-depth>div {display:flex;justify-content:space-between;gap:8px;padding-top:7px;font-variant-numeric:tabular-nums;}.exchange-depth hr{border:0;border-top:1px solid #50644f;margin:8px 0;}.exchange-depth>small{display:block;color:#a2b29b;margin-top:12px;line-height:1.7;}
+.news-impact { display:flex; flex-wrap:wrap; gap:8px; margin:14px 0; }.news-impact>span { padding:6px 10px; border-radius:8px; background:#edf0dd; font-size:12px; }.news-story>small { font-size:12px; color:#ad997b; line-height:1.8; }.news-story>.text-button{display:flex;align-items:center;gap:8px;margin-top:15px;}
+.lab-readings { font-family:system-ui,sans-serif; padding:10px; background:#eef0df; border-radius:8px; }
+@media(max-width:1100px){.exchange-market {grid-template-columns:125px minmax(0,1fr);}.exchange-news{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}.exchange-news>button{grid-column:1/-1;}.exchange-news article:nth-of-type(n+3){display:none;}.exchange-depth{margin:0;}.life-brand{font-size:15px;}.life-brand strong{font-size:18px;}}
+@media(max-width:700px){
+ .life-header{flex-wrap:nowrap;padding:8px 12px;gap:12px;}.life-brand{display:none;}.life-identity img{width:34px;height:34px;}.life-identity strong{font-size:15px;}.life-identity small{font-size:10px;}.life-header-stats{gap:8px;font-size:11px;}.life-header-stats button:first-child{display:none;}
+ .life-world .life-world-heading{top:12px;left:12px;right:12px;gap:8px;flex-wrap:wrap;}.life-atlas-entry{font-size:14px;min-height:38px!important;padding:8px 11px!important;}.life-region-chip{font-size:10px;padding:9px;gap:5px;max-width:calc(100% - 110px);}.life-hud-toggle{position:absolute;top:47px;right:0;font-size:10px;padding:7px 9px;}
+ .life-world .life-home-grid {left:12px;top:67px;width:min(236px,calc(100% - 70px));max-height:calc(100% - 145px);}.life-world .life-home-grid article{padding:14px;}.life-world .life-home-grid article:nth-child(2){display:none;}.life-home-grid h3{font-size:16px;}.life-home-grid p{font-size:12px;}.life-news-preview{left:12px;bottom:64px;width:calc(100% - 24px);padding:9px;gap:8px;}.life-news-preview strong{font-size:11px;}.life-news-preview>span{font-size:10px;}
+ .life-map-background .life-map-toolbar{bottom:12px;right:12px;max-width:calc(100% - 24px);padding:5px 8px;gap:8px;}.life-map-background .life-map-toolbar>span{font-size:9px;}.life-map-toolbar>a{display:none;}.life-map-toolbar>div{gap:5px;}.life-footer{padding:6px 12px;}.life-footer nav{gap:4px;}.life-footer nav button{font-size:11px;min-height:34px;}.life-week-row{gap:8px;padding-top:4px;}.life-week-row>button{font-size:12px;min-height:35px!important;padding:7px 10px;}.life-week-row>span{font-size:12px;}.life-week-row>small{font-size:9px;max-width:130px;}.life-footer .creator-credit{margin:1px 0 0;font-size:8px;}
+ .exchange-market {grid-template-columns:minmax(0,1fr);}.exchange-watch {display:flex;gap:7px;overflow-x:auto;padding:8px;}.exchange-watch>.little-label,.exchange-watch>small{display:none;}.exchange-watch>button{min-width:105px;margin:0;padding:8px;gap:4px;}.exchange-watch span{font-size:13px;}.exchange-watch small{font-size:10px;}.exchange-chart{padding:12px 8px;}.exchange-quote b{font-size:20px;}.exchange-news{grid-column:auto;grid-template-columns:minmax(0,1fr);gap:12px;}.exchange-news article:nth-of-type(n+2){display:none;}.exchange-depth{display:none;}.exchange-period button{padding:6px 9px;}.exchange-ohlc{font-size:9px;gap:6px 9px;}.chart-legend{font-size:9px;}.exchange-modal{width:calc(100vw - 24px);}
+}
+@media(max-height:520px) and (orientation:landscape){.life-header{padding:5px 14px;}.life-brand{display:none;}.life-footer{padding:3px 12px;}.life-footer nav{max-height:34px;}.life-week-row{padding-top:0;}.life-week-row>button{min-height:32px!important;}.life-footer .creator-credit{display:none;}.life-world .life-home-grid{display:none;}.life-news-preview{bottom:12px;width:300px;}.life-map-background .life-map-toolbar>span{display:none;}.life-world .life-world-heading{top:10px;}.life-hud-toggle{display:none;}}
+
+@media(max-width:700px){.candlestick-chart text{font-size:21px;}.candlestick-chart text[x="740"]{font-size:17px;}}
+
+.life-world-heading,.life-home-grid,.life-news-preview{z-index:5;}.life-map-background .life-map-toolbar{z-index:6;}.life-map-edges{z-index:4;}.life-map-background .cloud-frame{opacity:.3;}
+
+.life-map-pin.hotspot-sign strong{max-width:none;white-space:nowrap;}@media(max-width:700px){.life-map-pin.hotspot-sign strong{font-size:14px;}.life-week-row>small{display:block;font-size:8px;max-width:100px;}}

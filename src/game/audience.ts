@@ -1,3 +1,4 @@
+import { lifeAge } from './lifeHealth';
 import type { Audience, GameState } from './types';
 
 // Viewer preferences are deliberately outside save files and never imported.
@@ -13,6 +14,7 @@ export function persistAudience(audience: Audience) {
   try { localStorage.setItem(AUDIENCE_KEY, JSON.stringify(audience)); } catch { /* An unavailable store keeps the next visit gated. */ }
 }
 export function actorsAreAdults(game: GameState) {
+  if(game.life.active)return lifeAge(game)>=18&&game.life.stage!=='school';
   const date = new Date(Date.UTC(2025, 8, 1 + game.week * 7));
   return Object.values(ADULT_BIRTHDAYS).every(birthday => {
     const birth = new Date(`${birthday}T00:00:00Z`);

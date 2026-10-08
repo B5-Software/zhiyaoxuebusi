@@ -375,7 +375,7 @@ export function validateGame(raw: unknown): GameState | null {
   if (!social) return null;
   const quests = validateQuests(raw.quests, Number(raw.week));
   if (!quests) return null;
-  for (const key of Object.keys(base.stats)) if (!validNumber(raw.stats[key], key === 'money' ? 999999 : 100)) return null;
+  for (const key of Object.keys(base.stats)) if (!validNumber(raw.stats[key], key === 'money' ? 1e10 : 100)) return null;
   for (const subject of SUBJECTS) if (!validNumber(raw.subjects[subject.id], subject.max)) return null;
   for (const key of Object.keys(base.relations)) if (!validNumber(raw.relations[key])) return null;
   for (const key of Object.keys(base.counts)) if (!validNumber(raw.counts[key], 9999)) return null;
