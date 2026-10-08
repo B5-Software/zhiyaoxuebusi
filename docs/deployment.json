@@ -1,40 +1,43 @@
 {
   "date": "2026-10-08",
-  "version": "2.9.0",
+  "version": "3.0.0",
   "platform": "Cloudflare Pages",
   "branch": "main",
-  "codeCommit": "2e788b5995dbce1b20daf480d37c62fca333780a",
-  "indexSha256": "75740c3dc4820a0aae7cd2509b2db583fad905f9fee0484a6bc766533bd02451",
-  "unitTests": 96,
-  "uiChecks": 109,
+  "codeCommit": "0408b24e2a0f7ea8a7748e1db6a1ac19a9357b84",
+  "indexSha256": "763a3819bda7b2836596f8e10e69f7dcf282de7ad27d6f588d45031d8c0db3cd",
+  "unitTests": 111,
+  "uiChecks": 164,
   "uiViewports": 5,
   "guideChecks": "docs/guide-game-checks.json",
+  "lifeChecks": "docs/life-browser-checks.json",
+  "journeyChecks": "docs/life-journey-checks.json",
+  "smallMapAssets": 11,
   "loadingChecks": "docs/loading-path-checks.json",
   "projects": [
     {
       "name": "shiguang-campus-life",
       "production": "https://shiguang-campus-life.pages.dev/",
-      "deployment": "https://c65772c6.shiguang-campus-life.pages.dev/",
+      "deployment": "https://a7497536.shiguang-campus-life.pages.dev/",
       "resources": [
         {
           "path": "index.html",
           "status": 200,
           "bytes": 3844,
-          "sha256": "75740c3dc4820a0aae7cd2509b2db583fad905f9fee0484a6bc766533bd02451",
+          "sha256": "763a3819bda7b2836596f8e10e69f7dcf282de7ad27d6f588d45031d8c0db3cd",
           "matchesBuild": true
         },
         {
           "path": "sw.js",
           "status": 200,
-          "bytes": 3715,
-          "sha256": "9bf72da29f558bde73e7b32cc0e76b73d5539f6ce1d92ecca0e7ad1320ee81d6",
+          "bytes": 3956,
+          "sha256": "d2679225afe3b6a00045836ddb90b805fd0612b3d398058857f0df677816dd19",
           "matchesBuild": true
         },
         {
           "path": "cache-manifest.json",
           "status": 200,
           "bytes": 8417,
-          "sha256": "fcff51c78ead618dd239acb52ba2ae31c5b8a3caa5e5e3414b0fbabb48215e00",
+          "sha256": "145bf57af1e47b7c697ea57b57ae835177608688a84ef91d855a8eb84b96c985",
           "matchesBuild": true
         },
         {
@@ -52,29 +55,120 @@
           "matchesBuild": true
         },
         {
-          "path": "assets/mountGame-D6f8E_--.css",
+          "path": "images/university-world.webp",
           "status": 200,
-          "bytes": 291019,
-          "sha256": "d0f9b7d0ff13a749041d6f46bbec3471865efd974dffaffd450e562951301322",
+          "bytes": 3085488,
+          "sha256": "4f856581bcea0f224a24891b4ee34c84fb52aa87e11acac0992c283351454111",
           "matchesBuild": true
         },
         {
-          "path": "assets/index-DCoZ66Mz.js",
+          "path": "images/society-world.webp",
+          "status": 200,
+          "bytes": 3058036,
+          "sha256": "db607a458deb946db4264c79c19c38b14346cf43b99eb265fe11c47afba5685b",
+          "matchesBuild": true
+        },
+        {
+          "path": "images/map-college-study.webp",
+          "status": 200,
+          "bytes": 3017494,
+          "sha256": "1355e0019c334beab4779e758020de71990ca12aad317b5f5a80fae0a821845d",
+          "matchesBuild": true
+        },
+        {
+          "path": "images/map-college-dorm.webp",
+          "status": 200,
+          "bytes": 2963878,
+          "sha256": "848062ba1fb2defc8f48c9c89815a3a555aa15f1455e20bb0756b1f72db6d46b",
+          "matchesBuild": true
+        },
+        {
+          "path": "images/map-college-research.webp",
+          "status": 200,
+          "bytes": 3041882,
+          "sha256": "c82f925ca521eab682b69720e23f27a08d149841fec6a093229880fa96516b2f",
+          "matchesBuild": true
+        },
+        {
+          "path": "images/map-college-life.webp",
+          "status": 200,
+          "bytes": 3107718,
+          "sha256": "82529021fa91387b654cb4e7e9cbf2706d67286bdd6ea9d8d50d6f7bb61be949",
+          "matchesBuild": true
+        },
+        {
+          "path": "images/map-recruitment.webp",
+          "status": 200,
+          "bytes": 3030418,
+          "sha256": "a79b6d8f9befe711805e14f389f689344bf7cd8af838fed9c84ab07c2a9ed026",
+          "matchesBuild": true
+        },
+        {
+          "path": "images/map-workplace.webp",
+          "status": 200,
+          "bytes": 2897016,
+          "sha256": "dd02b6af67ce541bb5d9a7fc829f827ddd55cb56cafe84adfc2626cec0d23a77",
+          "matchesBuild": true
+        },
+        {
+          "path": "images/map-exchange.webp",
+          "status": 200,
+          "bytes": 2951762,
+          "sha256": "ea3a2727aacf28c57d99310b3c176b96741d188badb1b95d1153e257d768d88e",
+          "matchesBuild": true
+        },
+        {
+          "path": "images/map-hospital.webp",
+          "status": 200,
+          "bytes": 2999420,
+          "sha256": "24deae4f8c034eb2a0abeb9b474d62d2a4b1b22a33080a2e14297917a4890ac0",
+          "matchesBuild": true
+        },
+        {
+          "path": "images/map-insurance.webp",
+          "status": 200,
+          "bytes": 2993252,
+          "sha256": "cd7098d284cbaf688d810ab9a88a025236672fe7a04f5717a98c00137fcbe853",
+          "matchesBuild": true
+        },
+        {
+          "path": "images/map-nightlife.webp",
+          "status": 200,
+          "bytes": 2920186,
+          "sha256": "4a867b72c2a6e75d9503b11e84528b0e80e84c7836ed44eaf2c012e255b42f05",
+          "matchesBuild": true
+        },
+        {
+          "path": "images/map-residence.webp",
+          "status": 200,
+          "bytes": 3134858,
+          "sha256": "eacec4a63ae8e48830b09089a52865b536ca5a6bfe66e38d51b3278b47c97a02",
+          "matchesBuild": true
+        },
+        {
+          "path": "assets/mountGame-DRq0qCA_.css",
+          "status": 200,
+          "bytes": 303084,
+          "sha256": "a76d4725961c502e18e2aebc304d57e0967f0e0d30a67636be89b7a482fb3bfc",
+          "matchesBuild": true
+        },
+        {
+          "path": "assets/index-CH3L1oX0.js",
           "status": 200,
           "bytes": 3464,
-          "sha256": "1d1e7db6ff27406d7bb56565f3321ac45ba2574ea6df179344ac6d2e2ec2f09c",
+          "sha256": "0f9b7e778683c3d09819654c0308a9f6933d8af56df85abc107697072cadbcde",
           "matchesBuild": true
         },
         {
-          "path": "assets/mountGame-DYhAtBur.js",
+          "path": "assets/mountGame-B71fPzF4.js",
           "status": 200,
-          "bytes": 855129,
-          "sha256": "0fc574535c6e7143b9d266d24838f778b1b695c5c9f97c9f13b07054c491ab43",
+          "bytes": 954173,
+          "sha256": "dc58eeaf7acdf2fc702e058d979e7117e2c3c558045cc6e0846d0446b339394c",
           "matchesBuild": true
         }
       ],
       "liveChecks": {
-        "version": "2.9.0",
+        "version": "3.0.0",
         "femaleOpeningAndAvatars": true,
         "mainPressureChapter": true,
         "tutorialAutoStartAndSkip": true,
@@ -84,33 +178,38 @@
         "reminderAndCredit": true,
         "aboutCredit": true,
         "stringAbsent": true,
-        "errors": []
+        "errors": [],
+        "lifeMaps": {
+          "regions": 11,
+          "sourceResolution": "1672x941",
+          "graduationEntry": true
+        }
       }
     },
     {
       "name": "zhiyaoxuebusi",
       "production": "https://zhiyaoxuebusi.pages.dev/",
-      "deployment": "https://9322d235.zhiyaoxuebusi.pages.dev/",
+      "deployment": "https://c4f4ed69.zhiyaoxuebusi.pages.dev/",
       "resources": [
         {
           "path": "index.html",
           "status": 200,
           "bytes": 3844,
-          "sha256": "75740c3dc4820a0aae7cd2509b2db583fad905f9fee0484a6bc766533bd02451",
+          "sha256": "763a3819bda7b2836596f8e10e69f7dcf282de7ad27d6f588d45031d8c0db3cd",
           "matchesBuild": true
         },
         {
           "path": "sw.js",
           "status": 200,
-          "bytes": 3715,
-          "sha256": "9bf72da29f558bde73e7b32cc0e76b73d5539f6ce1d92ecca0e7ad1320ee81d6",
+          "bytes": 3956,
+          "sha256": "d2679225afe3b6a00045836ddb90b805fd0612b3d398058857f0df677816dd19",
           "matchesBuild": true
         },
         {
           "path": "cache-manifest.json",
           "status": 200,
           "bytes": 8417,
-          "sha256": "fcff51c78ead618dd239acb52ba2ae31c5b8a3caa5e5e3414b0fbabb48215e00",
+          "sha256": "145bf57af1e47b7c697ea57b57ae835177608688a84ef91d855a8eb84b96c985",
           "matchesBuild": true
         },
         {
@@ -128,29 +227,120 @@
           "matchesBuild": true
         },
         {
-          "path": "assets/mountGame-D6f8E_--.css",
+          "path": "images/university-world.webp",
           "status": 200,
-          "bytes": 291019,
-          "sha256": "d0f9b7d0ff13a749041d6f46bbec3471865efd974dffaffd450e562951301322",
+          "bytes": 3085488,
+          "sha256": "4f856581bcea0f224a24891b4ee34c84fb52aa87e11acac0992c283351454111",
           "matchesBuild": true
         },
         {
-          "path": "assets/index-DCoZ66Mz.js",
+          "path": "images/society-world.webp",
+          "status": 200,
+          "bytes": 3058036,
+          "sha256": "db607a458deb946db4264c79c19c38b14346cf43b99eb265fe11c47afba5685b",
+          "matchesBuild": true
+        },
+        {
+          "path": "images/map-college-study.webp",
+          "status": 200,
+          "bytes": 3017494,
+          "sha256": "1355e0019c334beab4779e758020de71990ca12aad317b5f5a80fae0a821845d",
+          "matchesBuild": true
+        },
+        {
+          "path": "images/map-college-dorm.webp",
+          "status": 200,
+          "bytes": 2963878,
+          "sha256": "848062ba1fb2defc8f48c9c89815a3a555aa15f1455e20bb0756b1f72db6d46b",
+          "matchesBuild": true
+        },
+        {
+          "path": "images/map-college-research.webp",
+          "status": 200,
+          "bytes": 3041882,
+          "sha256": "c82f925ca521eab682b69720e23f27a08d149841fec6a093229880fa96516b2f",
+          "matchesBuild": true
+        },
+        {
+          "path": "images/map-college-life.webp",
+          "status": 200,
+          "bytes": 3107718,
+          "sha256": "82529021fa91387b654cb4e7e9cbf2706d67286bdd6ea9d8d50d6f7bb61be949",
+          "matchesBuild": true
+        },
+        {
+          "path": "images/map-recruitment.webp",
+          "status": 200,
+          "bytes": 3030418,
+          "sha256": "a79b6d8f9befe711805e14f389f689344bf7cd8af838fed9c84ab07c2a9ed026",
+          "matchesBuild": true
+        },
+        {
+          "path": "images/map-workplace.webp",
+          "status": 200,
+          "bytes": 2897016,
+          "sha256": "dd02b6af67ce541bb5d9a7fc829f827ddd55cb56cafe84adfc2626cec0d23a77",
+          "matchesBuild": true
+        },
+        {
+          "path": "images/map-exchange.webp",
+          "status": 200,
+          "bytes": 2951762,
+          "sha256": "ea3a2727aacf28c57d99310b3c176b96741d188badb1b95d1153e257d768d88e",
+          "matchesBuild": true
+        },
+        {
+          "path": "images/map-hospital.webp",
+          "status": 200,
+          "bytes": 2999420,
+          "sha256": "24deae4f8c034eb2a0abeb9b474d62d2a4b1b22a33080a2e14297917a4890ac0",
+          "matchesBuild": true
+        },
+        {
+          "path": "images/map-insurance.webp",
+          "status": 200,
+          "bytes": 2993252,
+          "sha256": "cd7098d284cbaf688d810ab9a88a025236672fe7a04f5717a98c00137fcbe853",
+          "matchesBuild": true
+        },
+        {
+          "path": "images/map-nightlife.webp",
+          "status": 200,
+          "bytes": 2920186,
+          "sha256": "4a867b72c2a6e75d9503b11e84528b0e80e84c7836ed44eaf2c012e255b42f05",
+          "matchesBuild": true
+        },
+        {
+          "path": "images/map-residence.webp",
+          "status": 200,
+          "bytes": 3134858,
+          "sha256": "eacec4a63ae8e48830b09089a52865b536ca5a6bfe66e38d51b3278b47c97a02",
+          "matchesBuild": true
+        },
+        {
+          "path": "assets/mountGame-DRq0qCA_.css",
+          "status": 200,
+          "bytes": 303084,
+          "sha256": "a76d4725961c502e18e2aebc304d57e0967f0e0d30a67636be89b7a482fb3bfc",
+          "matchesBuild": true
+        },
+        {
+          "path": "assets/index-CH3L1oX0.js",
           "status": 200,
           "bytes": 3464,
-          "sha256": "1d1e7db6ff27406d7bb56565f3321ac45ba2574ea6df179344ac6d2e2ec2f09c",
+          "sha256": "0f9b7e778683c3d09819654c0308a9f6933d8af56df85abc107697072cadbcde",
           "matchesBuild": true
         },
         {
-          "path": "assets/mountGame-DYhAtBur.js",
+          "path": "assets/mountGame-B71fPzF4.js",
           "status": 200,
-          "bytes": 855129,
-          "sha256": "0fc574535c6e7143b9d266d24838f778b1b695c5c9f97c9f13b07054c491ab43",
+          "bytes": 954173,
+          "sha256": "dc58eeaf7acdf2fc702e058d979e7117e2c3c558045cc6e0846d0446b339394c",
           "matchesBuild": true
         }
       ],
       "liveChecks": {
-        "version": "2.9.0",
+        "version": "3.0.0",
         "femaleOpeningAndAvatars": true,
         "mainPressureChapter": true,
         "tutorialAutoStartAndSkip": true,
@@ -160,15 +350,87 @@
         "reminderAndCredit": true,
         "aboutCredit": true,
         "stringAbsent": true,
-        "errors": []
+        "errors": [],
+        "lifeMaps": {
+          "regions": 11,
+          "sourceResolution": "1672x941",
+          "graduationEntry": true
+        }
       }
     }
   ],
   "githubPages": {
-    "url": "https://b5-software.github.io/zhiyaoxuebusi/",
-    "status": 200,
-    "indexMatchesBuild": true,
-    "workflowId": 37771907093,
-    "conclusion": "success"
+    "production": "https://b5-software.github.io/zhiyaoxuebusi/",
+    "workflow": "https://github.com/B5-Software/zhiyaoxuebusi/actions/runs/37787346714",
+    "version": "3.0.0",
+    "nativeSmallMaps": true,
+    "resources": [
+      {
+        "path": "images/university-world.webp",
+        "bytes": 3085488,
+        "matchesSource": true
+      },
+      {
+        "path": "images/society-world.webp",
+        "bytes": 3058036,
+        "matchesSource": true
+      },
+      {
+        "path": "images/map-college-study.webp",
+        "bytes": 3017494,
+        "matchesSource": true
+      },
+      {
+        "path": "images/map-college-dorm.webp",
+        "bytes": 2963878,
+        "matchesSource": true
+      },
+      {
+        "path": "images/map-college-research.webp",
+        "bytes": 3041882,
+        "matchesSource": true
+      },
+      {
+        "path": "images/map-college-life.webp",
+        "bytes": 3107718,
+        "matchesSource": true
+      },
+      {
+        "path": "images/map-recruitment.webp",
+        "bytes": 3030418,
+        "matchesSource": true
+      },
+      {
+        "path": "images/map-workplace.webp",
+        "bytes": 2897016,
+        "matchesSource": true
+      },
+      {
+        "path": "images/map-exchange.webp",
+        "bytes": 2951762,
+        "matchesSource": true
+      },
+      {
+        "path": "images/map-hospital.webp",
+        "bytes": 2999420,
+        "matchesSource": true
+      },
+      {
+        "path": "images/map-insurance.webp",
+        "bytes": 2993252,
+        "matchesSource": true
+      },
+      {
+        "path": "images/map-nightlife.webp",
+        "bytes": 2920186,
+        "matchesSource": true
+      },
+      {
+        "path": "images/map-residence.webp",
+        "bytes": 3134858,
+        "matchesSource": true
+      }
+    ],
+    "errors": []
   }
 }
