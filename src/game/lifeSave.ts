@@ -1,5 +1,7 @@
 import { ASSETS, DISEASES, JOBS, LIFE_ACTIONS, LIFE_EVENTS, LIFE_REGIONS, MINI_GAMES } from './lifeData';
 import { createLife } from './life';
+import { LIFE_ARCS } from './lifeStoryData';
+import { createLifeStories, pendingChapter } from './lifeStories';
 import type { GameState } from './types';
 import type { LifeState } from './lifeTypes';
 const record = (v: unknown): v is Record<string, unknown> => !!v && typeof v === 'object' && !Array.isArray(v);
@@ -29,6 +31,8 @@ export function validateLife(raw: unknown, game: GameState): LifeState | null {
     // Legacy records had no structured indication: re-examination is needed, never infer a diagnosis from prose.
     upgraded.family.marriedWeek=upgraded.family.spouse?upgraded.weeks:-1;upgraded.family.partnerJob=upgraded.family.spouse?'shop':null;
   }
+  // v3.0/v3.1 lifetime records predate serialized chapter routes.
+  if (record(raw) && raw.schema === 2 && raw.stories === undefined) raw = { ...raw, stories: createLifeStories() };
   const checked = shape(raw, createLife()); if (!checked) return null;
   const l = checked as LifeState, r = raw as Record<string, unknown>;
   if(!record(r.eventWeeks))return null;l.eventWeeks=Object.fromEntries(Object.entries(r.eventWeeks).filter(([id])=>LIFE_EVENTS.some(e=>e.id===id))) as Record<string,number>;if(!Object.values(l.eventWeeks).every(w=>int(w,0,l.weeks)))return null;
@@ -36,9 +40,9 @@ export function validateLife(raw: unknown, game: GameState): LifeState | null {
   l.scores = Object.fromEntries(Object.entries(r.scores).filter(([id]) => MINI_GAMES.some(m => m.id === id))) as Record<string, number>;
   if (l.schema !== 2 || !['school', 'university', 'society'].includes(l.stage) || !['school', 'university', 'society'].includes(l.atlas) || !LIFE_REGIONS.some(region => region.id === l.region)) return null;
   if (l.active && (!game.started || game.phase !== 'ending') || !num(l.baseAge, 15, 110) || !int(l.originWeek,0,100000) || !int(l.weeks) || !int(l.actions, 0, 3) || !int(l.generation, 1, 100)) return null;
-  if (!list(l.used, 3, id => typeof id === 'string' && (id in LIFE_ACTIONS || ['apply', 'talk', 'aid', 'claim'].includes(id) || /^(game|test):[a-z]+$/.test(id) || id.startsWith('treat:') && id.slice(6) in DISEASES)) || l.used.length !== l.actions) return null;
+  if (!list(l.used, 3, id => typeof id === 'string' && (id in LIFE_ACTIONS || ['apply', 'talk', 'aid', 'claim'].includes(id) || /^(game|test):[a-z]+$/.test(id) || id.startsWith('story:') && LIFE_ARCS.some(a => a.id === id.slice(6)) || id.startsWith('treat:') && id.slice(6) in DISEASES)) || l.used.length !== l.actions) return null;
   if (!list(l.seen, LIFE_EVENTS.length, id => LIFE_EVENTS.some(e => e.id === id)) || new Set(l.seen).size !== l.seen.length) return null;
-  if (l.pending !== null && (!text(l.pending, 80) || !LIFE_EVENTS.some(e => e.id === l.pending) && !['school-transition', 'proposal', 'baby-plan', 'care-plan', 'separate', 'confess:su', 'confess:zhou', 'confess:zhixia', 'confess:xinghe', 'confess:tangtang'].includes(l.pending))) return null;
+  if (l.pending !== null && (!text(l.pending, 80) || !LIFE_EVENTS.some(e => e.id === l.pending) && !pendingChapter({ ...game, life: l }) && !['school-transition', 'proposal', 'baby-plan', 'care-plan', 'separate', 'confess:su', 'confess:zhou', 'confess:zhixia', 'confess:xinghe', 'confess:tangtang'].includes(l.pending))) return null;
   if (l.work.job !== null && !JOBS.some(j => j.id === l.work.job) || !num(l.work.experience, 0, 10000) || !num(l.work.hours, 0, 1000000) || !int(l.work.missed) || !int(l.work.lastApplication, -1, l.weeks)) return null;
   if (!num(l.education.credits, 0, 10000) || !num(l.education.gpa, 0, 4) || !num(l.education.prestige) || !text(l.education.school, 100) || !text(l.education.major, 100) || !Object.values(l.skills).every(v => num(v))) return null;
   const e = l.economy;
@@ -76,5 +80,20 @@ export function validateLife(raw: unknown, game: GameState): LifeState | null {
   if(!b.conditions.every(c=>(c.care===undefined||typeof c.care==='boolean')&&(c.review===undefined||int(c.review,0,10013))&&(c.remission===undefined||int(c.remission,0,10052))&&(c.sessions===undefined||int(c.sessions,0,6))))return null;
   for(const child of family.children){const p=child.profile;if(p&&(!record(p)||typeof p.degree!=='boolean'||typeof p.enrolled!=='boolean'||!int(p.credits)||!int(p.collegeWeeks)||!num(p.prestige)||!num(p.technical)||!int(p.workWeeks)||!record(p.body)||!shape(p.body,createLife().body)||!Object.values(p.body.internal??{}).every(v=>num(v))||!Object.values(p.body.habits??{}).every(v=>num(v))||!list(p.body.conditions,12,c=>record(c)&&typeof c.id==='string'&&c.id in DISEASES&&['latent','symptoms','diagnosed','stable','progressing'].includes(String(c.stage))&&num(c.severity)&&int(c.since)&&int(c.treated,-1)&&typeof c.discovered==='boolean')||child.gender==='male'&&p.body.conditions.some(c=>c.id==='ovarianCancer')))return null;}
   if(!list(l.claims,8,c=>record(c)&&['tuition','insurance'].includes(String(c.kind))&&int(c.due,l.weeks,l.weeks+4)&&num(c.amount,0,2000))||new Set(l.claims.map(c=>c.kind)).size!==l.claims.length)return null;
+  if (!record(r.stories) || !record(r.stories.routes)) return null;
+  l.stories.routes = structuredClone(r.stories.routes) as LifeState['stories']['routes'];
+  const s = l.stories;
+  if (s.version !== 1 || !int(s.lastOffered, -2, l.weeks) || Object.keys(s.routes).length > LIFE_ARCS.length) return null;
+  for (const [id, route] of Object.entries(s.routes)) {
+    const arc = LIFE_ARCS.find(a => a.id === id);
+    if (!arc || !record(route) || !int(route.started, 0, l.weeks) || !int(route.lastWeek, route.started, l.weeks) || !list(route.choices, arc.chapters.length, c => c === 0 || c === 1)) return null;
+  }
+  if (!list(s.log, 60, row => record(row) && text(row.id, 80) && text(row.result, 1000) && int(row.week, 0, l.weeks) && (row.choice === 0 || row.choice === 1) && LIFE_ARCS.some(a => a.id === row.arc && int(row.step, 0, a.chapters.length - 1) && s.routes[a.id]?.choices[Number(row.step)] === row.choice))) return null;
+  if (new Set(s.log.map(row => row.id)).size !== s.log.length || s.receipt !== null && (!text(s.receipt, 80) || !s.log.some(row => row.id === s.receipt)) || s.receipt && l.pending) return null;
+  const chapter = pendingChapter({ ...game, life: l });
+  if (chapter && (s.routes[chapter.arc.id]?.choices.length !== chapter.step || !l.used.includes(`story:${chapter.arc.id}`))) return null;
+  for (const [id, route] of Object.entries(s.routes)) {
+    if (route.choices.some((choice, step) => !s.log.some(row => row.arc === id && row.step === step && row.choice === choice))) return null;
+  }
   return structuredClone(l);
 }

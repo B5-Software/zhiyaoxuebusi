@@ -5,7 +5,7 @@ export type RomanceId = 'su' | 'zhou' | 'zhixia' | 'xinghe' | 'tangtang';
 export type CharacterId = RomanceId | 'mom' | 'teacher';
 export type Scene = 'campus' | 'home' | 'city' | 'library' | 'laboratory' | 'arts' | 'park' | 'market' | 'university';
 export type Phase = 'school' | 'exam' | 'application' | 'ending';
-export type IconName = 'school' | 'book' | 'bag' | 'friends' | 'journal' | 'university' | 'home' | 'heart' | 'energy' | 'smile' | 'coin' | 'leaf' | 'trophy' | 'calendar' | 'food' | 'ball' | 'shop' | 'moon' | 'milk' | 'bread' | 'coffee' | 'notes' | 'tea' | 'letter';
+export type IconName = 'school' | 'book' | 'bag' | 'friends' | 'journal' | 'university' | 'home' | 'heart' | 'energy' | 'smile' | 'coin' | 'leaf' | 'trophy' | 'calendar' | 'food' | 'ball' | 'shop' | 'moon' | 'milk' | 'bread' | 'coffee' | 'notes' | 'tea' | 'letter' | 'compass' | 'briefcase' | 'market' | 'medical' | 'shield' | 'newspaper' | 'controller' | 'lab' | 'train' | 'clock';
 
 export interface Effect {
   energy?: number;

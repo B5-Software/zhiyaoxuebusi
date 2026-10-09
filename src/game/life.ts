@@ -1,4 +1,5 @@
 import { advanceChild, childProfile } from './lifeChildren';
+import { createLifeStories, offerContinuingStory, pendingChapter, resolveStoryMutable, storyChoiceLock } from './lifeStories';
 import { CHARACTERS, ROMANCE_IDS, UNIVERSITIES } from './data';
 import { ASSETS, DISEASES, JOBS, LIFE_ACTIONS, LIFE_EVENTS, LIFE_REGIONS, MEDICAL_TESTS } from './lifeData';
 import { advanceBody, createBody, examine, lifeAge, limit, medicalLock, recordHabit, roll } from './lifeHealth';
@@ -15,9 +16,9 @@ export function createLife(): LifeState {
     education: { enrolled: false, school: '', major: '', prestige: 0, credits: 0, gpa: 2.5, degree: false, entered: 0 }, skills: { technical: 10, communication: 10, practical: 10 }, work: { job: null, experience: 0, hours: 0, missed: 0, lastApplication: -1, retired: false, partTime: false, wageFactor: 1, delayed:false, arrearsWeeks:0, arrears: 0, claimDue: -1, pensionWeeks: 0, paidWeeks: 0 },
     economy: { debt: 0, income: 0, expenses: 0, rent: 'dorm', insurance: 'none', insuredSince: -1, costIndex: 1, rentIndex: 1, shortfall: 0, aidDue: -1, aidCooldown: -52, deductibleYear: -1, deductibleSpent: 0, excluded: [], ledger: [] },
     family: { spouse: null, proposed: false, affection: 50, partnerConsent: false, pregnancy: null, children: [], lastCare: -1, following: false, marriedWeek: -1, partnerJob: null, partnerWorking: true, partnerWorkWeeks:0,partnerRetired:false, careShare: .5, coParent: false, prenatal: [] }, body: createBody(), finance: createFinance(), claims:[],
-    pending: null, seen: [], eventWeeks:{}, memories: [], game: null, scores: {}, tasks: [], death: null, ancestors: [] };
+    stories: createLifeStories(), pending: null, seen: [], eventWeeks:{}, memories: [], game: null, scores: {}, tasks: [], death: null, ancestors: [] };
 }
-export function lifeBusy(g: GameState): string | null { return !g.life.active ? '先完成高考与志愿，开启下一段人生。' : g.life.death ? '这段人生已结束，先结算或选择下一代。' : g.life.body.emergency ? '正在发生急症，请立即救治。' : g.life.pending ? '先完成眼前的选择。' : g.life.game ? '先完成或退出当前小游戏。' : null; }
+export function lifeBusy(g: GameState): string | null { return !g.life.active ? '先完成高考与志愿，开启下一段人生。' : g.life.death ? '这段人生已结束，先结算或选择下一代。' : g.life.body.emergency ? '正在发生急症，请立即救治。' : g.life.pending ? '先完成眼前的选择。' : g.life.stories.receipt ? '先收好这一章的结果。' : g.life.game ? '先完成或退出当前小游戏。' : null; }
 export function actionLock(g: GameState, action: string): string | null {
   const busy = lifeBusy(g); if (busy) return busy;
   const a = LIFE_ACTIONS[action]; if (!a) return '没有这个行动。';
@@ -116,7 +117,7 @@ export function advanceLife(g: GameState): LifeResult {
   if (!l.death && l.family.pregnancy && l.weeks >= l.family.pregnancy.due) {
     const p = l.family.pregnancy; medicalBill(n, 8500, '分娩与住院'); l.family.children.push({ id: `child-${l.generation}-${l.weeks}`, name: p.name, gender: p.gender, bornWeek: l.weeks, education: 10, care: 70 }); l.family.pregnancy = null; note(n, '一个新的名字', `${p.name}来到了家里。照护、睡眠和费用需要共同安排。`);
   }
-  if(!l.death&&!l.body.emergency&&!l.pending&&nextEvent)l.pending=nextEvent;
+  if(!l.death&&!l.body.emergency&&!l.pending&&!offerContinuingStory(n)&&nextEvent)l.pending=nextEvent;
   return { game: n, message: l.death ? '这段人生走到了终章。' : l.body.emergency ? '出现急症，已进入医院急救提示。' : `第 ${l.weeks + 1} 周，${lifeAge(n).toFixed(1)} 岁。工资、账单、市场与身体状态已结算。` };
 }
 export function lifePartner(g: GameState) { return g.life.family.spouse ?? g.social.partner ?? g.graduate.partner; }
@@ -165,6 +166,11 @@ export function familyOperation(g: GameState, operation: string, target?: Romanc
 }
 export function chooseLife(g: GameState, index: number): LifeResult {
   if (!g.life.active || g.life.death || !g.life.pending || ![0, 1].includes(index)) return fail(g, '没有待完成的选择。');
+  if (pendingChapter(g)) {
+    const lock = storyChoiceLock(g, index); if (lock) return fail(g, lock);
+    const n = copy(g); if (!resolveStoryMutable(n, index, (amount, label) => { cash(n, amount, label); })) return fail(g, '这段故事的进度不匹配。');
+    return { game: n, message: '选择已保存，请收好这一章的结果。' };
+  }
   const n = copy(g), l = n.life, pending = l.pending!; l.pending = null;
   if(pending==='school-transition'){if(index===0&&l.education.credits<120)return fail(g,'高中学习不足120学分，本次可先走职业路径；学业记录不会被凭空补齐。');l.stage=index===0?'university':'society';l.atlas=l.stage;l.region=index===0?'college-study':'recruitment';l.education.enrolled=index===0;l.education.credits=0;l.education.entered=l.weeks;l.education.school=index===0?'新世代大学':'自主职业路径';l.economy.rent=index===0?'dorm':'shared';}
   else if (pending.startsWith('confess:')) {
@@ -264,7 +270,7 @@ export function closePosition(g: GameState, id: number): LifeResult {
 export function removeLiquidity(g: GameState): LifeResult {
   const busy = lifeBusy(g); if (busy) return fail(g, busy); const n = copy(g), f = n.life.finance, p = f.pool; if (p.shares <= 0) return fail(g, '当前没有 LP 份额。'); const ratio = p.shares / p.supply, eth = p.eth * ratio, money = p.cash * ratio; f.holdings.ETH += eth;f.basis.ETH+=eth*f.prices.ETH;f.realized+=money+eth*f.prices.ETH-p.deposited;f.trades.unshift({week:n.life.weeks,asset:'ETH',kind:'撤回LP',amount:money+eth*f.prices.ETH,price:f.prices.ETH,pnl:money+eth*f.prices.ETH-p.deposited});f.trades=f.trades.slice(0,100); cash(n, money, 'LP 撤回现金'); p.eth -= eth; p.cash -= money; p.supply -= p.shares; p.shares = 0; p.deposited = 0; return { game: n, message: '流动性已撤回，ETH 与现金按当前池比例返回。' };
 }
-export function die(g: GameState, cause: string) { g.life.death = { cause, age: lifeAge(g), week: g.life.weeks, settled: false }; g.life.pending = null; g.life.game = null; g.life.body.emergency = null; note(g, '人生终章', cause); }
+export function die(g: GameState, cause: string) { g.life.death = { cause, age: lifeAge(g), week: g.life.weeks, settled: false }; g.life.pending = null; g.life.stories.receipt = null; g.life.game = null; g.life.body.emergency = null; note(g, '人生终章', cause); }
 export function inheritLife(g:GameState,childId:string,fresh:GameState):LifeResult{
  const child=g.life.family.children.find(c=>c.id===childId);if(!g.life.death||!child)return fail(g,'选择一个孩子，才能继续下一代。');
  const currentAge=(g.life.weeks-child.bornWeek)/52,age=Math.max(15,currentAge),grown=structuredClone(child);for(let w=g.life.weeks;w<g.life.weeks+Math.max(0,Math.round((15-currentAge)*52));w++)advanceChild(grown,w+1,0,grown.care>=60,0);const p=childProfile(grown,g.life.weeks+Math.max(0,Math.round((15-currentAge)*52)));

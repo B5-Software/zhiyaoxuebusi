@@ -1,0 +1,34 @@
+import { useState } from 'react';
+import { ArrowRight, Check, Clock3 } from 'lucide-react';
+import GameIcon from './GameIcon';
+import { asset } from '../utils/asset';
+import { LIFE_ARCS, type LifeArc } from '../game/lifeStoryData';
+import { pendingChapter, storyChoiceLock, storyEcho, storyProgress, storyRevisit, storyStartLock } from '../game/lifeStories';
+import type { GameState } from '../game/types';
+
+export function LifeStoryBook({ game, onStart }: { game: GameState; onStart: (id: string) => void }) {
+  const [filter, setFilter] = useState('全部'), [reading, setReading] = useState<{ arc: LifeArc; step: number } | null>(null);
+  const finished = LIFE_ARCS.filter(a => storyProgress(game, a).finished).length;
+  if (reading) {
+    const record = game.life.stories.log.find(row => row.arc === reading.arc.id && row.step === reading.step);
+    return <div className="story-replay"><button className="text-button" onClick={() => setReading(null)}>返回人生故事集</button><StoryIllustration arc={reading.arc}/><span className="little-label">第 {(record?.week ?? 0) + 1} 周 · 已收录的选择</span><h3>{reading.arc.chapters[reading.step].title}</h3>{reading.arc.chapters[reading.step].paragraphs.map(p => <p key={p}>{p}</p>)}<StoryDialogue dialogue={reading.arc.chapters[reading.step].dialogue}/><div className="story-echo">当时的选择：{reading.arc.chapters[reading.step].choices[record?.choice ?? 0]}</div><p>{record?.result}</p><div className="life-button-row">{reading.arc.chapters.map((c, i) => <button className="secondary-button" disabled={!game.life.stories.log.some(row => row.arc === reading.arc.id && row.step === i)} key={c.title} onClick={() => setReading({ arc: reading.arc, step: i })}>第{i + 1}章</button>)}</div></div>;
+  }
+  return <div className="story-library"><div className="story-library-heading"><GameIcon name="letter" size={58}/><div><span className="little-label">人生故事集 · {finished}/{LIFE_ARCS.length} 段完整故事</span><h3>生活不会在一次选择后结束</h3><p>每章1次行动，后续跨周推进。记住你说过的话，也记住选择没有解决的事。</p></div></div><div className="paper-tabs life-tabs">{['全部', '主线', '支线', '回忆'].map(f => <button key={f} aria-pressed={filter === f} className={filter === f ? 'active' : ''} onClick={() => setFilter(f)}>{f}</button>)}</div><div className="story-book-grid">{LIFE_ARCS.filter(a => filter === '全部' || filter === '回忆' && !!game.life.stories.routes[a.id] || a.kind === filter).map(arc => {
+    const p = storyProgress(game, arc), lock = storyStartLock(game, arc.id);
+    return <article className={`story-book-card ${p.finished ? 'finished' : ''}`} key={arc.id}><StoryIllustration arc={arc}/><div className="story-book-body"><span className="story-book-kind"><GameIcon name={arc.icon} size={31}/>{arc.kind} · {p.step}/{arc.chapters.length}章{p.finished && <Check size={15}/>}</span><h3>{arc.title}</h3><p>{arc.subtitle}</p><ol className="story-chapter-track">{arc.chapters.map((c, i) => <li className={i < p.step ? 'done' : i === p.step ? 'current' : ''} key={c.title}><i/>{c.title.replace(/^第.章 · /, '')}</li>)}</ol><div className="story-book-state">{p.finished ? '故事已收录，回看不消耗行动' : !p.visible ? arc.condition : p.ready ? '这一章已准备好 · 1行动' : <><Clock3 size={13}/>第{p.due + 1}周继续 · 还需{p.due - game.life.weeks}周</>}</div><div className="life-button-row">{!p.finished && <button className="primary-button" disabled={!!lock} title={lock ?? ''} onClick={() => onStart(arc.id)}>{p.route ? '继续这一章' : '走进这段故事'}<ArrowRight size={15}/></button>}{p.step > 0 && <button className="text-button" onClick={() => setReading({ arc, step: p.step - 1 })}>翻看已走过的章节</button>}</div>{!p.finished && lock && p.ready && <small className="life-lock">{lock}</small>}</div></article>;
+  })}</div></div>;
+}
+function StoryIllustration({ arc }: { arc: LifeArc }) { return <figure className="story-illustration"><img src={asset(`images/${arc.image}.webp`)} alt={arc.subtitle}/><figcaption>{arc.subtitle}</figcaption></figure>; }
+function StoryDialogue({ dialogue }: { dialogue: { speaker: string; text: string }[] }) { return <div className="story-dialogue">{dialogue.map((d, i) => <div className={d.speaker === '你' ? 'player' : ''} key={i}><span className="story-speaker"><GameIcon name={d.speaker === '你' ? 'journal' : 'friends'} size={28}/>{d.speaker}</span><p>「{d.text}」</p></div>)}</div>; }
+export function LifeStoryReader({ game, onChoose }: { game: GameState; onChoose: (index: number) => void }) {
+  const [page, setPage] = useState(0), pending = pendingChapter(game);
+  if (!pending) return null;
+  const { arc, chapter, step } = pending, echo = step > 0 ? storyEcho(game, arc) : '', revisit = step > 0 ? storyRevisit(game, arc) : '';
+  return <div className="life-story-reader"><StoryIllustration arc={arc}/><div className="story-reader-copy"><span className="little-label">{arc.kind} · {arc.title} · 第{step + 1}/{arc.chapters.length}章 · {page + 1}/2页</span><h3>{chapter.title}</h3>{page === 0 ? <>{chapter.paragraphs.map(p => <p key={p}>{p}</p>)}{echo && <aside className="story-echo"><GameIcon name="letter" size={28}/><span>你留下的回声<br/>{echo}</span></aside>}<button className="primary-button story-page-next" onClick={() => setPage(1)}>继续听这段对话 <ArrowRight size={16}/></button></> : <>{revisit&&<p className="story-revisit">{revisit}</p>}<StoryDialogue dialogue={chapter.dialogue}/><p className="story-choice-intro">接下来，你想怎样回应？已经花费的1次行动不会重复扣除。</p><div className="story-choices">{chapter.choices.map((choice, index) => { const lock = storyChoiceLock(game, index); return <button disabled={!!lock} className="story-choice" key={choice} onClick={() => onChoose(index)}><span className="story-choice-number">{index + 1}</span><span><strong>{choice}</strong><small>{lock ?? '选择会保留，并影响后来回访的叙述与记录'}</small></span><ArrowRight size={17}/></button>; })}</div><button className="text-button" onClick={() => setPage(0)}>回到这一页的开头</button></>}</div></div>;
+}
+export function LifeStoryReceipt({ game, onDone }: { game: GameState; onDone: () => void }) {
+  const record = game.life.stories.log.find(row => row.id === game.life.stories.receipt), arc = LIFE_ARCS.find(a => a.id === record?.arc);
+  if (!record || !arc) return null;
+  const p = storyProgress(game, arc);
+  return <div className="story-receipt"><StoryIllustration arc={arc}/><div className="story-reader-copy"><span className="little-label">第{record.week + 1}周 · 这一章已经保存</span><h3>{arc.chapters[record.step].title}</h3><div className="story-echo">你选择了：{arc.chapters[record.step].choices[record.choice]}</div><p>{record.result}</p><div className="story-next-chapter"><GameIcon name={p.finished ? 'journal' : 'calendar'} size={45}/><div><strong>{p.finished ? '整段故事已收录' : arc.chapters[p.step].title}</strong><small>{p.finished ? '可从人生故事集免费回看所有章节与选择。' : `第${p.due + 1}周继续，至少还需${p.due - game.life.weeks}周。到时会出现回访，也可从故事集继续。`}</small></div></div><button className="primary-button" onClick={onDone}>收好这一页 <ArrowRight size={16}/></button></div></div>;
+}

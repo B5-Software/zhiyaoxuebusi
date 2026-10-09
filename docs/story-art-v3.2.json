@@ -1,0 +1,73 @@
+{
+  "version": "3.2.0",
+  "generator": "built-in image_gen",
+  "styleReference": "public/images/map-college-dorm.webp",
+  "images": [
+    {
+      "name": "dorm",
+      "asset": "public/images/story-dorm-v3.2.webp",
+      "source": "C:/Users/32109/.codex/generated_images/01a1109e-b9ad-7f12-ae83-f23db3e0539b/exec-2b84d015-5ebf-4e62-8c4e-637e20cb911a.png",
+      "prompt": "Use case: illustration-story. Asset type: full-width chapter illustration for a Chinese watercolor illustrated life simulation game. The supplied image is a STYLE REFERENCE only: same elegant hand-painted warm ochre, sage green, muted terracotta, soft ink outlines, painterly paper texture and meticulous environment detail. Generate a NEW landscape illustration, not a map. Scene: a university dormitory common room at late night in rain; three unmistakably adult university students age 22 discuss a food budget and a stack of blank scholarship application forms at a little wooden table, one worn kettle, two instant-noodle bowls, small study lamp, bunk beds behind, rain and golden ginkgo outside window. The foreground is a first-person empty chair with an open notebook, so the player's gender is not fixed. Emotion: quietly exhausted adults supporting each other while harsh systems remain outside; beautiful illustration with melancholy and believable lived-in details. Wide cinematic 16:9, complete composition, no montage, no cropping of key people. NO readable text, NO UI, NO logos or watermarks. Preserve originality; no existing characters.",
+      "width": 1672,
+      "height": 941,
+      "sourceSha256": "0422cc83bbd9a3de91dce75a1358879bd18c8b2b8330197391a431207d79e35d",
+      "assetSha256": "cb0c6cf8d97c6d2ddfe6c98906793030a53197085cf472aa972d5bfc41a1f416",
+      "pixelsIdentical": true
+    },
+    {
+      "name": "work",
+      "asset": "public/images/story-work-v3.2.webp",
+      "source": "C:/Users/32109/.codex/generated_images/01a1109e-b9ad-7f12-ae83-f23db3e0539b/exec-10495d60-5835-4c92-ba24-cf9bb8e30df9.png",
+      "prompt": "Use case: illustration-story. Asset type: original cinematic chapter art for a Chinese hand-painted watercolor life simulation. Reference is STYLE only: fine softly inked contours, rich sage/ochre/terracotta palette, intricate believable interiors, warm light and paper paint texture. NEW landscape 16:9 scene: after midnight inside a nearly empty office, a tired adult woman age 34 in ordinary work clothes and an adult man age 40 with a plain cardigan sit near a time clock, reviewing blank work-hour records, a sealed envelope and an unfinished takeout meal. First-person player's empty desk in foreground with an anonymous blank employee badge and notebook, gender neutral. Fluorescent cool corridor against desk lamp warm light, rain on windows, city lights beyond. Composition tells a quiet story of unpaid overtime and collective help; human dignity, restrained sadness, no smiling promotional posing, no melodramatic villains. Complete wide composition, NO readable text, NO UI, NO logos, NO watermark.",
+      "width": 1672,
+      "height": 941,
+      "sourceSha256": "81bab77f9c52362d2230223b53c742440cbe3e3b19fdec371fa7ef4129cbe2ff",
+      "assetSha256": "995edcda4c6605c3c424c7f5bdc2c89dd13513b2541ea62ba9665e16d7f5ea81",
+      "pixelsIdentical": true
+    },
+    {
+      "name": "clinic",
+      "asset": "public/images/story-clinic-v3.2.webp",
+      "source": "C:/Users/32109/.codex/generated_images/01a1109e-b9ad-7f12-ae83-f23db3e0539b/exec-ac38c09d-16dc-4692-94f0-35ac0e1476dd.png",
+      "prompt": "Use case: illustration-story. Asset type: new landscape 16:9 chapter illustration for the same Chinese watercolor life game. Reference image is STYLE only: detailed gouache and delicate ink, sage green and warm amber, creamy paper surface, natural thoughtful adult faces. Scene: hospital outpatient waiting corridor in a contemporary Chinese city, small quiet group of clearly adult patients age 30 to 65 in everyday clothing, a gray-haired woman age 60 holding a plain paper folder and a younger adult nurse age 30 kindly pointing to a blank form, other adults seated with umbrellas and worn bags. First-person empty chair and a neutral notebook in foreground; don't assign the player a gender. A window with rain and a single ginkgo tree outside, cool tiled floor, gentle late afternoon amber light. Narration atmosphere: bureaucracy, lost work time, expensive care, human dignity and quiet solidarity. No gore or visible illness, no generic smiling promotional stock-art, NO legible text anywhere, NO branding, NO UI, NO watermark. Wide full composition with all main people intact.",
+      "width": 1672,
+      "height": 941,
+      "sourceSha256": "e7a5a37ee1934bf1113718d5b58b8e672a7a37f948f9897f2a662f2cca76b84f",
+      "assetSha256": "2cfec74a3d7312a693f500a1e873fa672b20cc7ef66918de71674464c16c80eb",
+      "pixelsIdentical": true
+    },
+    {
+      "name": "home",
+      "asset": "public/images/story-home-v3.2.webp",
+      "source": "C:/Users/32109/.codex/generated_images/01a1109e-b9ad-7f12-ae83-f23db3e0539b/exec-e1e36f82-2433-4e34-b73d-afab56e3cab7.png",
+      "prompt": "Use case: illustration-story. Asset type: NEW landscape 16:9 narrative artwork for Chinese watercolor illustrated life game. Reference image used for fine hand-painted STYLE only: muted sage/ochre, terracotta, careful ink contours and paper texture, extraordinarily detailed lived-in scenes. Scene: modest shared rental apartment in a Chinese city at evening, little round dining table with simple home-cooked supper, a shopping bag of vegetables, blank household bills and a notebook for sharing chores; TWO clearly adult housemates age 30, one female in a sage cardigan and one male in a cream shirt, thoughtfully discuss household work while folding laundry; no romantic posing and no gender-defined player, first-person empty chair in foreground. Warm lamp, gently worn furniture, rain at a little balcony, one potted plant, real small home rather than luxury aspiration. Mood: tender ordinary solidarity with fatigue and unequal domestic burden, restrained realism. Wide complete composition. NO readable text, NO collage, NO UI, NO brands, NO watermark.",
+      "width": 1672,
+      "height": 941,
+      "sourceSha256": "4a43aa21403d6390923fefc288002bf099690215b14c9d488828d23e8fff50e6",
+      "assetSha256": "f6cf8f1f93e2affa8b156ca80aa878925bbb5eff486e1857364fa124afef155f",
+      "pixelsIdentical": true
+    },
+    {
+      "name": "exchange",
+      "asset": "public/images/story-exchange-v3.2.webp",
+      "source": "C:/Users/32109/.codex/generated_images/01a1109e-b9ad-7f12-ae83-f23db3e0539b/exec-f1bb7525-2ca7-49bf-b67b-1b651c5e17dd.png",
+      "prompt": "Use case: illustration-story. Asset type: NEW landscape 16:9 chapter art for Chinese watercolor life simulation game. Reference is STYLE only: delicate dark ink contours, rich sage green and warm ochre palette, hand-painted paper texture, highly detailed lived-in interiors, natural adult faces. Scene: small neighborhood tea shop beside a trading hall at dusk, adult office worker age 32 in a loose jacket puts a phone face down and discusses a handwritten blank household budget with older adult coworker age 45; first-person player's empty chair in foreground, neutral open notebook, modest tea cups, no player gender defined. Through window behind them, a distant muted glowing financial candlestick display with colored bars and NO letters or digits; contrast screen's tempting glow with human exhaustion, umbrellas by door and ginkgo leaves on wet pavement. Mood: quiet conversation after speculation and loss, no celebratory wealth or luxury, no villains. Compose all key people fully, no collage, NO readable text, NO real logos, NO UI, NO watermark.",
+      "width": 1672,
+      "height": 941,
+      "sourceSha256": "882d80c7126aa0d0828e3441f1e0983c1acf853255a2830de7e9f09d3cf861d8",
+      "assetSha256": "c9f645885f3782b1c18a6a0919472fce20994bb6d8bd8854e9d4cbe15d8ce591",
+      "pixelsIdentical": true
+    },
+    {
+      "name": "station",
+      "asset": "public/images/story-station-v3.2.webp",
+      "source": "C:/Users/32109/.codex/generated_images/01a1109e-b9ad-7f12-ae83-f23db3e0539b/exec-2ce50552-bc94-475d-a756-03ca80cd127b.png",
+      "prompt": "Use case: illustration-story. Asset type: NEW complete landscape 16:9 cinematic chapter illustration for Chinese hand-painted watercolor life game. Reference is STYLE only: warm ochre and sage, meticulous gouache and delicate ink contours, believable lived-in public space, gentle paper texture, natural adult people. Scene: an old railway platform at sunrise after rain, empty wooden waiting bench and a plain suitcase in first-person foreground, a folded blank ticket and an open unlettered journal on the bench; clearly adult travelers age 23 to 70 farther behind, one elderly adult couple quietly looking down the tracks, university-age ADULT travelers with simple backpacks, contemporary train entering platform in soft distance, warm light across wet stone, mature ginkgo outside station roof. Gender-neutral player absent; give the empty seat space to breathe. Mood: leaving school, decades of work, reclaiming one's time, quietly melancholy and hopeful without promotional optimism. No collage, NO readable signs, NO letters or digits, NO branding, NO UI, NO watermark. Keep entire main scene intact.",
+      "width": 1672,
+      "height": 941,
+      "sourceSha256": "3db615e7a5380b75469e33942e68220bacefe1df017cf1563f1f16a78eaef347",
+      "assetSha256": "43834337cc773e3d538a47129e0bbd34d52f3e7fd2635813a4392a8bc52dc5f8",
+      "pixelsIdentical": true
+    }
+  ]
+}

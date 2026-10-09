@@ -1,0 +1,704 @@
+{
+  "version": "3.2.0",
+  "checks": [
+    {
+      "label": "university full map 320",
+      "result": {
+        "width": 320,
+        "doc": 320,
+        "mainH": 510,
+        "viewH": 510,
+        "viewW": 320,
+        "native": [
+          1672,
+          941
+        ],
+        "fit": "contain"
+      },
+      "passed": true
+    },
+    {
+      "label": "人生与账本 320",
+      "passed": true,
+      "result": {
+        "left": 14,
+        "right": 306,
+        "top": 8,
+        "bottom": 712,
+        "w": 320,
+        "h": 720,
+        "contentW": 288,
+        "scrollW": 288
+      }
+    },
+    {
+      "label": "人才市场与工作 320",
+      "passed": true,
+      "result": {
+        "left": 14,
+        "right": 306,
+        "top": 8,
+        "bottom": 712,
+        "w": 320,
+        "h": 720,
+        "contentW": 288,
+        "scrollW": 288
+      }
+    },
+    {
+      "label": "交易与资产 320",
+      "passed": true,
+      "result": {
+        "left": 12,
+        "right": 308,
+        "top": 8,
+        "bottom": 712,
+        "w": 320,
+        "h": 720,
+        "contentW": 292,
+        "scrollW": 292
+      }
+    },
+    {
+      "label": "身体与医院 320",
+      "passed": true,
+      "result": {
+        "left": 14,
+        "right": 306,
+        "top": 8,
+        "bottom": 712,
+        "w": 320,
+        "h": 720,
+        "contentW": 288,
+        "scrollW": 288
+      }
+    },
+    {
+      "label": "恋人与家庭 320",
+      "passed": true,
+      "result": {
+        "left": 14,
+        "right": 306,
+        "top": 8,
+        "bottom": 712,
+        "w": 320,
+        "h": 720,
+        "contentW": 288,
+        "scrollW": 288
+      }
+    },
+    {
+      "label": "人生长任务 320",
+      "passed": true,
+      "result": {
+        "left": 13.8583984375,
+        "right": 306.1416015625,
+        "top": 7.658599853515625,
+        "bottom": 712.3414611816406,
+        "w": 320,
+        "h": 720,
+        "contentW": 288,
+        "scrollW": 288
+      }
+    },
+    {
+      "label": "拾光新闻 320",
+      "passed": true,
+      "result": {
+        "left": 14,
+        "right": 306,
+        "top": 8,
+        "bottom": 712,
+        "w": 320,
+        "h": 720,
+        "contentW": 288,
+        "scrollW": 288
+      }
+    },
+    {
+      "label": "society full map 320",
+      "result": {
+        "width": 320,
+        "doc": 320,
+        "mainH": 510,
+        "viewH": 510,
+        "viewW": 320,
+        "native": [
+          1672,
+          941
+        ],
+        "fit": "contain"
+      },
+      "passed": true
+    },
+    {
+      "label": "university full map 390",
+      "result": {
+        "width": 390,
+        "doc": 390,
+        "mainH": 634,
+        "viewH": 634,
+        "viewW": 390,
+        "native": [
+          1672,
+          941
+        ],
+        "fit": "contain"
+      },
+      "passed": true
+    },
+    {
+      "label": "人生与账本 390",
+      "passed": true,
+      "result": {
+        "left": 14,
+        "right": 376,
+        "top": 8,
+        "bottom": 836,
+        "w": 390,
+        "h": 844,
+        "contentW": 358,
+        "scrollW": 358
+      }
+    },
+    {
+      "label": "人才市场与工作 390",
+      "passed": true,
+      "result": {
+        "left": 13.826416015625,
+        "right": 376.173583984375,
+        "top": 7.60296630859375,
+        "bottom": 836.3970336914062,
+        "w": 390,
+        "h": 844,
+        "contentW": 358,
+        "scrollW": 358
+      }
+    },
+    {
+      "label": "交易与资产 390",
+      "passed": true,
+      "result": {
+        "left": 12,
+        "right": 378,
+        "top": 8,
+        "bottom": 836,
+        "w": 390,
+        "h": 844,
+        "contentW": 362,
+        "scrollW": 362
+      }
+    },
+    {
+      "label": "身体与医院 390",
+      "passed": true,
+      "result": {
+        "left": 14,
+        "right": 376,
+        "top": 8,
+        "bottom": 836,
+        "w": 390,
+        "h": 844,
+        "contentW": 358,
+        "scrollW": 358
+      }
+    },
+    {
+      "label": "恋人与家庭 390",
+      "passed": true,
+      "result": {
+        "left": 13.874267578125,
+        "right": 376.125732421875,
+        "top": 7.712432861328125,
+        "bottom": 836.2876281738281,
+        "w": 390,
+        "h": 844,
+        "contentW": 358,
+        "scrollW": 358
+      }
+    },
+    {
+      "label": "人生长任务 390",
+      "passed": true,
+      "result": {
+        "left": 13.824447631835938,
+        "right": 376.17552185058594,
+        "top": 7.598480224609375,
+        "bottom": 836.4014587402344,
+        "w": 390,
+        "h": 844,
+        "contentW": 358,
+        "scrollW": 358
+      }
+    },
+    {
+      "label": "拾光新闻 390",
+      "passed": true,
+      "result": {
+        "left": 14,
+        "right": 376,
+        "top": 8,
+        "bottom": 836,
+        "w": 390,
+        "h": 844,
+        "contentW": 358,
+        "scrollW": 358
+      }
+    },
+    {
+      "label": "society full map 390",
+      "result": {
+        "width": 390,
+        "doc": 390,
+        "mainH": 634,
+        "viewH": 634,
+        "viewW": 390,
+        "native": [
+          1672,
+          941
+        ],
+        "fit": "contain"
+      },
+      "passed": true
+    },
+    {
+      "label": "university full map 768",
+      "result": {
+        "width": 768,
+        "doc": 768,
+        "mainH": 691.703125,
+        "viewH": 691.703125,
+        "viewW": 768,
+        "native": [
+          1672,
+          941
+        ],
+        "fit": "contain"
+      },
+      "passed": true
+    },
+    {
+      "label": "人生与账本 768",
+      "passed": true,
+      "result": {
+        "left": 24,
+        "right": 744,
+        "top": 15.359375,
+        "bottom": 1008.625,
+        "w": 768,
+        "h": 1024,
+        "contentW": 716,
+        "scrollW": 716
+      }
+    },
+    {
+      "label": "人才市场与工作 768",
+      "passed": true,
+      "result": {
+        "left": 24,
+        "right": 744,
+        "top": 15.359375,
+        "bottom": 1008.625,
+        "w": 768,
+        "h": 1024,
+        "contentW": 716,
+        "scrollW": 716
+      }
+    },
+    {
+      "label": "交易与资产 768",
+      "passed": true,
+      "result": {
+        "left": 24,
+        "right": 744,
+        "top": 15.359375,
+        "bottom": 1008.625,
+        "w": 768,
+        "h": 1024,
+        "contentW": 716,
+        "scrollW": 716
+      }
+    },
+    {
+      "label": "身体与医院 768",
+      "passed": true,
+      "result": {
+        "left": 24,
+        "right": 744,
+        "top": 15.359375,
+        "bottom": 1008.625,
+        "w": 768,
+        "h": 1024,
+        "contentW": 716,
+        "scrollW": 716
+      }
+    },
+    {
+      "label": "恋人与家庭 768",
+      "passed": true,
+      "result": {
+        "left": 23.712982177734375,
+        "right": 744.2869567871094,
+        "top": 136.51336669921875,
+        "bottom": 887.4710083007812,
+        "w": 768,
+        "h": 1024,
+        "contentW": 716,
+        "scrollW": 716
+      }
+    },
+    {
+      "label": "人生长任务 768",
+      "passed": true,
+      "result": {
+        "left": 23.667755126953125,
+        "right": 744.3323059082031,
+        "top": 14.901031494140625,
+        "bottom": 1009.0834045410156,
+        "w": 768,
+        "h": 1024,
+        "contentW": 716,
+        "scrollW": 716
+      }
+    },
+    {
+      "label": "拾光新闻 768",
+      "passed": true,
+      "result": {
+        "left": 23.650848388671875,
+        "right": 744.3490905761719,
+        "top": 14.877685546875,
+        "bottom": 1009.106689453125,
+        "w": 768,
+        "h": 1024,
+        "contentW": 716,
+        "scrollW": 716
+      }
+    },
+    {
+      "label": "society full map 768",
+      "result": {
+        "width": 768,
+        "doc": 768,
+        "mainH": 691.703125,
+        "viewH": 691.703125,
+        "viewW": 768,
+        "native": [
+          1672,
+          941
+        ],
+        "fit": "contain"
+      },
+      "passed": true
+    },
+    {
+      "label": "university full map 1440",
+      "result": {
+        "width": 1440,
+        "doc": 1440,
+        "mainH": 733.203125,
+        "viewH": 733.203125,
+        "viewW": 1440,
+        "native": [
+          1672,
+          941
+        ],
+        "fit": "contain"
+      },
+      "passed": true
+    },
+    {
+      "label": "人生与账本 1440",
+      "passed": true,
+      "result": {
+        "left": 169.88079833984375,
+        "right": 1270.1190795898438,
+        "top": 23.8968505859375,
+        "bottom": 976.1031494140625,
+        "w": 1440,
+        "h": 1000,
+        "contentW": 1096,
+        "scrollW": 1096
+      }
+    },
+    {
+      "label": "人才市场与工作 1440",
+      "passed": true,
+      "result": {
+        "left": 169.84033203125,
+        "right": 1270.15966796875,
+        "top": 23.86181640625,
+        "bottom": 976.13818359375,
+        "w": 1440,
+        "h": 1000,
+        "contentW": 1096,
+        "scrollW": 1096
+      }
+    },
+    {
+      "label": "交易与资产 1440",
+      "passed": true,
+      "result": {
+        "left": 24,
+        "right": 1416,
+        "top": 24,
+        "bottom": 976,
+        "w": 1440,
+        "h": 1000,
+        "contentW": 1388,
+        "scrollW": 1388
+      }
+    },
+    {
+      "label": "身体与医院 1440",
+      "passed": true,
+      "result": {
+        "left": 170,
+        "right": 1270,
+        "top": 24,
+        "bottom": 976,
+        "w": 1440,
+        "h": 1000,
+        "contentW": 1096,
+        "scrollW": 1096
+      }
+    },
+    {
+      "label": "恋人与家庭 1440",
+      "passed": true,
+      "result": {
+        "left": 169.55145263671875,
+        "right": 1270.4484252929688,
+        "top": 90.18170166015625,
+        "bottom": 909.8026733398438,
+        "w": 1440,
+        "h": 1000,
+        "contentW": 1096,
+        "scrollW": 1096
+      }
+    },
+    {
+      "label": "人生长任务 1440",
+      "passed": true,
+      "result": {
+        "left": 169.60577392578125,
+        "right": 1270.3943481445312,
+        "top": 23.6588134765625,
+        "bottom": 976.3411865234375,
+        "w": 1440,
+        "h": 1000,
+        "contentW": 1096,
+        "scrollW": 1096
+      }
+    },
+    {
+      "label": "拾光新闻 1440",
+      "passed": true,
+      "result": {
+        "left": 169.80218505859375,
+        "right": 1270.1976928710938,
+        "top": 23.82879638671875,
+        "bottom": 976.1712036132812,
+        "w": 1440,
+        "h": 1000,
+        "contentW": 1096,
+        "scrollW": 1096
+      }
+    },
+    {
+      "label": "society full map 1440",
+      "result": {
+        "width": 1440,
+        "doc": 1440,
+        "mainH": 733.203125,
+        "viewH": 733.203125,
+        "viewW": 1440,
+        "native": [
+          1672,
+          941
+        ],
+        "fit": "contain"
+      },
+      "passed": true
+    },
+    {
+      "label": "university full map 844",
+      "result": {
+        "width": 844,
+        "doc": 844,
+        "mainH": 250.3125,
+        "viewH": 250.3125,
+        "viewW": 844,
+        "native": [
+          1672,
+          941
+        ],
+        "fit": "contain"
+      },
+      "passed": true
+    },
+    {
+      "label": "人生与账本 844",
+      "passed": true,
+      "result": {
+        "left": 24,
+        "right": 820,
+        "top": 16.875,
+        "bottom": 373.109375,
+        "w": 844,
+        "h": 390,
+        "contentW": 792,
+        "scrollW": 792
+      }
+    },
+    {
+      "label": "人才市场与工作 844",
+      "passed": true,
+      "result": {
+        "left": 24,
+        "right": 820,
+        "top": 16.875,
+        "bottom": 373.109375,
+        "w": 844,
+        "h": 390,
+        "contentW": 792,
+        "scrollW": 792
+      }
+    },
+    {
+      "label": "交易与资产 844",
+      "passed": true,
+      "result": {
+        "left": 24,
+        "right": 820,
+        "top": 16.875,
+        "bottom": 373.109375,
+        "w": 844,
+        "h": 390,
+        "contentW": 792,
+        "scrollW": 792
+      }
+    },
+    {
+      "label": "身体与医院 844",
+      "passed": true,
+      "result": {
+        "left": 23.613983154296875,
+        "right": 820.3859558105469,
+        "top": 16.702239990234375,
+        "bottom": 373.2821350097656,
+        "w": 844,
+        "h": 390,
+        "contentW": 792,
+        "scrollW": 792
+      }
+    },
+    {
+      "label": "恋人与家庭 844",
+      "passed": true,
+      "result": {
+        "left": 24,
+        "right": 820,
+        "top": 16.875,
+        "bottom": 373.109375,
+        "w": 844,
+        "h": 390,
+        "contentW": 792,
+        "scrollW": 792
+      }
+    },
+    {
+      "label": "人生长任务 844",
+      "passed": true,
+      "result": {
+        "left": 23.613983154296875,
+        "right": 820.3859558105469,
+        "top": 16.702239990234375,
+        "bottom": 373.2821350097656,
+        "w": 844,
+        "h": 390,
+        "contentW": 792,
+        "scrollW": 792
+      }
+    },
+    {
+      "label": "拾光新闻 844",
+      "passed": true,
+      "result": {
+        "left": 24,
+        "right": 820,
+        "top": 16.875,
+        "bottom": 373.109375,
+        "w": 844,
+        "h": 390,
+        "contentW": 792,
+        "scrollW": 792
+      }
+    },
+    {
+      "label": "society full map 844",
+      "result": {
+        "width": 844,
+        "doc": 844,
+        "mainH": 250.3125,
+        "viewH": 250.3125,
+        "viewW": 844,
+        "native": [
+          1672,
+          941
+        ],
+        "fit": "contain"
+      },
+      "passed": true
+    },
+    {
+      "label": "教学与图书馆 background and uncut native art",
+      "passed": true
+    },
+    {
+      "label": "宿舍与食堂 background and uncut native art",
+      "passed": true
+    },
+    {
+      "label": "科研与实习 background and uncut native art",
+      "passed": true
+    },
+    {
+      "label": "湖畔与文体 background and uncut native art",
+      "passed": true
+    },
+    {
+      "label": "人才市场 background and uncut native art",
+      "passed": true
+    },
+    {
+      "label": "工作街区 background and uncut native art",
+      "passed": true
+    },
+    {
+      "label": "交易所 background and uncut native art",
+      "passed": true
+    },
+    {
+      "label": "医院 background and uncut native art",
+      "passed": true
+    },
+    {
+      "label": "保险与办事大厅 background and uncut native art",
+      "passed": true
+    },
+    {
+      "label": "夜生活街区 background and uncut native art",
+      "passed": true
+    },
+    {
+      "label": "住宅与生活 background and uncut native art",
+      "passed": true
+    },
+    {
+      "label": "direct Crypto/LP entrances, real trades, margin change, reload and spent course badge",
+      "passed": true
+    }
+  ],
+  "errors": []
+}
