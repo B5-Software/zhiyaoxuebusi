@@ -33,7 +33,8 @@
 .life-region-chip { min-width:0; max-width:calc(100% - 310px); flex-shrink:1; }
 .life-region-chip>svg { flex-shrink:0; }
 .life-identity { min-width:0; flex:1; }
-.life-identity>div { min-width:0; }
+.life-identity>span { min-width:0; display:grid; gap:4px; }
+.life-identity>img { flex-shrink:0; }
 .life-identity strong { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .life-navigation { display:grid; grid-template-columns:38px minmax(0,1fr) 38px; align-items:center; gap:12px; border-bottom:1px dashed #d9cba7; }
 .life-footer .life-navigation nav { --nav-min:104; display:grid; grid-auto-flow:column; grid-auto-columns:var(--nav-item-width,104px); justify-content:start; gap:16px; padding:10px 5px 12px; border:0; scroll-padding:5px; scroll-behavior:smooth; scroll-snap-type:x mandatory; scrollbar-width:thin; scrollbar-color:#b8bd98 transparent; }
@@ -100,7 +101,7 @@
  .story-modal .modal-content,.new-game-modal .modal-content { padding:0; }
  .close-button { width:36px; height:36px; }
  .life-paper { padding:20px; }
- .life-world .life-home-grid { width:min(268px,calc(100% - 24px)); gap:16px; }
+ .life-world .life-home-grid { width:min(268px,calc(100% - 80px)); max-height:calc(100% - 190px); gap:16px; }
  .life-world .life-world-heading { left:12px; right:12px; gap:12px; flex-wrap:wrap; }
  .life-region-chip { max-width:calc(100% - 108px); padding:10px; font-size:11px; }
  .life-world-heading .life-hud-toggle { margin-left:auto; padding:10px 12px; font-size:11px; }

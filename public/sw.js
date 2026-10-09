@@ -1,4 +1,4 @@
-const CACHE = 'shiguang-campus-v3.3.0';
+const CACHE = 'shiguang-campus-v3.3.0-r2';
 const BASE = new URL(self.registration.scope).pathname;
 const ART = ['campus', 'student', 'companion', 'teacher', 'mother', 'friend', 'classroom', 'home', 'city', 'graduation'];
 const MAP_ART = ['world-map', 'library', 'laboratory', 'arts', 'park', 'market', 'university', 'zhixia', 'xinghe', 'tangtang', 'cloud-frame', 'student-female', 'romance-moments', 'romance-men-moments', 'university-world', 'society-world', 'map-college-study', 'map-college-dorm', 'map-college-research', 'map-college-life', 'map-recruitment', 'map-workplace', 'map-exchange', 'map-hospital', 'map-insurance', 'map-nightlife', 'map-residence', 'story-dorm-v3.2', 'story-work-v3.2', 'story-clinic-v3.2', 'story-home-v3.2', 'story-exchange-v3.2', 'story-station-v3.2'];

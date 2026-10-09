@@ -2,6 +2,10 @@
   "version": "3.3.0",
   "checks": [
     {
+      "label": "long player name retains header spacing 320",
+      "passed": true
+    },
+    {
       "label": "every navigation page contains complete controls 320",
       "passed": true
     },
@@ -10,11 +14,51 @@
       "passed": true
     },
     {
+      "label": "map labels and edge entries remain accessible without overlapping controls college-dorm 320 hud=false",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls college-dorm 320 hud=true",
+      "passed": true
+    },
+    {
       "label": "map signs and story badges fully inside viewport exchange 320",
       "passed": true
     },
     {
+      "label": "map labels and edge entries remain accessible without overlapping controls exchange 320 hud=false",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls exchange 320 hud=true",
+      "passed": true
+    },
+    {
       "label": "map signs and story badges fully inside viewport nightlife 320",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls nightlife 320 hud=false",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls nightlife 320 hud=true",
+      "passed": true
+    },
+    {
+      "label": "map signs and story badges fully inside viewport college-study 320",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls college-study 320 hud=false",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls college-study 320 hud=true",
+      "passed": true
+    },
+    {
+      "label": "long player name retains header spacing 390",
       "passed": true
     },
     {
@@ -26,11 +70,51 @@
       "passed": true
     },
     {
+      "label": "map labels and edge entries remain accessible without overlapping controls college-dorm 390 hud=false",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls college-dorm 390 hud=true",
+      "passed": true
+    },
+    {
       "label": "map signs and story badges fully inside viewport exchange 390",
       "passed": true
     },
     {
+      "label": "map labels and edge entries remain accessible without overlapping controls exchange 390 hud=false",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls exchange 390 hud=true",
+      "passed": true
+    },
+    {
       "label": "map signs and story badges fully inside viewport nightlife 390",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls nightlife 390 hud=false",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls nightlife 390 hud=true",
+      "passed": true
+    },
+    {
+      "label": "map signs and story badges fully inside viewport college-study 390",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls college-study 390 hud=false",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls college-study 390 hud=true",
+      "passed": true
+    },
+    {
+      "label": "long player name retains header spacing 768",
       "passed": true
     },
     {
@@ -42,11 +126,51 @@
       "passed": true
     },
     {
+      "label": "map labels and edge entries remain accessible without overlapping controls college-dorm 768 hud=false",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls college-dorm 768 hud=true",
+      "passed": true
+    },
+    {
       "label": "map signs and story badges fully inside viewport exchange 768",
       "passed": true
     },
     {
+      "label": "map labels and edge entries remain accessible without overlapping controls exchange 768 hud=false",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls exchange 768 hud=true",
+      "passed": true
+    },
+    {
       "label": "map signs and story badges fully inside viewport nightlife 768",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls nightlife 768 hud=false",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls nightlife 768 hud=true",
+      "passed": true
+    },
+    {
+      "label": "map signs and story badges fully inside viewport college-study 768",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls college-study 768 hud=false",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls college-study 768 hud=true",
+      "passed": true
+    },
+    {
+      "label": "long player name retains header spacing 1440",
       "passed": true
     },
     {
@@ -58,11 +182,51 @@
       "passed": true
     },
     {
+      "label": "map labels and edge entries remain accessible without overlapping controls college-dorm 1440 hud=false",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls college-dorm 1440 hud=true",
+      "passed": true
+    },
+    {
       "label": "map signs and story badges fully inside viewport exchange 1440",
       "passed": true
     },
     {
+      "label": "map labels and edge entries remain accessible without overlapping controls exchange 1440 hud=false",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls exchange 1440 hud=true",
+      "passed": true
+    },
+    {
       "label": "map signs and story badges fully inside viewport nightlife 1440",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls nightlife 1440 hud=false",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls nightlife 1440 hud=true",
+      "passed": true
+    },
+    {
+      "label": "map signs and story badges fully inside viewport college-study 1440",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls college-study 1440 hud=false",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls college-study 1440 hud=true",
+      "passed": true
+    },
+    {
+      "label": "long player name retains header spacing 844",
       "passed": true
     },
     {
@@ -74,11 +238,47 @@
       "passed": true
     },
     {
+      "label": "map labels and edge entries remain accessible without overlapping controls college-dorm 844 hud=false",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls college-dorm 844 hud=true",
+      "passed": true
+    },
+    {
       "label": "map signs and story badges fully inside viewport exchange 844",
       "passed": true
     },
     {
+      "label": "map labels and edge entries remain accessible without overlapping controls exchange 844 hud=false",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls exchange 844 hud=true",
+      "passed": true
+    },
+    {
       "label": "map signs and story badges fully inside viewport nightlife 844",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls nightlife 844 hud=false",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls nightlife 844 hud=true",
+      "passed": true
+    },
+    {
+      "label": "map signs and story badges fully inside viewport college-study 844",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls college-study 844 hud=false",
+      "passed": true
+    },
+    {
+      "label": "map labels and edge entries remain accessible without overlapping controls college-study 844 hud=true",
       "passed": true
     }
   ],
