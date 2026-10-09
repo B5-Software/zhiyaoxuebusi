@@ -1,46 +1,49 @@
 {
   "date": "2026-10-09",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "platform": "Cloudflare Pages",
   "branch": "main",
-  "codeCommit": "cac519f9bb758d873c6f8a037a1ac147a845a6b7",
-  "indexSha256": "af68f34fef6b6ca0062548d3f51d95a55d69d15ddf57901df4319e4779252fad",
-  "unitTests": 145,
-  "uiChecks": 224,
+  "codeCommit": "6ce001d1b5394af6524aa0b3b47b51acb2b9b35a",
+  "indexSha256": "d632ccee5e443e4bf24dce89d551f335490db88db5e1f8efd10e8a5c9d572f35",
+  "unitTests": 154,
+  "uiChecks": 449,
   "uiViewports": 5,
   "guideChecks": "docs/guide-game-checks.json",
-  "lifeChecks": "docs/browser-life-v3.2.json",
-  "storyChecks": "docs/story-browser-v3.2.json",
+  "lifeChecks": "docs/browser-life-v3.3.json",
+  "storyChecks": "docs/story-browser-v3.3.json",
   "storyArtwork": 6,
   "storyChapters": 36,
   "journeyChecks": "docs/life-journey-checks.json",
+  "startingStages": 4,
+  "startingChecks": "docs/start-layout-checks-v3.3.json",
+  "wholeControlChecks": "docs/whole-control-checks-v3.3.json",
   "smallMapAssets": 11,
   "loadingChecks": "docs/loading-path-checks.json",
   "projects": [
     {
       "name": "shiguang-campus-life",
       "production": "https://shiguang-campus-life.pages.dev/",
-      "deployment": "https://a05b4cb3.shiguang-campus-life.pages.dev/",
+      "deployment": "https://059d2b0a.shiguang-campus-life.pages.dev",
       "resources": [
         {
           "path": "index.html",
           "status": 200,
           "bytes": 3844,
-          "sha256": "af68f34fef6b6ca0062548d3f51d95a55d69d15ddf57901df4319e4779252fad",
+          "sha256": "d632ccee5e443e4bf24dce89d551f335490db88db5e1f8efd10e8a5c9d572f35",
           "matchesBuild": true
         },
         {
           "path": "sw.js",
           "status": 200,
-          "bytes": 4079,
-          "sha256": "f7e22dd66f717aaa521af735e6ff4db23db44ddef43c1707ad573d1a0775bc04",
+          "bytes": 4082,
+          "sha256": "22961cb0083a3e370f5cd8866a005be297fc43a9b5c9fc6b299dc3a65a4adf57",
           "matchesBuild": true
         },
         {
           "path": "cache-manifest.json",
           "status": 200,
           "bytes": 8417,
-          "sha256": "06a4111ba9cee5a7e8586f70dc34e2a538ccdfac91829b79dfbcfaed5f86868c",
+          "sha256": "db5b91a82023dbe316ed111c5312f2283e404ab3b6a367cc6f8ef55192e0fbba",
           "matchesBuild": true
         },
         {
@@ -191,29 +194,29 @@
           "matchesBuild": true
         },
         {
-          "path": "assets/mountGame-BUxNvqR3.css",
+          "path": "assets/mountGame-CZP_5EnR.css",
           "status": 200,
-          "bytes": 326481,
-          "sha256": "b969be3489f030b55c712c6a6cda83e3346262b1471cbc518afd00533e321beb",
+          "bytes": 336355,
+          "sha256": "832af6a7597093cf1f36c8ee5d310ea305f1d389977d296ef8ab405c479b0fd3",
           "matchesBuild": true
         },
         {
-          "path": "assets/index-DSs0WvQg.js",
+          "path": "assets/index-CR0uvxVF.js",
           "status": 200,
           "bytes": 3464,
-          "sha256": "8dd538330fee19c0bb654591b04473c9e3f95282fefbf0804e31cd1e0df3b902",
+          "sha256": "fc73dd2cef8a03f7e831d27bbe73c6f60c01aa034d31fec2499e2a8211bf7e8a",
           "matchesBuild": true
         },
         {
-          "path": "assets/mountGame-AQm3G6mh.js",
+          "path": "assets/mountGame-DkMW2jTf.js",
           "status": 200,
-          "bytes": 1065939,
-          "sha256": "2e002aa55fd859fe862a77458bd86c6bff6737c95dea7956b614ad0c18738789",
+          "bytes": 1075872,
+          "sha256": "29fd5441dcc1f7ba28afb15139ffe8636d3276ab7cd668a1cb76625cc29d5b26",
           "matchesBuild": true
         }
       ],
       "liveChecks": {
-        "version": "3.2.0",
+        "version": "3.3.0",
         "femaleOpeningAndAvatars": true,
         "mainPressureChapter": true,
         "tutorialAutoStartAndSkip": true,
@@ -237,33 +240,67 @@
           "pendingReload": true,
           "receiptReload": true,
           "branchSaved": true
-        }
+        },
+        "startingStages": [
+          {
+            "stage": "highschool",
+            "age": 18,
+            "initialFunds": 120,
+            "identity": true,
+            "validSave": true,
+            "continuation": false
+          },
+          {
+            "stage": "university",
+            "age": 18,
+            "initialFunds": 3000,
+            "identity": true,
+            "validSave": true,
+            "continuation": true
+          },
+          {
+            "stage": "society",
+            "age": 22,
+            "initialFunds": 5000,
+            "identity": true,
+            "validSave": true,
+            "continuation": true
+          },
+          {
+            "stage": "retirement",
+            "age": 60,
+            "initialFunds": 20000,
+            "identity": true,
+            "validSave": true,
+            "continuation": true
+          }
+        ]
       }
     },
     {
       "name": "zhiyaoxuebusi",
       "production": "https://zhiyaoxuebusi.pages.dev/",
-      "deployment": "https://ec138692.zhiyaoxuebusi.pages.dev/",
+      "deployment": "https://5bff5d31.zhiyaoxuebusi.pages.dev",
       "resources": [
         {
           "path": "index.html",
           "status": 200,
           "bytes": 3844,
-          "sha256": "af68f34fef6b6ca0062548d3f51d95a55d69d15ddf57901df4319e4779252fad",
+          "sha256": "d632ccee5e443e4bf24dce89d551f335490db88db5e1f8efd10e8a5c9d572f35",
           "matchesBuild": true
         },
         {
           "path": "sw.js",
           "status": 200,
-          "bytes": 4079,
-          "sha256": "f7e22dd66f717aaa521af735e6ff4db23db44ddef43c1707ad573d1a0775bc04",
+          "bytes": 4082,
+          "sha256": "22961cb0083a3e370f5cd8866a005be297fc43a9b5c9fc6b299dc3a65a4adf57",
           "matchesBuild": true
         },
         {
           "path": "cache-manifest.json",
           "status": 200,
           "bytes": 8417,
-          "sha256": "06a4111ba9cee5a7e8586f70dc34e2a538ccdfac91829b79dfbcfaed5f86868c",
+          "sha256": "db5b91a82023dbe316ed111c5312f2283e404ab3b6a367cc6f8ef55192e0fbba",
           "matchesBuild": true
         },
         {
@@ -414,29 +451,29 @@
           "matchesBuild": true
         },
         {
-          "path": "assets/mountGame-BUxNvqR3.css",
+          "path": "assets/mountGame-CZP_5EnR.css",
           "status": 200,
-          "bytes": 326481,
-          "sha256": "b969be3489f030b55c712c6a6cda83e3346262b1471cbc518afd00533e321beb",
+          "bytes": 336355,
+          "sha256": "832af6a7597093cf1f36c8ee5d310ea305f1d389977d296ef8ab405c479b0fd3",
           "matchesBuild": true
         },
         {
-          "path": "assets/index-DSs0WvQg.js",
+          "path": "assets/index-CR0uvxVF.js",
           "status": 200,
           "bytes": 3464,
-          "sha256": "8dd538330fee19c0bb654591b04473c9e3f95282fefbf0804e31cd1e0df3b902",
+          "sha256": "fc73dd2cef8a03f7e831d27bbe73c6f60c01aa034d31fec2499e2a8211bf7e8a",
           "matchesBuild": true
         },
         {
-          "path": "assets/mountGame-AQm3G6mh.js",
+          "path": "assets/mountGame-DkMW2jTf.js",
           "status": 200,
-          "bytes": 1065939,
-          "sha256": "2e002aa55fd859fe862a77458bd86c6bff6737c95dea7956b614ad0c18738789",
+          "bytes": 1075872,
+          "sha256": "29fd5441dcc1f7ba28afb15139ffe8636d3276ab7cd668a1cb76625cc29d5b26",
           "matchesBuild": true
         }
       ],
       "liveChecks": {
-        "version": "3.2.0",
+        "version": "3.3.0",
         "femaleOpeningAndAvatars": true,
         "mainPressureChapter": true,
         "tutorialAutoStartAndSkip": true,
@@ -460,17 +497,57 @@
           "pendingReload": true,
           "receiptReload": true,
           "branchSaved": true
-        }
+        },
+        "startingStages": [
+          {
+            "stage": "highschool",
+            "age": 18,
+            "initialFunds": 120,
+            "identity": true,
+            "validSave": true,
+            "continuation": false
+          },
+          {
+            "stage": "university",
+            "age": 18,
+            "initialFunds": 3000,
+            "identity": true,
+            "validSave": true,
+            "continuation": true
+          },
+          {
+            "stage": "society",
+            "age": 22,
+            "initialFunds": 5000,
+            "identity": true,
+            "validSave": true,
+            "continuation": true
+          },
+          {
+            "stage": "retirement",
+            "age": 60,
+            "initialFunds": 20000,
+            "identity": true,
+            "validSave": true,
+            "continuation": true
+          }
+        ]
       }
     }
   ],
   "githubPages": {
     "production": "https://b5-software.github.io/zhiyaoxuebusi/",
-    "workflow": "https://github.com/B5-Software/zhiyaoxuebusi/actions/runs/37871762141",
-    "version": "3.2.0",
+    "workflow": "https://github.com/B5-Software/zhiyaoxuebusi/actions/runs/37877995130",
+    "version": "3.3.0",
     "nativeSmallMaps": true,
     "professionalExchangeAndNews": true,
     "storyLibrary": true,
+    "freshUniversityStart": {
+      "validSave": true,
+      "zeroCredits": true,
+      "noExamHistory": true,
+      "reload": true
+    },
     "resources": [
       {
         "path": "images/university-world.webp",
@@ -568,6 +645,9 @@
         "matchesSource": true
       }
     ],
-    "errors": []
+    "errors": [],
+    "cacheRevision": "v3.3.0-r2",
+    "mobileHudExpanded": true,
+    "mapOverlayAvoidance": true
   }
 }
