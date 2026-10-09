@@ -26,7 +26,7 @@ const MILESTONES: Record<number, string> = { 8: 'midterm', 16: 'winter-holiday',
 
 export function createGame(): GameState {
   return {
-    version: 3, started: false, name: DEFAULT_PLAYER_NAME, nameIsCustom: false, gender: 'male', difficulty: 'standard', targetSchool: 'xjtu',
+    version: 3, started: false, startStage: 'highschool', name: DEFAULT_PLAYER_NAME, nameIsCustom: false, gender: 'male', difficulty: 'standard', targetSchool: 'xjtu',
     romance: createRomance(), graduate: createGraduate(), life: createLife(), birthdayGifts: [], world: { scene: 'campus', placeId: 'classroom', x: 54, y: 74 },
     week: 0, actions: 0, weeklyActions: [],
     stats: { energy: 80, mood: 75, stress: 28, health: 85, money: 120, autonomy: 35 },
@@ -367,6 +367,10 @@ export function validateGame(raw: unknown): GameState | null {
   if (!isRecord(raw) || raw.version !== 2 && raw.version !== 3 || typeof raw.name !== 'string' || !raw.name.trim() || raw.name.length > 16 || typeof raw.started !== 'boolean') return null;
   if (raw.gender !== undefined && raw.gender !== 'male' && raw.gender !== 'female') return null;
   if (raw.nameIsCustom !== undefined && typeof raw.nameIsCustom !== 'boolean') return null;
+  const startStage = raw.startStage === undefined ? 'highschool' : raw.startStage;
+  if (typeof startStage !== 'string' || !['highschool', 'university', 'society', 'retirement'].includes(startStage)) return null;
+  const directStart = startStage !== 'highschool';
+  if (directStart && (raw.started !== true || raw.phase !== 'ending' || raw.week !== 0 || !isRecord(raw.life) || raw.life.active !== true)) return null;
   if (!validNumber(raw.week, 40) || !Number.isInteger(raw.week) || !validNumber(raw.actions, 3) || !Number.isInteger(raw.actions)) return null;
   if (!['gentle', 'standard'].includes(String(raw.difficulty)) || !['school', 'exam', 'application', 'ending'].includes(String(raw.phase))) return null;
   if (!isRecord(raw.stats) || !isRecord(raw.subjects) || !isRecord(raw.relations) || !isRecord(raw.counts) || !isRecord(raw.inventory)) return null;
@@ -394,14 +398,15 @@ export function validateGame(raw: unknown): GameState | null {
   if (new Set(raw.wishes.map(wish => (wish as Record<string, unknown>).schoolId)).size !== raw.wishes.length) return null;
   if (!Array.isArray(raw.examAnswers) || raw.examAnswers.length > 3 || !raw.examAnswers.every(answer => validNumber(answer, 3) && Number.isInteger(answer))) return null;
   if (raw.examScore !== null && !validNumber(raw.examScore, 750)) return null;
-  if ((raw.phase === 'application' || raw.phase === 'ending') && raw.examScore === null) return null;
+  if (directStart && (raw.examScore !== null || raw.examAnswers.length !== 0 || raw.admittedId !== null || raw.admittedMajor !== null)) return null;
+  if (!directStart && (raw.phase === 'application' || raw.phase === 'ending') && raw.examScore === null) return null;
   if (raw.admittedId !== null && !UNIVERSITIES.some(school => school.id === raw.admittedId && school.majors.includes(String(raw.admittedMajor)))) return null;
   if (raw.admittedId === null && raw.admittedMajor !== null) return null;
   if (!UNIVERSITIES.some(school => school.id === raw.targetSchool) || !validNumber(raw.seed, 2147483646)) return null;
   if (raw.phase === 'school' && (raw.week as number) >= TOTAL_WEEKS) return null;
   if (raw.phase !== 'school' && raw.pendingEvent !== null) return null;
-  if (raw.phase !== 'school' && raw.week !== TOTAL_WEEKS) return null;
-  if ((raw.phase === 'application' || raw.phase === 'ending') && raw.examAnswers.length !== EXAM_QUESTIONS.length) return null;
+  if (!directStart && raw.phase !== 'school' && raw.week !== TOTAL_WEEKS) return null;
+  if (!directStart && (raw.phase === 'application' || raw.phase === 'ending') && raw.examAnswers.length !== EXAM_QUESTIONS.length) return null;
   // Copy only known fields; imported JSON never becomes an executable configuration.
   const result = Object.fromEntries(Object.keys(base).map(key => [key, raw[key] ?? (key === 'pendingEvent' || key === 'examScore' || key === 'admittedId' || key === 'admittedMajor' ? null : base[key as keyof GameState])])) as unknown as GameState;
   result.stats = Object.fromEntries(Object.keys(base.stats).map(key => [key, (raw.stats as Record<string, number>)[key]])) as GameState['stats'];

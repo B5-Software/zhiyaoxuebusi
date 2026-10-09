@@ -1,0 +1,148 @@
+/* Controls keep their size. Containers wrap or scroll with room for focus and shadows. */
+.primary-button,.secondary-button,.text-button { flex-shrink:0; max-width:100%; min-height:44px; height:auto; padding:12px 18px; gap:10px; line-height:1.65; white-space:normal; }
+:is(.primary-button,.secondary-button,.text-button)>svg { flex-shrink:0; }
+.button-row,.life-button-row { flex-wrap:wrap; gap:16px; margin-top:18px; padding-block:4px; }
+:is(.button-row,.life-button-row)>button { flex:0 0 auto; max-width:100%; }
+.modal-backdrop { padding:clamp(16px,3vw,32px); }
+.game-modal { max-height:calc(100dvh - clamp(32px,6vw,64px)); }
+.modal-heading { gap:20px; padding:22px 26px; }
+.modal-heading>div { min-width:0; }
+.close-button { width:40px; height:40px; margin:0; flex-shrink:0; }
+.modal-content { min-height:0; padding:26px; }
+.life-modal .modal-content { padding:26px; }
+.story-modal .modal-content { padding:0; }
+.life-modal :is(.primary-button,.secondary-button),.life-app :is(.primary-button,.secondary-button) { min-height:46px; }
+.life-panel-stack { gap:26px; }
+.life-paper { padding:24px; }
+.life-panel-lead>div>div { min-width:0; }
+.life-card-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:16px; }
+.life-world .life-home-grid { gap:18px; padding:4px 4px 14px; width:300px; scrollbar-gutter:stable; }
+.life-world .life-home-grid>* { flex-shrink:0; }
+.life-world .life-home-grid .life-paper { padding:20px; }
+.life-home-grid .life-card-actions .text-button { width:100%; min-width:0; min-height:44px; margin:0; padding:10px 7px; gap:6px; font-size:12px; border:1px solid #d2ccb0; background:#f7f4e5; }
+.life-story-home { gap:12px; padding:17px 15px; }
+.life-story-home>span { flex:1; min-width:0; }
+.life-story-home>svg { flex-shrink:0; }
+.life-story-home strong { overflow-wrap:break-word; }
+.life-status-home { display:flex; align-items:center; gap:12px; padding:16px; border:1px solid #c0c5a0; border-radius:16px; background:#fff9e9ed; text-align:left; }
+.life-status-home>svg { flex-shrink:0; }
+.life-status-home>span { min-width:0; display:grid; gap:8px; }
+.life-status-home strong { font-size:15px; font-family:var(--hand); line-height:1.5; }
+.life-status-home small { font-size:11px; line-height:1.8; color:#a39274; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.life-world .life-world-heading { gap:16px; }
+.life-region-chip { min-width:0; max-width:calc(100% - 310px); flex-shrink:1; }
+.life-region-chip>svg { flex-shrink:0; }
+.life-identity { min-width:0; flex:1; }
+.life-identity>div { min-width:0; }
+.life-identity strong { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.life-navigation { display:grid; grid-template-columns:38px minmax(0,1fr) 38px; align-items:center; gap:12px; border-bottom:1px dashed #d9cba7; }
+.life-footer .life-navigation nav { --nav-min:104; display:grid; grid-auto-flow:column; grid-auto-columns:var(--nav-item-width,104px); justify-content:start; gap:16px; padding:10px 5px 12px; border:0; scroll-padding:5px; scroll-behavior:smooth; scroll-snap-type:x mandatory; scrollbar-width:thin; scrollbar-color:#b8bd98 transparent; }
+.life-footer .life-navigation nav>button { flex:none; width:100%; min-width:104px; max-width:none; padding:8px 7px; gap:8px; scroll-snap-align:start; }
+.life-footer nav>button>span:last-child { width:100%; min-height:36px; display:flex; align-items:center; justify-content:center; line-height:1.5; white-space:normal; }
+.life-nav-scroll { display:grid; place-items:center; width:38px; height:44px; border:1px solid #c4c6a0; border-radius:12px; background:#f2f2df; color:#87936c; }
+.life-nav-scroll:disabled { opacity:.35; }
+.life-week-row { gap:20px; padding-block:12px 3px; }
+.life-week-row>.primary-button { flex-shrink:0; padding:10px 18px; }
+.story-book-grid { gap:28px; }
+.story-book-body { padding:26px; }
+.story-book-body .life-button-row { gap:16px; margin-top:18px; }
+.story-dialogue { gap:24px; }
+.story-speaker>svg { flex-shrink:0; }
+.story-choices { gap:18px; margin-block:22px; }
+.story-choice { min-height:64px; padding:20px; }
+.story-reader-copy { padding:32px 40px 40px; }
+.new-game-modal { width:min(920px,100%); }
+.new-game-modal .modal-content { padding:0; }
+.new-game-form { display:grid; gap:24px; padding:28px; }
+.new-game-form fieldset { border:0; padding:0; margin:0; min-width:0; }
+.new-game-form legend { font-size:16px; color:#778563; margin-bottom:16px; line-height:1.5; }
+.starting-stage-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; }
+.starting-stage-grid>button { display:flex; flex-wrap:wrap; align-items:center; gap:12px; padding:18px 14px; min-height:116px; border:1px solid #d4c6a5; border-radius:14px; text-align:left; background:#f6efde; position:relative; }
+.starting-stage-grid>button>svg:last-child:not(.game-icon) { position:absolute; top:12px; right:12px; }
+.starting-stage-grid>button>.game-icon { flex-shrink:0; }
+.starting-stage-grid span,.start-education-options span { min-width:0; display:grid; gap:7px; }
+.starting-stage-grid strong { font-size:19px; font-family:var(--hand); }
+.starting-stage-grid small { font-size:10px; line-height:1.8; color:#a18e6d; }
+.new-game-form button.selected { border-color:#a0b182; background:#edf1de; box-shadow:inset 0 0 0 3px #fffbed; }
+.new-start-preview { display:grid; grid-template-columns:240px minmax(0,1fr); gap:24px; align-items:center; background:#faf2df; border:1px solid #d9caa8; padding:16px; border-radius:14px; }
+.new-start-preview>img { display:block; width:100%; height:auto; object-fit:contain; border:3px solid #fff9e9; border-radius:9px; }
+.new-start-preview h3 { font:26px/1.6 var(--hand); color:#7d8c67; margin:6px 0; }
+.new-start-preview p { font-size:13px; line-height:1.9; color:#9e8d6d; }
+.new-game-form .protagonist-picker { display:flex; flex-wrap:wrap; gap:16px; }
+.new-game-form .protagonist-picker>button { flex:0 0 auto; min-width:150px; padding:14px; }
+.new-start-field { min-width:0; display:grid; gap:10px; font-size:13px; color:#857958; }
+.new-start-field :is(input,select) { width:100%; min-width:0; min-height:48px; padding:12px; border:1px solid #cec3a3; border-radius:9px; background:#fffbee; color:#788464; font-family:inherit; }
+.new-start-fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
+.new-start-fields:has(>label:only-child) { grid-template-columns:minmax(0,1fr); }
+.start-education-options>div { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+.start-education-options button { display:flex; align-items:center; gap:12px; text-align:left; min-height:92px; padding:16px; background:#f7f0df; border:1px solid #d7caad; border-radius:12px; }
+.start-education-options button>svg { flex-shrink:0; }
+.start-education-options small { line-height:1.8; color:#aa9874; font-size:11px; }
+.new-game-form .difficulty-options { gap:16px; }
+.new-game-form .difficulty-options>button { min-width:0; padding:16px; gap:12px; }
+.new-game-form .difficulty-options>button>svg { flex-shrink:0; }
+.start-preset-note { display:flex; gap:14px; align-items:flex-start; border-top:1px dashed #d5c9ab; padding-top:20px; }
+.start-preset-note>svg { flex-shrink:0; }
+.start-preset-note p { font-size:12px; line-height:1.9; color:#a08d6c; margin:0; }
+.new-start-submit { min-height:52px; font-size:15px; }
+.new-game-form .fine-print { margin:0; }
+@media(max-width:900px) {
+ .starting-stage-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .starting-stage-grid>button { min-height:98px; flex-wrap:nowrap; }
+ .new-start-preview { grid-template-columns:180px minmax(0,1fr); }
+ .life-status-home { display:none; }
+}
+@media(max-height:820px) { .life-status-home { display:none; } }
+@media(max-height:760px) { .life-story-home { display:none; } }
+@media(max-width:700px) {
+ .modal-heading { padding:18px; gap:16px; }
+ .modal-content,.life-modal .modal-content { padding:20px; }
+ .story-modal .modal-content,.new-game-modal .modal-content { padding:0; }
+ .close-button { width:36px; height:36px; }
+ .life-paper { padding:20px; }
+ .life-world .life-home-grid { width:min(268px,calc(100% - 24px)); gap:16px; }
+ .life-world .life-world-heading { left:12px; right:12px; gap:12px; flex-wrap:wrap; }
+ .life-region-chip { max-width:calc(100% - 108px); padding:10px; font-size:11px; }
+ .life-world-heading .life-hud-toggle { margin-left:auto; padding:10px 12px; font-size:11px; }
+ .life-header { flex-wrap:nowrap; gap:14px; }
+ .life-header-stats { width:auto; flex-shrink:0; }
+ .life-identity { max-width:none; }
+ .life-identity small { max-width:105px; }
+ .life-navigation { grid-template-columns:30px minmax(0,1fr) 30px; gap:8px; }
+ .life-nav-scroll { width:30px; height:42px; border-radius:9px; }
+ .life-footer .life-navigation nav { --nav-min:86; gap:12px; padding:8px 4px 10px; }
+ .life-footer .life-navigation nav>button { min-width:86px; padding:7px; font-size:11px; gap:7px; }
+ .life-footer nav>button>span:last-child { min-height:33px; }
+ .life-week-row { flex-wrap:wrap; gap:14px; padding-top:12px; }
+ .life-week-row>small { max-width:none; flex:1 1 100%; }
+ .life-week-row>span { flex:1; font-size:12px; }
+ .life-week-row>.primary-button { min-height:46px; padding:9px 14px; }
+ .story-book-body { padding:22px; }
+ .story-reader-copy { padding:24px 22px 30px; }
+ .story-choice { padding:18px 14px; gap:12px; }
+ .new-game-form { padding:20px; gap:24px; }
+ .new-game-form legend { font-size:15px; }
+ .starting-stage-grid { gap:14px; }
+ .starting-stage-grid>button { flex-direction:column; align-items:flex-start; gap:10px; padding:16px 12px; min-height:146px; }
+ .starting-stage-grid strong { font-size:20px; }
+ .new-start-preview { grid-template-columns:minmax(0,1fr); gap:16px; padding:16px; }
+ .new-start-preview>img { max-width:320px; justify-self:center; }
+ .new-start-preview h3 { font-size:23px; }
+ .new-start-fields,.start-education-options>div { grid-template-columns:minmax(0,1fr); }
+ .new-game-form .protagonist-picker>button { min-width:0; flex:1; padding:12px 10px; gap:10px; }
+ .new-game-form .difficulty-options { flex-direction:column; }
+ .new-game-form .difficulty-options>button { flex:none; }
+}
+@media(max-height:520px) and (orientation:landscape) {
+ .modal-heading { padding:12px 20px; }
+ .life-footer { padding-block:4px; }
+ .life-footer .life-navigation nav { --nav-min:132; padding:4px; max-height:none; gap:14px; }
+ .life-footer .life-navigation nav>button { flex-direction:row; min-width:132px; min-height:44px; gap:10px; padding:6px 10px; }
+ .life-footer nav>button>span:last-child { width:auto; min-height:0; }
+ .life-week-row { padding:6px 0 0; }
+ .life-week-row>.primary-button { min-height:44px; padding:7px 14px; }
+ .life-week-row>small { flex:0 1 auto; }
+ .life-world .life-home-grid { display:none; }
+ .life-world-heading .life-hud-toggle { display:none; }
+}
+@media(prefers-reduced-motion:reduce) { .life-footer .life-navigation nav { scroll-behavior:auto; } }

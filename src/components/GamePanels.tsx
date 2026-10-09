@@ -8,6 +8,8 @@ import type { Audience, CharacterId, GameState, Panel, QuestTarget, RomanceId, S
 import { asset } from '../utils/asset';
 import GameIcon from './GameIcon';
 import Modal from './Modal';
+import NewGamePanel from './NewGamePanel';
+import type { NewGameOptions } from '../game/newGame';
 import { startLife } from '../game/life';
 import GraduateRomancePanel from './GraduateRomancePanel';
 import { TutorialCatalogue } from './Tutorial';
@@ -17,7 +19,7 @@ import QuestBoard from './QuestBoard';
 import AutoBackups from './AutoBackups';
 import PlayerNameEditor from './PlayerNameEditor';
 import LocationAppointments from './LocationAppointments';
-import { DEFAULT_PLAYER_NAME, playerDisplayName, playerPortrait, playerText } from '../game/player';
+import { playerDisplayName, playerPortrait, playerText } from '../game/player';
 import { bondStage, isRomanceId } from '../game/social';
 import BirthdayHint, { BirthdayCalendar } from './BirthdayHint';
 import { birthdayEventFor } from '../game/birthdays';
@@ -40,7 +42,7 @@ interface Props {
   reminderMinutes: number;
   saveHealthy: boolean;
   onDismissReminder: () => void;
-  onStart: (name: string, difficulty: GameState['difficulty'], target: string, gender: GameState['gender']) => void;
+  onStart: (options: NewGameOptions) => void;
   onNextWeek: () => void;
   onPlan: () => void;
   onChoice: (index: number) => void;
@@ -73,14 +75,6 @@ function StoryPanel({ event, game, onChoice }: { event: StoryEvent; game: GameSt
       {!choice ? <><div className="story-paragraphs">{event.paragraphs.map((paragraph, index) => <motion.p key={paragraph} initial={{ opacity: 0, y: 7 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.15 }}>{playerText(game, paragraph)}</motion.p>)}</div><p className="choice-label">这一刻，你想怎么做？</p><div className="story-choices">{event.choices.map((option, index) => <button key={option.text} className="story-choice" disabled={game.stats.money + (option.effect.money ?? 0) < 0} onClick={() => setSelected(index)}><span className="choice-letter">{String.fromCharCode(65 + index)}</span><span><strong>{playerText(game, option.text)}</strong><small>{effectSummary(option.effect).slice(0, 4).join(' / ')}</small></span><ChevronRight size={18}/></button>)}</div></> : <motion.div className="story-resolution" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}><span className="little-label">你选择了 · {playerText(game, choice.text)}</span><p>{playerText(game, choice.result)}</p><div className="effect-line">{effectSummary(choice.effect).join('　/　')}</div><div className="button-row"><button className="text-button" onClick={() => setSelected(null)}><ArrowLeft size={15}/>再想一想</button><button className={primary} onClick={() => onChoice(selected!)}>把这一页收好 <ArrowRight size={17}/></button></div></motion.div>}
     </div>
   </div>;
-}
-
-function StartPanel({ game, onStart }: Pick<Props, 'game' | 'onStart'>) {
-  const [name, setName] = useState(game.started ? DEFAULT_PLAYER_NAME : game.name);
-  const [difficulty, setDifficulty] = useState(game.difficulty);
-  const [target, setTarget] = useState(game.targetSchool);
-  const [gender, setGender] = useState<GameState['gender']>(game.gender);
-  return <div className="start-panel"><div className="start-scene"><img src={asset('images/classroom.jpg')} alt="阳光下的高三教室"/><div><span>2025 年 9 月 · 陕西西安</span><h3>这一次，<br/>为自己长大。</h3></div></div><form onSubmit={event => { event.preventDefault(); if (name.trim()) onStart(name.trim(), difficulty, target, gender); }} className="start-form"><fieldset className="protagonist-picker"><legend>选择故事里的自己</legend>{(['male', 'female'] as const).map(value => <button key={value} type="button" aria-label={value === 'male' ? '男主' : '女主'} aria-pressed={gender === value} className={gender === value ? 'selected' : ''} onClick={() => setGender(value)}><img src={playerPortrait({ gender: value })} alt={value === 'male' ? '男主头像' : '女主头像'}/><span>{value === 'male' ? '男主' : '女主'}</span>{gender === value && <Check size={15}/>}</button>)}</fieldset><div className="form-row"><label>你的名字<input data-autofocus value={name} onChange={event => setName(event.target.value)} maxLength={16} required placeholder="给故事里的自己起个名字"/></label><label>心中的大学<select value={target} onChange={event => setTarget(event.target.value)}>{([['985 院校', '985'], ['211 院校', '211'], ['双一流院校', '双一流'], ['其他本科', '本科']] as const).map(([label, type]) => <optgroup key={type} label={label}>{UNIVERSITIES.filter(school => school.type === type).map(school => <option key={school.id} value={school.id}>{school.name}</option>)}</optgroup>)}</select></label></div><p className="form-caption">目标可以改变。人生不必一开始就有标准答案。</p><div className="difficulty-options"><button type="button" aria-pressed={difficulty === 'gentle'} className={difficulty === 'gentle' ? 'selected' : ''} onClick={() => setDifficulty('gentle')}><GameIcon name="leaf" size={36}/><span><strong>慢慢长大</strong><small>消耗更少，成长更快，安心看故事</small></span>{difficulty === 'gentle' && <Check size={17}/>}</button><button type="button" aria-pressed={difficulty === 'standard'} className={difficulty === 'standard' ? 'selected' : ''} onClick={() => setDifficulty('standard')}><GameIcon name="book" size={36}/><span><strong>真实高三</strong><small>平衡学习、压力和自己的生活</small></span>{difficulty === 'standard' && <Check size={17}/>}</button></div><p className="start-explainer">40 周校园生活，每周 3 次关键行动。探索校园、经历故事、走过高考，再亲手写下自己的志愿。</p><button className={`${primary} full-button`} type="submit" disabled={!name.trim()}>开启我的高三 <ArrowRight size={18}/></button><p className="fine-print">角色与高中均为虚构。高压学习不是值得鼓励的生活方式。<br/>游戏会自动存档，无需注册，也不会上传你的数据。</p></form></div>;
 }
 
 function InventoryPanel({ game, onBuy, onUse, shop = false }: Pick<Props, 'game' | 'onBuy' | 'onUse'> & { shop?: boolean }) {
@@ -199,9 +193,9 @@ export default function GamePanels(props: Props) {
     case 'quests':
       title = '把想做的事，写进这一年'; subtitle = '主线 / 长期任务 / 地图支线 / 角色任务'; className = 'quests-modal'; content = <QuestBoard game={game} setGame={setGame} onNavigate={props.onNavigateTask} notify={notify}/>; break;
     case 'start':
-      title = '属于你的高三，开场了'; className = 'start-modal'; content = <StartPanel game={game} onStart={onStart}/>; break;
+      title = '人生的哪一页，由你选择'; className = 'start-modal new-game-modal'; content = <NewGamePanel game={game} onStart={onStart}/>; break;
     case 'menu':
-      title = '稍微停一停，也没关系'; className = 'menu-modal'; content = <><div className="main-menu-art"><img src={asset('images/campus.jpg')} alt="拾光校园"/><div className="main-menu-logo"><span>只要学不死</span><strong>就往死里学</strong><small>西安 · 高三生存物语</small></div></div><div className="menu-actions"><button className={primary} onClick={() => game.started ? onClose() : open('start')}><Play size={18}/>{game.started ? '继续这段青春' : '开启我的高三'}</button>{game.started && <button className="secondary-button" onClick={() => open('new-confirm')}>开始一个新故事</button>}<div><button onClick={() => open('saves')}><Save size={16}/>存档故事</button><button onClick={() => open('settings')}><Volume2 size={16}/>声音与设置</button><button onClick={() => open('help')}><GameIcon name="book" size={21}/>游玩说明</button></div><button className="text-button" onClick={() => open('about')}>关于游戏 · Created by 小喵喵</button><p>努力很重要。但你，也很重要。</p></div></>; break;
+      title = '稍微停一停，也没关系'; className = 'menu-modal'; content = <><div className="main-menu-art"><img src={asset('images/campus.jpg')} alt="拾光校园"/><div className="main-menu-logo"><span>只要学不死</span><strong>就往死里学</strong><small>西安 · 高三生存物语</small></div></div><div className="menu-actions"><button className={primary} onClick={() => game.started ? onClose() : open('start')}><Play size={18}/>{game.started ? game.life.active ? '继续我的人生' : '继续这段青春' : '开启人生故事'}</button>{game.started && <button className="secondary-button" onClick={() => open('new-confirm')}>开始一个新故事</button>}<div><button onClick={() => open('saves')}><Save size={16}/>存档故事</button><button onClick={() => open('settings')}><Volume2 size={16}/>声音与设置</button><button onClick={() => open('help')}><GameIcon name="book" size={21}/>游玩说明</button></div><button className="text-button" onClick={() => open('about')}>关于游戏 · Created by 小喵喵</button><p>努力很重要。但你，也很重要。</p></div></>; break;
     case 'new-confirm':
       title = '翻开一本新的故事书？'; className = 'small-modal'; content = <div className="confirm-new"><GameIcon name="journal" size={83}/><p>新故事会替换当前自动存档。<br/>如果想留住这段青春，请先手动保存或导出。</p><div className="button-row"><button className="secondary-button" onClick={() => open('saves')}>先去存档</button><button className={primary} onClick={() => open('start')}>开始新故事 <ArrowRight size={15}/></button></div></div>; break;
     case 'settings':

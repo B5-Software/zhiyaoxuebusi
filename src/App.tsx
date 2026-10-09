@@ -5,11 +5,12 @@ import GameIcon from './components/GameIcon';
 import CompanionBanner from './components/CompanionBanner';
 import useMapTouch from './hooks/useMapTouch';
 import { TutorialContext, TutorialOverlay } from './components/Tutorial';
-import { beginGuide, loadGuide, persistGuide, type GuideStep } from './game/tutorial';
+import { beginGuide, freshGuide, loadGuide, persistGuide, type GuideStep } from './game/tutorial';
 import GamePanels from './components/GamePanels';
 import WorldMap from './components/WorldMap';
 import LifeDashboard from './components/LifeDashboard';
 import { startLife } from './game/life';
+import { createNewGame, type NewGameOptions } from './game/newGame';
 import { recordHabit } from './game/lifeHealth';
 import { TaskHud } from './components/QuestBoard';
 import MapTaskIndicators from './components/MapTaskIndicators';
@@ -19,13 +20,13 @@ import { GameNoticeContext } from './components/GameNotice';
 import { loadAudience, persistAudience } from './game/audience';
 import { getMapTaskTargets } from './game/mapTasks';
 import usePlayReminder from './hooks/usePlayReminder';
-import { playerDisplayName, playerPortrait, playerNameError, playerText } from './game/player';
+import { playerDisplayName, playerPortrait, playerText } from './game/player';
 import { recordPlaceVisit } from './game/quests';
 import { DEFAULT_MAP_ZOOM, MAX_MAP_ZOOM, MIN_MAP_ZOOM, mapDragBounds } from './game/mapView';
 import { ACTIONS, CHARACTERS, ITEMS, LITTLE_NOTES, PLACES, REGION_BY_ID, UNIVERSITIES, imagePath, type Place } from './game/data';
 import { asset } from './utils/asset';
 import { audio } from './game/audio';
-import { SETTINGS_KEY, actionEffect, advanceWeek, applyEffect, attendAppointment, beginMapStory, canAct, confirmRelationship, createGame, dateFor, daysRemaining, effectSummary, eventLock, getAchievements, giveCharacterGift, loadGame, loadSettings, performAction, persistGame, placeStories, predictedScore, initiateMessage, replyMessage, resolveEvent } from './game/engine';
+import { SETTINGS_KEY, actionEffect, advanceWeek, applyEffect, attendAppointment, beginMapStory, canAct, confirmRelationship, dateFor, daysRemaining, effectSummary, eventLock, getAchievements, giveCharacterGift, loadGame, loadSettings, performAction, persistGame, placeStories, predictedScore, initiateMessage, replyMessage, resolveEvent } from './game/engine';
 import { deliverMessages, isRomanceId, unreadCount } from './game/social';
 import type { CharacterId, GameState, IconName, Panel, QuestTarget, RomanceId, Scene } from './game/types';
 
@@ -150,14 +151,15 @@ export default function App() {
     audio.play('success');
   }
 
-  function start(name: string, difficulty: GameState['difficulty'], targetSchool: string, gender: GameState['gender']) {
-    const error = playerNameError(name);
-    if (error) { notify(error); return; }
-    setGame(deliverMessages({ ...createGame(), started: true, name: name.trim(), nameIsCustom: true, gender, difficulty, targetSchool, pendingEvent: 'first-day' }));
-    setPanel(null);
-    setZoom(DEFAULT_MAP_ZOOM); dragX.set(0); dragY.set(0);
-    setSpeech('{{player}}，欢迎加入高三（3）班！去做一点喜欢的事吧，我会一直在这里。');
-    audio.play('bell');
+  function start(options: NewGameOptions) {
+    try {
+      const next = createNewGame(options);
+      try { localStorage.removeItem('shiguang-life-guide:' + next.name + ':1'); } catch { /* Reading the guide remains possible without storage. */ }
+      setGuide(freshGuide()); setGame(next); setPanel(null);
+      setZoom(DEFAULT_MAP_ZOOM); dragX.set(0); dragY.set(0);
+      setSpeech('{{player}}，欢迎加入高三（3）班！去做一点喜欢的事吧，我会一直在这里。');
+      audio.play('bell');
+    } catch (error) { notify(error instanceof Error ? error.message : '开局选项无效。'); }
   }
 
   function nextWeek() {

@@ -1,0 +1,626 @@
+{
+  "version": "3.3.0",
+  "checks": [
+    {
+      "label": "new game highschool 320",
+      "passed": true
+    },
+    {
+      "label": "start highschool 320 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "school opening 320",
+      "passed": true
+    },
+    {
+      "label": "school choices 320 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "new game university 320",
+      "passed": true
+    },
+    {
+      "label": "start university 320 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "life start university 320",
+      "passed": true
+    },
+    {
+      "label": "stable-width navigation, gaps, explicit scroll and save reload university 320",
+      "passed": true
+    },
+    {
+      "label": "人才市场与工作 320",
+      "passed": true
+    },
+    {
+      "label": "人才市场与工作 320 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "身体与医院 320",
+      "passed": true
+    },
+    {
+      "label": "身体与医院 320 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "恋人与家庭 320",
+      "passed": true
+    },
+    {
+      "label": "恋人与家庭 320 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "人生与账本 320",
+      "passed": true
+    },
+    {
+      "label": "人生与账本 320 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "人生长任务 320",
+      "passed": true
+    },
+    {
+      "label": "人生长任务 320 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "人生故事集 320",
+      "passed": true
+    },
+    {
+      "label": "人生故事集 320 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "real next week university 320",
+      "passed": true
+    },
+    {
+      "label": "new game society 320",
+      "passed": true
+    },
+    {
+      "label": "start society 320 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "life start society 320",
+      "passed": true
+    },
+    {
+      "label": "stable-width navigation, gaps, explicit scroll and save reload society 320",
+      "passed": true
+    },
+    {
+      "label": "real next week society 320",
+      "passed": true
+    },
+    {
+      "label": "new game retirement 320",
+      "passed": true
+    },
+    {
+      "label": "start retirement 320 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "life start retirement 320",
+      "passed": true
+    },
+    {
+      "label": "stable-width navigation, gaps, explicit scroll and save reload retirement 320",
+      "passed": true
+    },
+    {
+      "label": "real next week retirement 320",
+      "passed": true
+    },
+    {
+      "label": "new game highschool 390",
+      "passed": true
+    },
+    {
+      "label": "start highschool 390 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "school opening 390",
+      "passed": true
+    },
+    {
+      "label": "school choices 390 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "new game university 390",
+      "passed": true
+    },
+    {
+      "label": "start university 390 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "life start university 390",
+      "passed": true
+    },
+    {
+      "label": "stable-width navigation, gaps, explicit scroll and save reload university 390",
+      "passed": true
+    },
+    {
+      "label": "人才市场与工作 390",
+      "passed": true
+    },
+    {
+      "label": "人才市场与工作 390 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "身体与医院 390",
+      "passed": true
+    },
+    {
+      "label": "身体与医院 390 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "恋人与家庭 390",
+      "passed": true
+    },
+    {
+      "label": "恋人与家庭 390 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "人生与账本 390",
+      "passed": true
+    },
+    {
+      "label": "人生与账本 390 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "人生长任务 390",
+      "passed": true
+    },
+    {
+      "label": "人生长任务 390 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "人生故事集 390",
+      "passed": true
+    },
+    {
+      "label": "人生故事集 390 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "real next week university 390",
+      "passed": true
+    },
+    {
+      "label": "new game society 390",
+      "passed": true
+    },
+    {
+      "label": "start society 390 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "life start society 390",
+      "passed": true
+    },
+    {
+      "label": "stable-width navigation, gaps, explicit scroll and save reload society 390",
+      "passed": true
+    },
+    {
+      "label": "real next week society 390",
+      "passed": true
+    },
+    {
+      "label": "new game retirement 390",
+      "passed": true
+    },
+    {
+      "label": "start retirement 390 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "life start retirement 390",
+      "passed": true
+    },
+    {
+      "label": "stable-width navigation, gaps, explicit scroll and save reload retirement 390",
+      "passed": true
+    },
+    {
+      "label": "real next week retirement 390",
+      "passed": true
+    },
+    {
+      "label": "new game highschool 768",
+      "passed": true
+    },
+    {
+      "label": "start highschool 768 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "school opening 768",
+      "passed": true
+    },
+    {
+      "label": "school choices 768 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "new game university 768",
+      "passed": true
+    },
+    {
+      "label": "start university 768 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "life start university 768",
+      "passed": true
+    },
+    {
+      "label": "stable-width navigation, gaps, explicit scroll and save reload university 768",
+      "passed": true
+    },
+    {
+      "label": "人才市场与工作 768",
+      "passed": true
+    },
+    {
+      "label": "人才市场与工作 768 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "身体与医院 768",
+      "passed": true
+    },
+    {
+      "label": "身体与医院 768 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "恋人与家庭 768",
+      "passed": true
+    },
+    {
+      "label": "恋人与家庭 768 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "人生与账本 768",
+      "passed": true
+    },
+    {
+      "label": "人生与账本 768 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "人生长任务 768",
+      "passed": true
+    },
+    {
+      "label": "人生长任务 768 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "人生故事集 768",
+      "passed": true
+    },
+    {
+      "label": "人生故事集 768 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "real next week university 768",
+      "passed": true
+    },
+    {
+      "label": "new game society 768",
+      "passed": true
+    },
+    {
+      "label": "start society 768 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "life start society 768",
+      "passed": true
+    },
+    {
+      "label": "stable-width navigation, gaps, explicit scroll and save reload society 768",
+      "passed": true
+    },
+    {
+      "label": "real next week society 768",
+      "passed": true
+    },
+    {
+      "label": "new game retirement 768",
+      "passed": true
+    },
+    {
+      "label": "start retirement 768 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "life start retirement 768",
+      "passed": true
+    },
+    {
+      "label": "stable-width navigation, gaps, explicit scroll and save reload retirement 768",
+      "passed": true
+    },
+    {
+      "label": "real next week retirement 768",
+      "passed": true
+    },
+    {
+      "label": "new game highschool 1440",
+      "passed": true
+    },
+    {
+      "label": "start highschool 1440 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "school opening 1440",
+      "passed": true
+    },
+    {
+      "label": "school choices 1440 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "new game university 1440",
+      "passed": true
+    },
+    {
+      "label": "start university 1440 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "life start university 1440",
+      "passed": true
+    },
+    {
+      "label": "stable-width navigation, gaps, explicit scroll and save reload university 1440",
+      "passed": true
+    },
+    {
+      "label": "人才市场与工作 1440",
+      "passed": true
+    },
+    {
+      "label": "人才市场与工作 1440 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "身体与医院 1440",
+      "passed": true
+    },
+    {
+      "label": "身体与医院 1440 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "恋人与家庭 1440",
+      "passed": true
+    },
+    {
+      "label": "恋人与家庭 1440 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "人生与账本 1440",
+      "passed": true
+    },
+    {
+      "label": "人生与账本 1440 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "人生长任务 1440",
+      "passed": true
+    },
+    {
+      "label": "人生长任务 1440 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "人生故事集 1440",
+      "passed": true
+    },
+    {
+      "label": "人生故事集 1440 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "real next week university 1440",
+      "passed": true
+    },
+    {
+      "label": "new game society 1440",
+      "passed": true
+    },
+    {
+      "label": "start society 1440 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "life start society 1440",
+      "passed": true
+    },
+    {
+      "label": "stable-width navigation, gaps, explicit scroll and save reload society 1440",
+      "passed": true
+    },
+    {
+      "label": "real next week society 1440",
+      "passed": true
+    },
+    {
+      "label": "new game retirement 1440",
+      "passed": true
+    },
+    {
+      "label": "start retirement 1440 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "life start retirement 1440",
+      "passed": true
+    },
+    {
+      "label": "stable-width navigation, gaps, explicit scroll and save reload retirement 1440",
+      "passed": true
+    },
+    {
+      "label": "real next week retirement 1440",
+      "passed": true
+    },
+    {
+      "label": "new game highschool 844",
+      "passed": true
+    },
+    {
+      "label": "start highschool 844 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "school opening 844",
+      "passed": true
+    },
+    {
+      "label": "school choices 844 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "new game university 844",
+      "passed": true
+    },
+    {
+      "label": "start university 844 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "life start university 844",
+      "passed": true
+    },
+    {
+      "label": "stable-width navigation, gaps, explicit scroll and save reload university 844",
+      "passed": true
+    },
+    {
+      "label": "人才市场与工作 844",
+      "passed": true
+    },
+    {
+      "label": "人才市场与工作 844 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "身体与医院 844",
+      "passed": true
+    },
+    {
+      "label": "身体与医院 844 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "恋人与家庭 844",
+      "passed": true
+    },
+    {
+      "label": "恋人与家庭 844 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "人生与账本 844",
+      "passed": true
+    },
+    {
+      "label": "人生与账本 844 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "人生长任务 844",
+      "passed": true
+    },
+    {
+      "label": "人生长任务 844 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "人生故事集 844",
+      "passed": true
+    },
+    {
+      "label": "人生故事集 844 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "real next week university 844",
+      "passed": true
+    },
+    {
+      "label": "new game society 844",
+      "passed": true
+    },
+    {
+      "label": "start society 844 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "life start society 844",
+      "passed": true
+    },
+    {
+      "label": "stable-width navigation, gaps, explicit scroll and save reload society 844",
+      "passed": true
+    },
+    {
+      "label": "real next week society 844",
+      "passed": true
+    },
+    {
+      "label": "new game retirement 844",
+      "passed": true
+    },
+    {
+      "label": "start retirement 844 dimensions and 12px separation",
+      "passed": true
+    },
+    {
+      "label": "life start retirement 844",
+      "passed": true
+    },
+    {
+      "label": "stable-width navigation, gaps, explicit scroll and save reload retirement 844",
+      "passed": true
+    },
+    {
+      "label": "real next week retirement 844",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

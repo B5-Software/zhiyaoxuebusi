@@ -1,0 +1,624 @@
+{
+  "version": "3.3.0",
+  "checks": [
+    {
+      "label": "painted map 320",
+      "passed": true,
+      "result": {
+        "width": 320,
+        "height": 720,
+        "doc": 320
+      }
+    },
+    {
+      "label": "distinct painted navigation 320",
+      "passed": true
+    },
+    {
+      "label": "illustrated 人才市场与工作 320",
+      "passed": true,
+      "result": {
+        "width": 320,
+        "height": 720,
+        "doc": 320,
+        "left": 16,
+        "right": 304,
+        "top": 16,
+        "bottom": 704,
+        "scroll": 284,
+        "client": 284
+      }
+    },
+    {
+      "label": "illustrated 身体与医院 320",
+      "passed": true,
+      "result": {
+        "width": 320,
+        "height": 720,
+        "doc": 320,
+        "left": 16,
+        "right": 304,
+        "top": 16,
+        "bottom": 704,
+        "scroll": 284,
+        "client": 284
+      }
+    },
+    {
+      "label": "illustrated 恋人与家庭 320",
+      "passed": true,
+      "result": {
+        "width": 320,
+        "height": 720,
+        "doc": 320,
+        "left": 16,
+        "right": 304,
+        "top": 16,
+        "bottom": 704,
+        "scroll": 284,
+        "client": 284
+      }
+    },
+    {
+      "label": "story collection 320",
+      "passed": true,
+      "result": {
+        "width": 320,
+        "height": 720,
+        "doc": 320,
+        "left": 16,
+        "right": 304,
+        "top": 16,
+        "bottom": 704,
+        "scroll": 284,
+        "client": 284
+      }
+    },
+    {
+      "label": "chapter narration 320",
+      "passed": true,
+      "result": {
+        "width": 320,
+        "height": 720,
+        "doc": 320,
+        "left": 15.92169189453125,
+        "right": 304.07830810546875,
+        "top": 15.81292724609375,
+        "bottom": 704.1870727539062,
+        "scroll": 284,
+        "client": 284
+      }
+    },
+    {
+      "label": "dialogue choices 320",
+      "passed": true,
+      "result": {
+        "width": 320,
+        "height": 720,
+        "doc": 320,
+        "left": 16,
+        "right": 304,
+        "top": 16,
+        "bottom": 704,
+        "scroll": 284,
+        "client": 284
+      }
+    },
+    {
+      "label": "chapter receipt 320",
+      "passed": true,
+      "result": {
+        "width": 320,
+        "height": 720,
+        "doc": 320,
+        "left": 16.0177001953125,
+        "right": 303.9822998046875,
+        "top": 16.042266845703125,
+        "bottom": 703.9577941894531,
+        "scroll": 284,
+        "client": 284
+      }
+    },
+    {
+      "label": "reading and result reload without duplicate cost 320",
+      "passed": true
+    },
+    {
+      "label": "painted map 390",
+      "passed": true,
+      "result": {
+        "width": 390,
+        "height": 844,
+        "doc": 390
+      }
+    },
+    {
+      "label": "distinct painted navigation 390",
+      "passed": true
+    },
+    {
+      "label": "illustrated 人才市场与工作 390",
+      "passed": true,
+      "result": {
+        "width": 390,
+        "height": 844,
+        "doc": 390,
+        "left": 16,
+        "right": 374,
+        "top": 16,
+        "bottom": 828,
+        "scroll": 354,
+        "client": 354
+      }
+    },
+    {
+      "label": "illustrated 身体与医院 390",
+      "passed": true,
+      "result": {
+        "width": 390,
+        "height": 844,
+        "doc": 390,
+        "left": 16,
+        "right": 374,
+        "top": 16,
+        "bottom": 828,
+        "scroll": 354,
+        "client": 354
+      }
+    },
+    {
+      "label": "illustrated 恋人与家庭 390",
+      "passed": true,
+      "result": {
+        "width": 390,
+        "height": 844,
+        "doc": 390,
+        "left": 16,
+        "right": 374,
+        "top": 16,
+        "bottom": 828,
+        "scroll": 354,
+        "client": 354
+      }
+    },
+    {
+      "label": "story collection 390",
+      "passed": true,
+      "result": {
+        "width": 390,
+        "height": 844,
+        "doc": 390,
+        "left": 16,
+        "right": 374,
+        "top": 16,
+        "bottom": 828,
+        "scroll": 354,
+        "client": 354
+      }
+    },
+    {
+      "label": "chapter narration 390",
+      "passed": true,
+      "result": {
+        "width": 390,
+        "height": 844,
+        "doc": 390,
+        "left": 15.893035888671875,
+        "right": 374.1069641113281,
+        "top": 58.67364501953125,
+        "bottom": 785.3263549804688,
+        "scroll": 354,
+        "client": 354
+      }
+    },
+    {
+      "label": "dialogue choices 390",
+      "passed": true,
+      "result": {
+        "width": 390,
+        "height": 844,
+        "doc": 390,
+        "left": 16,
+        "right": 374,
+        "top": 16,
+        "bottom": 828,
+        "scroll": 354,
+        "client": 354
+      }
+    },
+    {
+      "label": "chapter receipt 390",
+      "passed": true,
+      "result": {
+        "width": 390,
+        "height": 844,
+        "doc": 390,
+        "left": 15.989944458007812,
+        "right": 374.0100860595703,
+        "top": 23.477630615234375,
+        "bottom": 820.5223083496094,
+        "scroll": 354,
+        "client": 354
+      }
+    },
+    {
+      "label": "reading and result reload without duplicate cost 390",
+      "passed": true
+    },
+    {
+      "label": "painted map 768",
+      "passed": true,
+      "result": {
+        "width": 768,
+        "height": 1024,
+        "doc": 768
+      }
+    },
+    {
+      "label": "distinct painted navigation 768",
+      "passed": true
+    },
+    {
+      "label": "illustrated 人才市场与工作 768",
+      "passed": true,
+      "result": {
+        "width": 768,
+        "height": 1024,
+        "doc": 768,
+        "left": 24,
+        "right": 744,
+        "top": 23.046875,
+        "bottom": 1000.953125,
+        "scroll": 716,
+        "client": 716
+      }
+    },
+    {
+      "label": "illustrated 身体与医院 768",
+      "passed": true,
+      "result": {
+        "width": 768,
+        "height": 1024,
+        "doc": 768,
+        "left": 24,
+        "right": 744,
+        "top": 23.046875,
+        "bottom": 1000.953125,
+        "scroll": 716,
+        "client": 716
+      }
+    },
+    {
+      "label": "illustrated 恋人与家庭 768",
+      "passed": true,
+      "result": {
+        "width": 768,
+        "height": 1024,
+        "doc": 768,
+        "left": 24,
+        "right": 744,
+        "top": 99.359375,
+        "bottom": 924.625,
+        "scroll": 716,
+        "client": 716
+      }
+    },
+    {
+      "label": "story collection 768",
+      "passed": true,
+      "result": {
+        "width": 768,
+        "height": 1024,
+        "doc": 768,
+        "left": 24,
+        "right": 744,
+        "top": 23.046875,
+        "bottom": 1000.953125,
+        "scroll": 716,
+        "client": 716
+      }
+    },
+    {
+      "label": "chapter narration 768",
+      "passed": true,
+      "result": {
+        "width": 768,
+        "height": 1024,
+        "doc": 768,
+        "left": 24.215972900390625,
+        "right": 743.7840881347656,
+        "top": 63.48797607421875,
+        "bottom": 960.4963989257812,
+        "scroll": 716,
+        "client": 716
+      }
+    },
+    {
+      "label": "dialogue choices 768",
+      "passed": true,
+      "result": {
+        "width": 768,
+        "height": 1024,
+        "doc": 768,
+        "left": 24,
+        "right": 744,
+        "top": 23.046875,
+        "bottom": 1000.953125,
+        "scroll": 716,
+        "client": 716
+      }
+    },
+    {
+      "label": "chapter receipt 768",
+      "passed": true,
+      "result": {
+        "width": 768,
+        "height": 1024,
+        "doc": 768,
+        "left": 23.8955078125,
+        "right": 744.1044921875,
+        "top": 22.904937744140625,
+        "bottom": 1001.0951232910156,
+        "scroll": 716,
+        "client": 716
+      }
+    },
+    {
+      "label": "reading and result reload without duplicate cost 768",
+      "passed": true
+    },
+    {
+      "label": "painted map 1440",
+      "passed": true,
+      "result": {
+        "width": 1440,
+        "height": 1000,
+        "doc": 1440
+      }
+    },
+    {
+      "label": "distinct painted navigation 1440",
+      "passed": true
+    },
+    {
+      "label": "illustrated 人才市场与工作 1440",
+      "passed": true,
+      "result": {
+        "width": 1440,
+        "height": 1000,
+        "doc": 1440,
+        "left": 169.49969482421875,
+        "right": 1270.5001831054688,
+        "top": 31.57427978515625,
+        "bottom": 968.4257202148438,
+        "scroll": 1096,
+        "client": 1096
+      }
+    },
+    {
+      "label": "illustrated 身体与医院 1440",
+      "passed": true,
+      "result": {
+        "width": 1440,
+        "height": 1000,
+        "doc": 1440,
+        "left": 169.50732421875,
+        "right": 1270.49267578125,
+        "top": 31.580780029296875,
+        "bottom": 968.4191589355469,
+        "scroll": 1096,
+        "client": 1096
+      }
+    },
+    {
+      "label": "illustrated 恋人与家庭 1440",
+      "passed": true,
+      "result": {
+        "width": 1440,
+        "height": 1000,
+        "doc": 1440,
+        "left": 170.20611572265625,
+        "right": 1269.7940063476562,
+        "top": 64.67880249023438,
+        "bottom": 935.3055114746094,
+        "scroll": 1096,
+        "client": 1096
+      }
+    },
+    {
+      "label": "story collection 1440",
+      "passed": true,
+      "result": {
+        "width": 1440,
+        "height": 1000,
+        "doc": 1440,
+        "left": 140,
+        "right": 1300,
+        "top": 32,
+        "bottom": 968,
+        "scroll": 1156,
+        "client": 1156
+      }
+    },
+    {
+      "label": "chapter narration 1440",
+      "passed": true,
+      "result": {
+        "width": 1440,
+        "height": 1000,
+        "doc": 1440,
+        "left": 140.12744140625,
+        "right": 1299.87255859375,
+        "top": 32.10284423828125,
+        "bottom": 967.8971557617188,
+        "scroll": 1156,
+        "client": 1156
+      }
+    },
+    {
+      "label": "dialogue choices 1440",
+      "passed": true,
+      "result": {
+        "width": 1440,
+        "height": 1000,
+        "doc": 1440,
+        "left": 140,
+        "right": 1300,
+        "top": 32,
+        "bottom": 968,
+        "scroll": 1156,
+        "client": 1156
+      }
+    },
+    {
+      "label": "chapter receipt 1440",
+      "passed": true,
+      "result": {
+        "width": 1440,
+        "height": 1000,
+        "doc": 1440,
+        "left": 141.05694580078125,
+        "right": 1298.9431762695312,
+        "top": 32.852874755859375,
+        "bottom": 967.1470642089844,
+        "scroll": 1156,
+        "client": 1156
+      }
+    },
+    {
+      "label": "reading and result reload without duplicate cost 1440",
+      "passed": true
+    },
+    {
+      "label": "painted map 844",
+      "passed": true,
+      "result": {
+        "width": 844,
+        "height": 390,
+        "doc": 844
+      }
+    },
+    {
+      "label": "distinct painted navigation 844",
+      "passed": true
+    },
+    {
+      "label": "illustrated 人才市场与工作 844",
+      "passed": true,
+      "result": {
+        "width": 844,
+        "height": 390,
+        "doc": 844,
+        "left": 25.3125,
+        "right": 818.6875,
+        "top": 25.3125,
+        "bottom": 364.671875,
+        "scroll": 789,
+        "client": 789
+      }
+    },
+    {
+      "label": "illustrated 身体与医院 844",
+      "passed": true,
+      "result": {
+        "width": 844,
+        "height": 390,
+        "doc": 844,
+        "left": 25.3125,
+        "right": 818.6875,
+        "top": 25.3125,
+        "bottom": 364.671875,
+        "scroll": 789,
+        "client": 789
+      }
+    },
+    {
+      "label": "illustrated 恋人与家庭 844",
+      "passed": true,
+      "result": {
+        "width": 844,
+        "height": 390,
+        "doc": 844,
+        "left": 25.3125,
+        "right": 818.6875,
+        "top": 25.3125,
+        "bottom": 364.671875,
+        "scroll": 789,
+        "client": 789
+      }
+    },
+    {
+      "label": "story collection 844",
+      "passed": true,
+      "result": {
+        "width": 844,
+        "height": 390,
+        "doc": 844,
+        "left": 25.3125,
+        "right": 818.6875,
+        "top": 25.3125,
+        "bottom": 364.671875,
+        "scroll": 789,
+        "client": 789
+      }
+    },
+    {
+      "label": "chapter narration 844",
+      "passed": true,
+      "result": {
+        "width": 844,
+        "height": 390,
+        "doc": 844,
+        "left": 25.0859375,
+        "right": 818.9140625,
+        "top": 25.215591430664062,
+        "bottom": 364.76881408691406,
+        "scroll": 789,
+        "client": 789
+      }
+    },
+    {
+      "label": "dialogue choices 844",
+      "passed": true,
+      "result": {
+        "width": 844,
+        "height": 390,
+        "doc": 844,
+        "left": 25.3125,
+        "right": 818.6875,
+        "top": 25.3125,
+        "bottom": 364.671875,
+        "scroll": 789,
+        "client": 789
+      }
+    },
+    {
+      "label": "chapter receipt 844",
+      "passed": true,
+      "result": {
+        "width": 844,
+        "height": 390,
+        "doc": 844,
+        "left": 25.0859375,
+        "right": 818.9140625,
+        "top": 25.215591430664062,
+        "bottom": 364.76881408691406,
+        "scroll": 789,
+        "client": 789
+      }
+    },
+    {
+      "label": "reading and result reload without duplicate cost 844",
+      "passed": true
+    },
+    {
+      "label": "12 real weekly advances, remembered branch and free complete-story replay",
+      "passed": true
+    },
+    {
+      "label": "exhausted budget hides all actionable and story markers",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

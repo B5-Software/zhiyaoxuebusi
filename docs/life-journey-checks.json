@@ -1,5 +1,5 @@
 {
-  "version": "3.2.0",
+  "version": "3.3.0",
   "checks": [
     {
       "label": "original resolution, no crop, actual native-size layer, default 150%, two-finger zoom",

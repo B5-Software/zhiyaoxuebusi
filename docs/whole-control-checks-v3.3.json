@@ -1,0 +1,86 @@
+{
+  "version": "3.3.0",
+  "checks": [
+    {
+      "label": "every navigation page contains complete controls 320",
+      "passed": true
+    },
+    {
+      "label": "map signs and story badges fully inside viewport college-dorm 320",
+      "passed": true
+    },
+    {
+      "label": "map signs and story badges fully inside viewport exchange 320",
+      "passed": true
+    },
+    {
+      "label": "map signs and story badges fully inside viewport nightlife 320",
+      "passed": true
+    },
+    {
+      "label": "every navigation page contains complete controls 390",
+      "passed": true
+    },
+    {
+      "label": "map signs and story badges fully inside viewport college-dorm 390",
+      "passed": true
+    },
+    {
+      "label": "map signs and story badges fully inside viewport exchange 390",
+      "passed": true
+    },
+    {
+      "label": "map signs and story badges fully inside viewport nightlife 390",
+      "passed": true
+    },
+    {
+      "label": "every navigation page contains complete controls 768",
+      "passed": true
+    },
+    {
+      "label": "map signs and story badges fully inside viewport college-dorm 768",
+      "passed": true
+    },
+    {
+      "label": "map signs and story badges fully inside viewport exchange 768",
+      "passed": true
+    },
+    {
+      "label": "map signs and story badges fully inside viewport nightlife 768",
+      "passed": true
+    },
+    {
+      "label": "every navigation page contains complete controls 1440",
+      "passed": true
+    },
+    {
+      "label": "map signs and story badges fully inside viewport college-dorm 1440",
+      "passed": true
+    },
+    {
+      "label": "map signs and story badges fully inside viewport exchange 1440",
+      "passed": true
+    },
+    {
+      "label": "map signs and story badges fully inside viewport nightlife 1440",
+      "passed": true
+    },
+    {
+      "label": "every navigation page contains complete controls 844",
+      "passed": true
+    },
+    {
+      "label": "map signs and story badges fully inside viewport college-dorm 844",
+      "passed": true
+    },
+    {
+      "label": "map signs and story badges fully inside viewport exchange 844",
+      "passed": true
+    },
+    {
+      "label": "map signs and story badges fully inside viewport nightlife 844",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

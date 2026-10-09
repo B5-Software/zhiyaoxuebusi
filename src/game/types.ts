@@ -66,9 +66,12 @@ export interface University {
   source: string;
 }
 
+export type StartingStage = 'highschool' | 'university' | 'society' | 'retirement';
+
 export interface GameState {
   version: 3;
   started: boolean;
+  startStage: StartingStage;
   name: string;
   nameIsCustom: boolean;
   gender: 'male' | 'female';
