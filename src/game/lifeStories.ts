@@ -1,4 +1,5 @@
 import { LIFE_ARCS, type LifeArc, type StoryEffect } from './lifeStoryData';
+import { chapterPresentation } from './lifeStoryScenes';
 import { limit } from './lifeHealth';
 import type { GameState } from './types';
 import type { LifeStories } from './lifeTypes';
@@ -82,6 +83,8 @@ export function resolveStoryMutable(g: GameState, index: number, pay: (amount: n
   if (e.money) pay(e.money, `剧情：${chapter.title}`);
   if (e.rentFactor) g.life.economy.rentIndex = Math.max(.7, Math.min(3, g.life.economy.rentIndex * e.rentFactor));
   let result = chapter.results[index];
+  const followUp = chapterPresentation(g, arc, step).followUp;
+  if (followUp) result += ' ' + followUp;
   if (e.application === 'tuition') {
     if (!g.life.claims.some(c => c.kind === 'tuition')) g.life.claims.push({ kind: 'tuition', due: g.life.weeks + 4, amount: 900 });
   }

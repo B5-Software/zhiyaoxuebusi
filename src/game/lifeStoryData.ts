@@ -1,24 +1,6 @@
-import type { GameState, IconName } from './types';
-
-export interface StoryEffect {
-  energy?: number; stress?: number; mood?: number; money?: number;
-  technical?: number; communication?: number; practical?: number;
-  sleep?: number; strain?: number; affection?: number; rentFactor?: number;
-  application?: 'tuition' | 'wages' | 'aid';
-}
-export interface LifeChapter {
-  title: string; gap: number; paragraphs: string[];
-  dialogue: { speaker: string; text: string }[];
-  choices: [string, string]; results: [string, string]; effects: [StoryEffect, StoryEffect];
-}
-export interface LifeArc {
-  id: string; title: string; subtitle: string; kind: '主线' | '支线';
-  region: string; icon: IconName; image: string;
-  condition: string; visible: (g: GameState) => boolean;
-  echoes: [string, string]; chapters: LifeChapter[];
-}
-const chapter = (title: string, gap: number, paragraphs: string[], dialogue: [string, string][], choices: [string, string], results: [string, string], effects: [StoryEffect, StoryEffect]): LifeChapter => ({ title, gap, paragraphs, dialogue: dialogue.map(([speaker, text]) => ({ speaker, text })), choices, results, effects });
-const adult = (g: GameState) => g.life.baseAge + g.life.weeks / 52 >= 18;
+import { chapter, adult, type LifeArc } from './lifeStoryTypes';
+import { ADDITIONAL_LIFE_ARCS } from './lifeAdditionalStories';
+export type { LifeArc, LifeChapter, StoryEffect } from './lifeStoryTypes';
 export const LIFE_ARCS: LifeArc[] = [
   {
     id: 'outside', title: '围墙以外，时间属于谁', subtitle: '一张车票，四年日历，与不再被排名解释的人生', kind: '主线', region: 'college-study', icon: 'train', image: 'story-station-v3.2', condition: '成年后开启，四章至少跨越208周', visible: adult,
@@ -110,4 +92,5 @@ export const LIFE_ARCS: LifeArc[] = [
       chapter('第四章 · 慢一点也走到了这里', 12, ['你把旧车票、工牌和几张照片放在一起。它们没有组成一份完美履历，而是很多个曾经需要认真度过的日子。', '窗外有人赶车，你不再跟着着急。人生终章仍可能由疾病、意外或时间到来；在那以前，你愿意把眼前这一段过得更像自己的生活。'], [['老朋友', '这一生，你觉得算成功吗？'], ['你', '我不想再按那张表回答。我记得人，也记得自己。']], ['把经验与边界留给后来的人', '继续留意身体与自己的日常'], ['你把经验留在手帐，没有为下一代规定必须复制的路线。沟通与心情改善，故事完整收录。', '你改善睡眠、留出休息。时间不会停止，但生活也无需因为慢下来就被判定失去意义。'], [{ communication: 4, mood: 10 }, { sleep: 5, energy: 10, stress: -6 }]),
     ],
   },
+  ...ADDITIONAL_LIFE_ARCS,
 ];
