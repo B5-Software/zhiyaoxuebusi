@@ -1,6 +1,6 @@
 {
   "version": "3.4.0",
-  "base": "http://127.0.0.1:5174/",
+  "base": "https://b5-software.github.io/zhiyaoxuebusi/",
   "checks": 147,
   "passed": [
     "1440 大学 dialog margins",
@@ -150,5 +150,22 @@
     "confirmation saved once 390",
     "receipt handwritten font 390",
     "reload retains receipt 390"
+  ],
+  "productionRuns": [
+    {
+      "base": "https://shiguang-campus-life.pages.dev/",
+      "checks": 147,
+      "passed": true
+    },
+    {
+      "base": "https://zhiyaoxuebusi.pages.dev/",
+      "checks": 147,
+      "passed": true
+    },
+    {
+      "base": "https://b5-software.github.io/zhiyaoxuebusi/",
+      "checks": 147,
+      "passed": true
+    }
   ]
 }
